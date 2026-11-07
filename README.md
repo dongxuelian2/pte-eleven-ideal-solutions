@@ -134,8 +134,12 @@ corrections of these representatives vanish at 11,19,53. Section 5.19 now
 finishes their horizontal intersections using explicit blowups: 11 and 53
 contribute zero, while each curve has one nonzero mixed term +2log13(19).
 Together these certify every finite contribution outside {2,3,5,13}.
-The terms at 2,3,5 and normalized 13-adic integrals remain missing;
-no complete height block is claimed.
+Section 5.20 now also certifies the terms at 3 and 5 using explicit
+quadratic-extension charts and local-height descent: one mixed term is
+-log13(3), another is -2log13(5), and the others vanish. Thus every finite
+contribution outside {2,13} is known for these representatives. Dyadic
+terms and normalized 13-adic integrals remain missing; no complete height
+block is claimed.
 
 The other twelve types and other construction routes are not settled
 by these reductions.
@@ -163,6 +167,7 @@ python3 scripts/check_thirteen_saturation.py
 python3 scripts/check_elliptic_height13.py
 python3 scripts/check_genus_two_mixed_heights.py
 python3 scripts/check_genus_two_semistable_heights.py
+python3 scripts/check_genus_two_odd_local_heights.py
 ```
 
 ## Ancillary multiset results
