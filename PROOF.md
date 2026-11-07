@@ -983,11 +983,172 @@ Theorem 12 gives the separate exact quintic criterion, including its
 necessary distinctness and disjointness conditions.
 
 
-## 5. Open boundary
+## 5. A distinct-entry construction route: shift chains
+
+These results concern lifting a symmetric ideal size-ten pair, not all
+size-eleven pairs. They provide exact reductions and a finiteness result
+for four subclasses, but no size-eleven witness or general exclusion.
+No novelty claim is made for the lifting or finiteness mechanisms.
+
+### 5.1 Exact lifting criterion and eighteen chain types
+
+Let A,B be disjoint rational sets of size ten with matching powers 1
+through 9. Their monic polynomials satisfy P-Q=C != 0. For a nonzero
+rational shift t put F=P(x)Q(x-t), G=Q(x)P(x-t). Then
+
+ F-G=C(Q(x-t)-Q(x))
+
+has degree nine and leading coefficient -10tC. The monic gcd H of F,G
+has degree
+
+ c=|A intersect (A+t)|+|B intersect (B+t)|.
+
+Indeed, every common root lies in exactly one of these two intersections
+and has multiplicity one in both products. Cross-side overlaps cannot
+be common roots because A and B are disjoint. Thus c<=9. After cancelling
+H, eleven entries remain on each side exactly when c=9; the resulting
+monic polynomials then differ by the nonzero constant -10tC. Their roots
+are distinct exactly when A intersect (B+t) and B intersect (A+t) are
+both empty. This is a necessary and sufficient criterion for this lift.
+
+Assume now A=-A and B=-B, and normalize t=1 by scaling. Join input
+vertices whose difference is one. For a valid lift there are twenty
+vertices, nine edges, and no edge between colors A and B. Each component
+is a monochromatic consecutive arithmetic chain; the graph is a union
+of paths, so it has eleven components. Reflection permutes them.
+A reflection-fixed chain has center zero. It cannot have odd length,
+since that would put zero in a symmetric set of even cardinality.
+Two even centered chains cannot coexist: both contain -1/2 and 1/2.
+The odd number of components therefore forces exactly one centered
+chain of length 2m, 1<=m<=5. Exchange colors so this chain belongs to A.
+The remaining components form five reflected pairs.
+
+If aa and bb are the multisets of lengths of the reflected chain pairs
+in A and B, respectively, their exact constraints are
+
+ len(aa)+len(bb)=5, sum(aa)=5-m, sum(bb)=5.
+
+The positive integer partitions give eighteen types. This is a finite
+type classification, with no height bound on the rational centers.
+For a length L define O_L={j-(L-1)/2:0<=j<L}. A reflected pair of
+center +/-z consists of z+O_L and -z+O_L. The centered chain is O_(2m).
+Matching the four even moments 2,4,6,8 is sufficient for matching all
+moments through 9. Conversely, rational centers solving these equations
+produce a valid lift if all twenty vertices are distinct and no
+cross-color unit difference occurs: the prescribed chains already give
+nine edges, and the degree-nine gcd bound forbids additional edges.
+Scaling clears denominators of a successful rational output.
+
+### 5.2 Four modes reduce to conics and cubic splitting
+
+Consider aa=(5-m), bb=(1,1,1,2), for m=1,2,3,4. Let +/-u be the
+centers of the noncentral A chain pair, +/-v the centers of the length-two
+B pair, and +/-r_i the three singleton B pairs. Set a=u^2, b=v^2.
+For k=1,2,3,4 define
+
+ p_k = (1/2) sum_{d in O_(2m)} d^(2k)
+       + sum_{d in O_(5-m)} (u+d)^(2k)
+       - sum_{d in O_2} (v+d)^(2k).
+
+Symmetry of each offset set makes these polynomials in a,b. The required
+relations are sum_i (r_i^2)^k=p_k. Set
+
+ e1=p1, e2=(p1^2-p2)/2, e3=(p3-e1*p2+e2*p1)/3,
+ K(X)=X^3-e1 X^2+e2 X-e3.
+
+The first three moment conditions say the r_i^2 are the roots of K.
+Newton's identities give the fourth condition F=p4-e1*p3+e2*p2-e3*p1=0.
+Direct polynomial expansion yields, in order m=1,2,3,4,
+
+ F1=-4(a-b)(a-5b-4)(a^2-2ab-2a+b^2-2b+1),
+ F2=(b-1)(4a-10b-9)(16a^2-32ab-8a+16b^2-8b+1)/8,
+ F3=-4(a-b)(b-4)(b-1)(3a-5b-3),
+ F4=4(b-9)(b-4)(b-1)(4a-5b-1).
+
+All factors except the indicated linear relation in a force input
+collisions. The a=b factor makes the length-two B chains overlap the
+length-four or length-two A chains. The quadratic factors in F1 and F2
+are, respectively,
+
+ [u^2-(v+1)^2][u^2-(v-1)^2],
+ 16[u^2-(v+1/2)^2][u^2-(v-1/2)^2];
+
+they also force A/B overlaps. Finally b=j^2, 1<=j<m, puts a length-two
+B chain into the centered A chain. Hence any valid input in these modes
+satisfies, respectively,
+
+ a=5b+4, a=(10b+9)/4, a=(5b+3)/3, a=(5b+1)/4.
+
+These conics have rational parametrizations: write u^2=alpha*v^2+s^2,
+with (alpha,s)=(5,2),(5/2,3/2),(5/3,1),(5/4,1/2), and put
+
+ v=2st/(alpha-t^2), u=s+tv.
+
+The exceptional points with v=0 are invalid because the reflected B chains
+coincide. On each conic, completely splitting K into three distinct
+rational-square roots, together with the noncollision conditions in
+5.1, suffices for an eleven-entry lift. Square discriminant alone does not.
+
+### 5.3 Explicit genus-two conditions and normalized finiteness
+
+After substituting the four respective conic relations in K, its
+discriminants are
+
+ D1=-4h1, D2=-b*h2/4, D3=-4b*h3/243, D4=-h4/64,
+
+where
+
+ h1=800b^6-2625b^5+12050b^4-529b^3-54448b^2-53744b-14400,
+ h2=675b^5-7950b^4-26125b^3-35704b^2-23248b-6144,
+ h3=900b^5-7100b^4-21675b^3+71658b^2+3321b-93312,
+ h4=50b^6-1875b^5+20600b^4-50624b^3+102912b^2-2392064b-3686400.
+
+A valid input has b=v^2 with v!=0. If K splits over Q, its discriminant
+is d^2 for rational d. It therefore gives a rational point on, respectively,
+
+ C1: y^2=-h1(b), with y=d/2;
+ C2: y^2=-h2(b), with y=2d/v;
+ C3: y^2=-3h3(b), with y=27d/(2v);
+ C4: y^2=-h4(b), with y=8d.
+
+The right sides are squarefree polynomials of degrees 6,5,5,6. Thus the
+smooth projective completions all have genus two. The exact certificate
+`scripts/check_shift_chains.py` checks the discriminant identities and
+constant gcds with the derivatives, as well as the four factorizations
+using two expansions of the chain moments.
+
+**Finiteness theorem.** Each of these four chain modes has only finitely
+many valid rational configurations after the shift is fixed to one and
+the symmetry center to zero.
+
+**Proof.** Faltings's theorem gives finitely many rational points on each
+C_m. Each b gives finitely many u,v with the required squares. K then
+fixes the three squared singleton centers, leaving finitely many sign
+and permutation choices. Therefore there are finitely many valid seeds
+and outputs in these normalized modes. Arbitrary scaling and translation
+are excluded from the normalization. This proves no effective height
+bound and no nonexistence assertion.
+
+The curves have the rational control points (b,y)=(1,336),(4,1920),
+(9,3240),(16,384). They produce only the trivial A=B consisting of the
+ten half-integers +/-1/2,+/-3/2,+/-5/2,+/-7/2,+/-9/2; the certificate
+explicitly verifies this rejection. Their rational points have not been
+completely determined. Any further point must still pass the rational-
+square, complete-splitting, and noncollision conditions. The other fourteen
+chain types and constructions outside this shift-lift route are not settled
+by these reductions.
+The finiteness input is the established theorem of G. Faltings,
+*Endlichkeitssaetze fuer abelsche Varietaeten ueber Zahlkoerpern*,
+Inventiones Mathematicae 73 (1983), 349-366,
+https://doi.org/10.1007/BF01388432.
+
+## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
 of disjoint eleven-element integer sets and no general impossibility proof
-has been established. Section 3
+has been established. Section 5 gives a distinct-entry shift-lift reduction and
+normalized finiteness for four of eighteen chain types; it does not classify
+the required genus-two rational points. Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,
 or at least eight per side under symmetry. The remaining splitting and
