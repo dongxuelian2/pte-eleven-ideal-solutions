@@ -4449,6 +4449,258 @@ The full genus-two blocks, genus-three QC function, root isolation and
 final rational-point sieve remain incomplete. None of these arithmetic
 congruences constructs or excludes an original size-eleven PTE pair.
 
+
+### 5.26 Completing both global genus-two height matrices
+
+The two remaining Q/R pairings and a moved-divisor P/T pairing now
+complete both global Coleman-Gross height matrices modulo 13^3=2197.
+The certificates are `scripts/check_remaining_qr_heights13.py` and
+`scripts/check_complete_height_blocks13.py`, using existing SymPy.
+The algorithms, denominator bounds, finite terms and reconstruction
+were independently reviewed and reproduced. No software was installed.
+
+These matrices refer to the P,Q classes, monic eta basis and compatible
+splittings fixed in 5.18 and 5.22. They are
+
+    k=-15: H = [[923,1586],[1586,689]] modulo 2197;
+    k=-3:  H = [[2093,676],[676,1027]] modulo 2197.
+
+This completes these global height blocks at the stated precision.
+It does not compute the genus-three local QC functions or their roots.
+
+#### Q/R integration with split or unramified coefficient fields
+
+For a root a of u_Q, put b=v_Q(a), u=1/(x-a), v=y*u^3/b.
+Then v^2=G(u)=u^6*f(a+1/u)/b^2 is monic of degree six, and
+the differential with residues (a,b)-(a,-b) is -2 eta_even,2.
+Summing over both roots of u_Q gives exactly omega_Q of 5.18.
+Both u_Q and u_R have unit discriminants at 13; their resultant and
+ordinates are units. Thus all transformed endpoints are finite units.
+
+For k=-3 the roots a lie in Q13 and reduce to 7 and 11. Their
+residues modulo 2197 are 2035 and 102, with ordinates 969 and 336.
+The five-component integrals over D_R on the two even models are
+
+    a=2035: [520,1872,377,308,1352];
+    a=102:  [663,962,1339,953,1491].
+
+The raw contributions are 1443 and 1716, whose sum is 962 modulo 2197.
+Independent endpoint calculations used both the original support algebra
+and the transformed support polynomial with separately lifted Frobenius.
+The two methods give the same vectors. The first two entries also agree
+with the exact holomorphic pullbacks
+eta_even,0=b(a eta_0-eta_1), eta_even,1=-b eta_0.
+
+For k=-15 use the unramified quadratic field
+
+    K=Q13[a]/(a^2+1020a+81225), sigma(a)=-1020-a.
+
+The two roots of u_R lie in K; one is (1905+2110a) modulo 2197.
+Retaining the coefficient-field Frobenius is essential: the Frobenius
+numerator is G^sigma(u^13)-G(u)^13, not G(u^13)-G(u)^13.
+If M has columns the reduced Frobenius images, the endpoint equation is
+
+    sigma(I)=M^t I+rhs,
+    rhs=2 sum g(endpoints)-2 sum tiny integrals.
+
+Conjugating and substituting gives
+
+    (Id-sigma(M)^t M^t) I = sigma(M)^t rhs+sigma(rhs).
+
+All divisions in this linear solve are by units. Its Frobenius-square
+characteristic polynomial is
+
+    (T-169)(T^2+6T+169)^2,
+
+so its determinant at T=1 is a 13-adic unit. An independent check
+also verifies rM=13 sigma(r), with the infinity-residue row r from
+5.25. The resulting integral vector, as constant/a coefficient pairs, is
+
+    [(793,195),(1950,1196),(1508,1378),(21,87),(802,1322)].
+
+The raw contribution from one source point is (1378,1638).
+Taking its field trace gives 1716 modulo 2197.
+Both holomorphic pullback identities and the original semilinear
+equation hold. The coefficient arithmetic and structural Frobenius
+checks were independently rerun.
+
+The modular implementation is certified, not merely checked at two
+precisions. For the retained terms n=0,...,3, vertical reduction starts
+at m=6+13n<=45. Among its odd denominators 1,...,89, only 13,39,65
+lose a digit. Horizontal reduction has degree at most 28 and its
+denominators 2e-4 lose at most two more digits, at 26 and 52.
+Thus a reduction path loses at most five digits. Starting modulo 13^20
+with numerators scaled by 13^6 leaves at least nine unscaled digits;
+the quadratic-field run uses 13^22. Coefficient inversions, Hensel
+lifts, polynomial remainders and endpoint evaluations use only units.
+The output is required only modulo 13^3. Larger guard runs agree,
+but this explicit budget, not agreement alone, proves reliability.
+
+The omitted n>=4 Frobenius terms have the six-branch-point primitive
+bound proved in 5.25, since the transformed models have good reduction
+and endpoints are units. Tiny terms of integrated degree at least
+three have valuation at least three. These bounds also apply over
+the unramified quadratic coefficient field.
+
+Subtracting the already certified holomorphic normalizations gives
+
+    k=-15: h13(D_Q,D_R)=1716-1301*1963-390*650=2119 mod2197;
+    k=-3:  h13(D_Q,D_R)=962-1409*481-789*2158=2119 mod2197.
+
+Adding the respective complete away terms 390 and 871 gives global
+W=312 for k=-15 and W=793 for k=-3.
+
+#### Avoiding the shared 13-adic disc by an exact divisor move
+
+For k=-3, direct P/Q integration remains a shared-disc problem.
+It is unnecessary for the matrix: use T=4P-Q instead.
+Repeated exact Cantor addition of P to R=P-Q gives
+
+    u_T=x^2-14122312959396*x/446872195225
+            +119757412617129/446872195225;
+    v_T=(94388884819291490706*x-1395182795689585717794)
+            /298727359424984125.
+
+Every addition is certified by interpolation V through P and the
+current reduced divisor, exact division of f-V^2 by (x-33)u,
+and reduction of -V modulo the new monic u. Hence this is an exact
+Jacobian relation, not a congruence.
+
+The coefficients of u_T,v_T are 13-integral; discriminant(u_T),
+resultant(u_T,v_T), and u_T(33) are all 13-units. Both finite-unit
+and non-Weierstrass conditions are checked. In particular, the earlier
+candidate 2P-Q would NOT work with this unit-endpoint algorithm:
+its ordinate resultant has valuation one. Disjoint x reductions alone
+would not justify that algorithm.
+
+Using the same rational-P even model as in 5.25 gives
+
+    I_even(D_T)=[273,1859,143,1464,1266] modulo2197,
+    raw integral = -2*143 = 1911 modulo2197.
+
+An independent exact-rational primitive implementation gives the same
+vector, with primitive traces [1898,1001,1404,1973,839] and tiny traces
+[1105,676,1391,923,559]. The holomorphic integrals on the odd model are
+4 I_P-I_Q=[1521,1560] modulo2197. This use of the class relation is
+valid for holomorphic integrals; no additivity of second-kind coordinates
+on Jacobian classes is assumed. The fixed P correction therefore gives
+
+    h13(D_P,D_T)=1911-2021*1521-1085*1560=663 modulo2197.
+
+#### All away contributions for the new representative
+
+The old away terms cannot be reused for T. The complete new sum is
+
+    away(D_P,D_T)=log13(3)-2log13(7)-2log13(61)
+                    +2log13(569)+2log13(1188727)
+                 =1560 modulo2197.
+
+Here is the exhaustive regular-model calculation. The x resultant is
+
+    u_T(33)=2*3^5*7*61*569*1188727/(5^2*133697^2).
+
+At the good primes 7,61 the ordinates agree, while at 569,1188727
+they are opposite. Each intersection has multiplicity one and nonzero
+ordinate. Thus their contributions have respectively signs -2,-2,+2,+2.
+
+The only denominator primes are 5 and 133697. At either prime one T
+point goes to infinity and the other is integral. Their finite reduced
+x coordinates are respectively 4 and 41333, different from P's 3 and33.
+There is no intersection, including with P's conjugate.
+At 11,19,53 the reductions of T and P are disjoint. The component
+degree of D_P is zero by the regular models of 5.18--5.21.
+
+At 2, in the primitive polynomial u_T(1+d), its constant and linear
+coefficients have valuation one and the leading coefficient is a unit.
+Both roots have v2(d)=1/2, outside the smooth P neighborhood x=1+4t
+of 5.21. D_P has zero component degree, and no horizontal intersection.
+
+At 3 use x=-3-9t and the twin chart X=(t-11)/sqrt(3), V=y/243
+from 5.20. After removing the constant factor81 the T polynomial is
+
+    G(t)=446872195225*t^2+1867060681194*t+2051187669782.
+
+It reduces to t^2-1. P has t=-4; G(-4) has valuation one and
+G'(-4) is a unit. The nearby T root lies in the same twin chart, with
+
+    V_T=-38*(91996963761492681*t+181757575281293068)
+                 /298727359424984125.
+
+At t=2 modulo3 its ordinate is 1, opposite to V_P=44=2 modulo3.
+The X difference has valuation one over Q3(sqrt(3)).
+Thus the signed intersection is -2 over that quadratic extension;
+norm-character descent gives +log13(3), not -log13(3).
+The other T point lies in the distinct smooth cluster neighborhood.
+D_P's component is invariant and its vertical correction vanishes.
+This proves the full away sum, including all denominator and bad primes.
+
+#### Global reconstruction
+
+For k=-15, U=1950,V=1248,W=312 in the formulas of 5.18 give
+the displayed first matrix. For k=-3 put Z=h(D_P,D_T)=663+1560=26.
+Since D_T represents twice (4P-Q), global bilinearity gives
+
+    h(P,P)=(Z-V)/12,
+    h(P,Q)=(Z-4V)/12,
+    h(Q,Q)=h(P,Q)-W/4,
+
+with V=1274,W=793. These give the displayed second matrix.
+The denominators4 and12 are 13-units. This bypasses direct shared-disc
+integration without changing the global height or omitting finite terms.
+
+
+### 5.27 Explicit global height quadratic forms and remaining QC gap
+
+Let log_eta denote the two holomorphic Coleman logarithms for eta_0,eta_1.
+For the genuine Jacobian generators P,Q, put
+L0=(log_eta(P),log_eta(Q))/13. Since D_P,D_Q represent twice those
+classes, their integral vectors must be divided by two first.
+The certified matrices modulo169 are
+
+    k=-15: L0=[[68,92],[105,89]];
+    k=-3:  L0=[[126,23],[105,22]].
+
+Both determinants are6 modulo13. With H from5.26 define
+A=L0^(-t)(H/13)L0^(-1). Explicitly,
+
+    k=-15: A=[[37,131],[131,135]] modulo169;
+    k=-3:  A=[[90,114],[114,36]] modulo169.
+
+The identities 13 L0^t A L0=H modulo2197 were independently checked.
+The determinants of H/13 are respectively7 and5 modulo13; in particular
+both global height blocks are nondegenerate at the computed precision.
+
+For a rational Jacobian class D, write z=log_eta(D)/13. Then
+
+    h(D,D)=13*z^t*A*z modulo13^3.
+
+This identity holds on all J(Q), not just the displayed subgroup:
+the rank-two upper bounds and independent P,Q from5.13 show they span
+J(Q) tensor Q13. Torsion has both logarithm and height zero.
+Good reduction and #J(F13)=176, prime to13, imply
+log_eta(J(Q13)) is contained in13 Z13^2, so z is integral for every
+rational class. Thus the asserted error is uniform on those classes.
+
+Precision is explicit: H modulo13^3 gives H/13 modulo13^2;
+the logarithms modulo13^3 give L0 modulo13^2. Its unit determinant
+makes inversion lossless. Therefore A modulo13^2 determines the
+displayed height to absolute precision13^3 on integral z.
+Equivalently, in unscaled logarithms its coefficient matrix is A/13,
+known only modulo13, not modulo13^3. No precision is gained by
+rewriting the formula.
+
+These are the genus-two GLOBAL quadratic height expressions needed
+for the genus-three product construction. The compatible genus-two
+weight is -8 as proved in5.22. They are not by themselves the functions
+on residue discs that quadratic Chabauty requires. Still missing are
+the basepoint-normalized genus-three local height functions and
+representative corrections, the complete allowed non-13 local-value
+sets for arbitrary curve points, certified power-series tails and root
+isolation on all twelve discs, and the final rational-point sieve.
+No finite QC root set or original eleven-distinct-integer construction
+or general impossibility theorem is claimed.
+
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
