@@ -2990,11 +2990,285 @@ numerical finiteness criterion proved in 5.14.
 
 The exact de Rham inputs, logarithm rank and 13-saturation are now
 certified. Still missing are the actual local/global height functions
-and all permitted away-from-13 contributions, suitably represented
+and all permitted away-from-13 contributions (the elliptic factor is
+subsequently computed in 5.17), suitably represented
 transported divisors, rigorous isolation of every quadratic-Chabauty
 root, and a final sieve or equivalent completeness argument with all
 required index information. No complete rational-point set, valid
 size-eleven integer pair, or general impossibility theorem is claimed.
+
+### 5.17 Certified elliptic-factor 13-adic height and finite local terms
+
+This computes an actual Coleman–Gross height on the elliptic factor of both
+genus-three targets. It also computes its away-from-13 local contribution,
+including the nonzero bad-prime corrections. It does not compute the
+genus-two height block, the full genus-three local height attached to the
+trace-zero correspondence, a quadratic-Chabauty root, or a rational-point
+classification.
+
+The reproducible checker is `scripts/check_elliptic_height13.py`; it requires only
+Python 3 and SymPy. No Sage, Magma, PARI, installed package, remote execution,
+or unproved numerical height estimate is used.
+
+#### 1. Curve, normalization, and the actual result
+
+Use the globally minimal equation
+
+    E: Y² = X³ − 560X² + 72900X,
+    P = (180,900), T = (0,0), omega = dX/(2Y).
+
+The existing rank-one generator certificate proves E(Q)=Z P direct-sum <T>.
+The computations of P itself below do not need this generator theorem;
+only the assertion that the component table covers all rational points does.
+
+The branch of log13 is normalized by log13(13)=0. The height character has
+component log13 at 13 and sends a uniformizer ell to −log13(ell) at ell!=13.
+Choose the complementary de Rham line
+
+    W_E = span([(X−280)omega]).
+
+This is a specified rational splitting, not an assertion that W_E is the
+unit-root splitting. Write h_W for the symmetric Coleman–Gross pairing,
+without dividing its character by 13. The certified result is
+
+    h_W(P,P) = 59106874840 + O(13^10).
+
+Equivalently its base-13 digits, starting at 13^0, are
+
+    [0,7,10,12,12,6,12,5,7,5].
+
+In particular v13(h_W(P,P))=1. Its half-height is
+
+    lambda_W(P) = h_W(P,P)/2 = 29553437420 + O(13^10).
+
+The formal elliptic logarithm and the rank-one quadratic coefficient are
+
+    log_omega(P) = 87056567455 + O(13^10),
+    13 h_W(P,P)/log_omega(P)^2 = 6699432669 + O(13^9).
+
+Thus v13(log_omega(P))=1. The coefficient h_W(P,P)/log_omega(P)^2 is
+known with absolute error O(13^8), not O(13^10); dividing by the square of
+the logarithm loses two digits. For Q=nP+epsilon T, h_W(Q,Q)=n²h_W(P,P).
+
+#### 2. Compatibility with the previously chosen quotient splitting
+
+For the quartic E0: b²=(z²+5)(z²+275), use
+
+    X=2b+2z²+280, Y=2zX,
+    e0=dz/b, e1=z²dz/b.
+
+Direct differentiation gives
+
+    omega=e0/2,
+    X omega=e1+140e0+dz,
+    [e1]=[(X−280)omega].
+
+Therefore W_E is exactly the elliptic complementary line in the existing
+holomorphic-first genus-three symplectic splitting, not a new incompatible
+choice. Under the signed cup convention of that certificate,
+<omega,(X−280)omega>=1. The differential denoted eta in Balakrishnan–Besser
+Theorem 4.1 is its negative, since their normalization is eta cup omega=1.
+
+The origin O_E corresponds to the quartic infinity with b/z² tending to +1;
+the other infinity maps to T. For reference, (z,b)=(5/2,−225/4) maps to P,
+and (5/2,+225/4) maps to −P+T. A choice of base point on X_delta must still
+be accounted for when using f(Q)−f(base) in a curve-level height.
+
+#### 3. Global minimality, including the prime 2
+
+The exact invariants are
+
+    Delta=2^12*3^12*5^7*11, c4=1518400=2^6*5^2*13*73.
+
+At 3,5,11 the valuation of c4 is less than 4, proving minimality; all other
+odd primes have good reduction. At 2 the only possible discriminant-lowering
+scale is u=2. An integral new model would arise from
+
+    X=4X'+r, Y=8Y'+4sX'+t.
+
+Its coefficients force s in Z2, t in 4Z2, and
+
+    (−560+3r−s²)/4 in Z2,
+    (72900−1120r+3r²−2st)/16 in Z2.
+
+The first condition also forces r in Z2. If s is even, it forces r=0 mod4;
+the numerator in the second condition is then 4 mod16. If s is odd, it
+forces r=3 mod4, and that numerator is odd. Both are contradictions.
+Thus the original model is minimal also at 2. The checker independently
+exhausts the residue classes needed for this contradiction.
+
+#### 4. Exact away-from-13 contribution of P
+
+Normalize each finite local half-height lambda_ell to equal
+v_ell(d(Q))*log13(ell) on the nonsingular subgroup E_0(Q_ell), where d(Q)
+is the positive square-root denominator of X(Q). With this normalization
+the local Neron multiplication relation is
+
+    lambda_ell(mQ) = m² lambda_ell(Q)
+                      + v_ell(psi_m(Q))*log13(ell).
+
+Here psi_m is the usual division polynomial. These are the local functions
+with the discriminant-dependent constant removed; in particular no
+additional Delta/12 term is to be added to the formulas below.
+
+Exact rational group arithmetic gives
+
+    X(12P)=87327675552949665650305747958870915094857521
+            /188867320255610078124863022039459027838224,
+    d(12P)=434588679391916602332,
+    t(12P)=−X(12P)/Y(12P)
+          =4061199830818098935573944975439863124829948
+            /31468337648588340182480022250211888181370801.
+
+At ell=2,3,5,11 the respective valuations are
+
+    v_ell(X(12P)) = −4, −6, 0, 0,
+    v_ell(Y(12P)) = −6, −9, 0, 0,
+    v_ell(d(12P)) =  2,  3, 0, 0,
+    v_ell(psi_12(P)) = 74,123,90,0.
+
+The negative X valuations at 2 and 3 put 12P in the formal group. At 5
+and 11 the checker reduces the actual coordinates and verifies that at
+least one partial derivative of the Weierstrass equation is nonzero.
+Thus 12P lies in E_0 at every bad prime, proved directly without assuming
+any Tamagawa numbers. Its parameter at 13 has valuation one.
+
+Dividing the difference of the last two valuation lists by 144 proves
+
+    lambda_away(P) = −1/2 log13(2) −5/6 log13(3) −5/8 log13(5)
+                   =62652731752+O(13^10).
+
+There are no other nonzero finite contributions for the integral point P.
+The coefficient at 11 is zero. The displayed sum is 65 mod169, so it is
+provably nonzero. The away contribution to h_W(P,P) is twice this sum.
+
+#### 5. Away-from-13 local terms for every rational point on E
+
+Let Q=nP+epsilon T != O_E, with epsilon in {0,1}, and let d=d(Q).
+Define these periodic correction tables, indexed starting at zero:
+
+    kappa2 = [0,1/2],
+    kappa3 = [0,5/6,4/3,3/2,4/3,5/6],
+    kappa5 = [0,5/8,1/2,5/8].
+
+Then the exact identity is
+
+    lambda_away(Q) = log13(d)
+      −kappa2[(n+epsilon) mod2] log13(2)
+      −kappa3[(n+3epsilon) mod6] log13(3)
+      −kappa5[(n+2epsilon) mod4] log13(5).
+
+Here d can contain 13: its 13-power contributes zero to log13(d). No
+factorization of d is required to evaluate the formula.
+
+For the proof, the correction lambda_ell(Q)/log13(ell)−v_ell(d(Q)) is
+constant on each component of the Neron model. The checker proves directly
+that the class of P has order 2,6,4 at 2,3,5 respectively: these multiples
+are nonsingular, and all earlier positive multiples are singular. It also
+checks that P+T is nonsingular at 2, 3P+T at 3, and 2P+T at 5. Hence the
+component classes of T are respectively P,3P,2P. The local multiplication
+relation applied to psi_n(P), for n up to 6, gives exactly the tables above.
+At 11 both P and T are nonsingular, so all rational points are in E_0 there.
+
+This argument concerns component classes attained by E(Q). It does not
+claim to determine the entire geometric component group at every prime.
+
+#### 6. The local 13-adic double integral and its error bound
+
+Put t=−X/Y and write X=u(t)/t². The equation gives
+
+    u²+(−560t²−1)u+72900t^4=0, u(0)=1,
+    u=(1+560t²+sqrt((1+560t²)²−291600t^4))/2,
+    omega=w(t)dt, w=1−t u'/(2u).
+
+The series u and w are even, have 13-integral coefficients, and converge
+for t in 13Z13. Let H and g be the uniquely normalized odd/even primitives
+
+    H'=(−X+280)w, H=1/t+O(t),
+    g'=Hw−1/t, g(0)=0,
+    log sigma(t)=log13(t)+g(t).
+
+This gives (d/dlog_omega)^2 log sigma=−X+280. It is enough to work with
+log sigma; no assertion of integral coefficients for a canonical unit-root
+sigma function is being made. The terms needed here are
+
+    g(t)=−140t² +(169525/3)t^4 −(310492000/9)t^6
+         +(522868628750/21)t^8 −(177457835600000/9)t^10 + ... .
+
+Because Xw is 13-integral apart from its t^−2 leading term, the two
+termwise integrations give the conservative coefficient bound
+
+    v13([t^n]g) >= −2 floor(log_13(n+1)).
+
+For v13(t)>=1, every omitted term with n>=12 consequently has valuation
+at least n−2floor(log_13(n+1))>=10. The same inequality tends to infinity,
+so it also proves convergence and a bound on the entire tail. Truncation
+at degree ten therefore has absolute error O(13^10). The checker computes
+through degree twenty and also verifies agreement with degree ten.
+
+The rational logarithms are computed by removing the power of 13 from q
+and using log13(q)=log13(q^12)/12 for the resulting 13-adic unit. The
+ordinary log(1+z) series has v13(z)>=1; its k-th term has valuation at least
+k−v13(k). The checker retains k=1,...,12. All omitted terms have valuation
+at least 12, and its two guard digits accommodate finite-series divisions.
+Thus each displayed logarithm is rigorously known modulo 13^10.
+
+Balakrishnan–Besser, Theorem 4.1 identifies the local self-pairing for this
+splitting with tau=−2log sigma. Corollary 4.3 then gives
+
+    h_W(P,P) = (2/144)(log13(d(12P))−log sigma(t(12P))).
+
+The values used, all modulo 13^10=137858491849, are
+
+    log13(d(12P)) = 82740515494,
+    log13(t(12P)) = 53322772061,
+    g(t(12P))     = 47336002272.
+
+Division by 144 loses no 13-adic digits. This proves the stated height.
+The checker independently obtains exactly the same value through 24P.
+It also uses 6P, where the finite contribution has the additional term
+−(1/2)log13(5); this third calculation agrees only with that term retained.
+
+#### 7. How much of the genus-three height is now available
+
+Let f:X_delta->E0->E be the elliptic quotient and keep the direct-sum
+splitting specified in the de Rham certificate. Functoriality and degree(f)=2
+give, for U=f*P in J(X_delta)(Q),
+
+    h_X(U,U)=2h_W(P,P),
+    h_X(U,ZU)=8h_W(P,P)=59279523173+O(13^10),
+
+where Z=3f*f_*−2 acts by 4 on this factor. These statements use the
+polarization-compatible pullback and the ordinary bilinear height, not a
+bare transport of matrix entries through an unspecified isogeny basis.
+
+This supplies the rank-one elliptic block of the global height and every
+elliptic finite local term. It does not supply the rank-two genus-two block
+or its away-from-13 component corrections. A full curve-level QC local
+function additionally requires an explicit basepoint and the normalization
+of the height attached to Z; the elliptic tables must not be labeled as
+the complete away contribution for X_delta. In particular nothing here
+justifies setting the genus-three contributions at 11,19,53 or other bad
+primes to zero.
+
+#### References and standard inputs
+
+- J. Balakrishnan and A. Besser, *Coleman–Gross height pairings and the
+  p-adic sigma function*, Theorem 4.1 and Corollary 4.3:
+  https://arxiv.org/abs/1201.6016 . These apply to the specified complement;
+  their additional unit-root specialization is not used.
+- J. Silverman, *Computing heights on elliptic curves*, Mathematics of
+  Computation 51 (1988), 339–358, for finite local height normalization,
+  component corrections, and multiplication formulas. The normalization
+  without the discriminant constant is explicitly fixed in Section 4 above.
+- The existing exact rank-one generator and genus-three de Rham certificates
+  supply only the previously stated group decomposition and splitting data.
+
+The machine checks certify algebra, valuations, finite component tests,
+series coefficients, and modular arithmetic. The cited local-height and
+Coleman–Gross theorems identify these computations with the asserted
+heights; they are standard mathematical inputs, not claims proved by the
+Python program.
 
 ## 6. Open boundary
 
