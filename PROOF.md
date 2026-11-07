@@ -4180,6 +4180,275 @@ complete genus-three QC function, root isolation or final point sieve
 has yet been computed. The original distinct-entry size-eleven problem
 remains unsolved.
 
+
+### 5.24 Actual Coleman basis integrals and third-kind normalization
+
+This section computes the basis integrals needed to normalize all six
+third-kind forms of 5.18. It is no longer only a cohomology-matrix
+calculation. The certificate `scripts/check_coleman_basis13.py` uses
+exact rational reductions and finite unramified etale arithmetic, with
+existing SymPy only. Two independent implementations agree.
+
+Write I_A,j=integral over D_A of eta_j, eta_j=x^j dx/(2y).
+The following vectors have entrywise error O(13^3):
+
+    k=-15:
+      P: (1768,533,2062,1190);
+      Q: (195,117,182,1343);
+      R: (1963,650,14,22).
+    k=-3:
+      P: (1079,533,852,402);
+      Q: (598,572,1772,1289);
+      R: (481,2158,1297,214).
+
+#### Retaining the reduction primitives
+
+The reductions in 5.23 now retain their odd exact primitives. In a vertical
+step N=A*f+B*f', the primitive added is
+
+    -B/((2m-1)y^(2m-1)).
+
+Removing a polynomial leading term of degree e contributes
+
+    lead(N)*x^(e-4)*y/(2e-3).
+
+Differentiation verifies both signs and the factors of two. If g denotes
+the column vector of accumulated primitives and M has columns equal to
+Frobenius images, then
+
+    phi*eta=M^transpose*eta+dg.
+
+Oddness under the hyperelliptic involution fixes the otherwise irrelevant
+primitive constants.
+
+For a Mumford support (u,v), use the finite etale algebra
+S=Z_13[alpha]/u(alpha), with b=v(alpha). Every u is squarefree modulo 13,
+every coefficient is 13-integral, and b is a unit. This includes split
+quadratic algebras as well as the unramified quadratic field.
+
+Hensel-lift alpha^13 to the unique root sigma(alpha) of u in its residue
+disc. Put a=sigma(alpha), b_sigma=v(a), h=alpha^13-a.
+The tiny integral from sigma(A) to phi(A), through precision 13^3, is
+
+    a^j*h/(2b_sigma)
+      +(j*a^(j-1)/(2b_sigma)
+        -a^j*f'(a)/(4b_sigma^3))*h^2/2.
+
+The first derivative term with j=0 is zero. The ordinate branch is fixed
+by b_sigma and its reduction, which agrees with b^13. Since h is divisible
+by 13, every omitted integrated power has valuation at least three,
+including possible denominators divisible by 13.
+
+Taking traces sums the conjugate support points. Frobenius functoriality
+and the anti-invariant divisors give the exact linear equation
+
+    (Id-M^transpose) I_A
+       =2 Tr_S(g(alpha,b))-2 Tr_S(tiny).
+
+There is no division by the support degree. The two factors already
+account for A-iota(A). Since det(Id-M)=176 is a 13-adic unit, solving
+preserves the certified precision.
+
+The primitive tail is also O(13^3), not just its cohomology class.
+The finite-branch proof of the denominator estimate in 5.23 bounds the
+primitive coefficients by the same power of 13; polynomial reductions
+lose at most two digits. All endpoints have integral x and unit y.
+Thus the omitted n>=4 primitives evaluate to O(13^3).
+The checker additionally uses four guard digits for finite endpoint
+evaluation: primitive coefficients are scaled by 13^4, checked integral,
+evaluated modulo 13^7 and divided back. Every division is checked.
+
+#### Checks beyond holomorphic logarithms
+
+The first two coordinates agree with 5.16, including the factor two for
+D_A. They obey I_R=I_P+sI_Q in their holomorphic coordinates.
+
+The second-kind coordinates need not be additive on Jacobian classes.
+An independent principal-divisor check uses
+
+    k=-15: V=33x^2/2+3240x-448875/2, s=1;
+    k=-3:  V=-10x^2+426x+7524, s=-1.
+
+For q=(y-V)/(y+V), exact interpolation gives
+div(q)=D_P+sD_Q-D_R. Laurent expansion at infinity gives
+
+    Res(log(q)*eta)=(0,0,33,-88821/4), k=-15;
+    Res(log(q)*eta)=(0,0,-20,12076/3), k=-3.
+
+These reduce modulo 13^3 to I_P+sI_Q-I_R. Thus the computed second-kind
+coordinates also pass an independent reciprocity check.
+
+#### Sign-correct normalization
+
+For omega_A=(v*u' mod u)dx/(u*y), let Psi(omega_A)=sum a_j eta_j.
+Use the signed cup matrix C from 5.23. The global-symbol convention is
+minus Res(omega*integral eta). Its relation to Psi is given in
+[Gajovic–Muller, Definition 2.8, Proposition 2.9 and equation (6.1)](https://arxiv.org/html/2307.15787);
+see also the [Balakrishnan–Besser sign errata](https://math.bu.edu/people/jbala/cg_heights_errata.pdf).
+
+There is no infinity correction here. In t=x^(-1/2), omega_A=O(t^4)dt,
+whereas a primitive of eta_j has order at least 3-2j apart from its
+constant. Their product has no residue for j<=3. The symbol vector is
+therefore -I_A. With our antisymmetric cup convention this yields
+
+    a=C^(-1) I_A,
+
+not its negative. Explicitly,
+
+    a0=552k^2 I1+128k I2-3I3,
+    a1=-552k^2 I0-I2,
+    a2=-128k I0+I1,
+    a3=3I0.
+
+Applying the transported complement of 5.22, the holomorphic correction
+to subtract from omega_A is lambda0*eta0+lambda1*eta1, where
+
+    lambda0=-1100k^3 I0/3+552k^2 I1+128k I2-3I3,
+    lambda1=-16k I1/3-I2.
+
+All coefficients are 13-integral and det(C)=1/9, so this introduces no
+additional precision loss. The certified correction pairs modulo 13^3 are
+
+    k=-15: P (1545,1032), Q (1301,390), R (1238,1455);
+    k=-3:  P (2021,1085), Q (1409,789), R (614,276).
+
+The forms are now normalized to the specified precision. Integrating
+these normalized third-kind forms against another divisor is a separate
+step, undertaken for three pairings below.
+
+
+### 5.25 Three normalized mixed heights and partial global height matrices
+
+This section computes three actual mixed heights, not just normalization
+data. The certificate `scripts/check_normalized_mixed_heights13.py` uses
+the adjacent basis-integral checker and existing SymPy. Independent
+implementations, using two coordinate descriptions of the endpoint
+algebras, agree on every intermediate matrix and integral.
+
+All congruences below have absolute error O(13^3), for the splitting and
+logarithm branch already fixed. The normalized local results are
+
+    k=-15:
+      h_13(D_P,D_Q)=1755;
+      h_13(D_P,D_R)=884.
+    k=-3:
+      h_13(D_P,D_R)=1781.
+
+#### Raw third-kind integrals via explicit even models
+
+For the rational point P=(a,b), set
+
+    u=1/(x-a), v=y*u^3/b,
+    G_P(u)=u^6*f(a+1/u)/b^2.
+
+Since f(a)=b^2, this is a monic degree-six model. Direct differentiation
+gives the exact pullback identity
+
+    b dx/((x-a)y)=-u^2 du/v=-2 eta_even,2,
+
+where eta_even,j=u^j du/(2v). Thus a raw omega_P integral is minus twice
+the corresponding even-model basis integral. No further factor arises
+from D_P already representing twice a Jacobian class.
+
+Both even models have good reduction at 13. Their reductions are
+
+    k=-15: G=u^6-u^5+4u^3+3u^2+u;
+    k=-3:  G=u^6-u^4+4u^3-2u^2+4u.
+
+Each is squarefree. For the three selected target divisors, x-a is a
+13-adic unit, so all transformed endpoints have integral unit u,v.
+In particular the shared-disc k=-3 P/Q pair is NOT included here.
+
+For an effective degree-two support (u_B,v_B), the transformed monic
+support polynomial is the monic normalization of
+u^2*u_B(a+1/u); the ordinate is v_B(a+1/u)*u^3/b, reduced modulo it.
+The checker verifies the transformed curve equations and etale support
+conditions rather than assuming them.
+
+#### Certified even-degree integration
+
+The even affine Frobenius calculation uses five basis forms,
+eta_even,0 through eta_even,4. It retains the third-kind direction
+associated with the two infinities. Its characteristic polynomial is
+(T-13)(T^4+6T^2+169), and Id-M is invertible modulo 13.
+The checker also verifies that the infinity-residue row r satisfies
+r*M=13r, so that the residue direction and column convention are tested.
+
+Vertical reduction and its primitive are unchanged from 5.24.
+For polynomial degree e>=5, the removed primitive is
+
+    lead(N)*u^(e-5)*v/(2e-4).
+
+Here is the required even-degree truncation justification. The numerator
+difference G(u^13)-G(u)^13 has degree at most 77 and is divisible by 13.
+An f-adic negative block has numerator degree at most five. At the six
+distinct finite branch points, use y as uniformizer and integrate its
+polar part. Clearing at most floor(log_13(2m+1)) digits makes those
+primitive polar coefficients integral. The values of the leading
+degree-at-most-five primitive numerator at all six roots then recover
+that polynomial by a unit Vandermonde matrix. Subtract and descend
+through the remaining powers. This proves the same bound for the
+entire negative-block primitive and its reduced form. It does not
+blindly apply the odd-degree lemma outside its hypotheses.
+
+The polynomial part has degree at most
+
+    64+77n-6(6+13n)=28-n.
+
+Horizontal reduction divides by 2e-4 for e=5,...,28. Only 26 and 52
+supply factors of 13, so at most two digits are lost. As in 5.23,
+every n>=4 term and its primitive evaluate to O(13^3) at the selected
+finite unit endpoints. Oddness again fixes primitive constants.
+Exact reduction of n=0,...,3, followed by the etale trace/tiny-integral
+method of 5.24, is therefore sufficient.
+
+The computed even-basis integral vectors over the transformed D_B are
+
+    k=-15, B=Q: (416,2002,1222,323,714);
+    k=-15, B=R: (468,234,910,1142,762);
+    k=-3,  B=R: (2015,325,1079,1213,1872).
+
+Their first two coordinates independently satisfy the exact pullback
+relations eta_even,0=b(a*eta0-eta1), eta_even,1=-b*eta0.
+The raw integrals J_PB=integral over D_B of omega_P are consequently
+
+    k=-15: J_PQ=1950, J_PR=377;
+    k=-3:  J_PR=39.
+
+#### Applying normalization and completing the available global entries
+
+The normalization in 5.24 gives
+
+    h_13(D_P,D_B)=J_PB-lambda_P,0*I_B,0-lambda_P,1*I_B,1.
+
+It yields the three local heights stated above, with no additional
+factor two or four. Add the complete away-from-13 terms of 5.21:
+
+    k=-15:
+      h(D_P,D_Q)=1950,
+      h(D_P,D_R)=1248;
+    k=-3:
+      h(D_P,D_R)=1274.
+
+Now apply the GLOBAL Jacobian reconstruction of 5.18. For k=-15,
+R=P+Q, so the following genuine global height entries are certified:
+
+    h_D(P,P)=923+O(13^3),
+    h_D(P,Q)=1586+O(13^3).
+
+For k=-3, R=P-Q, the certified global combination is
+
+    h_D(P,P)-h_D(P,Q)=1417+O(13^3).
+
+Division by four is a 13-adic unit and loses no precision. These are
+partial global height matrices; the remaining mixed pairings have not
+been computed. In particular h_D(Q,Q) is not supplied, and the
+shared-disc k=-3 P/Q integral still requires separate treatment.
+
+The full genus-two blocks, genus-three QC function, root isolation and
+final rational-point sieve remain incomplete. None of these arithmetic
+congruences constructs or excludes an original size-eleven PTE pair.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
