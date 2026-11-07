@@ -1734,6 +1734,307 @@ Jacobian rank bound, Mordell-Weil basis, Chabauty computation, rational
 point completeness, or effective upper height bound. Those remain the
 precise blockers to using this reduction as a complete classification.
 
+### 5.11 The genus-nine center cover also has rank above genus
+
+Let C9 be the genus-nine simultaneous-center cover of 5.7. Its Jacobian
+has rank at least twelve over Q. This is an obstruction to ordinary
+Chabauty-Coleman on C9, not a rational-point classification, an exclusion
+of other methods, or a PTE nonexistence result.
+
+For z=3t-5 use
+
+ f0=z^2+5, f1=4z^2+30z+80,
+ f2=z^2+36z+185, f3=z^2+275.
+
+The seven nontrivial characters of the group (Z/2Z)^3 acting on C9
+give its quotient curves. Six are the genus-one curves y^2=fi*fj
+for 0<=i<j<=3; the seventh is the genus-three curve
+H3:y^2=f0*f1*f2*f3. Pullback differentials from these quotients belong
+to seven different character spaces, of dimensions 1,1,1,1,1,1,3.
+Their direct sum is the nine-dimensional differential space of C9.
+The resulting homomorphism of Jacobians therefore has invertible
+differential and is an isogeny over Q:
+
+ J(C9) ~ E_a x E_b x E_c x E_ab x E_ac x E_bc x J(H3).
+
+The ranks of E_a,E_b,E_ab and E_c are already certified as 2,2,3,1.
+The remaining two elliptic quotients have the models
+
+ E_ac: y^2=x(x^2-2360x+1287900),
+ E_bc: y^2=x(x^2-920x+364500).
+
+For example, the binary quartics f1*f3 and f2*f3 have invariants
+I=12ae-3bd+c^2 and J=72ace+9bcd-27ad^2-27eb^2-2c^3
+satisfying I=A^2-3B, J=-2A^3+9AB for these two pairs (A,B).
+The standard quartic Jacobian y^2=x^3-27Ix-27J is obtained from the
+displayed cubic after translating by A/3 and scaling by 3. Both
+quartics have rational points at infinity (leading coefficients 4 and 1),
+so they are isomorphic to their Jacobians after choosing an origin.
+
+A complete two-isogeny descent gives the following exact images, with
+each partner immediately after its curve:
+
+ (-2360,1287900): {1,5,159,795};
+ (4720,418000): {1,-11,-95,1045};
+ (-920,364500): {1,5};
+ (1840,-611600): {1,-5,-11,139,55,-695,-1529,7645}.
+
+For the upper bounds, enumerate the signed squarefree divisors d of B
+and test the primitive quartic
+Z^2=dU^4+A U^2 V^2+(B/d)V^4. The real obstruction and congruences
+modulo 256, 3 and 125 leave exactly the displayed classes. Primitive
+local solutions are checked on the patches (U,V)=(t,1) and (1,t), with
+t divisible by the relevant prime in the second patch.
+
+Infinity and (0,0) witness classes 1 and squareclass(B). The other
+classes are attained by these exact rational points:
+
+ E_ac: (405,14175), (3180,111300);
+ E_ac': (-4400,66000), (-95,1425);
+ E_bc: no additional point is needed;
+ E_bc': (-1620,39600), (-1100,39600), (-695,31275),
+        (556,20016), (880,39600), (30580,5504400).
+
+The descent formula 2^rank=|alpha|*|alpha'|/4 gives rank 2 for each
+new quotient. Consequently
+
+ rank J(C9)(Q)=12+rank J(H3)(Q) >=12>9.
+
+The dependency-free checker `scripts/check_center_cover_rank_obstruction.py`
+verifies all finite local tests, class witnesses, partner coefficients,
+and quartic invariants. It does not compute the rank of J(H3), rule out
+quadratic/elliptic Chabauty on other covers, or solve any rational-point
+classification. In particular no favorable rank assertion is made for
+the genus-two targets in 5.10.
+
+#####12 Genus-two Richelot targets: certified torsion and positive rank
+
+This is a structural and arithmetic improvement of the genus-two reduction,
+not a rank upper bound or rational-point classification. It singles out the
+pair with omitted index j=2 for a more accessible descent, certifies that all
+eight Jacobians have positive rank, and rules out a decomposition into elliptic
+curves over Q. No favorable Chabauty rank condition is asserted.
+
+The accompanying dependency-free certificate is
+`scripts/check_genus_two_richelot_certificate.py`. Run it with Python 3. It verifies
+polynomial identities, good reduction at every prime used, finite-field curve
+and Jacobian counts, rational control points, and the integer-factor tests
+below. Standard theorems invoked in the deductions are explicitly identified.
+
+#### The exact Richelot isogeny for j=2
+
+Write
+
+- q0 = z^2+5;
+- q1 = 4z^2+30z+80;
+- q3 = z^2+275;
+- C_delta: delta*y^2 = q0*q1*q3, for delta=1 or 5.
+
+For polynomials A,B set [A,B]=A'B-AB'. Use the determinant with columns in
+**ascending** coefficient order, namely constant, linear, quadratic. Then
+
+    Delta = det [[5,0,1],[80,30,4],[275,0,1]] = -8100,
+    L1 = [q1,q3] = -30*(z^2-68z-275),
+    L2 = [q3,q0] = -540*z,
+    L3 = [q0,q1] = 30*(z-1)*(z+5).
+
+Consequently, on putting
+
+    F(z)=z*(z-1)*(z+5)*(z^2-68z-275),
+
+we obtain
+
+    L1*L2*L3 = 486000*F,
+    (L1*L2*L3)/Delta = -60*F.
+
+The Richelot theorem supplies a Q-defined degree-four (2,2)-isogeny from
+J(C_1) to the Jacobian of v^2=-60*F. Dividing v by 2 gives the model
+
+    D_1: Y^2=-15*F(z).
+
+For the second twist, first replace delta*y^2=f by the Q-isomorphic equation
+w^2=delta*f using w=delta*y. Apply Richelot to (delta*q0,q1,q3): the determinant
+is multiplied by delta, while the bracket product is multiplied by delta^2.
+The new right-hand side is therefore -60*delta*F. For delta=5, dividing v by
+10 gives
+
+    D_5: Y^2=-3*F(z).
+
+Thus J(C_delta) and J(D_delta) are Q-isogenous and have the same Mordell-Weil
+rank. The negative signs in these two equations are essential.
+
+For a reference fixing the convention, see Proposition 7 in
+[Efficient computation of (2^n,2^n)-isogenies](https://link.springer.com/article/10.1007/s10623-024-01366-1),
+which uses the ascending coefficient determinant and h_i=L_i/Delta.
+Its equation Y^2=h1*h2*h3 is equivalent to v^2=(L1*L2*L3)/Delta by v=Delta*Y.
+
+This is an isogeny of **Jacobians**, not a morphism C_delta to D_delta. A list
+of D_delta(Q), even if complete, does not by itself classify C_delta(Q).
+Rank bounds transfer, but original-curve point determination still requires
+an appropriate Mordell-Weil subgroup and a justified point-completeness
+method on C_delta, or a fully worked-out use of the correspondence.
+
+#### Exact finite-field counts
+
+For a good odd prime p, let N1=#C(F_p) and N2=#C(F_(p^2)), and set
+
+    a1 = p+1-N1,
+    a2 = (N2-p^2-1+a1^2)/2,
+    P_p(T) = T^4-a1*T^3+a2*T^2-p*a1*T+p^2.
+
+Then #J(F_p)=P_p(1). Direct enumeration gives the following values for both
+C_delta and D_delta. Equality is also a useful independent check on the sign
+and twist of the Richelot formula, though finitely many matching counts alone
+would not prove an isogeny.
+
+| delta | p | N1 | N2 | a1 | a2 | #J(F_p) |
+|---|---:|---:|---:|---:|---:|---:|
+| 1 | 7 | 8 | 62 | 0 | 6 | 56 |
+| 1 | 13 | 14 | 182 | 0 | 6 | 176 |
+| 1 | 17 | 22 | 334 | -4 | 30 | 392 |
+| 1 | 23 | 26 | 586 | -2 | 30 | 608 |
+| 5 | 7 | 8 | 62 | 0 | 6 | 56 |
+| 5 | 13 | 14 | 182 | 0 | 6 | 176 |
+| 5 | 17 | 14 | 334 | 4 | 30 | 248 |
+| 5 | 23 | 22 | 586 | 2 | 30 | 512 |
+
+The certificate computes in F_(p^2)=F_p[s]/(s^2-d) for a verified nonsquare d.
+The quadratic character of u+v*s is the Legendre symbol of its norm
+u^2-d*v^2. It explicitly includes the correct points at infinity: one for the
+odd-degree models, and 1+chi(leading coefficient) for the sextics. It checks
+that the polynomial and its derivative are coprime modulo every prime used.
+
+#### Exact torsion of both dual Jacobians
+
+The branch points of D_delta are 0, 1, -5, infinity, and the two roots of
+z^2-68z-275. The last quadratic has discriminant 36*159, a nonsquare, so the
+first four are rational Weierstrass points and the last pair is conjugate.
+The three classes
+
+    [(0,0)-infinity], [(1,0)-infinity], [(-5,0)-infinity]
+
+are independent rational 2-torsion. One way to see independence is the
+standard description J[2] as even subsets of six branch points modulo
+complement. No nonempty subset of these three classes gives the empty or
+full branch subset. Hence (Z/2Z)^3 is contained in the torsion group.
+
+For the upper bound, use the standard good-reduction theorem that rational
+ell-primary torsion injects into J(F_p) whenever ell differs from the good
+reduction prime p. Counts at p=7 and p=13 suffice here:
+
+    #J(F_7)=56=2^3*7,
+    #J(F_13)=176=2^4*11.
+
+For ell other than 7 and 13, the ell-primary order divides both numbers.
+The 7-primary part is excluded by the count 176 at p=13; the 13-primary part
+is excluded by 56 at p=7. Thus the whole torsion group has order dividing 8.
+Combining lower and upper bounds proves, for both twists,
+
+    J(D_delta)(Q)_tors = (Z/2Z)^3.
+
+No assumption about p-primary injectivity at p was needed.
+
+#### Certified infinite-order classes
+
+There are exact rational points
+
+    P_1=(-15/4, 1425/32) on D_1,
+    P_5=(-11, 1188) on D_5.
+
+The certificate checks both equations using rational arithmetic. Each point
+has nonzero ordinate, so it is not a Weierstrass point.
+
+For an odd-degree genus-two model, infinity is a Weierstrass point and
+L(2*infinity) has basis 1,z. If 2*[P-infinity] were zero, a nonconstant
+function would have divisor 2*P-2*infinity. It would lie in L(2*infinity),
+but a function linear in z has a double zero only at a Weierstrass point.
+This contradicts the nonzero ordinate of P. Thus [P-infinity] is not
+2-torsion; as all torsion has exponent two, it has infinite order.
+Consequently
+
+    rank J(C_1)(Q)=rank J(D_1)(Q) >= 1,
+    rank J(C_5)(Q)=rank J(D_5)(Q) >= 1.
+
+These are lower bounds only. The number of small points found in a search
+has no role in the proof and supplies no rank upper bound.
+
+#### Additional certified facts about all eight original targets
+
+Let G(j,delta) be the original genus-two curve with factor q_j omitted.
+The following good-prime Jacobian orders bound their rational torsion.
+
+| j | primes | orders for delta=1 | orders for delta=5 | torsion order bound |
+|---|---|---|---|---:|
+| 0 | 7,13,17 | 52,280,292 | 52,112,292 | 4 |
+| 1 | 7,13,53 | 56,216,3156 | 56,160,2508 | 4 |
+| 2 | 7,13,17 | 56,176,392 | 56,176,248 | 8 |
+| 3 | 7,11,47 | 48,112,1980 | 48,112,2556 | 4 |
+
+The code bounds each ell-primary part using only primes p different from
+ell, so the displayed bounds do not silently assume injectivity on
+p-primary torsion at p. For j=0,1,3 the quadratic-factor branch classes give
+an independent (Z/2Z)^2 subgroup. Hence the torsion is **exactly** (Z/2Z)^2
+for those six Jacobians. For the original j=2 models, this calculation gives
+only a torsion order dividing eight, not the exact torsion structure.
+
+All eight have rank at least one. For j=2 this was proved above. For the
+other indices, take a known rational non-Weierstrass point P: one of the two
+rational infinities for delta=1, or the point with z=5/2 and positive ordinate
+3375/2, 3375/8, 675/2, 675/2 in index order for delta=5. The certificate
+checks the latter coordinates. Let iota be the hyperelliptic involution.
+The class [P-iota(P)] cannot be zero or have order two. Otherwise 2P and
+2*iota(P) would be distinct linearly equivalent effective degree-two
+divisors, giving a degree-two map other than the unique hyperelliptic pencil;
+that pencil has a doubled fiber only at a Weierstrass point. Since rational
+torsion has exponent two for these indices, the class has infinite order.
+Thus none of the eight targets provides a rank-zero shortcut.
+
+Finally, each original Jacobian is **Q-simple**. At the indicated good
+prime its Frobenius polynomial is irreducible over Q:
+
+- j=0, p=7: T^4+2*T^2+49;
+- j=1 and j=2, p=7: T^4+6*T^2+49;
+- j=3, p=11: T^4-10*T^2+121.
+
+These formulas hold for both twists because a1=0 at the selected primes.
+The certificate tests irreducibility by Gauss's lemma: it excludes every
+possible monic integer linear and quadratic factor, using the divisors of
+the constant coefficient and coefficient comparisons. An elliptic factor
+defined over Q would yield a proper Frobenius factor after good reduction,
+contradicting these polynomials. Hence there is no Q-isogeny to a product
+of elliptic curves and no Q-defined elliptic quotient of the original
+curves. This does **not** prove absolute simplicity over Qbar, and no such
+claim is made. In particular, the even Frobenius polynomials used here can
+split after extension of the finite field.
+
+#### The precise remaining certification
+
+The simpler j=2 duals provide four rational branch points and rational
+2-torsion of rank three. This is a concrete input for a genuine two-descent
+or Richelot-isogeny Selmer computation. It is not the computation itself.
+To use ordinary Chabauty on the selected original pair, the missing steps
+are:
+
+1. A certified rank upper bound at most one for each of J(D_1) and J(D_5)
+   (equivalently the selected original Jacobians). An exact two-Selmer
+   computation, Richelot-isogeny descent, and if needed a Cassels-Tate pairing
+   are possible methods. The bounds might instead turn out to exceed one;
+   no outcome has been assumed.
+2. Explicit sufficient Mordell-Weil data on the original Jacobians, with
+   the index and relevant saturation requirements proved for the chosen
+   point-completeness method. A non-torsion dual point alone does not supply
+   all of this information.
+3. A complete rational-point certificate for each original G(2,delta),
+   using justified Chabauty-Coleman plus a Mordell-Weil sieve or another
+   effective method, rather than a finite search.
+4. Testing every remaining z against all center-square conditions, the
+   singleton-square conditions and the collision exclusions from the PTE
+   reduction.
+
+No Selmer group, rank upper bound, saturated Mordell-Weil group, or complete
+rational-point set has been computed here for any of the eight curves.
+The original distinct-eleven-integer PTE problem remains unresolved.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
