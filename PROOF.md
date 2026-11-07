@@ -1351,6 +1351,93 @@ fails. This does not rule out covering methods, other refinements of
 Chabauty, or another proof. No complete C(Q), effective height bound,
 valid size-eleven pair, or general impossibility result follows.
 
+### 5.7 Incorporating the missing center-square condition
+
+Rank seven in 5.6 concerns the necessary quartic, not all PTE lifting
+conditions. A more selective route is to impose the recovered A singleton
+center at the outset. It has an explicit rank-one elliptic projection.
+This does not yet classify its simultaneous rational lifts.
+
+Parametrize the conic H(a,b)=0 of 5.5 by
+
+ d=3t^2-10t+10, p=6t^2-5t+5,
+ q=3t^2+26t+10, r=3t^2-10t+100,
+ a=2p/d, b=q/(4d), c=r/(4d).
+
+The parameter comes from a=1+t(b-1/4), and t ranges over P^1(Q).
+The quadratic d has no rational root. The identity recovering c is
+
+ 4N-Dold(-6a+20b+21)=(2a-4b+1)H,
+
+where Dold and N denote D,N in 5.5. Thus, on H=0 away from Dold=0,
+c=(-6a+20b+21)/8. Under this parametrization
+
+ Dold=288t^2(t-4)(3t-4)/d^2.
+
+The exceptional rational parameters are t=0,4,4/3, all corresponding
+to the already excluded collisions. The parameter at infinity gives
+(a,b,c)=(4,1/4,1/4); it must be retained during parametrization, but its
+input has a cross-color collision and is not a PTE witness.
+
+The three center conditions are the simultaneous rational squares
+
+ u^2=2p/d, v^2=q/(4d), w^2=r/(4d).
+
+Their smooth projective normalization is a geometrically connected
+multiquadratic cover of P^1 of degree eight and genus nine. Indeed the
+four quadratics p,q,r,d are squarefree and pairwise coprime. Their eight
+roots are distinct. The three squareclasses are independent in Qbar(t)^*/Qbar(t)^{*2}, where Qbar is an
+algebraic closure of Q, since each numerator has roots absent from
+the others. At the roots of p,q,r the inertia labels are respectively
+(1,0,0),(0,1,0),(0,0,1), and at roots of d the label is (1,1,1).
+Each branch point has inertia two; infinity is unramified. Riemann-Hurwitz
+gives 2g-2=8(-2)+8*4=16, hence g=9. This is a necessary square-center
+cover, not the full PTE condition: the two B singleton-square roots
+must still be rational squares, and collisions must still be excluded.
+
+The w-square projection has a particularly simple form. Put z=3t-5.
+Then d=(z^2+5)/3 and r=(z^2+275)/3, and with
+
+ s=2w(z^2+5)
+
+its equation is
+
+ s^2=(z^2+5)(z^2+275)=z^4+280z^2+1375.
+
+This smooth genus-one quartic has a birational elliptic model
+
+ E: Y^2=X(X^2-560X+72900),
+ X=2s+2z^2+280, Y=2zX;
+ z=Y/(2X), s=(X-2z^2-280)/2.
+
+The displayed inverse applies where X!=0; the maps extend on the smooth
+projective models, including the rational points at infinity. Thus this
+is not merely a rank comparison with an unrelated elliptic curve.
+
+The rank of E(Q) is exactly one. Its 2-isogenous partner has coefficients
+(A,B)=(1120,22000). The same complete descent as in 5.6, now using the
+real condition and residues modulo 256 and 3, gives exact images
+
+ E: {1,5}; E': {1,-5,-11,55}.
+
+Infinity and (0,0) give classes 1 and the squareclass of B. The point
+(180,900) on E supplies 5. On E', (-1100,0) supplies -11 and
+(-500,12000) supplies -5. Thus every surviving class is attained and
+2^rank=2*4/4=2. These are exact upper and lower bounds, not a point-search
+inference. For controls the quartic has points
+(z,s)=(5/2,225/4) and (19/4,1449/16).
+
+The exact certificate `scripts/check_sixth_center_lift.py` verifies the
+parametrization, exceptional parameters, branch polynomial checks,
+birational identities, witnesses and complete descent images.
+
+This supplies an alternative to working directly with the rank-seven
+Jacobian: an explicit simultaneous-lifting problem over a rank-one
+elliptic curve. It does not establish that a displayed nontorsion point
+generates E(Q), enumerate all simultaneous lifts, supply a height bound,
+or exclude or construct a size-eleven pair. Those are separate steps;
+ordinary Chabauty on the rank-seven curve has not thereby been restored.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
