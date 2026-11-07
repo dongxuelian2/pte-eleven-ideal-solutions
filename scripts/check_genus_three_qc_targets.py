@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Exact certificate for genus-three quadratic-Chabauty targets.
 Dependency-free Python 3. Mathematical deductions are in
-neron_severi_and_genus_three_qc.md. This does not compute rational points.
+PROOF.md Section 5.14. This does not compute rational points.
 """
 from contextlib import redirect_stdout
 from fractions import Fraction as Q
