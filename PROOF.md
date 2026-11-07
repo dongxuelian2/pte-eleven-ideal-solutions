@@ -494,12 +494,169 @@ six distinct roots. They furnish a real extremal example, not a rational
 or integer PTE construction. Theorem 6 does not assert that the bound
 thirteen is attained over the rationals.
 
+### 4.3. An elliptic obstruction: fourteen values in total
+
+We use the following established consequence of Mazur's torsion theorem
+[3, Introduction, Theorem (8)]: an elliptic curve over Q has no rational
+point of order 11. This is a theorem, not an additional conjectural
+hypothesis. The polynomial Pell/divisor connection below is classical;
+see [4, Section 2] for the general framework. We give the specific
+argument needed here in full.
+
+**Lemma 7 (quartic Pell obstruction).** Let D∈Q[x] be monic, squarefree,
+and of degree four. There are no S,T∈Q[x] and k∈Q\{0} satisfying
+
+\[
+S^2-DT^2=k^2,\qquad \deg S=11.
+\tag{18}
+\]
+
+**Proof.** Degree comparison gives deg T=9 and equality, up to sign,
+of the leading coefficients of S and T. Change the sign of T if necessary
+to make these coefficients equal, say to s≠0.
+The smooth projective curve E with affine equation y²=D(x) has genus one.
+It has two distinct rational points O,R at infinity, characterized by
+y/x² tending to +1 and -1. More explicitly, t=1/x and w=y/x² give
+w²=t⁴D(1/t), whose two points at t=0 are w=±1; they are smooth and t is
+a local parameter at each.
+
+The function f=(S+Ty)/k and its conjugate (S-Ty)/k are mutual inverses
+and are regular on the affine curve. Thus f has no finite zero or pole.
+At O its leading term is (2s/k)t^(-11), so it has a pole of exact order 11.
+Conjugation exchanges O,R and sends f to its inverse. Consequently
+
+\[
+\operatorname{div}(f)=11R-11O.
+\tag{19}
+\]
+
+Use O as the rational origin of E. The genus-one isomorphism
+E→Pic⁰(E), X↦[X-O], identifies R with a nonzero rational point killed
+by 11. Since 11 is prime and R≠O, its order is exactly 11, contradicting
+Mazur's theorem. ∎
+
+**Theorem 8.** The supports of any nontrivial ideal size-eleven rational
+pair contain at least fourteen distinct values in total.
+
+**Proof.** Theorem 6 excludes totals below thirteen. A total of thirteen
+must have support sizes six and seven. Interchange the sides if necessary.
+By Theorem 5 their root multiplicities force
+
+\[
+P=(x-a)U^2,\qquad Q=(x-b)(x-c)(x-d)V^2,
+\quad \deg U=5,\quad\deg V=4.
+\tag{20}
+\]
+
+The four simple roots a,b,c,d are distinct rational numbers, since the
+supports are disjoint. Hence D=(x-a)(x-b)(x-c)(x-d) is a squarefree
+monic quartic. With S=2P-C and T=2UV, the identity P-Q=C gives
+
+\[
+S^2-DT^2=(2P-C)^2-4PQ=C^2.
+\tag{21}
+\]
+
+Here deg S=11, contradicting Lemma 7. ∎
+
+### 4.4. Symmetry strengthens the bound to eight values per side
+
+**Theorem 9.** If a nontrivial ideal size-eleven rational pair satisfies
+B=2h-A, each side has at least eight distinct values. Equivalently,
+there are at most three double entries on each side.
+
+**Proof.** The first moment gives h=(∑A)/11∈Q, so translate by h and
+assume B=-A. Write P=P_A and Q=P_B=-P(-x). Then P+P(-x)=C.
+Theorem 6 already gives at least seven distinct values per side.
+Suppose there are exactly seven. By Theorem 5,
+
+\[
+P(x)=(x-a)(x-b)(x-c)U(x)^2,\qquad \deg U=4.
+\tag{22}
+\]
+
+Disjointness of A and -A ensures abc≠0 and that a²,b²,c² are pairwise
+distinct. Define
+
+\[
+S(x)=2P(x)-C,\quad T(x)=2U(x)U(-x),\quad
+D(x)=(x^2-a^2)(x^2-b^2)(x^2-c^2).
+\]
+
+Then S is odd of degree eleven, T is even of degree eight, and
+S²-DT²=C². Write S=xR(x²), T=T₀(x²). The degrees of R,T₀ are five
+and four, respectively, and both have leading coefficient 2.
+Putting z=x² and D₀(z)=(z-a²)(z-b²)(z-c²) gives
+
+\[
+zR(z)^2-D_0(z)T_0(z)^2=C^2.
+\tag{23}
+\]
+
+Now set
+
+\[
+D_1(z)=zD_0(z),\quad
+A_1(z)=2zR(z)^2-C^2,\quad B_1(z)=2R(z)T_0(z).
+\]
+
+Direct multiplication, using (23), gives
+
+\[
+A_1^2-D_1B_1^2=C^4.
+\tag{24}
+\]
+
+The polynomial D₁ is a squarefree monic quartic with distinct rational
+roots 0,a²,b²,c². Moreover, deg A₁=11 and deg B₁=9, with leading
+coefficients both equal to 8. Equation (24) contradicts Lemma 7 with
+k=C². This excludes seven values per side and proves the result. ∎
+
+### 4.5. The remaining arithmetic boundary
+
+The elliptic obstruction does not extend automatically to higher-genus
+Jacobians. To make the precise remaining problem explicit, let r be the
+total support size of a rational solution. Let U,V be the monic products
+of its double roots on the respective sides, and let D be the monic
+product of all its simple roots across both sides. Then
+
+\[
+\deg D=2r-22,\quad\deg(UV)=22-r,\quad
+(2P-C)^2-D(2UV)^2=C^2.
+\tag{25}
+\]
+
+D is squarefree and completely split over Q. The smooth projective curve
+y²=D has genus g=r-12. For the remaining range r≥14 this gives g≥2.
+The same infinity-divisor calculation as in Lemma 7 gives a rational
+divisor class [R-O] killed by 11 in its Jacobian. This class is nonzero:
+a principal divisor R-O would give a degree-one map to the projective
+line, impossible on a curve of positive genus. Thus its order is exactly
+11. Mazur's theorem concerns elliptic curves and does not rule out such
+a class in a genus-two or higher Jacobian.
+
+For a symmetric pair with s distinct values per side, the same explicit
+descent as in Section 4.4 gives a monic squarefree polynomial
+
+\[
+D_1(z)=z\prod_{i=1}^{2s-11}(z-a_i^2)
+\]
+
+and a degree-eleven Pell equation on a curve of genus s-6, where the a_i
+are the simple roots on one side. In detail, deg R=5 and deg T₀=11-s
+in (23), while deg A₁=11 and deg B₁=16-s in (24). At the first remaining
+case s=8, D₁ has degree six and the obstruction again lies in a genus-two
+Jacobian. Neither this torsion condition nor complete splitting of D₁
+is proved sufficient for PTE splitting. No admissible genus-two point
+or ideal integer pair is constructed here.
+
 ## 5. Open boundary
 
 The general size-11 existence problem remains open here. Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
-the unrestricted multiset formulation, but leaves all patterns with
-at least thirteen distinct entries in the two supports unresolved.
+the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,
+or at least eight per side under symmetry. The remaining splitting and
+higher-genus torsion problems in Section 4.5 are unresolved here.
 
 ## References
 
@@ -516,3 +673,12 @@ November 4, 2026.
 [Record and provenance](https://hexagonmath.org/2611.00057v1).
 This is an explicitly AI-generated, not professionally reviewed preprint;
 its claimed bounds are not used in our proofs.
+
+[3] B. Mazur, *Modular curves and the Eisenstein ideal*, Publications
+Mathématiques de l'IHÉS 47 (1977), 33–186, Introduction, Theorem (8).
+[DOI and journal record](https://doi.org/10.1007/BF02684339).
+
+[4] Z. Scherr and K. Thompson, *Quartic Integral Polynomial Pell Equations*,
+arXiv:2307.04566, Section 2.
+[Record](https://arxiv.org/abs/2307.04566),
+[full text](https://arxiv.org/html/2307.04566v1).
