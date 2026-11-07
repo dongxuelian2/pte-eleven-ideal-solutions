@@ -2534,6 +2534,215 @@ all remaining PTE lifting and collision conditions.
 
 The original distinct-eleven-integer PTE classification remains open.
 
+### 5.15 Exact de Rham input for the two genus-three quadratic-Chabauty targets
+
+This supplies an explicit rational de Rham basis, cup-product matrix,
+holomorphic-first symplectic basis, and genuine trace-zero correspondence.
+It does not compute a Frobenius matrix, a p-adic logarithm or height, a
+quadratic-Chabauty root, or a rational-point classification.
+
+The deterministic checker is `scripts/check_genus_three_qc_de_rham.py`, requiring
+Python 3 and SymPy. Run it with
+
+    python3 scripts/check_genus_three_qc_de_rham.py
+
+The existing genus-three certificate supplies the smooth curves, quotient
+maps, isogeny decomposition, and Frobenius polynomials used below. The
+checker verifies the additional identities exactly, not numerically.
+
+#### Curves and an explicit quotient involution
+
+Write
+
+    E0: b^2=(z^2+5)(z^2+275),
+    C_delta: delta*y^2=(z^2+5)(4z^2+30z+80)(z^2+275).
+
+For delta=1 and 5, use the degree-eight model
+
+    X_delta: W^2=(N^2+5D^2)(N^2+275D^2),
+    z=N/D, a=M/D, b=W/D^2, y=MW/D^3,
+
+with
+
+    delta=1: N=80-t^2, D=4t-30, M=2t^2-30t+160;
+    delta=5: N=25t^2-120t+80, D=10t^2-8, M=-60t^2+100t-48.
+
+The degree-two elliptic quotient has deck involution
+
+    sigma_1(t,W)=((15t-160)/(2t-15), 9025W/(2t-15)^4),
+    sigma_5(t,W)=((24-25t)/(25-30t), 9025W/(25-30t)^4).
+
+Direct substitution verifies the curve identities and sigma^2=1. These
+maps fix z,b and send a,y to -a,-y. Their rational formulas extend across
+their coordinate poles on the smooth projective curves. The norm identity
+for the elliptic quotient f gives f* f_*=1+sigma on the Jacobian. Hence the
+previous trace-zero endomorphism is
+
+    Z=3f* f_*-2=1+3sigma.
+
+In the ordered basis (dt/W,t dt/W,t^2 dt/W), the rows of the following
+matrices express pullbacks by sigma:
+
+    S1 = [[45/19,   -12/19,    4/95],
+          [480/19, -109/19,    6/19],
+          [5120/19,-960/19,   45/19]],
+
+    S5 = [[125/19, -300/19,  180/19],
+          [120/19, -269/19,  150/19],
+          [576/95, -240/19,  125/19]].
+
+Both square to the identity and have eigenvalues 1,-1,-1.
+
+#### Second-kind quotient differentials and the sign convention
+
+On E0 set
+
+    e0=dz/b,  e1=z^2 dz/b.
+
+On C_delta set
+
+    c0=dz/y,  c1=z dz/y,
+    c2=(z^3+15z^2/4) dz/y,
+    c3=(z^4+4125z^2/32) dz/y.
+
+Every differential has no finite poles. At a finite branch point, dz/y
+is regular in the uniformizer y. To check the infinities, put u=1/z and
+write f=(z^2+5)(4z^2+30z+80)(z^2+275). Then
+
+    (u^6 f(1/u)/4)^(-1/2)
+       =1-15u/4-4125u^2/32+64725u^3/128+O(u^4).
+
+Since dz/y equals -(sqrt(delta)/2)u times this series times du at one
+infinity, the displayed corrections in c2,c3 cancel their residues. The
+other sheet changes the signs of all differentials, so its residues also
+vanish. The e forms have zero residues by the analogous even quartic
+expansion. Thus all six quotient forms are of the second kind.
+
+Fix the signed cup convention
+
+    <alpha,beta> = sum_P Res_P(F_alpha beta),  dF_alpha=alpha,
+
+where the sum is over the poles on the smooth projective quotient curve.
+Termwise local primitives are sufficient here; their arbitrary constants
+do not matter because beta has zero residue. In this convention the
+elliptic cup matrix is
+
+    CE = [[0,2],[-2,0]],
+
+and the genus-two matrix in (c0,c1,c2,c3) is
+
+    CC = [[0,        0,          0,          delta/4],
+          [0,        0,          delta/2,   -45delta/16],
+          [0,       -delta/2,     0,          525delta/2],
+          [-delta/4, 45delta/16, -525delta/2, 0]].
+
+The checker obtains every entry from independent Laurent expansions,
+including <c2,c3>=525delta/2. It verifies det(CC)=delta^4/64.
+
+#### A full de Rham basis on X_delta
+
+From now on each e or c denotes its pullback to X_delta. Each quotient
+map has degree two, so cup products of pulled-back forms are multiplied
+by two. The e classes have sigma eigenvalue +1, while the c classes have
+eigenvalue -1. Cup-product invariance under sigma makes the cross-pairings
+zero. Therefore, in the order (e0,e1,c0,c1,c2,c3),
+
+    CX = diag(2CE,2CC),       det(CX)=4delta^4 != 0.
+
+This proves that the six classes are independent modulo exact
+differentials. Since dim H^1_dR(X_delta)=6, they are a basis. In this
+basis sigma=diag(1,1,-1,-1,-1,-1) and
+
+    Z=diag(4,4,-2,-2,-2,-2).
+
+For explicit rational expressions in t,W, put R=N'D-ND'. One has R=lambda M
+with lambda=-2 for delta=1 and lambda=-20 for delta=5. The pullbacks are
+
+    e0=R dt/W,
+    e1=(RN^2/D^2) dt/W,
+    c0=lambda D dt/W,
+    c1=lambda N dt/W,
+    c2=lambda (N^3/D^2+15N^2/(4D)) dt/W,
+    c3=lambda (N^4/D^3+4125N^2/(32D)) dt/W.
+
+The first, third and fourth forms, namely e0,c0,c1, are independent
+polynomial multiples of dt/W of degree at most two, so they form a
+holomorphic basis. The expressions with powers of D in their denominators
+are meromorphic second-kind differentials, as guaranteed by pullback;
+these coordinate poles must not be discarded by an implementation.
+
+#### Holomorphic-first symplectic normalization
+
+The ordered basis
+
+    nu=(e0, c0, c1, e1/4,
+        (2c3+45c2/4+1050c1)/delta,
+        c2/delta)
+
+has cup matrix
+
+    J=[[0,I3],[-I3,0]].
+
+The checker verifies B CX B^T=J for the displayed rational basis-change
+matrix B. In this basis
+
+    Z=diag(4,-2,-2,4,-2,-2).
+
+It is self-adjoint for the cup pairing, and its trace on holomorphic
+differentials is 4-2-2=0. Every displayed basis-change coefficient is
+13-integral. This does not alone certify integrality or the precision
+behavior of an eventual computed Frobenius matrix.
+
+When importing these data into another package, distinguish the
+endomorphism matrix from its associated alternating correspondence form.
+For example, in the convention where an alternating matrix K is converted
+to its endomorphism by KJ, the input is K=ZJ^(-1), not Z itself. A different
+cup sign or row/column convention requires the corresponding conversion.
+
+#### An independent polynomial projector at p=13
+
+The previously certified Frobenius factors are
+
+    PE(T)=T^2-2T+13,
+    PC(T)=T^4+6T^2+169.
+
+Define
+
+    eE(T)=(2T+9)PC(T)/2704,       Zpoly(T)=6eE(T)-2.
+
+Exact polynomial division gives eE=1 modulo PE and eE=0 modulo PC.
+Consequently eE^2=eE modulo PE PC, and Zpoly has residues 4 and -2 on
+the elliptic and genus-two factors. If F is a Frobenius matrix on the
+compatible cohomology, eE(F) is the elliptic projector and Zpoly(F) is
+the already constructed rational correspondence Z. This conclusion uses
+the known quotient decomposition, not an assumption that arbitrary
+Frobenius polynomials lift to rational endomorphisms.
+
+The denominator is 2704=16*13^2. Its division can lose two 13-adic digits;
+total error also depends on matrix-entry valuations, evaluation, and basis
+changes. The exact diagonal correspondence above avoids this division
+when supplying Z directly. No Frobenius matrix has been computed here.
+
+For reference, direct integer discriminants of the two degree-eight
+polynomials are
+
+    delta=1: 2^52*3^33*5^30*11^2*19^12*53,
+    delta=5: 2^108*3^33*5^58*11^2*19^12*53.
+
+Both reductions modulo 13 are squarefree and have ten affine points and
+two points at infinity, with no affine Weierstrass points. Thus a complete
+13-adic computation must account for twelve residue discs on each curve.
+
+#### Scope of the new certificate
+
+These are exact, reusable cohomological inputs, not a quadratic-Chabauty
+calculation. Still required are suitable Mordell-Weil divisor data and
+relevant saturation/index control, certified logarithm rank, compatible
+local and global heights including all away-from-13 contributions,
+certified power-series root isolation on every chart, and a final
+Mordell-Weil sieve or equivalent completeness argument. The original PTE
+classification remains open.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
