@@ -2322,7 +2322,7 @@ distinct-eleven-integer PTE classification remains open.
 This gives a genuinely applicable finiteness criterion, not a rational-point
 classification. The genus-two rank-two targets themselves have rational
 Néron–Severi rank one. However, two explicit genus-three covers contain every
-remaining PTE center lift and have Jacobian rank three and rational
+remaining PTE center lift in the sixth chain mode and have Jacobian rank three and rational
 Néron–Severi rank two. They therefore satisfy the usual quadratic-Chabauty
 finiteness inequality.
 
@@ -2393,8 +2393,8 @@ inertia order two: the two roots of q1 and the four roots of q0 q3.
 Riemann–Hurwitz gives 2g(Xδ)−2=−8+12=4, hence g(Xδ)=3. The quotient by
 (a,b)↦(−a,−b) is Cδ; its degree-two map has no ramification by the same formula.
 
-The established center-square reduction says that a valid finite center
-lift has qi(z)=δ ci² for i=0,1,2,3, with δ=1 or 5 and rational ci. It therefore
+The established sixth-mode center-square reduction says that a valid finite
+center lift has qi(z)=δ ci² for i=0,1,2,3, with δ=1 or 5 and rational ci. It therefore
 lifts to Xδ by taking a=c1 and b=δ c0 c3. Thus these two covers suffice as
 necessary targets for the PTE problem. They are not asserted to cover all
 of Cδ(Q), and a point on Xδ does not itself satisfy the remaining q0
