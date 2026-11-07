@@ -57,8 +57,15 @@ elliptic factors have ranks 2, 2, 3 by exact 2-isogeny descent. Real and
 modulo-256 exclusions give upper bounds, and explicit points attain every
 remaining descent class. Thus ordinary Chabauty's rank < genus hypothesis
 fails here. This does not determine the rational points or settle PTE
-existence. The other twelve types and other construction routes are not
-settled by these reductions.
+existence.
+
+Adding the third center-square condition gives an explicit genus-nine
+cover with a rank-one elliptic projection. A birational map and exact
+2-isogeny descent certify the projection. The simultaneous-square lifts,
+remaining singleton roots and collision tests are not classified; no
+Mordell-Weil generator or complete rational-point set is claimed.
+The other twelve types and other construction routes are not settled
+by these reductions.
 
 The polynomial certificates require SymPy; the exact-rank descent
 certificate is dependency-free:
@@ -69,6 +76,7 @@ python3 scripts/check_fifth_mode.py
 python3 scripts/check_sixth_mode.py
 python3 scripts/check_sixth_rank_maps.py
 python3 scripts/check_sixth_exact_ranks.py
+python3 scripts/check_sixth_center_lift.py
 ```
 
 ## Ancillary multiset results
