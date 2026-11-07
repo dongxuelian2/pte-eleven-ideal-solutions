@@ -94,7 +94,7 @@ certified. An isogeny of Jacobians does not identify the two curves'
 rational-point sets.
 The two selected genus-two Jacobians have rational Neron-Severi rank one,
 so the standard quadratic-Chabauty inequality does not hold on them.
-However, all relevant center lifts lie on two explicit genus-three covers
+However, all sixth-mode center lifts lie on two explicit genus-three covers
 with Jacobian rank three and rational Neron-Severi rank two. Their
 Mordell-Weil-restricted quadratic-Chabauty finiteness criterion does hold.
 The models, maps, rational base points, trace-zero correspondence and
