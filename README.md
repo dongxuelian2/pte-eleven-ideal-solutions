@@ -126,6 +126,14 @@ away-from-13 contribution and all rational elliptic-point component
 corrections are explicit. The genus-two height block, full genus-three
 local contributions, QC roots and completeness sieve remain uncomputed.
 
+Section 5.18 replaces the missing genus-two self-pairings with three mixed
+pairings of explicit disjoint divisors. It gives residue-correct third-kind
+differentials and computes every finite local contribution outside the bad
+prime set and 13, including nonzero terms at 7,17,29,31,313,593. The vertical
+corrections of these representatives vanish at 11,19,53, but their horizontal
+intersections remain to be evaluated. The normalized 13-adic integrals and
+bad-prime terms are still missing; no complete height block is claimed.
+
 The other twelve types and other construction routes are not settled
 by these reductions.
 
@@ -150,6 +158,7 @@ python3 scripts/check_genus_three_qc_de_rham.py
 python3 scripts/check_thirteen_logarithms.py
 python3 scripts/check_thirteen_saturation.py
 python3 scripts/check_elliptic_height13.py
+python3 scripts/check_genus_two_mixed_heights.py
 ```
 
 ## Ancillary multiset results
