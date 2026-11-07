@@ -70,6 +70,14 @@ forces any missing generator below scaled height 24, where an exhaustive
 exact check rules it out. Thus all elliptic candidates are integer
 multiples of the certified generator, with an optional torsion translate.
 Which candidates satisfy all lifting conditions remains unresolved.
+
+Four good-prime reductions give uniform index restrictions modulo 240.
+Every surviving candidate with |n|<120 has a collision; any valid lift
+therefore has scaled elliptic-coordinate height H(x/270)>10^3298.
+This is not a bound on the original integer entries or a global exclusion.
+A finite covering descent gives eight explicit genus-two quotient models,
+with squareclass 1 or 5 fixed by the parity of n. Their Jacobian ranks
+and complete rational-point sets have not been certified.
 The other twelve types and other construction routes are not settled
 by these reductions.
 
@@ -84,6 +92,8 @@ python3 scripts/check_sixth_rank_maps.py
 python3 scripts/check_sixth_exact_ranks.py
 python3 scripts/check_sixth_center_lift.py
 python3 scripts/check_rank_one_generator.py
+python3 scripts/check_lift_congruences.py
+python3 scripts/check_sixth_genus_two_covers.py
 ```
 
 ## Ancillary multiset results
