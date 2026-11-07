@@ -55,6 +55,11 @@ size-11 ideal pair has:
 - A fully real eight-value example with double entries 1, 5, 9 shows
   that real-root arguments cannot finish the exclusion. Its quintic
   fails complete rational splitting already modulo 5.
+- The fourteen-value general boundary is exactly equivalent to a
+  degree-eleven Pell identity with a completely rationally split
+  squarefree sextic D and a completely rationally split degree-eight T.
+  This is an equivalence with simultaneous splitting, not with torsion
+  alone, and supplies no integer solution.
 
 These are unconditional necessary conditions for the multiset problem.
 They do not prove existence, global nonexistence, or attainment of the
