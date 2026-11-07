@@ -52,15 +52,23 @@ A sixth type also maps to a smooth genus-three quartic. Its explicit
 nonexceptional rational point recovers a nonsquare center, showing why
 a rational quartic point alone is insufficient. This gives normalized
 finiteness, not a solution or an effective point classification.
-The other twelve types and other construction routes are not settled
-by these reductions.
+The sixth-mode Jacobian has certified rational rank seven: its three
+elliptic factors have ranks 2, 2, 3 by exact 2-isogeny descent. Real and
+modulo-256 exclusions give upper bounds, and explicit points attain every
+remaining descent class. Thus ordinary Chabauty's rank < genus hypothesis
+fails here. This does not determine the rational points or settle PTE
+existence. The other twelve types and other construction routes are not
+settled by these reductions.
 
-The exact certificates require SymPy:
+The polynomial certificates require SymPy; the exact-rank descent
+certificate is dependency-free:
 
 ```sh
 python3 scripts/check_shift_chains.py
 python3 scripts/check_fifth_mode.py
 python3 scripts/check_sixth_mode.py
+python3 scripts/check_sixth_rank_maps.py
+python3 scripts/check_sixth_exact_ranks.py
 ```
 
 ## Ancillary multiset results
