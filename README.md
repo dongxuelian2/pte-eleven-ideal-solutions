@@ -92,6 +92,18 @@ For the duals, Sha[2]=0 and the displayed subgroup has finite odd index.
 Odd-prime saturation and complete original-curve point sets are not
 certified. An isogeny of Jacobians does not identify the two curves'
 rational-point sets.
+The two selected genus-two Jacobians have rational Neron-Severi rank one,
+so the standard quadratic-Chabauty inequality does not hold on them.
+However, all relevant center lifts lie on two explicit genus-three covers
+with Jacobian rank three and rational Neron-Severi rank two. Their
+Mordell-Weil-restricted quadratic-Chabauty finiteness criterion does hold.
+The models, maps, rational base points, trace-zero correspondence and
+ordinary good prime 13 are certified. This establishes an applicable route,
+not a completed computation: p-adic heights, sufficient Mordell-Weil data,
+rigorous root isolation and the final point-completeness sieve remain.
+The covers need not contain every point of the original genus-two curves,
+and their points must still pass the remaining PTE conditions.
+
 The other twelve types and other construction routes are not settled
 by these reductions.
 
@@ -111,6 +123,7 @@ python3 scripts/check_sixth_genus_two_covers.py
 python3 scripts/check_center_cover_rank_obstruction.py
 python3 scripts/check_genus_two_richelot_certificate.py
 python3 scripts/check_richelot_two_selmer.py
+python3 scripts/check_genus_three_qc_targets.py
 ```
 
 ## Ancillary multiset results
