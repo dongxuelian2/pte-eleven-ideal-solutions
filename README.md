@@ -157,8 +157,16 @@ normalizations are explicit. Section 5.25 computes three actual normalized
 mixed heights via good even-degree models, independently reproduced with
 proved error bounds. Combining the finite contributions gives h(P,P)=923
 and h(P,Q)=1586 modulo 13^3 for the k=-15 Jacobian, and h(P,P)-h(P,Q)=1417
-for k=-3. These are partial global matrices only. Remaining mixed pairings,
-the full QC function and root isolation are not completed.
+for k=-3. Sections 5.26--5.27 complete both global genus-two height
+matrices modulo13^3, including the remaining Q/R integrals and an exact
+moved divisor T=4P-Q that avoids the shared-disc integration. Its new finite
+corrections are recomputed in full. The matrices are
+[[923,1586],[1586,689]] for k=-15 and [[2093,676],[676,1027]] for k=-3.
+They yield certified global height quadratic forms in normalized logarithms.
+Independent implementations and precision proofs agree. These are completed
+global height blocks, not the local genus-three QC functions: basepoint
+normalization, allowed finite local-value sets, root isolation and the final
+rational-point sieve remain unfinished.
 
 The other twelve types and other construction routes are not settled
 by these reductions.
@@ -192,6 +200,8 @@ python3 scripts/check_richelot_de_rham_transport.py
 python3 scripts/check_genus_two_frobenius13.py
 python3 scripts/check_coleman_basis13.py
 python3 scripts/check_normalized_mixed_heights13.py
+python3 scripts/check_remaining_qr_heights13.py
+python3 scripts/check_complete_height_blocks13.py
 ```
 
 ## Ancillary multiset results
