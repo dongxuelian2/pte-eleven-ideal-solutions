@@ -650,13 +650,126 @@ Jacobian. Neither this torsion condition nor complete splitting of D₁
 is proved sufficient for PTE splitting. No admissible genus-two point
 or ideal integer pair is constructed here.
 
+### 4.6. The genus-two Jacobian must be simple over Q
+
+**Theorem 10.** In either of the following cases, the genus-two Jacobian
+arising in Section 4.5 is simple over Q and its rational torsion contains
+
+\[
+(\mathbb Z/2\mathbb Z)^4\times\mathbb Z/11\mathbb Z
+\simeq [2,2,2,22],
+\tag{26}
+\]
+
+a subgroup of order 176:
+
+- a rational ideal size-eleven pair with total support size fourteen;
+- a symmetric rational ideal size-eleven pair with eight distinct entries
+  per side.
+
+Here simplicity over Q excludes an elliptic subvariety defined over Q;
+it does not assert geometric simplicity.
+
+**Proof.** In both cases Section 4.5 gives a monic squarefree sextic D
+split completely over Q, and a rational class δ of exact order eleven
+in J=Jac(y²=D). Its six Weierstrass points are rational. The fifteen
+nonzero two-torsion classes are represented by W_i+W_j-K, for the fifteen
+unordered pairs of distinct Weierstrass points and a canonical divisor K.
+They are all rational, so J[2](Q)≅(Z/2Z)^4. This standard description is
+also recorded in [5, Section 1.2]. The subgroup they generate with δ is
+the direct product (26), because the orders are coprime.
+
+If J contained an elliptic subvariety E defined over Q, the quotient
+F=J/E would be an elliptic curve over Q with scheme-theoretic kernel E.
+The image of δ in F(Q) is killed by eleven, so Mazur's theorem makes it
+zero. Thus δ belongs to E(Q), where the same theorem makes δ zero,
+a contradiction. This argument uses only exactness at J(Q), not
+surjectivity onto F(Q). It also excludes every Q-isogeny to a product
+of elliptic curves, regardless of its degree: such an isogeny implies
+an elliptic subvariety over Q. ∎
+
+**Corollary 11.** The genus-two curve in Theorem 10 cannot admit a
+nonconstant map over Q to an elliptic curve. In particular, its six
+branch values cannot form three opposite pairs about a rational center
+in the given affine coordinate.
+
+**Proof.** A nonconstant map induces a nonzero, hence surjective,
+homomorphism from its Jacobian to the elliptic curve. The identity
+component of the kernel is an elliptic subvariety over Q, contradicting
+Theorem 10. For the stated branch configuration, translate the center
+to zero and write
+
+\[
+y^2=(x^2-u^2)(x^2-v^2)(x^2-w^2),
+\tag{27}
+\]
+
+where u,v,w are nonzero rational numbers with distinct squares.
+The map (x,y)↦(x²,y) has target
+Y²=(X-u²)(X-v²)(X-w²), a smooth elliptic curve over Q. ∎
+
+This strengthens the conditions on the remaining boundary, but does not
+raise the support bounds. In particular, a table of known genus-two
+torsion groups is not an upper bound. The introduction of [5] explicitly
+distinguishes its realized groups from a complete classification.
+
+### 4.7. A sextic Pell counterexample that is not a PTE solution
+
+The degree-eleven quartic obstruction in Lemma 7 cannot be extended to
+arbitrary squarefree sextics. Here is an exact counterexample, using the
+curve in [5, Section 4.4, equation (10)] after completing the y-square:
+
+\[
+D(x)=\frac{x(2x-1)(x^2-3x+8)(2x^2+x+3)}4.
+\tag{28}
+\]
+
+Define
+
+\[
+\begin{aligned}
+A(x)&=8x^4-36x^3+118x^2-159x+162,\\
+B(x)&=8x^4-20x^3+54x^2-27x+54,\\
+F_+(x)&=x(2x^2+x+3)A(x)^2,\\
+F_-(x)&=(2x-1)(x^2-3x+8)B(x)^2.
+\end{aligned}
+\]
+
+Exact multiplication gives
+
+\[
+F_+-F_-=23328.
+\tag{29}
+\]
+
+Consequently
+
+\[
+S=\frac{F_++F_-}{256},\qquad T=\frac{AB}{64},\qquad
+S^2-DT^2=\left(\frac{729}{8}\right)^2.
+\tag{30}
+\]
+
+D is monic and squarefree, and deg S=11, deg T=8. The two quadratics in
+(28) both have discriminant -23; they are irreducible over Q and have
+no real roots. Thus D is not completely split over Q, and (30) supplies
+no rational PTE pair. The monic polynomials F₊/128 and F₋/128 differ
+by a constant, but neither splits over Q. This shows concretely why
+Pell solvability alone does not settle the remaining problem.
+
+`scripts/check_sextic_pell.py` verifies (29)–(30), the degrees and
+squarefreeness by exact rational/integer coefficient arithmetic without
+third-party dependencies. The source curve and the Pell/torsion method
+are not claimed as new.
+
+
 ## 5. Open boundary
 
 The general size-11 existence problem remains open here. Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,
 or at least eight per side under symmetry. The remaining splitting and
-higher-genus torsion problems in Section 4.5 are unresolved here.
+higher-genus torsion problems in Sections 4.5–4.7 are unresolved here.
 
 ## References
 
@@ -682,3 +795,9 @@ Mathématiques de l'IHÉS 47 (1977), 33–186, Introduction, Theorem (8).
 arXiv:2307.04566, Section 2.
 [Record](https://arxiv.org/abs/2307.04566),
 [full text](https://arxiv.org/html/2307.04566v1).
+
+[5] J. S. Balakrishnan, F. Najman, A. Shnidman, and A. V. Sutherland,
+*Rational torsion on simple genus two Jacobians*, arXiv:2608.28543,
+Introduction, Section 1.2, and Section 4.4, equation (10).
+[Record](https://arxiv.org/abs/2608.28543),
+[full text](https://arxiv.org/html/2608.28543v1).
