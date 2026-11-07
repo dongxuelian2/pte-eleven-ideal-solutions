@@ -89,8 +89,8 @@ groups with dimension five; explicit independent divisor classes prove
 both ranks exactly two. The same exact ranks hold for the original j=2
 Jacobians, so ordinary genus-two Chabauty fails its rank condition here.
 For the duals, Sha[2]=0 and the displayed subgroup has finite odd index.
-Odd-prime saturation and complete original-curve point sets are not
-certified. An isogeny of Jacobians does not identify the two curves'
+Saturation at 13 is now certified below; saturation at the other odd
+primes and complete original-curve point sets are not certified. An isogeny of Jacobians does not identify the two curves'
 rational-point sets.
 The two selected genus-two Jacobians have rational Neron-Severi rank one,
 so the standard quadratic-Chabauty inequality does not hold on them.
@@ -107,8 +107,17 @@ and their points must still pass the remaining PTE conditions.
 Exact de Rham inputs are now explicit: a full rational basis, signed cup
 matrix, holomorphic-first symplectic normalization and the genuine
 trace-zero correspondence. A symbolic Frobenius-projector identity and all
-twelve reduction discs at 13 are checked. No Frobenius matrix, p-adic
-logarithm, height, isolated QC root or completed sieve has been computed.
+twelve reduction discs at 13 are checked.
+
+Exact arithmetic modulo 169 and tiny-integral error bounds now certify
+13-adic logarithm rank three for both genus-three covers. On each dual
+genus-two factor the normalized logarithm determinant is 6 modulo 13;
+the elliptic factor supplies the third independent logarithm.
+The known subgroups are 13-saturated, proved both from the logarithm
+lattice and independently from reductions at 181 and 199. This does
+not provide explicit transported divisor coordinates or a full
+target-basis logarithm matrix. No Frobenius matrix, p-adic height,
+isolated QC root or completed point-completeness sieve has been computed.
 
 The other twelve types and other construction routes are not settled
 by these reductions.
@@ -131,6 +140,8 @@ python3 scripts/check_genus_two_richelot_certificate.py
 python3 scripts/check_richelot_two_selmer.py
 python3 scripts/check_genus_three_qc_targets.py
 python3 scripts/check_genus_three_qc_de_rham.py
+python3 scripts/check_thirteen_logarithms.py
+python3 scripts/check_thirteen_saturation.py
 ```
 
 ## Ancillary multiset results
