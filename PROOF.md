@@ -1575,6 +1575,165 @@ epsilon in {0,1}. The points at infinity and excluded collision cases
 remain subject to the handling in 5.7. No bounded test of multiples is
 used to infer completeness of those lifting conditions.
 
+### 5.9 Uniform index restrictions and a scaled elliptic height bound
+
+Write an elliptic candidate uniquely as R=nP+epsilon*T using 5.8,
+where n is an integer and epsilon is 0 or 1. A necessary condition for
+simultaneous rational center squares is
+
+ epsilon=0: n is 0,1,120 modulo 240;
+ epsilon=1: n is 0,120,239 modulo 240.
+
+This excludes entire infinite residue classes, not just tested multiples.
+It is not a complete lifting criterion.
+
+**Proof of the congruences.** Use the good reduction primes 13,37,59,113.
+The respective orders of P modulo those primes are 6,40,16,120. For a
+finite reduced point (X,Y) with X!=0, form
+
+ z=Y/(2X), t=(z+5)/3, d=3t^2-10t+10.
+
+If d!=0, require that 2(6t^2-5t+5)/d and
+(3t^2+26t+10)/(4d) are squares in the residue field, allowing zero.
+If the point is infinity, X=0, or d=0, retain it conservatively; do not
+exclude a rational candidate because an affine formula is undefined.
+For every retained affine computation, X and d are units and reduction
+of the rational center squares is valid. Good reduction is a group
+homomorphism, so these conditions depend only on n modulo the displayed
+order and epsilon. The exact finite-field certificate computes every
+point in those four cyclic groups and intersects their conditions modulo
+the least common multiple 240, obtaining exactly the two displayed sets.
+This finite calculation proves a uniform necessary condition for all
+integers n, with no unproved search cutoff.
+
+Among |n|<120 the surviving points are O,T,P,-P+T. The first two map
+to t=infinity, with (a,b,c)=(4,1/4,1/4); the B length-three chain
+meets the centered A chain. The latter two map to t=5/2, with
+(a,b,c)=(16,25/4,25/4); the B point v-1=3/2 again belongs to the
+central A chain. Thus every valid sixth-mode PTE lift must have |n|>=120.
+
+This also yields an explicit lower bound on the **scaled elliptic
+coordinate height**, not directly on the original integer PTE entries.
+With h(R)=log H(x(R)/270) and h_c as in 5.8,
+
+ h_c(P)=h_c(4P)/16 >= [log77763-log(51840/11)/3]/16,
+
+because the exact scaled-coordinate height of 4P is 77763. For every
+remaining valid candidate, torsion invariance and quadraticity give
+
+ h(R) >= h_c(R)-log440/3
+      >= 900log77763-300log(51840/11)-log440/3.
+
+Consequently H(x(R)/270)>10^3298. The last strict inequality is
+verified without floating-point logarithms by
+
+ 77763^2700 * 11^900 > 10^9894 * 51840^900 * 440.
+
+The dependency-free certificate `scripts/check_lift_congruences.py`
+checks the orders, complete residue tests, collision controls, exact 4P
+height, and integer inequality. This is a rigorous bounded-index exclusion
+and a necessary height bound for one construction mode, not an upper
+bound or a proof that the remaining progressions contain no valid lift.
+The simultaneous-square classification and the original size-eleven
+problem remain unresolved.
+
+### 5.10 Two squareclass covers and explicit genus-two quotients
+
+This is a finite covering reduction, not a determination of the rational
+points on the covers. It supplies explicit genus-two curves on which a
+certified rank-and-Chabauty calculation could be attempted. No favorable
+Jacobian rank or complete rational-point list is assumed.
+
+Put z=3t-5 and write z=A/B with coprime integers A,B, B>0. Define
+
+ Q0=A^2+5B^2,
+ Q1=4A^2+30AB+80B^2,
+ Q2=A^2+36AB+185B^2,
+ Q3=A^2+275B^2.
+
+The center conditions become a=Q1/Q0, 4b=Q2/Q0, 4c=Q3/Q0.
+Thus they hold exactly when there are one positive squarefree integer
+Delta and integers C0,C1,C2,C3 satisfying
+
+ Qi=Delta*Ci^2  (i=0,1,2,3).
+
+Indeed, equality of the rational squareclasses of the four positive
+integers is equivalent to the three square-ratio conditions. The
+quadratics have no rational zero, so zero values need not be separated.
+
+Only Delta=1 and Delta=5 are possible. If a prime divides Delta, it
+divides all Qi, but it cannot divide B, since it divides Q0 and gcd(A,B)=1.
+The difference Q3-Q0=270B^2 therefore restricts its prime factors to
+2,3,5. If 2 divides Delta, then A,B are both odd; but Q0=6 modulo 8
+has 2-adic valuation one and Q3=4 modulo 8 has valuation two, a
+contradiction to equal squareclasses. The remaining mixed-parity
+primitive cases have Q0=1 modulo 4. Its squarefree part must therefore
+be 1 modulo 4, excluding 3 and 15 and leaving 1 or 5. In fact A must
+be odd and B even: A even and B odd would make Q3 equal 3 or 7 modulo
+8, impossible for Delta times an odd square with Delta=1 or 5.
+
+This squareclass restriction is also implicit in the elliptic descent.
+For a lift, write Q0=Delta*C0^2, Q3=Delta*C3^2 and choose signs such
+that the quartic ordinate is s=Delta*C0*C3/B^2. The birational map gives
+
+ X=2s+2z^2+280=Delta*(C0+C3)^2/B^2.
+
+The factor C0+C3 is nonzero for finite z because Q3-Q0=270B^2.
+Consequently Delta is exactly the two-isogeny class alpha(R). Since
+alpha(P)=5 and alpha(T)=1, a point R=nP+epsilon*T has Delta=1 when
+n is even and Delta=5 when n is odd. This is not an additional
+restriction beyond the already certified elliptic group and descent.
+The points at t=infinity have Delta=1 and are retained separately.
+
+For i=0,1,2,3 put qi(z)=Qi(z,1). For each omitted index j and each
+Delta in {1,5}, define the smooth projective curve
+
+ G(j,Delta): Delta*y^2 = product of qi(z) over i != j.
+
+Every simultaneous center lift with finite z maps to all four curves
+with its own Delta, by
+
+ y=Delta*product of Ci over i != j divided by B^3.
+
+These are eight explicit genus-two curves. In the order j=0,1,2,3,
+the sextic right-hand sides are
+
+ 4z^6+174z^5+3000z^4+56280z^3+537300z^2+2318250z+4070000;
+ z^6+36z^5+465z^4+10080z^3+53175z^2+49500z+254375;
+ 4z^6+30z^5+1200z^4+8400z^3+27900z^2+41250z+110000;
+ 4z^6+174z^5+1920z^4+9300z^3+24300z^2+42150z+74000.
+
+The four quadratic discriminants are -20,-380,556,-1100. Their six
+pairwise resultants, in lexicographic order 01,02,03,12,13,23, are
+8100,38880,72900,131220,1287900,364500. They are all nonzero, so each
+sextic is squarefree, and a degree-six hyperelliptic equation has genus
+two. At infinity each Delta=1 curve has two rational points. The known
+finite center lift z=5/2 belongs to the Delta=5 curves; its positive
+y-values for j=0,1,2,3 are 3375/2,3375/8,675/2,675/2.
+
+One may select any one j for Delta=1 and any one j for Delta=5. A
+complete rational-point classification on those two selected curves
+would give a finite list of possible z, which must then be checked
+against all center squares, the two B singleton-square conditions,
+and the collision exclusions. The map is only a necessary condition:
+a point on one genus-two quotient does not by itself give a center
+lift, much less a PTE witness.
+
+The full equations Qi=Delta*Ci^2 form two twists of a genus-seventeen
+cover; the value of the reduction is their genus-two quotients, not
+a claim that the full cover has smaller genus. The degree-sixteen
+multiquadratic cover of the z-line has eight simple branch points,
+so Riemann-Hurwitz gives 2g-2=-32+8*8=32. Its map to the genus-nine
+center cover is an unramified degree-two map.
+
+The certificate `scripts/check_sixth_genus_two_covers.py` verifies the
+coordinate identities, the elementary local squareclass exclusions,
+the sextic expansions, discriminants, resultants, the elliptic
+squareclass identity, and the known rational controls. It supplies no
+Jacobian rank bound, Mordell-Weil basis, Chabauty computation, rational
+point completeness, or effective upper height bound. Those remain the
+precise blockers to using this reduction as a complete classification.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
