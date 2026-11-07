@@ -36,6 +36,8 @@ A, near −1, depth1/2, with two twins of depth5/2;
 B, near4, depth3/2, with one twin of depth2 and two singletons.
 Over Q3(√3), their integral depths are1,3 and ν-values4,12. A is übereven; B has genus0. The top cluster gives two unstable rational components which contract to the bridges below.
 
+The reduced charts are V²=(u²−1)² for u=(t+1)/√3, V=W/3, and V²=u²(u²−1) for u=(t−4)/(√3)³, V=W/27. On both charts σ sends (u,V) to (−u,V). The pairwise depths account for the full discriminant valuation 12(1/2)+12(3/2)+4·2+2(1/2)=33.
+
 The semistable cluster-to-graph rules used here are Theorems7.1 and8.6 of Dokchitser–Dokchitser–Maistret–Morgan:
 https://link.springer.com/article/10.1007/s00208-021-02319-y
 
@@ -99,3 +101,5 @@ Since log13(3)=2093 modulo2197:
 The exact sets are the rational multiples of the logarithm just displayed; the residues are only their precision-three reductions. This calculation concerns curve-level QC heights and does not erase nonzero local contributions previously used for genus-two generator pairings.
 
 Independent review checked the dyadic analytic argument, 3-adic geometry and exhaustive accessibility, network calibration, and correspondence sign. The remaining tasks are the moving normalized 13-adic functions, certified root isolation and final rational-point sieve.
+
+The runnable algebraic certificate is [scripts/check_complete_away_targets.py](scripts/check_complete_away_targets.py). It verifies polynomial identities, local witnesses, graph and calibration arithmetic; the geometric theorem applications remain mathematical inputs explicitly proved above.
