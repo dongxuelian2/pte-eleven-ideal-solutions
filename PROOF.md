@@ -1807,7 +1807,7 @@ quadratic/elliptic Chabauty on other covers, or solve any rational-point
 classification. In particular no favorable rank assertion is made for
 the genus-two targets in 5.10.
 
-#####12 Genus-two Richelot targets: certified torsion and positive rank
+### 5.12 Genus-two Richelot targets: certified torsion and positive rank
 
 This is a structural and arithmetic improvement of the genus-two reduction,
 not a rank upper bound or rational-point classification. It singles out the
@@ -2007,33 +2007,315 @@ curves. This does **not** prove absolute simplicity over Qbar, and no such
 claim is made. In particular, the even Frobenius polynomials used here can
 split after extension of the finite field.
 
-#### The precise remaining certification
+#### Remaining rational-point certification
 
-The simpler j=2 duals provide four rational branch points and rational
-2-torsion of rank three. This is a concrete input for a genuine two-descent
-or Richelot-isogeny Selmer computation. It is not the computation itself.
-To use ordinary Chabauty on the selected original pair, the missing steps
-are:
+Section 5.13 below performs full two-descent on the selected Richelot duals
+and proves both ranks exactly two. This transfers to the original j=2 pair,
+so ordinary genus-two Chabauty's rank-below-genus hypothesis fails there.
 
-1. A certified rank upper bound at most one for each of J(D_1) and J(D_5)
-   (equivalently the selected original Jacobians). An exact two-Selmer
-   computation, Richelot-isogeny descent, and if needed a Cassels-Tate pairing
-   are possible methods. The bounds might instead turn out to exceed one;
-   no outcome has been assumed.
-2. Explicit sufficient Mordell-Weil data on the original Jacobians, with
-   the index and relevant saturation requirements proved for the chosen
-   point-completeness method. A non-torsion dual point alone does not supply
-   all of this information.
-3. A complete rational-point certificate for each original G(2,delta),
-   using justified Chabauty-Coleman plus a Mordell-Weil sieve or another
-   effective method, rather than a finite search.
-4. Testing every remaining z against all center-square conditions, the
-   singleton-square conditions and the collision exclusions from the PTE
-   reduction.
+A complete rational-point certificate on the original curves is still
+needed, using sufficient Mordell-Weil data or another justified effective
+method. A dual point alone does not provide original-curve points. Every
+remaining z must also pass the other center-square, singleton-square and
+collision conditions. The original distinct-eleven-integer problem remains
+unresolved.
 
-No Selmer group, rank upper bound, saturated Mordell-Weil group, or complete
-rational-point set has been computed here for any of the eight curves.
-The original distinct-eleven-integer PTE problem remains unresolved.
+### 5.13 Exact rank two for both Richelot targets
+
+This supplies both a complete **two-Selmer computation** and independent
+rational divisor classes proving **both ranks are exactly two**. It does
+not determine all rational points.
+
+For
+
+    D_k: Y² = k z(z−1)(z+5)(z²−68z−275),    k = −15 or −3,
+
+let J_k be its Jacobian. The result is
+
+    dim_F2 Sel_2(J_−15/Q) = dim_F2 Sel_2(J_−3/Q) = 5,
+    rank J_−15(Q) = rank J_−3(Q) = 2.
+
+The rational two-torsion dimension is three. These exact ranks transfer to the
+original j=2 Jacobians by the already established Richelot isogenies.
+In particular, the rank is equal to the genus, so this pair does **not**
+satisfy the rank condition for ordinary Chabauty–Coleman.
+
+The self-contained certificate is `scripts/check_richelot_two_selmer.py`. Run it with
+Python 3. It uses exact integers and rational numbers, no CAS, no numerical
+approximations, no external data, and no random search. Its witnesses are
+explicit local divisors. Reaching the known local quotient dimensions proves
+that they span the **entire local Jacobian image**, not just a collection of
+curve-point images.
+
+#### The odd-degree full two-descent model
+
+Set x=kz and y=k²Y. This gives the monic odd-degree model
+
+    C_k: y² = f_k(x)
+    f_k(x) = x(x−k)(x+5k)(x²−68kx−275k²).
+
+Put s=√159 and K=Q(s). Its étale algebra is
+
+    L = Q × Q × Q × K,
+
+with the image of x equal to
+
+    T = (0, k, −5k, k(34+3s)).
+
+The usual odd-degree two-descent theorem identifies H¹(Q,J_k[2]) with
+
+    H = ker(N: L*/L*² → Q*/Q*²).
+
+For a non-Weierstrass point P=(x,y), the Kummer map on [P−∞] is
+
+    δ(P) = (x, x−k, x+5k, x−34k−3ks).
+
+At a rational branch point e in {0,k,−5k}, replace the zero coordinate by
+f_k′(e), leaving the other coordinates unchanged. These formulas hold over
+all completions. The Selmer group is the subgroup of H whose localization
+belongs to δ_v(J_k(Q_v)) at every place v.
+
+This is full two-descent, not the fake descent for an even-degree model.
+References for the theorem are E. F. Schaefer, *2-Descent on the Jacobians of
+Hyperelliptic Curves*, Journal of Number Theory (1995),
+[DOI 10.1006/jnth.1995.1044](https://doi.org/10.1006/jnth.1995.1044), and the
+odd-degree discussion in
+[Poonen–Schaefer, Explicit descent for Jacobians of cyclic covers of the projective line](https://math.mit.edu/~poonen/papers/descent.pdf).
+
+#### The exact global square-class space
+
+Take
+
+    S = {2,3,5,11,19,53}.
+
+The checker computes, by an exact Sylvester determinant,
+
+    disc(f_1) = 2^8 · 3^13 · 5^8 · 11² · 19² · 53,
+    disc(f_k) = k^20 disc(f_1).
+
+The second identity follows directly by scaling all five roots by k. Thus
+outside S the monic curve has good odd reduction, and every Selmer class has
+even valuation in every factor of L. Write Q(S,2) and K(S,2) for the resulting
+square-class groups. A Q(S,2) basis is
+
+    −1, 2, 3, 5, 11, 19, 53.
+
+A K(S,2) basis, in the order used by the certificate, is
+
+    −1, 2, 3, 5, 11, 19, s, 13+s, 12+s, 25+2s, 11+s.
+
+Here is a complete justification of the dimension and spanning assertion.
+The ring of integers is Z[s] and its discriminant is 636. Minkowski's bound
+is √636/2 < 13. The primes 2 and 3 are ramified, 5 and 11 split, and 7 is
+inert. Thus the ideal class group is generated by prime ideals over
+2,3,5,11. The norm identities
+
+    N(13+s)=10,   N(12+s)=−15,   N(25+2s)=−11
+
+show respectively that each prime-ideal class over 5 is the class of the
+prime over 2, each class over 3 is the same class, and the primes over 11
+are principal. The prime over 2 has square (2), so the class group is
+cyclic of order at most two. Inverting S therefore makes the class group
+trivial. This argument needs no class-number software and no fundamental
+unit calculation.
+
+There are nine primes of K above S: one each above 2,3,53, and two each
+above 5,11,19. The S-unit theorem gives
+
+    dim_F2 K(S,2) = (real unit rank 1) + 9 + (torsion rank 1) = 11.
+
+All eleven listed elements have norm supported on S; the additional norm
+identity N(11+s)=−38 is checked. The certificate computes their simultaneous
+local square classes at R and the six primes in S and verifies rank eleven.
+A square in K would be square at every completion, so this proves global
+independence. The eleven elements are consequently a basis by the dimension
+calculation, without an assumption about a fundamental unit.
+
+The ambient product Q(S,2)^3 × K(S,2) has dimension 3·7+11=32. Its norm map
+to Q(S,2) is surjective, already on its first rational factor. Its norm
+kernel therefore has dimension 25. The checker constructs that kernel by
+seven exact F2 linear equations.
+
+#### Exact local square-class calculations
+
+At an odd rational prime, Q_p*/Q_p*² is represented by valuation parity and
+the Legendre symbol of the unit part. At 2, use valuation parity and the
+odd unit modulo 8. At the real place, use sign.
+
+For K, the primes 5,11,19 split. The checker uses the two Hensel lifts of
+s²=159 and applies the rational square-class calculation to both components.
+Precision is increased until the valuations and unit square classes are
+stable; only exact modular arithmetic is used.
+
+At 3 and 53 the extension is ramified, with uniformizer s. A class is
+specified by the parity of its uniformizer valuation and the quadratic
+character of its normalized residue in F_p.
+
+At 2 the extension is ramified, with uniformizer π=1+s and residue field F2.
+For α=a+bs, its π-valuation is v_2(N(α)). After dividing by that power of π,
+reduce the unit coefficient pair modulo 8. There are 32 unit pairs, and their
+squares are exactly
+
+    (1,0), (5,4), (7,0), (3,4).
+
+These are enumerated in the checker. Membership in these four residues is
+also sufficient for a unit to be a square: a remaining factor in 1+8O_K
+has valuation at least 6, strictly greater than 2v_π(2)=4, so Hensel's lemma
+applies. Thus the unit quotient has dimension three and the full local
+square-class group dimension four. The program verifies its multiplication
+law exhaustively. It additionally checks the local homomorphism law on every
+pair of the eleven global K generators at every relevant place.
+
+#### Local images, with a completeness certificate
+
+For odd p,
+
+    dim J_k(Q_p)/2J_k(Q_p) = dim J_k[2](Q_p).
+
+At 2 one adds g=2. This follows from the structure of the p-adic Lie group:
+its sufficiently small open subgroup is Z_p^g, and the finite quotient
+contributes the rational two-torsion. The quadratic factor of f_k remains
+irreducible at 2,3,53 and splits at 5,11,19. Thus the local dimensions are
+
+| Place | R | 2 | 3 | 5 | 11 | 19 | 53 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Dimension | 2 | 5 | 3 | 4 | 4 | 4 | 3 |
+
+At R all six branch points, including infinity, are real; the real Jacobian
+has 2² connected components, giving dimension two.
+
+The following rational x-coordinates specify the additional Q_p points used
+as local witnesses. A coordinate need not give a Q-rational point: the
+checker verifies f_k(x) is a nonzero square in the indicated local field,
+which is exactly what is required. All listed torsion witnesses are the
+classes at x=0,k,−5k. A subset suffices in the rows indicated.
+
+| k | Place | Branch-point witnesses | Additional point x values |
+|---|---|---|---|
+| −15 | R | 0,−15 | none |
+| −15 | 2 | 0,−15,75 | −100,−81 |
+| −15 | 3 | 0,−15,75 | none |
+| −15 | 5 | 0,−15,75 | −100 |
+| −15 | 11 | 0,−15,75 | −95 |
+| −15 | 19 | 0,−15,75 | −99 |
+| −15 | 53 | 0,−15 | −94 |
+| −3 | R | 0,−3 | none |
+| −3 | 2 | 0,−3,15 | −100,−95 |
+| −3 | 3 | 0,−3 | −75 |
+| −3 | 5 | 0,−3,15 | −97 |
+| −3 | 11 | 0,−3,15 | −100 |
+| −3 | 19 | 0,−3,15 | −93 |
+| −3 | 53 | 0,−3 | −100 |
+
+Every witness belongs to the genuine local Kummer image. The checker verifies
+that their square classes are independent and reach the known dimension in
+each row. They therefore span the **whole local Jacobian image**. No claim
+that all local divisor classes come from single curve points is needed, and
+no omitted degree-two divisor could enlarge these already full images.
+
+#### Linear algebra and the resulting Selmer groups
+
+For each global generator the checker computes its localization, reduces it
+modulo the certified local image, and adds the resulting homogeneous linear
+conditions. The dimensions of the surviving global space are:
+
+| Conditions imposed | Norm | + R | + 2 | + 3 | + 5 | + 11 | + 19 | + 53 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| k=−15 | 25 | 23 | 18 | 15 | 11 | 8 | 5 | 5 |
+| k=−3 | 25 | 23 | 18 | 15 | 11 | 8 | 6 | 5 |
+
+Outside S, good odd reduction identifies the local Kummer image with the
+unramified subgroup of H¹(Q_p,J_k[2]). All elements in the global space
+already have even valuation outside S. Hence there are no further local
+conditions: these are the exact two-Selmer groups, not just supersets.
+
+The program gives an explicit basis by 32-bit exponent vectors. The first
+seven bits refer to the Q(S,2) basis in the first rational coordinate, the
+next seven to the second, the next seven to the third, and the final eleven
+to the K(S,2) basis above. In this convention the five basis vectors are:
+
+    k=−15:
+    1107444881, 2160185348, 3523219480, 2445333760, 2445366784.
+
+    k=−3:
+    1673724049, 1929412628, 3523219480, 2969669888, 2428719616.
+
+They satisfy all 27 independent equations and are independent. Consequently
+both two-Selmer groups have dimension five. Since J_k(Q)[2] has dimension
+three, the Mordell–Weil rank is at most 5−3=2.
+
+#### An exact rank lower bound of two
+
+The checker first verifies the known rational points
+
+    (z,Y)=(−15/4,1425/32) for k=−15,
+    (z,Y)=(−11,1188) for k=−3,
+
+and checks that each of their global Kummer classes, together with the three
+rational branch classes, has dimension four after localization. A further
+rational degree-two divisor supplies the missing independent class.
+
+On D_−15 take the divisor cut out by
+
+    u(z)=z²−68z+361,    Y=v(z)=906z−6954.
+
+On D_−3 take the divisor cut out by
+
+    u(z)=z²−20z+361,    Y=v(z)=342z−4446.
+
+Both divisors are rational, although their individual points are conjugate.
+The discriminants of u are 3180 and −1044, respectively. The exact identities,
+with F=z(z−1)(z+5)(z²−68z−275), are
+
+    −15F−(906z−6954)²
+      = (z²−68z+361)(−15z³−60z²+9615z−133956),
+
+    −3F−(342z−4446)²
+      = (z²−20z+361)(−3z³+132z²+5379z−54756).
+
+Thus u divides kF−v² and defines an effective rational degree-two divisor E
+on D_k. Its Jacobian class is [E−2∞]. These are genuine rational Jacobian
+classes, not merely locally soluble covers or points found over an unspecified
+extension.
+
+For u(z)=z²+Az+B, the transformed monic polynomial in x is
+
+    u_x(x)=x²+kAx+k²B.
+
+The Kummer image of [E−2∞] is u_x(T), evaluated in the four factors of L.
+For the two divisors above the images are respectively
+
+    k=−15: (81225, 66150, 163350, 143100),
+    k=−3:  (3249, 3078, 4374, 20412+1296s).
+
+The checker verifies the polynomial divisibilities, evaluates these four
+coordinates directly, and checks that adjoining this class to the three
+branch classes and the known point class increases their simultaneous local
+Kummer rank from four to **five**, for each twist. Global square-class
+independence follows from local independence. Consequently
+
+    dim J_k(Q)/2J_k(Q) ≥ 5,
+    rank J_k(Q) ≥ 5 − dim J_k(Q)[2] = 2.
+
+Combined with the two-Selmer upper bound, this proves both ranks equal two.
+The same exact sequence also shows Sha(J_k/Q)[2]=0 for these two dual
+Jacobians. No assumption that the entire Tate–Shafarevich group is finite is
+needed for that assertion.
+
+#### What remains open
+
+The two selected original j=2 Jacobians also have exact rank two, by
+isogeny. Ordinary genus-two Chabauty–Coleman therefore cannot provide the
+proposed rank-one route on this pair. This is a proved obstruction to that
+specific route, not to all rational-point methods.
+
+The calculation supplies neither a fully saturated Mordell–Weil basis nor a
+complete rational-point set on the original curves. A subgroup generated by
+the displayed classes and the rational two-torsion surjects onto J_k(Q)/2J_k(Q)
+and hence has finite odd index in J_k(Q), but its index at odd primes has not
+been determined. Moreover, the original curves still require their own
+explicit Mordell–Weil data or use of the isogeny correspondence. The original
+distinct-eleven-integer PTE classification remains open.
 
 ## 6. Open boundary
 
