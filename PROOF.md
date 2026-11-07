@@ -910,15 +910,81 @@ contradicts (38). The example therefore separates the genuine rational
 splitting obstruction from the already satisfiable real-root conditions.
 
 
+### 4.10. An exact completely split Pell criterion
+
+The genus-two torsion condition is only necessary. Requiring one more
+polynomial to split gives an exact equivalence with the smallest
+remaining general support case.
+
+**Theorem 13.** A nontrivial rational ideal size-eleven pair with total
+support size fourteen exists if and only if there are polynomials
+D,T,S∈Q[x] and k∈Q\{0} such that
+
+\[
+S^2-DT^2=k^2,\qquad
+\deg D=6,\quad\deg T=8,\quad\deg S=11,
+\tag{39}
+\]
+
+where D is monic, squarefree and completely split over Q, and T also
+splits completely over Q. No prior squarefreeness or coprimality
+assumption on T is necessary; those properties follow from (39) and
+complete rational splitting.
+
+**Proof.** Suppose first that the PTE pair exists. Its monic root
+polynomials P,Q differ by C≠0. By Theorem 5, the two disjoint supports
+have eight double roots and six simple roots in total: if these numbers
+are d and s, then d+s=14 and 2d+s=22. Let U be the monic product of the
+double roots and D the monic product of the simple roots. Both split
+over Q, D is squarefree, and PQ=DU². Set S=P+Q, T=2U, and k=C.
+Then S²-DT²=(P-Q)²=C², with the required degrees.
+
+Conversely, let s be the leading coefficient of S and put
+
+\[
+P=\frac{S+k}{s},\qquad Q=\frac{S-k}{s}.
+\tag{40}
+\]
+
+These are monic degree-eleven rational polynomials with difference
+2k/s≠0, and
+
+\[
+PQ=D\left(\frac{T}{s}\right)^2.
+\]
+
+The right side splits completely over Q. Hence P and Q separately
+split over Q, and their roots give a nontrivial ideal size-eleven pair
+by the constant-difference criterion. They have disjoint supports.
+
+Theorem 5 now forces T to be squarefree and coprime to D. Indeed, a
+repeated root of T would have multiplicity at least four in PQ, while
+a common root of D and T would have multiplicity at least three.
+Disjointness would put the entire multiplicity in P or Q, contradicting
+Theorem 5. There are therefore exactly six simple roots from D and
+eight double roots from T across the two supports, giving total support
+fourteen. ∎
+
+Clearing denominators in (40) gives an integer PTE pair after scaling
+its rational roots. The theorem does not construct D,T,S, nor does it
+identify complete splitting with the existence of a rational torsion
+point alone. The exact task left is simultaneous complete rational
+splitting of D and T in (39). In the symmetric eight-value case,
+Theorem 12 gives the separate exact quintic criterion, including its
+necessary distinctness and disjointness conditions.
+
+
 ## 5. Open boundary
 
 The general size-11 existence problem remains open here. Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,
 or at least eight per side under symmetry. The remaining splitting and
-higher-genus torsion and rational splitting problems in Sections 4.5–4.9
+higher-genus torsion and rational splitting problems in Sections 4.5–4.10
 are unresolved here. Theorem 12 excludes two exceptional parameter loci
-and gives an exact quintic formulation, without increasing the support bound.
+and gives an exact quintic formulation. Theorem 13 gives an exact
+simultaneous-splitting Pell criterion for total support fourteen. Neither
+result increases the support bound or establishes existence.
 
 ## References
 
