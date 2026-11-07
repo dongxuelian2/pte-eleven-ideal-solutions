@@ -4689,6 +4689,52 @@ Equivalently, in unscaled logarithms its coefficient matrix is A/13,
 known only modulo13, not modulo13^3. No precision is gained by
 rewriting the formula.
 
+
+#### The explicit global term on the genus-three targets
+
+Use the quotient notation from5.14 and5.22: f:X->E, g:X->C,
+Richelot phi:J_C->J_D with polarized dual psi, and Z acting as
+4 on the elliptic factor and -2 on the genus-two factor.
+For a rational basepoint B0 and a rational point B on X, put
+
+    D_B=[B-B0], e_B=f_*D_B, d_B=phi*g_*D_B.
+
+Adjunction, the orthogonal projector decomposition
+D_B=(f^*f_*D_B+g^*g_*D_B)/2, and the polarization multiplier
+phi^dagger phi=[2] give the exact GLOBAL identity
+
+    h_X(D_B,ZD_B)=2h_E(e_B,e_B)-(1/2)h_D(d_B,d_B).
+
+It recovers the weights +8 and -8 on the pulled-back generators
+of5.22; it uses genuine Jacobian classes, not doubled anti-divisors.
+
+In affine cover coordinates (z,a,b) with y=ab, define normalized
+Coleman integrals from B0 to B by
+
+    e=(1/13) integral dz/(2b),
+    w1=(1/13) integral dz/(k*a*b),
+    w2=(1/13) integral z*dz/(a*b).
+
+The elliptic map X_E=2b+2z^2+280, Y_E=2zX_E pulls
+dX_E/(2Y_E) back to dz/(2b). The independently checked Richelot
+transport of5.22 gives phi^*eta_0=c_0/k and phi^*eta_1=c_1,
+where c_0=dz/y,c_1=z dz/y. Thus these are precisely the logarithms
+of e_B and d_B, divided by13; no extra factor two applies.
+
+The elliptic coefficient from5.17 satisfies
+13h_E(P,P)/log_E(P)^2=6699432669=72 modulo169.
+Consequently the explicit global quadratic term is
+
+    h_X(D_B,ZD_B)
+      =13*(144e^2-(1/2)*(w1,w2)*A_k*(w1,w2)^t) modulo2197.
+
+The orders of the good reduction groups are12 for E and176 for J_D,
+both prime to13, so e,w1,w2 are integral. All divisions by2 are units.
+This proves the stated precision for rational points. The expression
+extends analytically to local points, but this extension is not the
+local-height side of the quadratic-Chabauty equation.
+
+
 These are the genus-two GLOBAL quadratic height expressions needed
 for the genus-three product construction. The compatible genus-two
 weight is -8 as proved in5.22. They are not by themselves the functions
