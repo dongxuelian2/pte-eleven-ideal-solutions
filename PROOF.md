@@ -1242,6 +1242,115 @@ The remaining twelve types and other construction routes are not settled
 by the reductions in this section; no eleven-distinct-integer solution
 or general impossibility theorem is established.
 
+### 5.6 Effective rank computation for the sixth-mode Jacobian
+
+The sixth-mode curve C has Jacobian rank exactly seven over Q. This
+certifies a limitation of ordinary Chabauty-Coleman here, not a PTE
+nonexistence theorem or a determination of C(Q).
+
+Write its affine equation as
+
+ T(u,v)=24u^4-80u^2v^2-100u^2+80v^4+40v^2+81=0.
+
+The three sign involutions give these genus-one quotients:
+
+ E_v: y^2=-80v^4+760v^2+139, y=12u^2-20v^2-25;
+ E_u: z^2=-5(u^2-1)(u^2-19), z=10v^2-5u^2+5/2;
+ E_r: h^2=139r^4+1120r^2-1520,
+      r=u/v, h=(81/v^2-50r^2+20)/2.
+
+They are degree-two quotients by u->-u, v->-v, and simultaneous
+negation, respectively. The quartic polynomials are squarefree. The
+point (u,v)=(1,1/2) gives rational points on all three smooth projective
+models, so they are elliptic curves after choosing origins. The rational
+maps extend to morphisms of the smooth projective curves.
+
+The Jacobian of C is Q-isogenous to E_v x E_u x E_r. Indeed, the regular
+differential basis du/T_v, u du/T_v, v du/T_v has characters (-1,-1),
+(+1,-1), (-1,+1) under the two independent sign involutions. Pullbacks
+from the three elliptic quotients span these three distinct lines.
+The induced homomorphism from J(C) to the product therefore has
+invertible differential and is an isogeny.
+
+For explicit rank computations, a quartic q^2=A t^4+B t^2+C maps to
+Y^2=X(X^2+B X+AC) by X=A t^2,Y=A t q. This is a nonconstant
+morphism between genus-one curves, and hence gives an isogeny after
+choosing origins and translating the target origin. A standard
+2-isogeny then gives Y^2=X(X^2-2B X+B^2-4AC). Scaling X=s^2 x,
+Y=s^3 y with s=4,1,2 for E_v,E_u,E_r, respectively, gives models
+
+ L_v: y^2=x(x^2-95x+2430),
+ L_u: y^2=x(x^2-200x+8100),
+ L_r: y^2=x(x^2-560x+131220).
+
+These isogenies preserve Mordell-Weil rank.
+
+Here is a complete elementary 2-isogeny descent certificate, rather
+than a rank estimate from searching for points. For
+L:y^2=x(x^2+A x+B), its 2-isogenous partner is
+L':y^2=x(x^2-2A x+A^2-4B). The classical descent homomorphism alpha
+sends a point with x!=0 to its rational squareclass x, infinity to 1,
+and (0,0) to the squareclass of B. Its image is L(Q) modulo the image
+of the dual isogeny. If alpha and alpha' have image sizes m,m', then
+
+ 2^rank(L(Q))=m*m'/4.
+
+For completeness the factor four follows from composing the two
+isogenies to [2]: L(Q)/2L(Q) has order 2^rank*|L[2](Q)|, while the
+kernel correction in the two quotient indices is 4/|L[2](Q)|.
+The squareclass descent and its quartic criterion are the classical
+2-isogeny descent (see J. H. Silverman and J. Tate, *Rational Points on
+Elliptic Curves*, Springer).
+
+Every image class has a signed squarefree representative d dividing B.
+Indeed, at any prime not dividing B, the equation forces the valuation
+of x to be even; negative valuations are also even. For x=d(U/V)^2
+with coprime integers U,V, the corresponding necessary homogeneous
+quartic equation is
+
+ Z^2=d U^4+A U^2 V^2+(B/d)V^4.
+
+A rational Z here is automatically an integer. If d and B/d are both
+negative and A<=0, there is no real point. Otherwise check this equation
+modulo 256. Since U,V are coprime, either V is odd or U is odd and V is
+even. Scaling the odd coordinate to one leaves exactly the two patches
+(U,V)=(t,1) for all t modulo 256, and (1,t) for even t modulo 256;
+Z is scaled by the square of the same unit. Exhaustively checking these
+patches gives a rigorous upper bound on the descent image.
+
+The resulting bounds are attained, because the certificate supplies
+an exact rational point for every surviving class. The six exact images,
+with each partner listed immediately after its curve, are:
+
+ (-95,2430):       {1,5,6,30};
+ (190,-695):       {1,-5,139,-695};
+ (-200,8100):      {1,5,6,30};
+ (400,7600):       {1,-5,19,-95};
+ (-560,131220):    {1,5,6,30};
+ (1120,-211280):   {1,-5,19,139,-95,-695,2641,-13205}.
+
+For example, L_v has points (24,132) and (45,90), which supply classes
+6 and 5, while infinity and (0,0) supply 1 and 30. Its partner has
+(-125,1050) and (139,2502), supplying -5 and 139. All witnesses for the
+other models, together with exact curve-equation checks, are listed in
+`scripts/check_sixth_exact_ranks.py`. No point-search completeness is
+assumed: the modular exclusions give the upper bounds and the explicit
+points attain them. The image-size products are 16,16,32, so the ranks
+are exactly 2,2,3. Consequently
+
+ rank J(C)(Q)=2+2+3=7.
+
+The dependency-free certificate verifies the complete squareclass
+lists, real/modulo-256 exclusions, every witness, the partner models,
+and the normalization from the quartic coefficients. The companion
+`scripts/check_sixth_rank_maps.py` checks the quotient identities and
+squarefreeness using SymPy.
+
+Since genus(C)=3, the ordinary Chabauty-Coleman rank<genus hypothesis
+fails. This does not rule out covering methods, other refinements of
+Chabauty, or another proof. No complete C(Q), effective height bound,
+valid size-eleven pair, or general impossibility result follows.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
