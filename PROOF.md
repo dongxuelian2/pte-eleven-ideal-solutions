@@ -3173,7 +3173,32 @@ At 11 both P and T are nonsingular, so all rational points are in E_0 there.
 This argument concerns component classes attained by E(Q). It does not
 claim to determine the entire geometric component group at every prime.
 
-#### 6. The local 13-adic double integral and its error bound
+##
+### 5.30. Complete away-prime targets and certified infinity projection
+
+The follow-up proofs [COMPLETE_AWAY_TARGETS.md](COMPLETE_AWAY_TARGETS.md) and
+[INFINITY_PROJECTION.md](INFINITY_PROJECTION.md) close the two local gaps at 2 and 3
+and compute the infinity de Rham projection modulo 13³. Both received independent
+mathematical and computational review.
+
+For the published correspondence and rho=h13−global, the exact away target sets are
+Ω1={0,−1/6,−2/3} log13(3) and
+Ω5={0,1/2,2/3,−4/3} log13(3).
+Their residues modulo2197 are {0,1482,1534} and {0,2145,663,871}.
+The dyadic contribution vanishes by an analytic two-disc argument; no full wild
+regular model is claimed. The 3-adic proof includes exhaustive local accessibility
+and an independent intersection calibration fixing the scalar and sign.
+
+The certified infinity projections and holomorphic corrections use the fixed
+compatible complement, with a rigorous omitted-Frobenius-tail bound. Executable
+certificates are scripts/check_complete_away_targets.py and
+scripts/check_infinity_projection.py.
+
+These results concern only the two sixth-mode genus-three curves. The moving
+normalized QC functions, certified root isolation and final sieve remain open.
+No classification of rational points or solution of the original PTE problem is claimed.
+
+## 6. The local 13-adic double integral and its error bound
 
 Put t=−X/Y and write X=u(t)/t². The equation gives
 
