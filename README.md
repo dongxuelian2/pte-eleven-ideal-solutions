@@ -43,13 +43,19 @@ whose three roots must be rational squares. Their discriminants give
 four explicit smooth genus-two curves. Faltings's theorem implies
 finitely many normalized valid configurations in those four types,
 but does not enumerate them or prove their absence. The known control
-points are trivial A=B and are rejected. The other fourteen types and
-other construction routes are not settled by these reductions.
+points are trivial A=B and are rejected.
 
-The exact certificate requires SymPy:
+A fifth type reduces to an explicit smooth plane quartic of genus three,
+with a displayed elliptic quotient. It also has finitely many normalized
+valid configurations, without a complete rational-point classification.
+The other thirteen types and other construction routes are not settled
+by these reductions.
+
+The exact certificates require SymPy:
 
 ```sh
 python3 scripts/check_shift_chains.py
+python3 scripts/check_fifth_mode.py
 ```
 
 ## Ancillary multiset results
