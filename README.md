@@ -104,10 +104,16 @@ rigorous root isolation and the final point-completeness sieve remain.
 The covers need not contain every point of the original genus-two curves,
 and their points must still pass the remaining PTE conditions.
 
+Exact de Rham inputs are now explicit: a full rational basis, signed cup
+matrix, holomorphic-first symplectic normalization and the genuine
+trace-zero correspondence. A symbolic Frobenius-projector identity and all
+twelve reduction discs at 13 are checked. No Frobenius matrix, p-adic
+logarithm, height, isolated QC root or completed sieve has been computed.
+
 The other twelve types and other construction routes are not settled
 by these reductions.
 
-The polynomial certificates require SymPy; the exact-rank descent
+The polynomial and de Rham certificates require SymPy; the exact-rank descent
 and generator-saturation certificates are dependency-free:
 
 ```sh
@@ -124,6 +130,7 @@ python3 scripts/check_center_cover_rank_obstruction.py
 python3 scripts/check_genus_two_richelot_certificate.py
 python3 scripts/check_richelot_two_selmer.py
 python3 scripts/check_genus_three_qc_targets.py
+python3 scripts/check_genus_three_qc_de_rham.py
 ```
 
 ## Ancillary multiset results
