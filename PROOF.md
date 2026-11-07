@@ -3767,6 +3767,172 @@ height block, genus-three QC function, root isolation and final
 completeness sieve still remain unfinished. No original PTE solution or
 general exclusion is claimed.
 
+
+### 5.21 Dyadic terms and complete away-from-13 height inputs
+
+All six dyadic mixed local heights for the fixed divisors of 5.18 are zero.
+This completes every non-13 finite contribution needed for those three
+mixed pairings on each genus-two curve. It does not compute their normalized
+13-adic integrals, and hence does not complete the global height block.
+
+The certificate is `scripts/check_genus_two_dyadic_heights.py`.
+The regular coordinates, component degrees, exact quadratic-field
+valuations and signed intersection cancellation were independently checked.
+Only existing SymPy is used.
+
+#### k=-3: smooth neighborhoods suffice
+
+For a=1 and a=3, set x=a+4t,y=4Y. The polynomial f_-3(a+4t)/16 has integral
+coefficients and reduces to t+1 modulo 2. Therefore the resulting affine
+model Y^2=f_-3(a+4t)/16 is smooth everywhere on its special fiber: the
+derivative with respect to t is a unit. Its geometrically irreducible
+component is preserved by iota, which sends Y to -Y.
+
+P=(33,10692) lies in the a=1 chart. The odd root of u_R lies in the a=3
+chart: u_R(1)=594 has valuation one and u_R'(1)=67 is odd. Its ordinate
+is divisible by four. The other R root lies at the smooth point x=0 of
+the original integral model. The polynomial u_R reduces to x(x+1), so
+these are unramified local sections.
+
+For Q, writing x=1+d gives a quadratic whose constant and linear
+coefficients have valuations one and one. Its Newton polygon gives
+v_2(d)=1/2 for both roots. Thus neither Q point lies in any of the above
+smooth neighborhoods. P and R occupy distinct neighborhoods as well.
+
+These charts may be included in one proper regular model by dominating
+the corresponding blowups and resolving elsewhere. D_P and D_R have
+degree zero on every component, since each point and its hyperelliptic
+conjugate meet the same invariant component. Their vertical corrections
+can therefore be taken to be zero. All their horizontal intersections
+with the other divisors are empty. Using symmetry for the Q/R pairing
+proves that all three local heights vanish. We do not need to determine
+Q's own vertical correction.
+
+#### k=-15: the two pairings involving P
+
+Here v_2(x(P))=-2 and v_2(y(P))=-5. In the infinity chart v=1/x,h=y/x^3,
+the equation is
+
+    h^2=v+960v^2-124200v^3+2565000v^4+69609375v^5.
+
+Its derivative with respect to v at infinity is a unit, so this is a
+smooth neighborhood. Both P and iota(P) meet that same invariant
+component. The monic u_Q,u_R have integral odd roots and reduce to
+(x+1)^2; their supports remain finite and cannot meet this infinity
+neighborhood on a dominating regular model.
+
+Thus D_P has zero component degree, its vertical correction is zero,
+and the P/Q and P/R horizontal intersections are empty. Both local
+heights vanish.
+
+#### k=-15: the remaining Q/R pairing on a wild regular chart
+
+Let L=Q_2(r), r^2=11, and pi=1+r. This is a ramified quadratic extension
+with uniformizer pi. Normalize v_L(pi)=1, so v_L(2)=2.
+The field also contains the Q support: 795/11 is 1 modulo 8 and is a
+square in Q_2. Choose c with c^2=795/11 and c=1 modulo 8. This last
+choice is possible because the ratio is 1 modulo 16.
+
+Write
+
+    x_Q=-510 plus or minus 15cr,
+    x_R=138 plus or minus 27r,
+    a=138+27r.
+
+Set X=(x-a)/pi^2 and Y=y/pi^3. Exact arithmetic in Q[r]/(r^2-11) gives
+the valuations of the Taylor coefficients f_-15^(j)(a)/j!, for j=0,...,5:
+
+    [6,4,2,2,0,0].
+
+After multiplication by pi^(2j-6), these are
+
+    [0,0,0,2,2,4].
+
+The first three coefficients reduce to one. Consequently the integral
+model
+
+    Y^2=f_-15(a+pi^2 X)/pi^6
+
+reduces to Y^2=1+X+X^2. The derivative with respect to X is one.
+Thus the entire affine special fiber is smooth and geometrically
+irreducible. Its component is preserved by iota.
+
+All Q and R support points and their hyperelliptic conjugates lie in
+this chart. For R this follows directly from its displayed roots and
+v_L(y_R)=3. For Q, its x-distances from a have valuations four and two;
+also v_L(y_Q)=3, checked by the exact quadratic-field norm. Thus their
+X,Y coordinates are integral. Every D_Q,D_R component degree is zero,
+so vertical corrections vanish.
+
+For completeness the intersection lengths can be obtained without an
+approximate quadratic root. Matched signs of Q/R give
+
+    x_Q-x_R=-648 plus or minus (15c-27)r,
+
+of 2-adic valuation two; mismatched signs have valuation one because
+15c+27 has valuation one. Mismatched points therefore have distinct
+reductions in X and cannot intersect.
+
+For a matched pair put q=x_Q and d=x_R-x_Q, so v_2(q)=0, v_2(d)=2.
+The ordinate formulas give
+
+    y_R-y_Q=5796q-7794d+1971000,
+    y_R+y_Q=-21384q-7794d-1158300.
+
+In the first line the three term valuations are 2,3,3; in the second
+they are 3,3,2. Thus both differences have valuation exactly two, or
+v_L=4. Both points reduce to the same smooth point of the displayed
+chart. Since the derivative with respect to X is a unit, Y is a local
+parameter. Its same-sheet and opposite-sheet differences both have
+valuation 4-3=1. The signed intersections cancel, for each matched
+pair. Hence the local height over L is zero; local-height base change
+gives zero over Q_2 as well.
+
+This uses a regular model and signed intersections, not a claim that
+naive singular-model resultant valuations give local heights.
+
+#### Complete away-from-13 input
+
+Let U_away,V_away,W_away denote the sums of the finite local mixed
+pairings for (D_P,D_Q),(D_P,D_R),(D_Q,D_R), respectively, over ALL
+primes other than 13. Combining 5.18–5.21 gives the exact formulas
+
+    k=-15:
+      U_away=-2log13(17)-2log13(593),
+      V_away=-2log13(5),
+      W_away=2log13(7)+2log13(19)+2log13(313).
+
+    k=-3:
+      U_away=-log13(3),
+      V_away=2log13(19),
+      W_away=-2log13(29)-2log13(31).
+
+With the same branch log13(13)=0 as before, the certified residues
+modulo 13^10 are
+
+    k=-15: (76380091502, 69520774258, 79405079481);
+    k=-3:  (24898284736, 34648651414, 71972655326).
+
+For each unit q in these formulas the checker uses
+log13(q)=log(q^12)/12. The log(1+z) terms have valuations at least
+j-v_13(j); terms after j=12 have valuation at least 12. Calculating z
+modulo 13^12 and using exact rational sums therefore certifies the
+residues modulo 13^10. A separate computation at precision 13^20
+reduces to the same values. No floating-point approximation is used.
+
+If U_13,V_13,W_13 are the still-uncomputed normalized 13-adic mixed
+integrals, the global reconstruction of 5.18 applies to
+U=U_13+U_away, V=V_13+V_away, W=W_13+W_away. The away sums depend on
+these divisor representatives and must not be substituted for intrinsic
+local generator heights under a different representative choice.
+
+All finite-prime inputs away from 13 for these pairings are now complete.
+The missing arithmetic is normalized 13-adic third-kind integration with
+the compatible splitting and Richelot transport. The genus-two global
+height block, full genus-three QC function, certified roots and final
+completeness sieve remain unfinished. The original distinct-entry
+size-eleven problem is not solved.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
