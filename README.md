@@ -116,8 +116,8 @@ the elliptic factor supplies the third independent logarithm.
 The known subgroups are 13-saturated, proved both from the logarithm
 lattice and independently from reductions at 181 and 199. This does
 not provide explicit transported divisor coordinates or a full
-target-basis logarithm matrix. No Frobenius matrix, full genus-three height,
-isolated QC root or completed point-completeness sieve has been computed.
+target-basis logarithm matrix. No full genus-three height, isolated QC root
+or completed point-completeness sieve has been computed.
 
 Section 5.17 now computes the elliptic-factor Coleman–Gross height for the
 specified quotient splitting: h(P,P)=59106874840+O(13^10). Exact formal
@@ -141,8 +141,16 @@ contribution outside {2,13} is known for these representatives. Section 5.21
 now resolves the dyadic terms too: all six vanish, using explicit smooth
 charts and same/opposite-sheet cancellation over a ramified quadratic field.
 All away-from-13 mixed-height inputs are therefore complete, with certified
-13-adic residues. Normalized integrals at 13 and compatible splitting
-transport remain missing; no complete global height block is claimed.
+13-adic residues.
+
+Section 5.22 now makes the Richelot splitting transport explicit, including
+the full de Rham matrix, exact primitives, cup scaling and compatible
+height weighting. Section 5.23 computes both genus-two Frobenius matrices
+modulo 13^3 with a proved infinite-tail bound. Independent exact-rational
+and modular algorithms agree, as do cup and quadratic-twist checks.
+The compatible splitting is therefore known. Reduction-primitive endpoint
+evaluation and normalized third-kind integrals at 13 remain missing;
+no complete global height block or QC function is claimed.
 
 The other twelve types and other construction routes are not settled
 by these reductions.
@@ -172,6 +180,8 @@ python3 scripts/check_genus_two_mixed_heights.py
 python3 scripts/check_genus_two_semistable_heights.py
 python3 scripts/check_genus_two_odd_local_heights.py
 python3 scripts/check_genus_two_dyadic_heights.py
+python3 scripts/check_richelot_de_rham_transport.py
+python3 scripts/check_genus_two_frobenius13.py
 ```
 
 ## Ancillary multiset results
