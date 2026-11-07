@@ -62,13 +62,19 @@ existence.
 Adding the third center-square condition gives an explicit genus-nine
 cover with a rank-one elliptic projection. A birational map and exact
 2-isogeny descent certify the projection. The simultaneous-square lifts,
-remaining singleton roots and collision tests are not classified; no
-Mordell-Weil generator or complete rational-point set is claimed.
+remaining singleton roots and collision tests are not classified.
+
+The elliptic projection's full group is now certified as
+Z·(180,900) plus the order-two point (0,0). An explicit height inequality
+forces any missing generator below scaled height 24, where an exhaustive
+exact check rules it out. Thus all elliptic candidates are integer
+multiples of the certified generator, with an optional torsion translate.
+Which candidates satisfy all lifting conditions remains unresolved.
 The other twelve types and other construction routes are not settled
 by these reductions.
 
 The polynomial certificates require SymPy; the exact-rank descent
-certificate is dependency-free:
+and generator-saturation certificates are dependency-free:
 
 ```sh
 python3 scripts/check_shift_chains.py
@@ -77,6 +83,7 @@ python3 scripts/check_sixth_mode.py
 python3 scripts/check_sixth_rank_maps.py
 python3 scripts/check_sixth_exact_ranks.py
 python3 scripts/check_sixth_center_lift.py
+python3 scripts/check_rank_one_generator.py
 ```
 
 ## Ancillary multiset results
