@@ -32,15 +32,20 @@ size-11 ideal pair has:
 
 - Disjoint supports, with multiplicity at most two for every entry.
 - Ten distinct real zeros of the common derivative of its root polynomials.
-- At least thirteen distinct values in the two supports combined. The
-  extreme six/six support pattern forces an affine Chebyshev polynomial,
-  whose required quintic factor has no rational root.
-- At least seven distinct values per side if the pair is symmetric.
+- At least fourteen distinct values in the two supports combined.
+  Six/six forces an irrational Chebyshev factor; six/seven forces a
+  rational elliptic point of order 11, excluded by Mazur's theorem.
+- At least eight distinct values per side if the pair is symmetric.
+  The seven/seven pattern descends explicitly to a quartic polynomial
+  Pell equation and yields the same elliptic torsion contradiction.
+- An exact higher-genus Pell/Jacobian reduction for the remaining patterns.
+  The smallest remaining cases reach genus two, where the elliptic
+  obstruction alone no longer applies.
 
 These are unconditional necessary conditions for the multiset problem.
 They do not prove existence, global nonexistence, or attainment of the
-support bound. The Chebyshev/Pell argument is classical in mechanism;
-no novelty claim is made.
+support bound. The Chebyshev and Pell/torsion mechanisms are classical; Mazur's
+established torsion theorem is cited explicitly. No novelty claim is made.
 
 ## Established conditional results
 
