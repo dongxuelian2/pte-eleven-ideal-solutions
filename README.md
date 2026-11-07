@@ -116,8 +116,15 @@ the elliptic factor supplies the third independent logarithm.
 The known subgroups are 13-saturated, proved both from the logarithm
 lattice and independently from reductions at 181 and 199. This does
 not provide explicit transported divisor coordinates or a full
-target-basis logarithm matrix. No Frobenius matrix, p-adic height,
+target-basis logarithm matrix. No Frobenius matrix, full genus-three height,
 isolated QC root or completed point-completeness sieve has been computed.
+
+Section 5.17 now computes the elliptic-factor Coleman–Gross height for the
+specified quotient splitting: h(P,P)=59106874840+O(13^10). Exact formal
+series and rigorous tail bounds agree through 6P, 12P and 24P. The nonzero
+away-from-13 contribution and all rational elliptic-point component
+corrections are explicit. The genus-two height block, full genus-three
+local contributions, QC roots and completeness sieve remain uncomputed.
 
 The other twelve types and other construction routes are not settled
 by these reductions.
@@ -142,6 +149,7 @@ python3 scripts/check_genus_three_qc_targets.py
 python3 scripts/check_genus_three_qc_de_rham.py
 python3 scripts/check_thirteen_logarithms.py
 python3 scripts/check_thirteen_saturation.py
+python3 scripts/check_elliptic_height13.py
 ```
 
 ## Ancillary multiset results
