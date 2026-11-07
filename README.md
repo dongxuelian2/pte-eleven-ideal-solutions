@@ -1,8 +1,11 @@
 # Ideal Prouhet–Tarry–Escott Solutions of Size 11
 
-**Research target:** The existence or obstruction of a nontrivial ideal Prouhet–Tarry–Escott (PTE) solution with 11 terms on each side.
+**Research target:** Construct two disjoint sets of eleven distinct integers
+forming an ideal Prouhet–Tarry–Escott (PTE) solution, or prove general
+nonexistence.
 
-Find integer multisets \(A=\{a_1,\ldots,a_{11}\}\) and \(B=\{b_1,\ldots,b_{11}\}\) such that
+Find integer sets \(A=\{a_1,\ldots,a_{11}\}\) and \(B=\{b_1,\ldots,b_{11}\}\),
+with all eleven entries distinct on each side and \(A\cap B=\varnothing\), such that
 \[
 \sum_{i=1}^{11}a_i^k=\sum_{i=1}^{11}b_i^k \qquad (k=1,\ldots,10),
 \]
@@ -24,7 +27,11 @@ Research arguments go in [`PROOF.md`](PROOF.md). Introduce programs only for mat
 
 **Status:** Open research target; no size-11 ideal solution or general impossibility theorem is claimed.
 
-## General multiset results
+**Scope:** Section 3 gives conditional results for distinct-entry symmetric
+families. Section 4 studies a multiset relaxation. Its repeated-root and
+support results do not solve or exclude the original distinct-entry task.
+
+## Ancillary multiset results
 
 [PROOF.md, Section 4](PROOF.md#4-general-multiset-restrictions) proves, without
 symmetry or distinct-entry assumptions, that every nontrivial rational
@@ -61,7 +68,9 @@ size-11 ideal pair has:
   This is an equivalence with simultaneous splitting, not with torsion
   alone, and supplies no integer solution.
 
-These are unconditional necessary conditions for the multiset problem.
+These are necessary conditions or exact reformulations within the multiset
+relaxation. In particular, the repeated-root boundary cases do not meet
+the original requirement of eleven distinct entries on each side.
 They do not prove existence, global nonexistence, or attainment of the
 support bound. The Chebyshev and Pell/torsion mechanisms are classical; Mazur's
 established torsion theorem is cited explicitly. No novelty claim is made.
@@ -82,7 +91,7 @@ disjoint pairs on one side sharing a common center:
 - **Three pairs:** 29 divides C, using the published CMSV local classification.
 
 These are necessary conditions for restricted subclasses, not an integer
-construction or a nonexistence proof for the general multiset problem.
+construction or a nonexistence proof for the original distinct-entry problem.
 This transfer makes no new novelty or record claim.
 
 Run the exact certificates with Python 3.8 or newer, without dependencies:
