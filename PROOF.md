@@ -1142,13 +1142,48 @@ The finiteness input is the established theorem of G. Faltings,
 Inventiones Mathematicae 73 (1983), 349-366,
 https://doi.org/10.1007/BF01388432.
 
+### 5.4 A fifth mode: a smooth plane quartic
+
+This gives a fifth normalized finiteness result, not a distinct size-eleven construction or an exclusion of the mode.
+
+Consider m=1, aa=(1,3), bb=(1,1,3). The centered A chain is {-1/2,1/2}. Let the length-three A and B chain centers be +/-u and +/-v, and the A singleton centers +/-w. Put a=u^2,b=v^2,c=w^2. The two B singleton-center squares must have power sums
+ p_k=4^(-k)+sum_{d=-1}^1 (u+d)^(2k)+c^k-sum_{d=-1}^1(v+d)^(2k), k=1,2,3,4.
+Set e1=p1,e2=(p1^2-p2)/2. Their quadratic is X^2-e1 X+e2. The remaining two Newton conditions are
+ F=p3-e1*p2+e2*p1=0, G=p4-e1*p3+e2*p2=0.
+Exact expansion shows
+ F=3(a-b)[4a^2-32ab+12ac-29a+40b^2-24bc+106b-21c+34]/4.
+The factor a=b forces overlap of the two length-three pairs and is invalid.
+Write D=4a-8b-7. If D=0, F/(a-b)=-3(4b-9)(4b-1)/8, so b=1/4 or9/4. Either v=+/-1/2 or+/-3/2 puts a B length-three point at +/-1/2, an A vertex. Thus D!=0 for any valid input, and
+ c=-(4a^2-32ab-29a+40b^2+106b+34)/(3D).
+Substitution in the other Newton condition gives
+ G/(a-b)=2[(a-b-1)^2-4b]H/(3D),
+ H=8a^2-40ab-58a+80b^2+50b+95.
+The bracketed factor is [u^2-(v+1)^2][u^2-(v-1)^2], again forcing overlap of the length-three chains. Therefore H=0 is necessary.
+
+Consequently (u,v) gives a rational point on the projective plane quartic
+ T(U,V,W)=8U^4-40U^2V^2-58U^2W^2+80V^4+50V^2W^2+95W^4=0,
+with W!=0, u=U/W,v=V/W.
+This quartic is smooth even over the algebraic closure. Write T as a quadratic in U^2,V^2,W^2 with symmetric derivative matrix
+ M=[[16,-40,-58],[-40,160,50],[-58,50,190]].
+At a singular projective point, the nonzero coordinates' squares would lie in the kernel of the corresponding principal submatrix. All nonempty principal minors are nonzero: diagonal entries 16,160,190; two-by-two minors 960,-324,27900; determinant -163840. No singular point exists. A smooth plane quartic is geometrically integral and has genus 3. Faltings therefore gives finitely many rational points, hence finitely many normalized valid configurations in this fifth mode. Indeed a,b determine c, and the quadratic fixes the other two squared centers, leaving finitely many sign choices.
+
+A rational point alone is not sufficient: a,b,c must be rational squares; the quadratic must split into rational squares; and all twenty input vertices must be distinct with no cross-color unit edge. The visible points (u,v)=(3/2,1/2),(5/2,3/2) belong to the excluded D=0 branch. No complete rational-point determination is claimed.
+
+For effective arithmetic, one elliptic quotient is
+ y^2=-240v^4+760v^2+81, y=8u^2-20v^2-29.
+This may assist a future descent or elliptic Chabauty computation, but neither ranks nor a complete point set have been certified here. The necessary quartic has genuine rational points, so a simple local-solubility obstruction cannot exclude the whole projective curve.
+
+The exact SymPy certificate `scripts/check_fifth_mode.py` checks the
+elimination identities, exceptional branch, principal minors, quotient
+identity, and excluded control points.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
 of disjoint eleven-element integer sets and no general impossibility proof
 has been established. Section 5 gives a distinct-entry shift-lift reduction and
-normalized finiteness for four of eighteen chain types; it does not classify
-the required genus-two rational points. Section 3
+normalized finiteness for five of eighteen chain types; it does not classify
+the required genus-two and genus-three rational points. Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,
 or at least eight per side under symmetry. The remaining splitting and
