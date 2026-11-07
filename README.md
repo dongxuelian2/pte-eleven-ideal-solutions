@@ -48,7 +48,11 @@ points are trivial A=B and are rejected.
 A fifth type reduces to an explicit smooth plane quartic of genus three,
 with a displayed elliptic quotient. It also has finitely many normalized
 valid configurations, without a complete rational-point classification.
-The other thirteen types and other construction routes are not settled
+A sixth type also maps to a smooth genus-three quartic. Its explicit
+nonexceptional rational point recovers a nonsquare center, showing why
+a rational quartic point alone is insufficient. This gives normalized
+finiteness, not a solution or an effective point classification.
+The other twelve types and other construction routes are not settled
 by these reductions.
 
 The exact certificates require SymPy:
@@ -56,6 +60,7 @@ The exact certificates require SymPy:
 ```sh
 python3 scripts/check_shift_chains.py
 python3 scripts/check_fifth_mode.py
+python3 scripts/check_sixth_mode.py
 ```
 
 ## Ancillary multiset results
