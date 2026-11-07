@@ -376,9 +376,130 @@ bound supported by small exact finite-field certificates. There is no
 large integer search, no floating-point candidate, and no claim that
 finite computations alone settle the unrestricted problem.
 
-## 4. Open boundary
+## 4. General multiset restrictions
 
-The general size-11 existence problem remains the target; restrictions to symmetric constructions do not settle it.
+Unlike Section 3, this section assumes neither symmetry nor distinct entries.
+All statements apply to rational multisets and therefore to integer multisets.
+They are structural restrictions, not a solution of the existence problem.
+The extremal argument is the classical polynomial Chebyshev/Pell mechanism;
+no novelty claim is made.
+
+### 4.1. Repetitions and critical points
+
+**Theorem 5.** Let A and B be nontrivial ideal size-eleven rational
+multisets. Their supports are disjoint, no entry has multiplicity greater
+than two, and their common derivative has ten distinct real zeros.
+Consequently each side has at least six distinct entries.
+
+**Proof.** Write P=P_A and Q=P_B=P-C, where C is nonzero. A common
+root would give C=0. Both polynomials split over the reals.
+For either root polynomial R and any real r outside its roots,
+
+\[
+\left(\frac{R'}R\right)'(r)
+=-\sum_{z\in R^{-1}(0)}\frac{m_z}{(r-z)^2}<0,
+\tag{12}
+\]
+
+where m_z is the root multiplicity. If P has a root r of multiplicity
+at least three, then Q(r)=-C is nonzero but Q'(r)=Q''(r)=0,
+contradicting (12). The same argument applies to Q.
+
+Rolle's theorem, including multiplicities, shows that all ten zeros of
+P' are real. At any such zero r, at least one of P(r),Q(r) is nonzero.
+Apply (12) to that polynomial: since its first derivative is zero,
+its second derivative is nonzero. Thus every zero of P' is simple.
+The support bound follows from eleven entries of multiplicity at most two. ∎
+
+### 4.2. The six/six case is impossible over the rationals
+
+**Theorem 6.** In Theorem 5 the two supports cannot both have size six.
+Thus the disjoint union of the supports has at least thirteen elements.
+In particular, a symmetric rational solution B=2h-A must have at least
+seven distinct entries on each side.
+
+**Proof.** If each support has size six, the multiplicity bound forces
+five double roots and one simple root on each side. Hence
+
+\[
+P(x)=(x-a)U(x)^2,\qquad Q(x)=(x-b)V(x)^2,
+\tag{13}
+\]
+
+where a,b are rational and U,V are monic degree-five polynomials with
+rational roots. Disjointness gives a≠b and gcd(U,V)=1.
+Each of U,V divides P'=Q'. Degree and leading coefficient then give
+P'=11UV, and therefore
+
+\[
+(x-a)(x-b)P'(x)^2=121P(x)(P(x)-C).
+\tag{14}
+\]
+
+Set m=(a+b)/2, d=(b-a)/2, x=m+dt, and
+F(t)=(2P(m+dt)-C)/C. Then d≠0, and (14) becomes
+
+\[
+(t^2-1)F'(t)^2=121(F(t)^2-1).
+\tag{15}
+\]
+
+Differentiate this polynomial identity and cancel the nonzero polynomial
+2F'. This gives
+
+\[
+(t^2-1)F''+tF'=121F.
+\tag{16}
+\]
+
+The polynomials satisfying (16) form a one-dimensional space spanned by
+the Chebyshev polynomial T_11. Indeed, T_11 satisfies (16), as follows
+from T_11(cos θ)=cos(11θ). If another solution has degree at most eleven,
+subtract a multiple of T_11 to cancel its leading coefficient. A nonzero
+remainder of degree j<11 would have leading coefficient multiplied by
+j²-121 in (16), a contradiction. Thus F=kT_11. Since x=b corresponds
+to t=1 and P(b)=C, we have F(1)=1, so k=1.
+
+The exact factorization
+
+\[
+T_{11}(t)+1=(t+1)
+(32t^5-16t^4-32t^3+12t^2+6t-1)^2
+\tag{17}
+\]
+
+now contradicts rational splitting of P. To see this without any
+algebraic-number classification, let
+h(t)=32t^5-16t^4-32t^3+12t^2+6t-1.
+A rational root in lowest terms has denominator dividing 32, by the
+rational-root theorem, and can therefore be reduced modulo 3. But
+
+\[
+h(0)\equiv2,\qquad h(1)\equiv1,\qquad h(2)\equiv1\pmod3.
+\]
+
+Thus h has no rational root. Since F+1=2P(m+dt)/C and the affine change
+has rational coefficients with nonzero slope, rational splitting of P
+would force h to split over the rationals, which is impossible.
+
+Each support has at least six elements by Theorem 5, so excluding six/six
+gives the bound thirteen. Reflection preserves support size; hence a
+symmetric pair must have at least seven on each side. ∎
+
+The rationality hypothesis in Theorem 6 is essential. The two real
+fibers T_11(t)+1 and T_11(t)-1, after division by their common leading
+coefficient 1024, are monic degree-eleven polynomials differing by a
+nonzero constant. Both split over the reals, and each has precisely
+six distinct roots. They furnish a real extremal example, not a rational
+or integer PTE construction. Theorem 6 does not assert that the bound
+thirteen is attained over the rationals.
+
+## 5. Open boundary
+
+The general size-11 existence problem remains open here. Section 3
+restricts symmetric distinct-entry constructions. Section 4 applies to
+the unrestricted multiset formulation, but leaves all patterns with
+at least thirteen distinct entries in the two supports unresolved.
 
 ## References
 
