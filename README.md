@@ -77,15 +77,21 @@ therefore has scaled elliptic-coordinate height H(x/270)>10^3298.
 This is not a bound on the original integer entries or a global exclusion.
 A finite covering descent gives eight explicit genus-two quotient models,
 with squareclass 1 or 5 fixed by the parity of n. All eight Jacobians
-have certified positive rank and are Q-simple; their exact ranks and
-complete rational-point sets remain unproved.
+have certified positive rank and are Q-simple. Exact ranks for the six
+curves with j other than 2 and all complete rational-point sets remain
+unproved.
 
 The genus-nine center cover itself has Jacobian rank at least twelve,
 so ordinary Chabauty does not apply there either. For the j=2 genus-two
 pair, explicit Richelot duals have torsion exactly (Z/2)^3 and known
-infinite-order classes. Rank upper bounds and sufficient Mordell-Weil
-data on the original targets are still needed. An isogeny of Jacobians
-does not identify the two curves' rational-point sets.
+infinite-order classes. Full two-descent now computes both dual 2-Selmer
+groups with dimension five; explicit independent divisor classes prove
+both ranks exactly two. The same exact ranks hold for the original j=2
+Jacobians, so ordinary genus-two Chabauty fails its rank condition here.
+For the duals, Sha[2]=0 and the displayed subgroup has finite odd index.
+Odd-prime saturation and complete original-curve point sets are not
+certified. An isogeny of Jacobians does not identify the two curves'
+rational-point sets.
 The other twelve types and other construction routes are not settled
 by these reductions.
 
@@ -104,6 +110,7 @@ python3 scripts/check_lift_congruences.py
 python3 scripts/check_sixth_genus_two_covers.py
 python3 scripts/check_center_cover_rank_obstruction.py
 python3 scripts/check_genus_two_richelot_certificate.py
+python3 scripts/check_richelot_two_selmer.py
 ```
 
 ## Ancillary multiset results
