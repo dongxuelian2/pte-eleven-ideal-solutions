@@ -2,7 +2,13 @@
 
 ## 1. Problem
 
-Seek integer multisets \(A,B\) of size 11, not equal as multisets, with equal power sums of orders 1 through 10. State explicitly if a subproblem additionally requires all entries on each side to be distinct.
+The principal task is to construct two disjoint sets \(A,B\subset\mathbb Z\),
+each containing eleven distinct integers, with equal power sums of orders
+1 through 10, or prove that no such pair exists.
+
+Section 4 also studies the broader multiset relaxation, where repeated
+entries are allowed. Its results on repeated-root patterns are ancillary:
+they do not solve or exclude the principal distinct-entry problem.
 
 Equivalently, for monic polynomials
 \[
@@ -30,14 +36,14 @@ These proofs and exact certificates are transferred from
 [ddy314/pte-order11-research, draft PR #1](https://github.com/ddy314/pte-order11-research/pull/1)
 ([source revision](https://github.com/ddy314/pte-order11-research/tree/011cf4b8681817bacc1f889b1f8fd8cf9b83123d)).
 This is a consolidation of that work, not a new result. The source's
-literature attribution and theorem hypotheses are retained. Unlike the
-general multiset target above, every result below assumes distinct entries
-and symmetry B = -A after an integer translation, together with the stated
+literature attribution and theorem hypotheses are retained. These results
+address the distinct-entry target only under the additional assumption
+of symmetry B = -A after an integer translation, together with the stated
 number of common-center pairs.
 
 ### 3.1. Problem and status
 
-For this section only, require disjoint sets A,B of eleven distinct integers such that
+In this section, let A,B be disjoint sets of eleven distinct integers such that
 
 \[
 \sum_{a\in A}a^j=\sum_{b\in B}b^j \qquad(1\le j\le10).
@@ -378,9 +384,12 @@ finite computations alone settle the unrestricted problem.
 
 ## 4. General multiset restrictions
 
-Unlike Section 3, this section assumes neither symmetry nor distinct entries.
+This section studies a multiset relaxation, allowing repeated entries.
 All statements apply to rational multisets and therefore to integer multisets.
-They are structural restrictions, not a solution of the existence problem.
+The multiplicity and support exclusions do not exclude the principal case
+of eleven distinct entries per side, and the repeated-root constructions
+here would not satisfy that task. They are ancillary structural results,
+not a solution of the principal existence problem.
 The extremal argument is the classical polynomial Chebyshev/Pell mechanism;
 no novelty claim is made.
 
@@ -976,7 +985,9 @@ necessary distinctness and disjointness conditions.
 
 ## 5. Open boundary
 
-The general size-11 existence problem remains open here. Section 3
+The original distinct-entry size-11 problem remains unsolved here: no pair
+of disjoint eleven-element integer sets and no general impossibility proof
+has been established. Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,
 or at least eight per side under symmetry. The remaining splitting and
