@@ -168,6 +168,16 @@ global height blocks, not the local genus-three QC functions: basepoint
 normalization, allowed finite local-value sets, root isolation and the final
 rational-point sieve remain unfinished.
 
+Sections 5.28--5.29 supply the corrected curve-level QC divisor, including
+the basepoint-dependent linear term, and an explicit rational differential
+with the required infinity cases. Exact regular-model and graph-symmetry
+arguments show that BOTH curves have local target {0} at5,11,19,53;
+all other good primes also contribute zero. Only the finite target sets
+at2 and3 remain. These conclusions concern the correctly normalized
+curve-level height, not the earlier generator-pair local contributions.
+The moving13-adic de Rham projection, certified QC series, roots and
+final sieve remain uncomputed. No size-eleven solution is claimed.
+
 The other twelve types and other construction routes are not settled
 by these reductions.
 
@@ -202,6 +212,7 @@ python3 scripts/check_coleman_basis13.py
 python3 scripts/check_normalized_mixed_heights13.py
 python3 scripts/check_remaining_qr_heights13.py
 python3 scripts/check_complete_height_blocks13.py
+python3 scripts/check_qc_normalization_and_local_targets.py
 ```
 
 ## Ancillary multiset results
