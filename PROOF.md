@@ -763,13 +763,162 @@ third-party dependencies. The source curve and the Pell/torsion method
 are not claimed as new.
 
 
+### 4.8. Three double roots: exceptional-locus exclusion and exact normal form
+
+**Theorem 12.** Suppose a symmetric rational ideal size-eleven pair has
+eight distinct values per side, and translate so B=-A. Its three double
+entries on side A are u,v,w. Put
+
+\[
+p=u+v+w,\quad q=uv+uw+vw,\quad r=uvw,\quad
+H=p^3r+p^2q^2-3pqr+3r^2.
+\tag{31}
+\]
+
+Then pH≠0. In particular, the three double entries cannot sum to zero.
+More generally the entire exceptional locus H=0 is excluded.
+
+The root polynomial is uniquely determined by u,v,w:
+
+\[
+P(x)=(x^3-px^2+qx-r)^2Q(x),\qquad
+Q=x^5+ax^4+bx^3+cx^2+dx+e,
+\tag{32}
+\]
+
+where
+
+\[
+\begin{aligned}
+a&=2p,\\
+b&=p^2+2q-\frac{r^2(p^3+r)}{pH},\\
+c&=2pb-2(p^3+pq-r),\\
+d&=q^2+2pr-\frac{r^2(p^5+2p^3q+qr)}{pH},\\
+e&=\frac{2r(pq-r)^3}{pH}.
+\end{aligned}
+\tag{33}
+\]
+
+The PTE constant is
+
+\[
+C=2P(0)=\frac{4r^3(pq-r)^3}{pH}.
+\tag{34}
+\]
+
+Conversely, choose distinct nonzero rational u,v,w with no opposite pair
+and with pH≠0. Form Q by (33). If Q has five distinct rational roots,
+none equal to u,v,w, then the roots of P in (32), with their stated
+multiplicities, and their negatives give a symmetric rational ideal
+size-eleven pair with eight distinct values per side. Clearing
+denominators gives an integer pair. Complete rational splitting of Q
+is the essential unresolved condition, not a consequence of (33).
+
+**Proof.** The multiplicity bound in Theorem 5 gives exactly three
+double entries and five simple entries on each side. Disjointness of
+A and -A gives
+
+\[
+r\ne0,\qquad pq-r=(u+v)(u+w)(v+w)\ne0.
+\]
+
+The coefficients of x¹⁰,x⁸,x⁶,x⁴,x² in P must vanish. Expansion of
+(32) gives the linear system M(a,b,c,d,e)^t=y, with
+
+\[
+M=\begin{pmatrix}
+1&0&0&0&0\\
+p^2+2q&-2p&1&0&0\\
+2pr+q^2&-2pq-2r&p^2+2q&-2p&1\\
+r^2&-2qr&2pr+q^2&-2pq-2r&p^2+2q\\
+0&0&r^2&-2qr&2pr+q^2
+\end{pmatrix},\qquad
+y=\begin{pmatrix}2p\\2pq+2r\\2qr\\0\\0\end{pmatrix}.
+\tag{35}
+\]
+
+To handle singular parameters without dividing by a determinant, use the
+polynomial row vector
+
+\[
+L=\bigl(qr(q^3+q^2p^2-3qrp+3r^2),\ -r(q^3+r^2),\
+r(q^2+rp),\ -r(q+p^2),\ r+p^3\bigr).
+\]
+
+Direct polynomial multiplication yields
+
+\[
+LM=(0,0,0,0,pH),\qquad Ly=2r(pq-r)^3.
+\tag{36}
+\]
+
+Thus every solution of the even-coefficient equations satisfies
+pHe=2r(pq-r)³≠0. Both p=0 and H=0 are impossible. Moreover
+
+\[
+\det M=4p(pq-r)H\ne0.
+\]
+
+The system has a unique solution; substitution verifies exactly the
+coefficients (33). The constant coefficient is r²e, giving (34).
+
+Conversely, (33) solves all five even-coefficient equations, so
+P(x)+P(-x)=2r²e=C≠0. The stated splitting conditions give eleven rational
+entries with exactly the required multiplicities. A root common to P(x)
+and -P(-x) would force C=0, so the two supports are disjoint. The
+constant-difference identity gives equal power sums through order ten. ∎
+
+This is a complete rational splitting formulation of the eight-point
+symmetric boundary, not a construction. Scaling u,v,w scales the entire
+pair; since u≠0 one may set u=1, leaving two rational parameters. No
+claim that the resulting quintic has rational roots is made.
+
+### 4.9. Real splitting does not eliminate the eight-point boundary
+
+The hypotheses on rational splitting in Theorem 12 cannot be replaced
+by a real-root argument. Take (u,v,w)=(1,5,9). Formula (33) gives
+
+\[
+Q(x)=\frac{913x^5+27390x^4+312646x^3+1682790x^2
++4236661x+3951360}{913}.
+\tag{37}
+\]
+
+Let N=913Q. Its values at -10,-9,-8,-6,-5,-4,-3,-2 are, respectively,
+
+\[
+-182250,\ 2520,\ -45864,\ -21750,\ 22680,\ -3060,\ -58224,\ 117054.
+\]
+
+Hence Q has a real root in each of the five disjoint intervals
+(-10,-9), (-9,-8), (-6,-5), (-5,-4), and (-3,-2). As its degree is
+five, these are five distinct real roots. They are disjoint from the
+positive double roots 1,5,9. Thus the construction gives a genuine
+symmetric real PTE pair of the prescribed multiplicity pattern.
+
+It does not give a rational pair. Modulo 5,
+
+\[
+N(x)\equiv3x(x-1)(x+1)(x^2-2),
+\tag{38}
+\]
+
+and x²-2 is irreducible over F₅. Since 913 is a unit modulo 5, complete
+rational splitting of N would reduce to complete splitting modulo 5:
+by the rational-root theorem all root denominators divide 913. This
+contradicts (38). The example therefore separates the genuine rational
+splitting obstruction from the already satisfiable real-root conditions.
+
+
 ## 5. Open boundary
 
 The general size-11 existence problem remains open here. Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,
 or at least eight per side under symmetry. The remaining splitting and
-higher-genus torsion problems in Sections 4.5–4.7 are unresolved here.
+higher-genus torsion and rational splitting problems in Sections 4.5–4.9
+are unresolved here. Theorem 12 excludes two exceptional parameter loci
+and gives an exact quintic formulation, without increasing the support bound.
 
 ## References
 
