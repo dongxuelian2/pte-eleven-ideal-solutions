@@ -3451,6 +3451,129 @@ Neither a complete genus-two height block, the genus-three QC function,
 its roots, nor a final rational-point sieve has been produced.
 
 
+
+### 5.19 Complete mixed finite terms outside 2,3,5,13
+
+For the fixed divisors of 5.18, this section finishes the horizontal
+intersection calculation at 11,19,53. Together with 5.18 it computes every
+finite local contribution outside {2,3,5,13}. The remaining three finite
+primes and normalized 13-adic integrals are not computed.
+
+The exact checker is `scripts/check_genus_two_semistable_heights.py`.
+It uses the adjacent mixed-height certificate and existing SymPy.
+The calculation was independently checked using explicit blowup charts
+and quotient-module intersection lengths.
+
+#### Regular-model intersections, not just vertical corrections
+
+The vertical corrections for D_A=A-iota(A) vanish at these primes by
+5.18. Nevertheless their horizontal intersections must be evaluated on
+the regular model. All common reduced supports are as follows, with
+tuples (x,y_A,y_B):
+
+    k=-15, ell=19:
+      P/R: (4,0,0), a node;
+      Q/R: (6,8,11), a smooth point with opposite ordinates.
+    k=-3, ell=11:
+      P/R: (0,0,0), a node.
+    k=-3, ell=19:
+      P/R: (14,14,5), a smooth point with opposite ordinates;
+      Q/R: (16,0,0), a node.
+
+There are no other common reductions at 11,19,53. Completeness is checked
+by polynomial gcds of each pair of reduced u polynomials; every nonconstant
+gcd has degree one. In particular no unlisted common point over a finite
+extension is being omitted.
+
+The two smooth intersections have nonzero ordinates. Each corresponding
+resultant has 19-adic valuation one, so x is a local parameter and the
+intersection multiplicity is exactly one. The opposite ordinates give
+D_A dot D_B=-2. With chi_19(19)=-log13(19), each contributes
++2log13(19).
+
+At a shared node of thickness two, use the blowup chart
+
+    X=(x-a)/ell, Y=y/ell,
+
+where a=0 at 11 and a=k at 19. Every support passing through a shared
+node has a simple u-root modulo ell. Hensel lifting modulo ell^2 therefore
+determines its unramified section and its reduction on this chart.
+The exact coordinates (X,Y) modulo ell are
+
+    k=-15, ell=19, a=-15:
+      P: (18,9), R: (6,4);
+    k=-3, ell=11, a=0:
+      P: (3,4), R: (4,10);
+    k=-3, ell=19, a=-3:
+      Q: (16,13), R: (10,3).
+
+These sections meet the affine part of the exceptional component. In
+each potentially intersecting pair the X-coordinates differ. Consequently
+their strict transforms are disjoint, also after either hyperelliptic
+conjugation. All node pairs thus contribute zero on the regular model.
+
+At 53, Q for k=-15 has ramified support at the thickness-one node. Neither
+P nor R shares any reduced support with Q there, so there is no horizontal
+intersection. No unramified-section assumption is made for that support.
+
+#### Independent module-length check
+
+Before resolving a node, the same-sheet and opposite-sheet intersection
+lengths can be checked as the lengths of
+
+    Z_ell[x]/(u_A,u_B,v_A-v_B),
+    Z_ell[x]/(u_A,u_B,v_A+v_B).
+
+In the free module Z_ell[x]/u_A, multiplication by u_B and by v_A minus
+or plus v_B gives a rectangular presentation matrix. The minimum valuation
+of its maximal minors is its cokernel length. All denominators in this
+calculation are powers of two, hence units at the three primes used.
+
+The resulting same/opposite triples, in prime order (11,19,53), are
+
+    k=-15:
+      P/Q: (0,0,0), (0,0,0);
+      P/R: (0,1,0), (0,1,0);
+      Q/R: (0,0,0), (0,1,0).
+    k=-3:
+      P/Q: (0,0,0), (0,0,0);
+      P/R: (1,0,0), (1,1,0);
+      Q/R: (0,1,0), (0,1,0).
+
+These are singular-model lengths where a node occurs, not automatically
+regular-model intersection numbers. The explicit blowup calculation above
+removes those shared node intersections and proves the claimed heights.
+In each node pair the same/opposite corrections cancel in the signed
+pairing, agreeing with the independent module calculation.
+
+#### The complete certified finite sum outside 2,3,5,13
+
+At 11 and 53 all three mixed local pairings are zero for both curves.
+At 19 the only nonzero pairings are Q/R for k=-15 and P/R for k=-3,
+each equal to +2log13(19). Adding the good-prime terms from 5.18 gives
+
+    k=-15:
+      (D_P,D_Q): -2log13(17)-2log13(593);
+      (D_P,D_R): 0;
+      (D_Q,D_R): +2log13(7)+2log13(19)+2log13(313).
+    k=-3:
+      (D_P,D_Q): 0;
+      (D_P,D_R): +2log13(19);
+      (D_Q,D_R): -2log13(29)-2log13(31).
+
+These are exact identities for the sum over all finite primes other than
+2,3,5,13, with the fixed representatives of 5.18. They are neither complete
+global heights nor the full away-from-13 sums. In particular, no vanishing
+assumption is made at 2,3,5.
+
+Still needed are regular-model horizontal and vertical terms at those
+three primes, normalized third-kind integration at 13 with certified
+precision, and the compatible splitting under Richelot transport.
+Only then can these mixed pairings recover the global genus-two block.
+The genus-three QC function, root isolation and final completeness sieve
+remain uncomputed; the original size-eleven problem is still open here.
+
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
