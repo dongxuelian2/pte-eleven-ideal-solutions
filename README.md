@@ -148,9 +148,17 @@ the full de Rham matrix, exact primitives, cup scaling and compatible
 height weighting. Section 5.23 computes both genus-two Frobenius matrices
 modulo 13^3 with a proved infinite-tail bound. Independent exact-rational
 and modular algorithms agree, as do cup and quadratic-twist checks.
-The compatible splitting is therefore known. Reduction-primitive endpoint
-evaluation and normalized third-kind integrals at 13 remain missing;
-no complete global height block or QC function is claimed.
+The compatible splitting is therefore known.
+
+Section 5.24 now evaluates all six Coleman basis-integral vectors modulo
+13^3, with retained primitives, certified endpoint arithmetic and a separate
+principal-divisor reciprocity check. Their sign-correct third-kind
+normalizations are explicit. Section 5.25 computes three actual normalized
+mixed heights via good even-degree models, independently reproduced with
+proved error bounds. Combining the finite contributions gives h(P,P)=923
+and h(P,Q)=1586 modulo 13^3 for the k=-15 Jacobian, and h(P,P)-h(P,Q)=1417
+for k=-3. These are partial global matrices only. Remaining mixed pairings,
+the full QC function and root isolation are not completed.
 
 The other twelve types and other construction routes are not settled
 by these reductions.
@@ -182,6 +190,8 @@ python3 scripts/check_genus_two_odd_local_heights.py
 python3 scripts/check_genus_two_dyadic_heights.py
 python3 scripts/check_richelot_de_rham_transport.py
 python3 scripts/check_genus_two_frobenius13.py
+python3 scripts/check_coleman_basis13.py
+python3 scripts/check_normalized_mixed_heights13.py
 ```
 
 ## Ancillary multiset results
