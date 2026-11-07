@@ -4747,6 +4747,343 @@ No finite QC root set or original eleven-distinct-integer construction
 or general impossibility theorem is claimed.
 
 
+
+### 5.28 A correctly centered QC divisor and explicit local differential
+
+This section constructs the actual curve-level height expression.
+The global quadratic term of5.27 alone is not a quadratic-Chabauty
+equation: a basepoint-dependent linear correction has to be included.
+The correction is explicit here, using only the already certified
+height matrices. No numerical local13 series or roots are claimed.
+
+Write X_delta as W^2=F_delta(t) using5.14, let iota(t,W)=(t,-W),
+and retain the elliptic involution sigma of5.15. Let H=infinity+
++infinity-, R_iota=Fix(iota), R_sigma=Fix(sigma). The exact identities are
+
+    div(dt/W)=2H, div(W)=R_iota-4H,
+    div(M(t))=R_sigma-2H.
+
+In particular K_X=2H with this differential. The two points in H are
+rational; H/2 below denotes a rational-coefficient divisor, not a
+claimed rational point.
+
+Use actual rational basepoints
+
+    B_1=(15/2,9025/16), B_5=(5/6,9025/144).
+
+Both are outside the two ramification loci, and sigma(B_delta)=infinity+.
+Their orbit under iota,sigma consists of B,iota(B),infinity+,infinity-.
+
+#### The actual correspondence divisor
+
+Use the proper graph correspondence
+
+    Gamma=Gamma_iota-3 Gamma_sigma.
+
+It induces -Z, not Z, on the Jacobian. Its fiber degrees are -2 and
+its diagonal intersection has degree8-3*4=-4; thus the required
+trace-zero intersection is -4-(-2)-(-2)=0.
+It meets the diagonal properly, avoiding a self-intersection convention.
+
+For a varying point P define the degree-zero divisor
+
+    D_Gamma(B,P)=R_iota-3R_sigma-iota(P)+3sigma(P)
+                             -iota(B)+3sigma(B).
+
+This is the divisor obtained from the diagonal restriction minus the
+two fiber restrictions, not simply Z[P-B]. Its class equals
+
+    Z[P-B]+C_B,  C_B=2Z[B-H/2].
+
+Indeed, R_iota is linearly equivalent to4H, R_sigma to2H,
+iota(B) toH-B, and sigma(H) toH. These identities give
+C_B=2B+6sigma(B)-4H in the Jacobian.
+
+Put j_H(P)=[P-H/2] in J tensor Q and q(A)=h_X(A,ZA).
+Symmetry and self-adjointness of Z now give the exact global formula
+
+    h_X([P-B],[D_Gamma(B,P)])=q(j_H(P))-q(j_H(B)).
+
+The right side contains the previously missing linear correction when
+expressed in logarithms from B to P. No new global height coefficients
+are needed.
+
+The correspondence/divisor construction and finite-local-value theorem
+used here are Balakrishnan--Dogra, *Quadratic Chabauty and Rational
+Points I*, Definition6.2 and Theorems6.3 and1.2:
+[primary text](https://arxiv.org/html/1601.00388).
+Their theorem applies to this corrected divisor, with the established
+rank and logarithm hypotheses. It does not justify using the uncorrected
+self-pairing instead.
+
+#### Centered logarithms and the global term
+
+Since 2j_H(P)=[P-iota(P)], its logarithm is half the integral from
+iota(P) to P. In the affine quotient coordinates (z,a,b) of5.14 set
+
+    e_H(P)=(1/26) integral_iota(P)^P dz/(2b),
+    w_H(P)=(1/26) (integral_iota(P)^P dz/(k*a*b),
+                         integral_iota(P)^P z*dz/(a*b)).
+
+Then, with A_k from5.27,
+
+    q(j_H(P))=13*(144 e_H(P)^2-(1/2)w_H(P)^t A_k w_H(P))
+                  modulo13^3.
+
+The corrected global term is this expression minus its value at B.
+Alternatively, translate the B-to-P logarithms of5.27 by the fixed
+centered logarithms of B. It is incorrect to omit that translation.
+The factors1/2 and the precision follow from5.27; normalized logarithms
+are integral, and A_k is known modulo13^2.
+
+#### An explicit residue-correct local kernel, including infinity
+
+For a finite point Q=(t_Q,W_Q), define
+
+    nu_Q=(1/2)*(1+W_Q/W)*dt/(t-t_Q).
+
+Its residue divisor is Q-H/2. The apparent pole at iota(Q) cancels,
+and each infinity has residue-1/2.
+For Q=infinity^epsilon, epsilon=+1 or-1, put
+
+    nu_Q=-epsilon*c*t^3*dt/(2W),
+    c=1 for delta1, c=5625 for delta5.
+
+The residues are +1/2 on that infinity and -1/2 on the other.
+This infinity formula is necessary: sigma(B)=infinity+ for our
+actual basepoints, so a finite-point formula alone would not suffice.
+
+Put g=W/M^3. A differential with exactly residue divisor D_Gamma is
+
+    omega_(B,P)=dlog(g)+3nu_sigma(B)-nu_iota(B)
+                         +3nu_sigma(P)-nu_iota(P).
+
+The principal part contributes R_iota-3R_sigma+2H; the four nu terms
+contribute the rest minus2H, giving exactly the stated residue divisor.
+For our actual basepoint, sigma(B)=infinity+, so the required residue
+there is3; it must not be incorrectly canceled. There are no hidden
+poles at B or P on the disjoint-support open.
+This gives a fully explicit rational differential before normalization.
+
+Let Psi be the Coleman--Gross de Rham projection and pr_hol projection
+onto holomorphic forms along the compatible complement fixed in5.22.
+The normalized differential is
+
+    eta_(B,P)=omega_(B,P)-pr_hol(Psi(omega_(B,P))),
+
+and the actual local height is integral_B^P eta_(B,P).
+This specifies the normalization; the moving de Rham projection and
+the resulting certified power series have NOT yet been computed.
+The logarithmic-exact term can also be integrated as
+log13(g(P)/g(B)), but that term must not be silently omitted.
+
+Define the basepoint-normalized function
+
+    rho_B(P)=h13(P-B,D_Gamma(B,P))
+                       -q(j_H(P))+q(j_H(B)).
+
+For rational P it belongs to the negative sum of the away local values.
+The theorem makes that target set finite. Formulae alone do not enumerate
+the target set or isolate roots of rho_B.
+
+#### Rational exceptional points and a normalization stress test
+
+For direct disjoint-support evaluation exclude the ramification loci,
+H, B and iota(B); the limiting value at B is zero.
+The two ramification loci have no rational points: F_delta(t)>0 for
+real t, since N,D have no common root, and the discriminants of M are
+-380 and-1520. Thus the omitted rational points are precisely the known
+four-point orbit, not an unexamined set of possible rational exceptions.
+
+For delta1 this orbit lies over z=infinity and maps to O or(0,0) on E.
+For delta5 it lies over z=5/2, with elliptic images(180,900)=P_E or
+(405,2025)=-P_E+(0,0). These have integer indices0 or plus/minus1,
+already excluded as valid center lifts by the exact collision test5.9.
+This does not classify any other rational points on X.
+
+One can check the diagonal trivialization separately. The fiber-degree-zero
+cycle Delta+3Gamma_sigma-2(H cross X+X cross H) restricts to div(M^3).
+Proper rigidification at H/2 instead has diagonal trivializer
+(sigma(t)-t)^3, since
+
+    div(sigma(t)-t)=R_sigma-H-sigma(H).
+
+The two choices differ by explicit vertical principal divisors and must
+not be mixed. The graph kernel above fixes the actual local-height sign
+through D_Gamma, without guessing it from a diagonal line bundle.
+
+There is a concrete reason normalization matters. At the good prime7,
+Hensel lifting at infinity supplies Q7 points with t=7^(-n) for every
+n>=1. The leading coefficients of W and M are units. Thus
+v7(W/M^3)=2n, and omitting its character term would leave the unbounded
+sequence -2n log13(7), up to a fixed constant. This is a statement about
+local points, not infinitely many rational points over Q.
+The corrected D_Gamma family has the finite-value property instead.
+
+
+### 5.29 Away-height targets: only primes 2 and3 remain
+
+For both curves, the corrected curve-level local height of5.28 is
+identically zero at every finite prime other than2,3,13.
+In particular its local target is {0} at5,11,19 and53, even though
+those primes occur in the displayed model discriminants.
+The targets at2 and3 are not yet computed.
+
+The exact certificate is
+`scripts/check_qc_normalization_and_local_targets.py`.
+Both ramified and unramified model calculations, accessible components,
+and the graph-symmetry argument received independent review.
+This result concerns the corrected CURVE-level height. It does not
+erase the nonzero genus-two generator-pair contributions in5.18--5.26.
+
+#### Good primes and the graph-height input
+
+The discriminants of the degree-eight polynomials are
+
+    delta1: 2^52*3^33*5^30*11^2*19^12*53;
+    delta5: 2^108*3^33*5^58*11^2*19^12*53.
+
+Their leading coefficients add no exceptional primes. Therefore the
+curves have good reduction outside S={2,3,5,11,19,53}; the correctly
+normalized local height vanishes there by the theorem cited in5.28.
+
+For bad-prime computations we use Theorem3.2 of Balakrishnan, Dogra,
+Muller, Tuitman and Vonk, *Quadratic Chabauty for modular curves:
+algorithms and examples*:
+[primary article](https://www.cambridge.org/core/journals/compositio-mathematica/article/quadratic-chabauty-for-modular-curves-algorithms-and-examples/C317E63BB0128EB3F2163621CA63E66E).
+It expresses the normalized local height through a graph potential,
+specified by its Laplacian and value zero at the basepoint vertex.
+
+The needed symmetry consequence is elementary. If an involution
+preserves the metric graph and commutes with the correspondence, it
+preserves the graph measure: signed edge permutations preserve the
+projection onto graph homology, and component traces are invariant
+under conjugation. Hence j composed with sigma minus j is harmonic,
+thus constant. Applying sigma twice forces that constant to be zero.
+Therefore j is constant on each sigma-orbit of vertices, even when
+sigma does not fix the basepoint. If all accessible vertices are in
+one such orbit, their normalized height is zero.
+
+#### Primes11 and53: a single component
+
+The following are all double-root nodes, listed as
+(t, F(t)/ell, F''(t)/2) moduloell:
+
+    delta1, ell11: (5,4,5), (6,3,4);
+    delta5, ell11: (3,3,3), (4,9,4);
+    delta1, ell53: (38,12,12);
+    delta5, ell53: (20,50,49).
+
+Every last two entries is a unit. The residual polynomial after removing
+the double factors is squarefree and nonconstant, hence not a square
+over the algebraic closure. Infinity is smooth. Thus the displayed proper
+models are regular semistable with one geometric component and ordinary
+nodes of thickness one. A section cannot specialize to such a node:
+after an unramified splitting its local equation is xy=ell, whereas
+both coordinates would have positive integral valuation. All rational
+local points therefore hit the single vertex, so the target is {0}.
+
+#### Prime19: two exchanged elliptic components
+
+Let a=-2 for delta1 and a=4 for delta5, and write
+F(a+x)=sum(c_j x^j). In both cases the coefficient valuations are
+
+    [4,3,2,1,0,0,0,0,0].
+
+The inner chart t=a+19u, V=W/19^2 has smooth quartic reduction
+
+    delta1: 8u^4-2u^3-3u^2+8u-9, discriminant11 mod19;
+    delta5: 8u^4+u^3+2u^2+2u+1, discriminant7 mod19.
+
+The outer normalizations are respectively
+
+    x^4+3x^3-3x^2+4x+8, discriminant7;
+    x^4-8x^3-8x^2+x+8, discriminant11.
+
+An annular chart is x*r=19, w=W/x^2, with
+
+    w^2=sum_(j<4)(c_j/19^(4-j))*r^(4-j)
+                      +c_4+sum_(j>4)c_j*x^(j-4).
+
+It is integral by the valuation list and agrees with the original
+equation on the generic fiber. At x=r=0 it has w^2=8 modulo19.
+After an unramified quadratic extension, 2w is a unit and the two
+nodes have exactly the local equations x*r=19. These charts form
+the normalization of the corresponding blowup of the t-line.
+They give a proper regular semistable model with precisely two
+smooth genus-one components joined by two thickness-one nodes.
+
+The involutions on the inner charts are
+
+    sigma1(-2+19u)=(15u-10)/(2u-1),
+    sigma5(4+19u)=(25u+4)/(30u+5).
+
+Their nonconstant reductions show that sigma exchanges the inner
+and outer components. It commutes with Z, so the graph argument
+makes both vertex values equal; normalization makes both zero.
+All Q19 sections hit vertices, not thickness-one nodes. Thus the
+target is {0}, without asserting potential good reduction at19.
+
+#### Prime5: two different accessible orbits, one for each twist
+
+Use K=Q5(pi), pi^2=5. On X1 set t=pi*u, W=25V.
+The resulting monic polynomial G=F1(pi*u)/pi^8 is integral and reduces to
+
+    (u-1)^2(u+1)^2(u^2+2u-1)(u^2-2u-1).
+
+There are exactly two ordinary nodes, at u=plus/minus1; all other
+branch roots are simple and infinity is smooth. Its discriminant has
+K-valuation 2*30-8*7=4. The involution acts as
+
+    u -> (3pi*u-32)/(2u-3pi),
+
+and exchanges the nodes. Their thicknesses are therefore equal;
+the total discriminant valuation shows that each has thickness two.
+An independent direct check gives v_K(G),v_K(G'),v_K(G'')=(2,2,0)
+at each node. The critical point moves only by O(pi^2), so its
+smoothing value retains valuation two, confirming the thickness.
+Resolving each node introduces a single exceptional component.
+The main component is preserved and the exceptional pair is exchanged.
+
+For X1(Q5), finite t has integer 5-adic valuation, so
+v_K(u)=2v5(t)-1 cannot be zero. Such points cannot reduce to u=plus/minus1;
+the points at infinity are smooth as well. Thus every X1(Q5) point
+meets the main component. The target is zero by normalization.
+
+For X5(Q5), use the K-isomorphism of covers a1=pi*a5 with the same z,b.
+Its X1 parameter satisfies u=a5-2z/pi. The equation
+5a5^2=4z^2+30z+80 forces v5(z)>=1: for v5(z)<=0 the right side has
+even valuation, a contradiction. Then a5 is a unit and a5^2=1 mod5,
+so u reduces to plus/minus1. There are no Q5 points above z=infinity,
+since their slope would require sqrt5. This also covers the rational
+hyperelliptic infinities of X5, whose z-coordinate is finite.
+
+Over K a section through a thickness-two node, locally xy=pi^2,
+has both valuations one. After resolution it meets the unique
+exceptional component, not a component intersection. All X5(Q5)
+points therefore meet the two exchanged exceptional vertices.
+They form a single sigma-orbit containing the basepoint, so their
+normalized heights are also zero. Descent by the local extension
+degree preserves this vanishing. The argument does NOT confuse
+the main-component orbit of X1 with the exceptional orbit of X5.
+
+#### What remains before root isolation
+
+The complete negative away sum for the corrected family is now drawn
+from the two uncomputed finite value sets at2 and3. At3 there are
+nested branch clusters and multiple potentially accessible components;
+the involution preserves rather than exchanges the two initial clusters.
+The prime2 also requires a genuinely wild regular-model analysis.
+Neither target set is inferred from generator heights or bounded search.
+
+At13,5.28 gives the exact rational kernel and normalization prescription,
+but the moving de Rham projections, basepoint constants, certified
+series and tail bounds are still missing. Therefore no numerical QC
+equation, complete isolated-root list, or final Mordell--Weil sieve
+has been produced. The original distinct-entry size-eleven task
+remains unresolved.
+
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
