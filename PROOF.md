@@ -3270,6 +3270,187 @@ Coleman–Gross theorems identify these computations with the asserted
 heights; they are standard mathematical inputs, not claims proved by the
 Python program.
 
+
+### 5.18 Mixed genus-two divisors and exhaustive good-prime height terms
+
+This section removes self-intersection ambiguity from the remaining
+genus-two height calculation and computes all its finite contributions
+away from the model's bad primes and 13. It does not compute the complete
+height matrix. The exact certificate is
+`scripts/check_genus_two_mixed_heights.py` (Python and SymPy).
+
+Use the monic models and classes P,Q of 5.13 and 5.16:
+
+    f_k=x(x-k)(x+5k)(x^2-68kx-275k^2), k=-15,-3.
+
+Write A_P,A_Q for the effective supports of their Mumford representatives.
+Introduce R=P+sQ, where s=1 for k=-15 and s=-1 for k=-3, with effective
+support A_R given by
+
+    k=-15: u_R=x^2-276x+11025, v_R=406350-7794x;
+    k=-3:  u_R=x^2+65x+528,   v_R=-1076x-12804.
+
+These are exact Jacobian identities, not merely compatible points on the
+curve. To verify them, put a=x(P), b=y(P), and interpolate
+
+    V=s*v_Q+(b-s*v_Q(a))*u_Q/u_Q(a).
+
+Then (f_k-V^2)/((x-a)u_Q) has monic normalization u_R, and
+-V modulo u_R equals v_R. The checker verifies every division and curve
+identity. Each u is squarefree, gcd(u,v)=1, and the three u polynomials are
+pairwise coprime over Q. Thus all three supports and their hyperelliptic
+conjugates are disjoint where required for the mixed pairings below.
+
+#### Recovering the global height block without self-pairings
+
+Let iota(x,y)=(x,-y), and D_A=A-iota(A). The divisor of u_A is
+A+iota(A)-2deg(A)infinity, so D_A represents twice the Jacobian class
+[A-deg(A)infinity]. Write
+
+    U=h(D_P,D_Q), Vh=h(D_P,D_R), W=h(D_Q,D_R).
+
+Bilinearity of the global Coleman-Gross pairing gives exactly
+
+    h(P,Q)=U/4,
+    h(P,P)=(Vh-sU)/4,
+    h(Q,Q)=s(W-U)/4.
+
+Division by four loses no 13-adic precision. This reduces the global
+matrix to three pairings of disjoint divisors and avoids choosing tangent
+vectors for self-intersections. The formulas apply to the global height;
+individual local summands depend on divisor representatives. In
+particular the finite sums below must not be mislabeled as intrinsic
+local heights of the original P,Q generators.
+
+For each Mumford pair (u,v), an explicit differential with residue divisor
+D_A is
+
+    omega_A = n_A(x) dx/(u(x)y), n_A=v*u' mod u.
+
+Its residues at A and iota(A) are respectively +1 and -1. The roots of u
+are simple and non-Weierstrass, and deg(n_A)<deg(u) guarantees regularity
+at the unique infinity. The numerators for P,Q,R are
+
+    k=-15:
+      320625/32,
+      10732500x+611752500,
+      59705100-1338444x;
+
+    k=-3:
+      10692,
+      4266108-18468x,
+      44332x+303996.
+
+These are residue-correct differentials, not yet Coleman-Gross normalized
+ones. Their holomorphic corrections must be determined for the splitting
+compatible with the chosen Richelot transport and genus-three quotient.
+No third-kind integration or such transport normalization is asserted here.
+
+#### Every good-prime contribution away from 13
+
+Let S={2,3,5,11,19,53}. Exact discriminants show that both monic models have
+good reduction outside S. All displayed coefficients are integral outside
+2; the effective supports are finite on these models, so they acquire no
+intersection at infinity at a prime outside S.
+
+The exact resultants in the order (P,Q),(P,R),(Q,R) are
+
+    k=-15: 2268225/16, -21375/16, 48556065600;
+    k=-3:  6318, 3762, 8301366.
+
+Their numerator factorizations are
+
+    k=-15:
+      3^2*5^2*17*593,
+      -3^2*5^3*19,
+      2^6*3^6*5^2*7*19*313;
+
+    k=-3:
+      2*3^5*13,
+      2*3^2*11*19,
+      2*3^5*19*29*31.
+
+For a good prime ell!=13 an intersection is possible only if ell divides
+the respective resultant. Every resulting good-prime valuation is one.
+The gcd of the two reduced u polynomials is linear; its ordinate is
+nonzero, so x is a local parameter and the intersection multiplicity is
+one. If the two ordinates agree, the signed intersection of D_A,D_B is
++2; if they are opposite it is -2. Using the height character
+chi_ell(ell)=-log13(ell) from 5.17 gives the exhaustive sums over
+ell outside S union {13}:
+
+    k=-15:
+      (D_P,D_Q): -2log13(17)-2log13(593);
+      (D_P,D_R): 0;
+      (D_Q,D_R): +2log13(7)+2log13(313).
+
+    k=-3:
+      (D_P,D_Q): 0;
+      (D_P,D_R): 0;
+      (D_Q,D_R): -2log13(29)-2log13(31).
+
+For independently reproducible sign checks, the common x-coordinate and
+the two ordinates modulo ell are
+
+    k=-15, P/Q:
+      ell=17:  (1,6,6);
+      ell=593: (501,513,513);
+    k=-15, Q/R:
+      ell=7:   (3,2,5);
+      ell=313: (311,299,14);
+    k=-3, Q/R:
+      ell=29:  (28,17,17);
+      ell=31:  (11,5,5).
+
+These are complete contributions on the indicated good-prime set, not
+finite-search evidence. They show concretely why computing only bad-prime
+contributions is insufficient for these chosen height representatives.
+
+#### Semistable vertical corrections at 11,19,53
+
+At these three primes each reduced curve is geometrically irreducible
+with precisely one ordinary node. The node x-coordinate is respectively
+0, k, 34k modulo the prime. The discriminant valuations are 2,2,1, giving
+the node thicknesses 2,2,1. This follows locally by separating the unique
+double-root factor: all other roots stay distinct, and the two-root
+discriminant valuation equals the smoothing-parameter valuation.
+
+The tangent coefficient after division by the square of the node factor
+is respectively (9,2,31) for k=-15 and (5,14,10) for k=-3. Each is nonzero.
+The assertion is geometric; split tangent directions are not assumed.
+
+Resolving a thickness-two node introduces one exceptional component;
+the dual graph has two vertices joined by two edges. The hyperelliptic
+involution preserves both components, although it can interchange
+branches. Consequently the horizontal divisor D_A=A-iota(A) has degree
+zero on each component. Its vertical correction can be taken to be zero.
+At thickness one the total model is already regular and its special fiber
+has only one component, so again there is no vertical correction. This
+argument applies to all three D_A, including ramified closed-point
+supports, by functoriality of intersection with the involution-invariant
+components.
+
+This does NOT prove that their local height contributions vanish.
+Horizontal intersections must still be calculated on the regular model.
+In particular A_Q for k=-15 is ramified at 53: its u discriminant has
+53-adic valuation one, so treating that support as two unramified sections
+would be invalid.
+
+#### Exact remaining inputs
+
+The three normalized 13-adic mixed integrals and the horizontal terms at
+2,3,5,11,19,53 remain uncomputed; regular-model corrections at 2,3,5 also
+remain. At k=-3, P and Q share a reduction disc at 13, as witnessed by
+their resultant's 13-factor. Disjoint support over Q does not permit a
+disjoint-residue-disc integration shortcut.
+
+The global reconstruction and the good-prime arithmetic have been
+independently checked. The intersection interpretation uses the standard
+finite-prime definition of the Coleman-Gross pairing on a regular model.
+Neither a complete genus-two height block, the genus-three QC function,
+its roots, nor a final rational-point sieve has been produced.
+
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
