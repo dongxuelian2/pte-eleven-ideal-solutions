@@ -3574,6 +3574,199 @@ The genus-three QC function, root isolation and final completeness sieve
 remain uncomputed; the original size-eleven problem is still open here.
 
 
+
+### 5.20 Odd bad-prime terms: all finite contributions outside 2 and 13
+
+This section completes the fixed mixed divisors' local heights at 3 and 5.
+Only k=-3, P/Q contributes at 3, with value -log13(3); only k=-15, P/R
+contributes at 5, with value -2log13(5). All other mixed terms there vanish.
+Together with 5.18–5.19 this computes every finite contribution outside
+{2,13}, but not the full away-from-13 or global height.
+
+The certificate `scripts/check_genus_two_odd_local_heights.py` uses only
+existing SymPy. The charts, support positions and intersection lengths
+were independently derived and checked. No software was installed.
+
+#### Character normalization and regular neighborhoods
+
+Put z=x/k, w=y/k^2 and
+
+    F(z)=z(z-1)(z+5)(z^2-68z-275), w^2=kF(z).
+
+When needed at ell=3 or 5, use K=Q_ell(pi), pi^2=ell, and extend the
+character by chi_K=chi_ell composed with the norm. Then
+chi_K(pi)=-log13(ell), since the norm of pi is -ell and log13(-1)=0.
+The local height after base change is twice the original local height;
+divide the final intersection coefficient by two.
+
+The displayed charts arise on the normalization of blowups of the
+z-line separating the indicated branch discs. At every support point
+used, their displayed equations are smooth over the valuation ring.
+A proper regular model dominating these charts may be chosen; further
+resolution away from these smooth neighborhoods does not change their
+intersections or components. We need not assert an entire minimal
+dual graph.
+
+For every D_A=A-iota(A), the calculations below verify degree zero on
+each component of this regular model. Consequently its vertical
+correction may be taken to be zero. This does not remove the need to
+calculate horizontal intersections.
+
+#### Prime 3: charts
+
+Write k=3u, u=-5 or -1, and Y=w/pi. Thus Y^2=uF(z).
+The cluster chart z=1+3t, Y=9Yc is
+
+    Yc^2=u(1+3t)t(t+2)(t^2-22t-38),
+
+with reduction Yc^2=u t(t-1)(t-2)^2. The outer normalization and this
+cluster normalization are geometrically irreducible and preserved by
+iota. The intermediate chart z=1+pi*r, Y=pi^2*j is
+
+    j^2=u(1+pi*r)r(r+2pi)(r^2-22pi*r-114),
+
+with reduction j^2=u r^4. Finally the twin chart t=11+pi*X, Yc=pi*V is
+
+    V^2=u(1+3(11+pi*X))(11+pi*X)(13+pi*X)(X^2-53).
+
+Its reduction is V^2=2u(X^2+1), a smooth, geometrically irreducible conic
+preserved by iota. Every identity follows by substitution using pi^2=3.
+
+For k=-15, the supports are:
+- P meets the smooth outer component at z=0.
+- With a^2=265, the two Q points have
+  r=11pi plus or minus a, j=2650pi plus or minus 302a.
+  Since a^2=1 modulo 3, these meet the two intermediate components
+  j=plus or minus r^2, one point on each. The involution exchanges the
+  components, but A_Q and iota(A_Q) each have degree one on each.
+- With b^2=11, R has twin-chart coordinates
+  X=pi(-24 plus or minus b)/5,
+  V=(-2754 plus or minus 866b)/25.
+  Thus X=0 and V^2=2 modulo pi. Both are smooth points of the same
+  invariant component; their unramified quadratic support is retained.
+
+The three effective supports occupy different components and avoid their
+intersections. All anti-divisor component degrees are zero, including
+the exchanged intermediate components. Hence all three local mixed
+heights at 3 vanish for k=-15.
+
+#### Prime 3: the nonzero intersection for k=-3
+
+Let s^2=-29, s=1 modulo 3. The complete support positions are:
+- P: t=-4, X=-5pi, V=44 in the twin chart.
+- One Q point: t=3-s, X=(-8-s)/pi, V=-38(1+s), also in that chart.
+- The other Q point: t=3+s, a smooth cluster point at t=1,Yc=0.
+- One R point is at smooth outer infinity. The other is a smooth cluster
+  point with t=1 modulo 3 and 9t^2-59t+38=0.
+
+Every component met here is preserved by the involution, so again every
+D_A has zero degree on every component.
+
+P and the twin Q point reduce to (X,V)=(0,2). Their difference is
+X_Q-X_P=(7-s)/pi. Since (7-s)(7+s)=78 and 7+s is a unit,
+
+    v_K(X_Q-X_P)=1.
+
+The ordinate V is nonzero, so X is a local parameter. The same-sheet
+intersection has length one; the opposite-sheet intersection is absent.
+The signed intersection of D_P,D_Q is two over K. Norm-character
+normalization and division by two therefore give
+
+    h_3(D_P,D_Q)=-log13(3).
+
+For the cluster Q/R pair, the ordinates before scaling are
+
+    w_Q=1026(s-1), w_R=4(269t_R-266).
+
+Their 3-adic valuations are 4 and 3. Because Yc=w/(9pi), their K-valuations
+are 3 and 1. At this smooth branch point Yc is a local parameter, so both
+same-sheet and opposite-sheet differences have valuation one. The signed
+contributions cancel. P/R occupy different components and do not intersect.
+This proves that the other two mixed local heights vanish.
+
+These valuations are exact. The certificate Hensel-lifts the simple roots
+modulo 3^12 and tests valuations strictly below that precision; the omitted
+root tails cannot change them.
+
+#### Prime 5
+
+For k=-3, the original monic model reduces to
+
+    y^2=x^3(x+3)(x+4) modulo 5.
+
+Its only singular affine point is x=y=0. None of the three u polynomials
+vanishes at x=0 modulo 5, and every pairwise resultant is a 5-adic unit.
+Thus the supports are disjoint smooth points on one invariant component.
+All three local mixed heights vanish, without resolving remote singularities.
+
+For k=-15, use pi^2=5 and eta=w/pi, so eta^2=-3F(z).
+The two Q points have
+
+    z=34 plus or minus pi*sqrt(159),
+    eta=4770pi plus or minus 906sqrt(159),
+
+and reduce to z=4, eta=plus or minus 2. They are smooth outer points.
+The outer component is geometrically irreducible and invariant; after
+removing its repeated factor its equation is
+(eta/z)^2=-3z(z-1)(z+2) modulo 5.
+
+R has one point at the unique smooth outer infinity. In coordinates
+v=1/z, h=eta/z^3 the equation is
+
+    h^2=-3v(1-v)(1+5v)(1-68v-275v^2),
+
+whose derivative with respect to v is a unit at v=h=0.
+
+The inner chart t=z/5, xi=eta/pi^3 has equation
+
+    xi^2=-3G(t),
+    G=t(5t-1)(t+1)(5t^2-68t-55).
+
+The identity F(5t)=125G(t) proves the transformation. Its reduction is
+xi^2=t^2(t+1), a geometrically irreducible invariant component. P and the
+inner R point meet its smooth point t=3,xi=1, not its node at t=0.
+These are all support points. Thus every anti-divisor has zero degree
+on every component, including any components added by further resolution.
+
+For the actual intersection put W=9xi=y/625. Then
+
+    (t_P,W_P)=(-3/4,513/32),
+    25t_R^2+92t_R+49=0, t_R=3 modulo 5,
+    W_R=(23382t_R+16254)/25.
+
+Hensel lifting gives t_R=103 modulo 125 and W_R=4 modulo 5, equal to W_P.
+Moreover evaluating the R polynomial at t_P gives -95/16, of valuation
+one; its derivative is a unit. Hence v_K(t_R-t_P)=2.
+The nonzero ordinate makes t a local parameter. The same-sheet intersection
+has length two over K; the opposite-sheet intersection is absent.
+The signed intersection is four, and descent gives
+
+    h_5(D_P,D_R)=-2log13(5).
+
+All other pairs occupy disjoint neighborhoods and have zero contribution.
+The checker uses precision 5^8, beyond all divisions and valuations needed
+for these assertions.
+
+#### Complete certified finite sums outside {2,13}
+
+For the fixed divisor representatives of 5.18 the sums are now
+
+    k=-15:
+      (D_P,D_Q): -2log13(17)-2log13(593);
+      (D_P,D_R): -2log13(5);
+      (D_Q,D_R): 2log13(7)+2log13(19)+2log13(313).
+    k=-3:
+      (D_P,D_Q): -log13(3);
+      (D_P,D_R): 2log13(19);
+      (D_Q,D_R): -2log13(29)-2log13(31).
+
+They are representative-dependent partial sums, not complete global
+heights. The dyadic terms, normalized 13-adic integration and compatible
+splitting transport remain uncomputed. Consequently the full genus-two
+height block, genus-three QC function, root isolation and final
+completeness sieve still remain unfinished. No original PTE solution or
+general exclusion is claimed.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
