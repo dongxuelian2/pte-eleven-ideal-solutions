@@ -290,3 +290,7 @@ The five-pair certificate checks all 666 primes from 7 through 5000 by two
 exact splitting methods, yielding 393 obstruction primes. Both certificates
 allow repeated roots modulo a prime, even though the integer entries in these
 theorems are distinct.
+
+## Latest local arithmetic certificates
+
+[Complete away-from-13 targets](COMPLETE_AWAY_TARGETS.md) proves dyadic vanishing and the exact 3-adic local sets for the two sixth-mode covers. [Certified infinity projection](INFINITY_PROJECTION.md) supplies precision-three de Rham and holomorphic normalization constants. Both have independent review and executable certificates. Moving QC functions, root isolation, the rational-point sieve, and the original distinct-integer problem remain unfinished.
