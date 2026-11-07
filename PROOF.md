@@ -1433,10 +1433,147 @@ birational identities, witnesses and complete descent images.
 
 This supplies an alternative to working directly with the rank-seven
 Jacobian: an explicit simultaneous-lifting problem over a rank-one
-elliptic curve. It does not establish that a displayed nontorsion point
-generates E(Q), enumerate all simultaneous lifts, supply a height bound,
-or exclude or construct a size-eleven pair. Those are separate steps;
-ordinary Chabauty on the rank-seven curve has not thereby been restored.
+elliptic curve. The reduction alone does not classify the simultaneous
+lifts, supply their height bound, or exclude or construct a size-eleven
+pair. Section 5.8 certifies the full elliptic generator. Ordinary
+Chabauty on the rank-seven curve has not thereby been restored.
+
+### 5.8 Full Mordell-Weil generator for the center-square projection
+
+Let
+
+ E: y^2=x(x^2-560x+72900),   P=(180,900),   T=(0,0).
+
+Assume the already certified two-isogeny descent giving rank E(Q)=1.
+Then
+
+ E(Q) = Z P direct-sum (Z/2Z) T.
+
+This assertion is a saturation theorem, not an inference from a bounded search.
+The finite search below has a proved height cutoff covering every possible
+proper generator of P.
+
+#### Torsion and parity of a hypothetical index
+
+The discriminant of this integral model is
+
+ Delta=16*72900^2*22000=2^12*3^12*5^7*11.
+
+Good reductions at 7 and 13 have respectively 8 and 12 points. The standard
+injectivity of rational torsion under good reduction at primes greater than
+2 implies that its order divides 4. Alternatively, prime-to-p injectivity
+at these two primes gives the same conclusion. The only nonzero rational
+2-torsion point is T: the quadratic factor has discriminant 22000, which is
+not a rational square. A rational point R with 2R=T would, from duplication,
+have x(R)^2=72900, hence x(R)=270 or -270. At these two values the right-hand
+side of the curve equation is respectively 270^2*(-20) and 270^2*(-1100),
+both negative. Thus E(Q)_tors={O,T}. In particular P has infinite order.
+
+For this equation the standard 2-isogeny descent homomorphism is
+alpha(O)=1, alpha(T)=72900 modulo squares, and alpha(R)=x(R) modulo squares
+otherwise. Thus alpha(T)=1 and alpha(P)=5. If Q is any generator of the
+free quotient and P=nQ+epsilon*T, then n is odd. If P were not a generator,
+we could therefore choose |n|>=3.
+
+#### An elementary global height bound
+
+Use the scaled coordinate u=x/270. For u=a/b in lowest terms, including
+u(O)=1/0, put H=max(|a|,|b|) and h(R)=log H. Its duplication map is
+
+ F=27(a^2-b^2)^2,
+ G=4ab(27a^2-56ab+27b^2),
+ u(2R)=[F:G].
+
+The following two bounds hold for every coprime pair (a,b):
+
+ gcd(F,G) divides 11880=2^3*3^3*5*11,
+ (121/48)*H^4 <= max(|F|,|G|) <= 440*H^4.
+
+Here gcd means the positive gcd of |F|,|G|, also when one is zero.
+
+For the gcd assertion, at 3 either both a,b are units, when G is a unit,
+or exactly one is divisible by 3, when v_3(F)=3. At 2, unless both a,b
+are odd F is odd; if they are both odd, the parenthesis in G is 2 modulo
+4, so v_2(G)=3. For an odd prime p other than 3 dividing F and G, both
+a,b are units and a=+/-b modulo p. The plus sign gives the parenthesis
+in G congruent to -2b^2 and is impossible. The minus sign forces p=5 or
+11. Writing that parenthesis as 27(a+b)^2-110ab then gives valuation
+exactly one at either of these primes.
+
+The upper real bound follows by the triangle inequality. For the lower
+bound, exchange a,b if necessary (both homogeneous polynomials are
+symmetric) and put v=b/a, with |v|<=1. If |v|<=5/6, then
+F/H^4=27(1-v^2)^2 >=121/48. If -1<=v<=-5/6, then
+|G|/H^4=4|v|(27+56|v|+27v^2)>=90. If 5/6<=v<=1, the polynomial
+-27v^2+56v-27 is increasing and at least 11/12; hence
+|G|/H^4 >=4*(5/6)*(11/12)=55/18>121/48.
+
+Consequently
+
+ 4h(R)-log(51840/11) <= h(2R) <=4h(R)+log 440.
+
+Define the doubled canonical height
+
+ h_c(R)=lim_{k->infinity} 4^(-k) h(2^k R).
+
+Changing x to x/270 changes its naive logarithmic height by at most log270,
+so this is exactly twice the usual canonical height. Telescoping the last
+inequality proves
+
+ h(R)-log(51840/11)/3 <= h_c(R) <= h(R)+log440/3.
+
+The canonical-height theorem gives h_c(nR+torsion)=n^2*h_c(R).
+Since u(P)=2/3, h(P)=log3, and therefore
+
+ h_c(P) <= log3+log440/3.
+
+If P=nQ+epsilon*T with |n|>=3, the nonnegativity and quadraticity of
+canonical height imply
+
+ h(Q) <= (log3+log440/3)/9 + log(51840/11)/3 < log24.
+
+The last strict inequality is certified entirely with integers by
+
+ 27*440*51840^9 < 24^27*11^9.
+
+#### Exhaustive classification below the proved cutoff
+
+The exact script checks all reduced a/b with |a|<=24, 1<=b<=24 and
+x=270a/b. The only x-coordinates for which the curve's right-hand side
+is a rational square are
+
+ u=0       : T;
+ u=2/3     : +/-P;
+ u=3/2     : +/-(P+T);
+ u=15/8    : +/-2P;
+ u=8/15    : +/-(2P+T).
+
+The point O is handled separately. The corresponding nonnegative y values
+are 0, 900, 2025, 38475/8, 1368. Thus every possible Q under the hypothetical
+proper-index bound is torsion or has free class +/-[P] or +/-2[P]. None can
+satisfy [P]=n[Q] with |n|>=3 in the torsion-free quotient. The hypothetical
+proper index is impossible, proving the displayed group decomposition.
+
+#### Scope and standard inputs
+
+The standard inputs beyond elementary arithmetic are the rank-one descent
+already proved in Section 5.7, the 2-isogeny descent homomorphism,
+good-reduction torsion injectivity, and canonical-height quadraticity and
+torsion invariance. References for the latter two are Silverman,
+The Arithmetic of Elliptic Curves, Chapters VII section 3 and VIII section 9.
+No numerical height approximation, conjectural analytic rank, unverified
+software saturation routine, or unproved search cutoff is used here.
+
+This classifies rational points of the elliptic projection as nP+epsilon*T.
+It does not classify which multiples meet the remaining simultaneous square
+conditions, or resolve the original distinct size-eleven PTE problem.
+
+The exact certificate is `scripts/check_rank_one_generator.py`. Combined
+with the birational maps in 5.7, this reduces the remaining necessary
+simultaneous-square lifting to points nP+epsilon*T with n an integer and
+epsilon in {0,1}. The points at infinity and excluded collision cases
+remain subject to the handling in 5.7. No bounded test of multiples is
+used to infer completeness of those lifting conditions.
 
 ## 6. Open boundary
 
