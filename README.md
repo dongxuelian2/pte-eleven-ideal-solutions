@@ -31,6 +31,27 @@ Research arguments go in [`PROOF.md`](PROOF.md). Introduce programs only for mat
 families. Section 4 studies a multiset relaxation. Its repeated-root and
 support results do not solve or exclude the original distinct-entry task.
 
+## Distinct-entry shift-lift route
+
+[PROOF.md, Section 5](PROOF.md#5-a-distinct-entry-construction-route-shift-chains)
+gives an exact criterion for lifting a symmetric size-ten solution to
+eleven distinct entries. Nine same-side cancellations and no cross-side
+unit differences yield eighteen possible normalized chain types.
+
+For four types, exact elimination leaves rational conics and a cubic
+whose three roots must be rational squares. Their discriminants give
+four explicit smooth genus-two curves. Faltings's theorem implies
+finitely many normalized valid configurations in those four types,
+but does not enumerate them or prove their absence. The known control
+points are trivial A=B and are rejected. The other fourteen types and
+other construction routes are not settled by these reductions.
+
+The exact certificate requires SymPy:
+
+```sh
+python3 scripts/check_shift_chains.py
+```
+
 ## Ancillary multiset results
 
 [PROOF.md, Section 4](PROOF.md#4-general-multiset-restrictions) proves, without
