@@ -48,6 +48,13 @@ size-11 ideal pair has:
 - An exact degree-eleven sextic Pell example shows why Pell solvability
   alone is insufficient: its sextic does not split over Q, so it is
   not a PTE construction.
+- For symmetric eight-value supports, the three double entries cannot
+  sum to zero; a second explicit exceptional parameter locus is also
+  excluded. Theorem 12 gives the unique quintic factor and an exact
+  two-parameter rational splitting problem after scaling.
+- A fully real eight-value example with double entries 1, 5, 9 shows
+  that real-root arguments cannot finish the exclusion. Its quintic
+  fails complete rational splitting already modulo 5.
 
 These are unconditional necessary conditions for the multiset problem.
 They do not prove existence, global nonexistence, or attainment of the
