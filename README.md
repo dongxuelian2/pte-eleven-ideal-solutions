@@ -130,9 +130,12 @@ Section 5.18 replaces the missing genus-two self-pairings with three mixed
 pairings of explicit disjoint divisors. It gives residue-correct third-kind
 differentials and computes every finite local contribution outside the bad
 prime set and 13, including nonzero terms at 7,17,29,31,313,593. The vertical
-corrections of these representatives vanish at 11,19,53, but their horizontal
-intersections remain to be evaluated. The normalized 13-adic integrals and
-bad-prime terms are still missing; no complete height block is claimed.
+corrections of these representatives vanish at 11,19,53. Section 5.19 now
+finishes their horizontal intersections using explicit blowups: 11 and 53
+contribute zero, while each curve has one nonzero mixed term +2log13(19).
+Together these certify every finite contribution outside {2,3,5,13}.
+The terms at 2,3,5 and normalized 13-adic integrals remain missing;
+no complete height block is claimed.
 
 The other twelve types and other construction routes are not settled
 by these reductions.
@@ -159,6 +162,7 @@ python3 scripts/check_thirteen_logarithms.py
 python3 scripts/check_thirteen_saturation.py
 python3 scripts/check_elliptic_height13.py
 python3 scripts/check_genus_two_mixed_heights.py
+python3 scripts/check_genus_two_semistable_heights.py
 ```
 
 ## Ancillary multiset results
