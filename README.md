@@ -41,6 +41,13 @@ size-11 ideal pair has:
 - An exact higher-genus Pell/Jacobian reduction for the remaining patterns.
   The smallest remaining cases reach genus two, where the elliptic
   obstruction alone no longer applies.
+- At this genus-two boundary, a Jacobian simple over Q with rational
+  torsion containing [2,2,2,22] (order 176) is necessary. Rational
+  elliptic quotients, including centrally paired sextic branch sets,
+  are excluded.
+- An exact degree-eleven sextic Pell example shows why Pell solvability
+  alone is insufficient: its sextic does not split over Q, so it is
+  not a PTE construction.
 
 These are unconditional necessary conditions for the multiset problem.
 They do not prove existence, global nonexistence, or attainment of the
@@ -71,6 +78,7 @@ Run the exact certificates with Python 3.8 or newer, without dependencies:
 ```sh
 python3 scripts/check_four_pairs_mod.py
 python3 scripts/check_five_pairs_mod.py
+python3 scripts/check_sextic_pell.py
 ```
 
 The five-pair certificate checks all 666 primes from 7 through 5000 by two
