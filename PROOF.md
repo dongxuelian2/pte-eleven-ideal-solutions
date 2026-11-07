@@ -3933,6 +3933,253 @@ height block, full genus-three QC function, certified roots and final
 completeness sieve remain unfinished. The original distinct-entry
 size-eleven problem is not solved.
 
+
+### 5.22 Explicit Richelot de Rham transport and the normalized splitting
+
+The previously missing splitting transport is now explicit. This is an
+exact algebraic calculation, not a normalized Coleman integral.
+The certificate is `scripts/check_richelot_de_rham_transport.py` (SymPy).
+An independent derivation checked the correspondence, trace, exact
+primitives and cup products.
+
+Put A=x^2+5, B=4x^2+30x+80, C=x^2+275, delta=1 or 5, and k=-15/delta.
+The curves are delta*y^2=ABC and Y^2=kF(z), with F from 5.20.
+A Richelot correspondence realizing the isogeny phi:J(C_delta)->J(D_k)
+of 5.12 is, on its ordinary affine open,
+
+    E=A(x)(z^2-68z-275)+18B(x)z=0,
+    yY=kA(x)(z^2-68z-275)(x-z).
+
+The bracket identity of 5.12 is
+sum G_i(x)h_i(z)=-(x-z)^2, with h_i=L_i/Delta.
+It verifies the squared ordinate equation on E=0. We use the displayed
+ordinate sign. Changing the sign changes the isogeny by -1, not the
+transported complementary subspace. The correspondence extends to the
+Jacobian isogeny supplied by the Richelot theorem cited in 5.12.
+
+#### Full pullback matrix, including exact corrections
+
+On D put beta_j=z^j dz/Y, j=0,...,3. On C use the basis c0,c1,c2,c3 of
+5.15. The rows of the following matrix express phi*(beta_j) modulo exact
+differentials in that ordered C basis:
+
+    T=[[2,0,0,0],
+       [0,2,0,0],
+       [0,-32/3,-8/15,0],
+       [-2200/9,-2464/9,-1114/45,-16/45]].
+
+This is not only a holomorphic tangent-space calculation. To derive it,
+differentiate E, so dz/dx=-E_x/E_z, substitute the ordinate relation, and
+take the trace in the quadratic algebra Q(x)[z]/E. For the first two
+forms the trace coefficients multiplying dx/y are 2 and 2x. For the
+last two they are
+
+    -2(4x^3+265x^2+1100x-1375)/(x^2+5),
+
+    2(291x^5+3220x^4+154650x^3+880000x^2
+      +474375x-1512500)/(x^2+5)^2.
+
+Subtracting the corresponding T rows leaves the exact differentials
+
+    d(2delta*y/(15A)),
+    d(delta*y*H/A^2),
+
+where H=-176/9-214x/9+256x^2/45+2x^3/45.
+For example, d(delta*y*R) equals
+(R'ABC+R(ABC)'/2)dx/y. Thus both reductions are polynomial/rational
+identities, checked without period or point-search assumptions.
+
+A separate Laurent calculation at D's unique infinity gives its cup matrix
+
+    CD=(1/k)*[[0,0,0,4/3],
+              [0,0,4,512/3],
+              [0,-4,0,-736],
+              [-4/3,-512/3,736,0]].
+
+With CC from 5.15 one has T*CC*T^transpose=2*CD and det(T)=512/675.
+This verifies the polarization multiplier of the (2,2)-isogeny and
+the chosen cup/sign convention.
+
+#### Transported complement and explicit normalization projection
+
+The chosen C complement is span(c2,c3+525c1); adding 45c2/8 to its
+second generator gives exactly the equivalent complement of 5.15.
+Its inverse image under phi* is
+
+    W_D=span(beta2+16beta1/3,
+             beta3+392beta1/9+1100beta0/9).
+
+Direct multiplication verifies both that its image is the chosen C
+complement and that it is isotropic for CD.
+
+For the monic model X=kz, v=k^2Y, put eta_j=X^j dX/(2v).
+Since eta_j=k^(j-1)beta_j/2, this becomes
+
+    k=-15: span(eta2-80eta1, eta3-412500eta0+9800eta1);
+    k=-3:  span(eta2-16eta1, eta3-3300eta0+392eta1).
+
+The full monic transport matrix is diag(k^(j-1)/2)*T.
+Its determinant is 32k^2/675, a 13-adic unit. Its entries and those of
+its inverse are 13-integral; this basis transport loses no 13-adic digits.
+
+In particular, once the Coleman-Gross de Rham class of a third-kind
+form has actually been computed as sum a_j eta_j, the holomorphic
+differential to subtract is explicitly
+
+    (a0-(1100k^3/9)a3) eta0
+      +(a1-(16k/3)a2-(392k^2/9)a3) eta1.
+
+This formula fixes the normalization target. It does not compute the
+a_j or the integral of the normalized form; residue-correct forms alone
+do not supply these missing data.
+
+#### Polarization-compatible height weighting on the genus-three cover
+
+Let psi be the polarized dual Richelot isogeny, so psi*phi=[2], and
+g:X_delta->C_delta the degree-two quotient. Functoriality of heights
+with these compatible splittings gives
+
+    h_C(psi D,psi E)=2h_D(D,E),
+    h_X(g*psi D,g*psi E)=4h_D(D,E).
+
+The correspondence Z acts by -2 on this factor. Hence
+
+    h_X(g*psi D,Zg*psi E)=-8h_D(D,E).
+
+This supplies the genus-two block's weighting, complementary to the
+elliptic block's +8 weighting in 5.17. It does not assert explicit
+transported divisor coordinates or a completed global height matrix.
+
+Splitting transport is therefore no longer an unspecified input.
+Normalized third-kind integrals, their global-index data, explicit
+divisor/endpoint computations and the full QC function remain missing.
+
+
+### 5.23 Certified Frobenius matrices at 13
+
+This section computes actual de Rham Frobenius matrices, not only their
+characteristic polynomials. The exact-rational checker is
+`scripts/check_genus_two_frobenius13.py` (existing SymPy).
+Independent modular and f-adic-first implementations gave the same
+matrices, and an independent exact-rational computation checked every
+entry.
+
+In the monic basis eta_i=x^i dx/(2y), i=0,...,3, columns are Frobenius
+images. The matrices, each with entrywise error O(13^3), are
+
+    k=-15:
+      [[949,39,842,458],
+       [481,1456,1678,583],
+       [234,1248,1524,661],
+       [1092,1391,833,465]];
+
+    k=-3:
+      [[1248,871,933,2000],
+       [1989,741,1422,1207],
+       [741,351,673,1186],
+       [1911,377,229,1732]].
+
+#### Exact finite reduction algorithm
+
+Let f=f_k, p=13, and R=f(x^13)-f(x)^13. The polynomial R is divisible
+by 13 and has degree at most 64. Use the usual Frobenius lift
+x->x^13, y->y^13(1+R/y^26)^(1/2). The pullback of eta_i is the sum over
+n>=0 of
+
+    13 binom(-1/2,n) x^(13(i+1)-1) R^n dx/(2y^(13+26n)).
+
+To reduce N(x)dx/(2y^(2m+1)), compute B=N*(f')^(-1) modulo f, with
+degree B<5, and A=(N-Bf')/f. Then replace the numerator and exponent by
+
+    N <- A+2B'/(2m-1), m <- m-1.
+
+This identity follows by subtracting an exact differential. Once m=0,
+a polynomial of degree e>=4 is reduced using d(x^(e-4)y), whose leading
+coefficient in the dx/y convention is (2e-3)/2. Each operation in the
+checker is over Q, so no modular working-precision or rounding issue
+is hidden in these divisions.
+
+#### Certified infinite-tail bound
+
+Put R=13E. The binomial coefficient binom(-1/2,n) is 13-integral, so
+the n-th term has coefficient valuation at least n+1 before reduction.
+For bounding denominators, expand its numerator f-adically; since f
+is monic, each block coefficient remains integral and has degree at
+most four.
+
+For a block with a negative odd power of y, apply Kedlaya's denominator
+bound: a degree-at-most-2g numerator divided by y^(2m+1) needs at most
+floor(log_p(2m+1)) powers of p to clear reduction denominators.
+Here that loss is at most floor(log_13(13+26n)).
+This is the explicit standard theorem input:
+[Kedlaya, Counting Points on Hyperelliptic Curves using
+Monsky-Washnitzer Cohomology, Section 3, Lemma 2](https://arxiv.org/html/math/0105031).
+
+The polynomial dx/(2y) part has degree at most
+
+    51+64n-5(6+13n)=21-n.
+
+We bound its horizontal denominators directly. For e=4,...,21 the
+only factors 2e-3 divisible by 13 are 13 and 39. Each degree is
+eliminated at most once, so at most two 13-adic digits can be lost.
+No positive-power denominator lemma is needed.
+
+The reduced n-th term therefore has valuation at least
+
+    n+1-max(floor(log_13(13+26n)),2).
+
+For every n>=4, both quantities inside the maximum are at most n-2:
+13+26n<13^(n-1), starting at n=4 and preserved as n increases.
+Thus every omitted term has valuation at least three, and the bound
+tends to infinity. The entire omitted tail is O(13^3).
+Exact reduction of n=0,1,2,3 is therefore sufficient to certify the
+displayed matrices.
+
+#### Independent consistency and precision checks
+
+Both matrices have characteristic polynomial
+T^4+6T^2+169 modulo 13^3, agreeing with the independent finite-field
+counts. This is a consistency check, not the proof of truncation.
+
+The monic cup matrix has nonzero upper-triangular entries
+
+    C03=1/3, C12=1, C13=128k/3, C23=-184k^2.
+
+It follows either by direct Laurent residues at infinity or from 5.22.
+The checker verifies M^transpose*C*M=13C modulo 13^3.
+
+There is also an independent twist check. The coordinate identification
+over Q_13(sqrt(5)) scales the differential basis by
+D=diag(1/5,1,5,25), apart from the common sqrt(5) factor. Since 5 is
+a nonsquare modulo 13, Frobenius changes that factor's sign. Accordingly
+
+    D*M_-15+M_-3*D=0 modulo 13^3,
+
+which the matrices satisfy.
+
+The operator M-I has determinant 176, a 13-adic unit, so its inverse
+can be formed without 13-adic precision loss. In contrast,
+det(M-13I)=13^2*176. Its reduction has rank two, and its Smith
+valuations are 0,0,1,1. Thus inverse entries may have valuation -1.
+If the matrix itself is known only to O(13^3), a general inverse is
+guaranteed only to O(13): the perturbation contains an inverse on
+both sides. We do not silently budget just one digit for that
+approximate-matrix inversion.
+
+#### Remaining integral computation
+
+These are cohomology matrices. To compute Coleman integrals one must
+also retain and evaluate the exact primitives removed during reduction,
+perform the necessary tiny integrals on the actual endpoints, and handle
+the quadratic supports and shared reduction discs correctly. The
+third-kind de Rham classes and their normalization then require the
+compatible data of 5.22.
+
+No normalized mixed third-kind integral, global genus-two height block,
+complete genus-three QC function, root isolation or final point sieve
+has yet been computed. The original distinct-entry size-eleven problem
+remains unsolved.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
