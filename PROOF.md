@@ -1177,12 +1177,77 @@ The exact SymPy certificate `scripts/check_fifth_mode.py` checks the
 elimination identities, exceptional branch, principal minors, quotient
 identity, and excluded control points.
 
+### 5.5 A sixth mode and a nonexceptional rational control
+
+For m=2, aa=(1,2), bb=(1,1,3), let the centered A chain be
+{-3/2,-1/2,1/2,3/2}. Write +/-u for the A length-two centers,
++/-w for its singleton centers, and +/-v for the B length-three centers.
+Put a=u^2,b=v^2,c=w^2. The two B singleton-square roots must have moments
+
+ p_k=(1/2)sum_{d in O_4}d^(2k)
+      +sum_{d in O_2}(u+d)^(2k)+c^k
+      -sum_{d in O_3}(v+d)^(2k), k=1,2,3,4.
+
+As in 5.4 set e1=p1,e2=(p1^2-p2)/2,
+F=p3-e1*p2+e2*p1 and G=p4-e1*p3+e2*p2. Define
+
+ D=8a^2-48ab+4a+48b^2+24b-9,
+ N=48a^2b-8a^2-192ab^2-168ab+50a+160b^3+352b^2+10b-27.
+
+Exact expansion gives F=-3(N-2Dc)/16. The resultant in a is
+
+ Res_a(N,2D)=-128(4b-25)(4b-9)^2(4b-1)^3.
+
+Thus D=0 and F=0 force b=1/4,9/4,25/4. In each case the B
+length-three pair has a point in the central A chain. Valid inputs have
+D!=0 and c=N/(2D). Substitution in G yields
+
+ G=(4b-9)(4b-1)JH/(64D),
+ J=16a^2-32ab-8a+16b^2-8b+1,
+ H=24a^2-80ab-100a+80b^2+40b+81.
+
+The factors 4b-9 and 4b-1 force the same central-chain collisions.
+Also J=16[u^2-(v+1/2)^2][u^2-(v-1/2)^2], so J=0 makes an
+A length-two chain overlap a B length-three chain. Hence H=0 is necessary.
+This gives the plane quartic
+
+ 24U^4-80U^2V^2-100U^2W^2+80V^4+40V^2W^2+81W^4=0,
+
+with u=U/W,v=V/W and W!=0. Its symmetric derivative matrix in
+U^2,V^2,W^2 is
+
+ [[48,-80,-100],[-80,160,40],[-100,40,162]].
+
+The nonempty principal minors are 48,160,162,1280,-2224,24320,-829440.
+The support/kernel argument of 5.4 proves geometric smoothness, hence
+genus three. Faltings and the finite choices for c, square roots, and
+the two B singleton roots give normalized finiteness in this sixth mode.
+This is not an effective point classification or nonexistence proof.
+
+There is a nonexceptional rational point
+
+ (u,v)=(64/61,1/122), D=70543200/13845841,
+ c=N/(2D)=26785/14884=5*11*487/(122^2).
+
+It lies on the quartic and has D!=0, but c is not a rational square:
+its 5-adic valuation is one. Consequently it cannot give the required
+rational singleton center w and is not a PTE witness. This control
+shows that neither rationality of the quartic point nor exclusion of
+the exceptional denominator alone solves the remaining splitting problem.
+
+The exact certificate `scripts/check_sixth_mode.py` verifies the moment
+identities, exceptional resultant, collision factor, smoothness minors,
+and this nonexceptional rejection. No finite search failure is used.
+The remaining twelve types and other construction routes are not settled
+by the reductions in this section; no eleven-distinct-integer solution
+or general impossibility theorem is established.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
 of disjoint eleven-element integer sets and no general impossibility proof
 has been established. Section 5 gives a distinct-entry shift-lift reduction and
-normalized finiteness for five of eighteen chain types; it does not classify
+normalized finiteness for six of eighteen chain types; it does not classify
 the required genus-two and genus-three rational points. Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,
