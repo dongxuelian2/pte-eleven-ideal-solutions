@@ -24,6 +24,24 @@ Research arguments go in [`PROOF.md`](PROOF.md). Introduce programs only for mat
 
 **Status:** Open research target; no size-11 ideal solution or general impossibility theorem is claimed.
 
+## General multiset results
+
+[PROOF.md, Section 4](PROOF.md#4-general-multiset-restrictions) proves, without
+symmetry or distinct-entry assumptions, that every nontrivial rational
+size-11 ideal pair has:
+
+- Disjoint supports, with multiplicity at most two for every entry.
+- Ten distinct real zeros of the common derivative of its root polynomials.
+- At least thirteen distinct values in the two supports combined. The
+  extreme six/six support pattern forces an affine Chebyshev polynomial,
+  whose required quintic factor has no rational root.
+- At least seven distinct values per side if the pair is symmetric.
+
+These are unconditional necessary conditions for the multiset problem.
+They do not prove existence, global nonexistence, or attainment of the
+support bound. The Chebyshev/Pell argument is classical in mechanism;
+no novelty claim is made.
+
 ## Established conditional results
 
 The complete proofs from
