@@ -31,6 +31,10 @@ Research arguments go in [`PROOF.md`](PROOF.md). Introduce programs only for mat
 families. Section 4 studies a multiset relaxation. Its repeated-root and
 support results do not solve or exclude the original distinct-entry task.
 
+## Sixth-mode exclusion
+
+[The complete sixth-mode proof](SIXTH_MODE_QC_EXCLUSION.md) now closes the local QC calculation and candidate sieve for the sixth shift-chain type. Certified moving normalization and analytic tails isolate48 local QC roots; exact elliptic tests at61,101,107 exclude every candidate except the eight known colliding orbit points. Thus this type has no valid distinct-entry lift. The new steps were independently reviewed, with upstream arithmetic dependencies listed explicitly. Reproduce them with scripts/check_sixth_mode_qc_roots13.py and scripts/check_sixth_mode_candidate_sieve.py. This is not a full rational-point classification or a solution of general size-eleven PTE; the other17 chain types are not excluded.
+
 ## Distinct-entry shift-lift route
 
 [PROOF.md, Section 5](PROOF.md#5-a-distinct-entry-construction-route-shift-chains)
@@ -293,4 +297,4 @@ theorems are distinct.
 
 ## Latest local arithmetic certificates
 
-[Complete away-from-13 targets](COMPLETE_AWAY_TARGETS.md) proves dyadic vanishing and the exact 3-adic local sets for the two sixth-mode covers. [Certified infinity projection](INFINITY_PROJECTION.md) supplies precision-three de Rham and holomorphic normalization constants. Both have independent review and executable certificates. Moving QC functions, root isolation, the rational-point sieve, and the original distinct-integer problem remain unfinished.
+[Complete away-from-13 targets](COMPLETE_AWAY_TARGETS.md) proves dyadic vanishing and the exact 3-adic local sets for the two sixth-mode covers. [Certified infinity projection](INFINITY_PROJECTION.md) supplies precision-three de Rham and holomorphic normalization constants. Both have independent review and executable certificates. The subsequent sixth-mode proof above now completes moving QC functions, root isolation and the candidate sieve for the necessary center lifts. The original distinct-integer problem remains unresolved.
