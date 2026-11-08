@@ -114,7 +114,7 @@ This is a theorem conditional on the correctness of the cited, previously certif
 - PROOF §5.28: the corrected graph divisor and the curve-level quadratic-Chabauty equation including the centered global term and its finite-local-value theorem.
 - INFINITY_PROJECTION.md: the two certified Ψρ vectors modulo13³ and projection constants. Their Frobenius computation is not rerun by the new root script.
 - COMPLETE_AWAY_TARGETS.md: exact finite target sets, not merely their rounded p-adic residues.
-- FINAL disc filter: follows directly from the mod240 classes, parity, order6 of P modulo13, and the displayed degree-eight models. On each curve the four retained discs contain B,ιB,σB,ισB. The quotient map at D=0 is interpreted in the proper infinity chart.
+- The survivor-disc filter follows directly from the mod240 classes, parity, order6 of P modulo13, and the displayed degree-eight models. At13, P has order6. The delta1 elliptic images must be O or T; the delta5 images must be P=(11,3) or −P+T=(2,10). Enumerating the smooth degree-eight models gives X1 survivors (t,W)=(1,1),(1,12) and the two infinity branches with W/t⁴=±1. X5 survivors are(3,3),(3,10) and infinity branches W/t⁴=±9. Each curve has12 total F13 points. These four retained discs contain B,ιB,σB,ισB. The quotient map at D=0 is interpreted in the proper infinity chart, mapping to O or T, not discarded.
 
 Run from any directory:
 
