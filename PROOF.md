@@ -5109,13 +5109,66 @@ has been produced. The original distinct-entry size-eleven task
 remains unresolved.
 
 
+### 5.30 Complete away targets and infinity projection
+
+[COMPLETE_AWAY_TARGETS.md](COMPLETE_AWAY_TARGETS.md) completes the local sets
+left open in5.29. The exact QC targets are
+Omega1={0,-1/6,-2/3}log13(3) and
+Omega5={0,1/2,2/3,-4/3}log13(3).
+[INFINITY_PROJECTION.md](INFINITY_PROJECTION.md) computes the de Rham
+projection at infinity and its compatible holomorphic normalization modulo13^3.
+Both have independently reviewed proofs and executable certificates.
+
+### 5.31 Exclusion of the sixth shift-chain mode
+
+**Theorem.** Under the established reductions and arithmetic inputs of
+5.7--5.30, the sixth shift-chain type of5.5 has no valid distinct-entry
+size-eleven PTE lift.
+
+**Proof.** The complete proof, analytic estimates, dependency ledger and
+independently reviewed exact calculations are in
+[SIXTH_MODE_QC_EXCLUSION.md](SIXTH_MODE_QC_EXCLUSION.md).
+Here is the finite conclusion and its scope.
+
+The mod240 elliptic restriction and squareclass parity retain four residue
+discs on each X_delta. Moving-source differentiation computes their
+third-kind normalization. On the B_delta disc write t=tB+13u. The corrected,
+centered QC function satisfies
+rho1/13=6u+6u^2 and rho5/13=12u+6u^2 modulo13.
+All roots of the permitted target equations are simple: respectively four
+and eight on these two discs. Integral analytic tails prove completeness;
+this is not a bounded point search. The explicit graph-divisor cocycle and
+invariant isotropic splitting transport these roots to the other six discs,
+giving48 local QC roots.
+
+The exact elliptic group and necessary center-square tests at61,101,107
+restrict n modulo3120 to {0,1,1560} for epsilon0 and {0,1560,3119} for
+epsilon1. On B1 parity forces n=0 modulo13; on B5 it forces n=12.
+The elliptic logarithm gives n=11u and n=12+11u respectively modulo13.
+Only u=0 survives on each disc. Simple-root uniqueness identifies it with
+B_delta. Symmetry leaves only the eight known orbit points, all excluded by
+the exact collision tests in5.9. This proves the theorem.
+
+Certificates are scripts/check_sixth_mode_qc_roots13.py (existing SymPy) and
+scripts/check_sixth_mode_candidate_sieve.py (standard-library Python).
+The latter independently verifies the elliptic formal logarithm and uses
+the full certified elliptic group; no unstated genus-three saturation is
+needed.
+
+This supersedes the unfinished sixth-mode QC/root/sieve status in earlier
+sections. It does not classify all rational points on X1 or X5, since the
+remaining center-square conditions are used in the final sieve. It does
+not exclude the other17 shift-chain types or solve the unrestricted
+size-eleven PTE existence problem.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
 of disjoint eleven-element integer sets and no general impossibility proof
 has been established. Section 5 gives a distinct-entry shift-lift reduction and
-normalized finiteness for six of eighteen chain types; it does not classify
-the required genus-two and genus-three rational points. Section 3
+normalized finiteness for six of eighteen chain types, and Section5.31 now
+excludes valid distinct-entry lifts in the sixth type. The remaining types
+and their required rational-point problems are not classified. Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,
 or at least eight per side under symmetry. The remaining splitting and
