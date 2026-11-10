@@ -5807,13 +5807,87 @@ J(Q)/2J(Q), even after discarding the quadratic component. Since
 dim J(Q)[2]=3, the Mordell–Weil theorem gives rank J(Q)≥5−3=2.
 This proves the claim.
 
-The exact checker is `python scripts/check_type16_rank_obstruction.py`.
+The exact checker is `python scripts/check_shift_curve_rank_obstructions.py`.
 This is a rank lower bound, not a rank upper bound or a saturated basis.
 The two displayed abscissas are not rational squares, so these points
 do not themselves lift to rational PTE centers. Covering methods,
 higher-depth methods or other rational-point arguments remain possible;
 the obstruction only rules out a direct application of the classical
 rank-smaller-than-genus criterion to R16.
+
+### 5.35 Higher rank obstructions for types 5 and 15
+
+The other necessary genus-two curves in the bounded search satisfy
+
+    rank J(R4)(Q)≥1, rank J(R5)(Q)≥3, rank J(R15)(Q)≥4.
+
+Thus the direct classical Chabauty rank criterion fails for R5 and
+R15 as well as R16. The R4 lower bound does not decide its applicability.
+
+**Proof for R5 and R15.** Use the monic change X=hc, Z=h²Y and
+the rational components of the odd-degree Kummer map from Section5.34.
+Both curves have three rational linear factors and one irreducible
+quadratic; consequently their rational two-torsion dimension is three.
+
+For R5, h=1280 and the component order is r=0,49/4,9/4. Take
+P₁=(1/4,192), P₂=(25/4,1920), P₃=(81/4,27648).
+Their projected square classes, together with the three branch classes,
+are
+
+| Class | Component 1 | Component 2 | Component 3 |
+|---|---:|---:|---:|
+| T₀ | 2945 | −5 | −5 |
+| T₄₉/₄ | 5 | 2 | 2 |
+| T₉/₄ | 5 | −2 | 7 |
+| [P₁−∞] | 5 | −15 | −10 |
+| [P₂−∞] | 5 | −30 | 5 |
+| [P₃−∞] | 5 | 10 | 10 |
+
+For R15, h=2560 and the component order is r=0,23/2,31/4. Take
+P₁=(1/4,135), P₂=(9/4,1221), P₃=(25/4,2205),
+P₄=(2/5,4662/25). The projected square classes are
+
+| Class | Component 1 | Component 2 | Component 3 |
+|---|---:|---:|---:|
+| T₀ | 3565 | −115 | −310 |
+| T₂₃/₂ | 115 | 17871 | 6 |
+| T₃₁/₄ | 310 | −6 | −341 |
+| [P₁−∞] | 10 | −2 | −3 |
+| [P₂−∞] | 10 | −370 | −55 |
+| [P₃−∞] | 10 | −210 | −15 |
+| [P₄−∞] | 1 | −111 | −6 |
+
+All displayed points and square classes follow by exact substitution.
+Write (j,p) for v_p on component j modulo two, and (j,−1) for its
+sign bit. Apply the following ordered columns to the respective tables:
+
+    R5:  (1,5),(1,19),(2,−1),(2,2),(2,3),(2,5);
+    R15: (1,2),(1,5),(1,31),(2,−1),(2,3),(2,5),(3,2).
+
+Both square matrices have determinant1 over the integers, hence are
+invertible modulo two. The tables therefore give six and seven
+independent classes in J(Q)/2J(Q), respectively. Subtracting the
+rational two-torsion dimension3 proves the rank lower bounds3 and4.
+
+**The R4 lower bound.** Here h=184320 and f has the rational root0
+and two irreducible quadratics, so dim J(Q)[2]=2. Use T₀, the
+rational branch-divisor class T_q for q(c)=240c²+40c+167, and
+P=(1/4,270). The class T_q is the sum of the two branch points
+minus2∞; its double is the divisor of the corresponding monic quadratic.
+In the component at the rational root0 their Kummer values are
+
+    h³f′(0),  h²·167/240,  h/4,
+
+with square classes1167330,2505,5. The characters v₂₃₃,v₁₆₇,v₅
+give an odd-determinant three-by-three matrix, proving independence
+in J(Q)/2J(Q). Hence rank≥3−2=1.
+
+The exact checker is `python scripts/check_shift_curve_rank_obstructions.py`.
+It rebuilds the monic models, factor counts, points, all Kummer components
+used above and the invertible minors. These are rank lower bounds,
+not upper bounds, saturated bases or rational-point classifications.
+Several displayed points lie on excluded exceptional or colliding
+configurations. None supplies a valid new size-eleven output.
 
 ## 6. Open boundary
 
