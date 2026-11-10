@@ -5178,6 +5178,19 @@ and gives an exact quintic formulation. Theorem 13 gives an exact
 simultaneous-splitting Pell criterion for total support fourteen. Neither
 result increases the support bound or establishes existence.
 
+## Appendix: a splitting pencil and its 2-Selmer group
+
+[PENCIL_SELMER.md](PENCIL_SELMER.md) studies the distinct-entry construction
+P(x)(Q(x)+t), with P=x⁵−110x³+2629x−2520 and
+Q=x⁶−110x⁴+2629x²+2520x. Its sextic discriminant is 64f(t),
+giving a genus-two necessary rational-point condition. A complete staged
+2-descent, conditional on GRH for the class-group calculation, gives
+Selmer dimension three and 1≤rank J(Q)≤3. The torsion-free conclusion
+and rank lower bound one are unconditional. Exact certificates, the
+local-image completeness argument and reproducibility instructions are
+in the linked document and scripts/pencil_selmer/. This does not prove
+rank one, classify rational points, or settle splitting of a valid fiber.
+
 ## References
 
 [1] D. Coppersmith, M. J. Mossinghoff, D. Scheinerman, and J. M. VanderKam,
@@ -5208,3 +5221,4 @@ arXiv:2307.04566, Section 2.
 Introduction, Section 1.2, and Section 4.4, equation (10).
 [Record](https://arxiv.org/abs/2608.28543),
 [full text](https://arxiv.org/html/2608.28543v1).
+

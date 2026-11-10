@@ -31,6 +31,17 @@ Research arguments go in [`PROOF.md`](PROOF.md). Introduce programs only for mat
 families. Section 4 studies a multiset relaxation. Its repeated-root and
 support results do not solve or exclude the original distinct-entry task.
 
+## Splitting-pencil Selmer computation
+
+[PENCIL_SELMER.md](PENCIL_SELMER.md) gives a complete staged 2-descent for
+the genus-two discriminant curve of an explicit quintic–sextic splitting
+pencil. Under GRH for the class-group computation, its 2-Selmer dimension
+is three, so 1≤rank J(Q)≤3. The torsion-free assertion and rank lower
+bound are unconditional. This is not a rank-one theorem or a valid
+size-eleven splitting fiber. Run `python scripts/pencil_selmer/verify.py`
+for the exact certificates; the Magma inputs and successful mathematical
+outputs are included.
+
 ## Sixth-mode exclusion
 
 [The complete sixth-mode proof](SIXTH_MODE_QC_EXCLUSION.md) now closes the local QC calculation and candidate sieve for the sixth shift-chain type. Certified moving normalization and analytic tails isolate48 local QC roots; exact elliptic tests at61,101,107 exclude every candidate except the eight known colliding orbit points. Thus this type has no valid distinct-entry lift. The new steps were independently reviewed, with upstream arithmetic dependencies listed explicitly. Reproduce them with scripts/check_sixth_mode_qc_roots13.py and scripts/check_sixth_mode_candidate_sieve.py. This is not a full rational-point classification or a solution of general size-eleven PTE; the other17 chain types are not excluded.
@@ -298,3 +309,4 @@ theorems are distinct.
 ## Latest local arithmetic certificates
 
 [Complete away-from-13 targets](COMPLETE_AWAY_TARGETS.md) proves dyadic vanishing and the exact 3-adic local sets for the two sixth-mode covers. [Certified infinity projection](INFINITY_PROJECTION.md) supplies precision-three de Rham and holomorphic normalization constants. Both have independent review and executable certificates. The subsequent sixth-mode proof above now completes moving QC functions, root isolation and the candidate sieve for the necessary center lifts. The original distinct-integer problem remains unresolved.
+
