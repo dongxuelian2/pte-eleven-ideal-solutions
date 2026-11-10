@@ -87,5 +87,45 @@ assert all(rational_square(v/c) for v,c in zip(values,expected))
 minor = s.Matrix([[character(v,p) for p in [233,167,5]] for v in values])
 assert minor.det() % 2 == 1
 print("PASS type 4: two branch-divisor classes and one point are independent; rank >= 1.")
-print("Classical rank < genus fails directly for types 5, 15 and 16.")
+
+
+def finite_counts(poly,p):
+    coeff = [int(c) % p for c in s.Poly(poly,x).all_coeffs()]
+    chi = lambda a: 0 if a % p == 0 else (1 if pow(a % p,(p-1)//2,p)==1 else -1)
+    d = next(a for a in range(2,p) if chi(a)==-1)
+    n1,n2 = p+1,p*p+1  # one point at infinity on an odd-degree model
+    for a in range(p):
+        v = 0
+        for c in coeff:
+            v = (v*a+c) % p
+        n1 += chi(v)
+        for b in range(p):
+            u,v = 0,0
+            for c in coeff:
+                u,v = (u*a+v*b*d+c) % p,(u*b+v*a) % p
+            n2 += chi(u*u-d*v*v)
+    return n1,n2
+
+
+certificates = {4:[(17,18,238,240),(23,34,538,68)],
+                5:[(11,12,118,96),(13,16,154,132)],
+                15:[(17,20,290,132),(41,38,1614,448)],
+                16:[(11,12,118,96),(13,20,170,68)]}
+T = s.symbols("T")
+for typ,certs in certificates.items():
+    poly = f if typ==4 else families[typ][0]
+    for p,n1,n2,disc in certs:
+        assert s.discriminant(poly,x) % p != 0 and s.LC(s.Poly(poly,x)) % p != 0
+        assert finite_counts(poly,p) == (n1,n2)
+        a1 = p+1-n1
+        assert (n2-p*p-1+a1*a1) % 2 == 0
+        a2 = (n2-p*p-1+a1*a1)//2
+        frob = T**4-a1*T**3+a2*T*T-p*a1*T+p*p
+        assert a2 % p != 0 and s.Poly(frob,T).is_irreducible
+        assert a1*a1-4*(a2-2*p) == disc
+        assert not rational_square(disc)
+    assert not rational_square(Q(certs[0][3],certs[1][3]))
+    print(f"PASS type {typ}: two ordinary simple reductions with distinct real quadratic fields.")
+print("The specialization/Rosati argument gives rational NS rank one for all four curves.")
+print("Both classical and standard quadratic-Chabauty rank criteria fail for types 5, 15, 16.")
 print("No rank upper bound, complete rational-point set or valid PTE output asserted.")

@@ -44,7 +44,9 @@ classify the unbounded rational-point sets.
 Sections 5.34–5.35 give exact Kummer rank lower bounds 1,3,4,2 for the
 genus-two necessary curves of types 4,5,15,16 respectively. Thus the
 direct classical Chabauty rank criterion does not apply to types 5,15,16.
-These are obstructions to that route, not exclusions of the chain types.
+Section 5.36 proves rational Néron–Severi rank one for all four Jacobians,
+so the standard quadratic-Chabauty rank inequality also fails for those
+three curves. These obstruct those direct criteria, not the chain types.
 
 ## Splitting-pencil arithmetic
 
