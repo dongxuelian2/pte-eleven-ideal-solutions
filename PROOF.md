@@ -5936,7 +5936,8 @@ For all four curves the usual inequality is consequently
     rank J(Q) < g+ρ_Q−1 = 2.
 
 The lower bounds in Sections5.34–5.35 violate it for R5, R15 and
-R16. For R4 its applicability still requires a rank upper bound.
+R16. For R4 its applicability still requires a rank-one certificate;
+the interval in Section5.37 does not supply one.
 The checker `scripts/check_shift_curve_rank_obstructions.py` independently
 counts over F_p and F_{p²}, checks good reduction, ordinarity and exact
 irreducibility, and verifies the distinct fixed fields. No approximate
