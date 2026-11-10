@@ -5184,7 +5184,7 @@ result increases the support bound or establishes existence.
 P(x)(Q(x)+t), with P=x⁵−110x³+2629x−2520 and
 Q=x⁶−110x⁴+2629x²+2520x. Its sextic discriminant is 64f(t),
 giving a genus-two necessary rational-point condition. A complete staged
-2-descent, conditional on GRH for the class-group calculation, gives
+2-descent, with an exact unconditional class-number and global-basis certificate, gives
 Selmer dimension three and 1≤rank J(Q)≤3. The torsion-free conclusion
 and rank lower bound one are unconditional. Exact certificates, the
 local-image completeness argument and reproducibility instructions are

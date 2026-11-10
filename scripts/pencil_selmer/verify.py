@@ -92,4 +92,5 @@ real2 = sum(1 << j for j in order[3:])
 assert {0,real1,real2,real1^real2} == {0,5,10,15}
 print('Exact real Kummer image: span{10100,01010}, increasing-a order.')
 print('Known point has mask 4; exact square identity passed.')
-print('All certificate checks passed. Conditional Selmer dimension 3; 1 <= rank <= 3 under GRH.')
+runpy.run_path(str(p/'check_global_basis.py'))
+print('All certificate checks passed. Unconditional Selmer dimension 3; 1 <= rank <= 3.')

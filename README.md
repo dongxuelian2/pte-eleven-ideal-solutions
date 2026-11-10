@@ -35,9 +35,9 @@ support results do not solve or exclude the original distinct-entry task.
 
 [PENCIL_SELMER.md](PENCIL_SELMER.md) gives a complete staged 2-descent for
 the genus-two discriminant curve of an explicit quintic–sextic splitting
-pencil. Under GRH for the class-group computation, its 2-Selmer dimension
-is three, so 1≤rank J(Q)≤3. The torsion-free assertion and rank lower
-bound are unconditional. This is not a rank-one theorem or a valid
+pencil. Its 2-Selmer dimension is unconditionally three, so 1≤rank J(Q)≤3.
+Exact principal relations, verification through the Minkowski bound, and
+global ideal-parity/sign checks remove the earlier GRH assumption. This is not a rank-one theorem or a valid
 size-eleven splitting fiber. Run `python scripts/pencil_selmer/verify.py`
 for the exact certificates; the Magma inputs and successful mathematical
 outputs are included.

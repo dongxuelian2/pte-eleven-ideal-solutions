@@ -1,0 +1,104 @@
+Magma 2.30-1: successful mathematical outputs from seven independent interval runs.
+The first run used FactorBasis(O,B) for its low-prime list; all six later runs
+used direct rational-prime enumeration and decomposition as in the packaged script.
+The exact strong seed therefore has six successful independent executions.
+
+EXACT_RELATIONS_VERIFIED 80
+LOW_PRIME_COVERAGE 63 318
+MINKOWSKI_BOUND 17507890
+Time: 1.130
+VERIFIED_INTERVAL 318 50000
+
+EXACT_RELATIONS_VERIFIED 85
+LOW_PRIME_COVERAGE 63 318
+MINKOWSKI_BOUND 17507890
+
+WARNING
+Class group unconditional proof is expensive.
+Hint: to obtain class group proven under GRH, input
+> SetClassGroupBounds("GRH");
+before starting the current calculation.
+
+Time: 24.740
+VERIFIED_INTERVAL 50000 1000000
+
+EXACT_RELATIONS_VERIFIED 85
+LOW_PRIME_COVERAGE 63 318
+MINKOWSKI_BOUND 17507890
+
+WARNING
+Class group unconditional proof is expensive.
+Hint: to obtain class group proven under GRH, input
+> SetClassGroupBounds("GRH");
+before starting the current calculation.
+
+Time: 58.170
+VERIFIED_INTERVAL 1000000 3000000
+
+EXACT_RELATIONS_VERIFIED 85
+LOW_PRIME_COVERAGE 63 318
+MINKOWSKI_BOUND 17507890
+
+WARNING
+Class group unconditional proof is expensive.
+Hint: to obtain class group proven under GRH, input
+> SetClassGroupBounds("GRH");
+before starting the current calculation.
+
+Time: 96.820
+VERIFIED_INTERVAL 3000000 6000000
+
+EXACT_RELATIONS_VERIFIED 85
+LOW_PRIME_COVERAGE 63 318
+MINKOWSKI_BOUND 17507890
+
+WARNING
+Class group unconditional proof is expensive.
+Hint: to obtain class group proven under GRH, input
+> SetClassGroupBounds("GRH");
+before starting the current calculation.
+
+Time: 140.120
+VERIFIED_INTERVAL 6000000 10000000
+
+EXACT_RELATIONS_VERIFIED 85
+LOW_PRIME_COVERAGE 63 318
+MINKOWSKI_BOUND 17507890
+
+WARNING
+Class group unconditional proof is expensive.
+Hint: to obtain class group proven under GRH, input
+> SetClassGroupBounds("GRH");
+before starting the current calculation.
+
+Time: 136.270
+VERIFIED_INTERVAL 10000000 14000000
+
+EXACT_RELATIONS_VERIFIED 85
+LOW_PRIME_COVERAGE 63 318
+MINKOWSKI_BOUND 17507890
+
+WARNING
+Class group unconditional proof is expensive.
+Hint: to obtain class group proven under GRH, input
+> SetClassGroupBounds("GRH");
+before starting the current calculation.
+
+Time: 110.230
+VERIFIED_INTERVAL 14000000 17507890
+
+EXACT_GLOBAL_IDEAL_PARITY 1 VERIFIED
+EXACT_GLOBAL_IDEAL_PARITY 2 VERIFIED
+EXACT_GLOBAL_IDEAL_PARITY 3 VERIFIED
+EXACT_GLOBAL_IDEAL_PARITY 4 VERIFIED
+EXACT_GLOBAL_IDEAL_PARITY 5 VERIFIED
+EXACT_GLOBAL_IDEAL_PARITY 6 VERIFIED
+EXACT_GLOBAL_IDEAL_PARITY 7 VERIFIED
+EXACT_GLOBAL_IDEAL_PARITY 8 VERIFIED
+EXACT_GLOBAL_IDEAL_PARITY 9 VERIFIED
+EXACT_GLOBAL_IDEAL_PARITY 10 VERIFIED
+EXACT_GLOBAL_IDEAL_PARITY 11 VERIFIED
+EXACT_GLOBAL_IDEAL_PARITY 12 VERIFIED
+EXACT_GLOBAL_IDEAL_PARITY 13 VERIFIED
+EXACT_GLOBAL_IDEAL_PARITY 14 VERIFIED
+ALL_14_GLOBAL_PARITIES_CERTIFIED_WITHOUT_CLASSGROUP_ASSUMPTIONS
