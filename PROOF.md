@@ -985,10 +985,12 @@ necessary distinctness and disjointness conditions.
 
 ## 5. A distinct-entry construction route: shift chains
 
-These results concern lifting a symmetric ideal size-ten pair, not all
-size-eleven pairs. They provide exact reductions and a finiteness result
-for four subclasses, but no size-eleven witness or general exclusion.
-No novelty claim is made for the lifting or finiteness mechanisms.
+These results concern lifting a symmetric ideal size-ten pair. Theorem 14
+in Section 5.32 proves normalized finiteness for all eighteen chain types,
+and Section 5.31 excludes the previously named sixth mode. No size-eleven
+witness or general nonexistence theorem is established. The lifting
+mechanism and Faltings's theorem are standard; the explicit all-type
+reductions and their exceptional-branch analysis are given here.
 
 ### 5.1 Exact lifting criterion and eighteen chain types
 
@@ -1134,9 +1136,10 @@ The curves have the rational control points (b,y)=(1,336),(4,1920),
 ten half-integers +/-1/2,+/-3/2,+/-5/2,+/-7/2,+/-9/2; the certificate
 explicitly verifies this rejection. Their rational points have not been
 completely determined. Any further point must still pass the rational-
-square, complete-splitting, and noncollision conditions. The other fourteen
-chain types and constructions outside this shift-lift route are not settled
-by these reductions.
+square, complete-splitting, and noncollision conditions. These four
+reductions alone do not treat the other fourteen chain types; the complete
+normalized finiteness theorem for all eighteen appears in Section 5.32.
+Constructions outside this shift-lift route remain outside its scope.
 The finiteness input is the established theorem of G. Faltings,
 *Endlichkeitssaetze fuer abelsche Varietaeten ueber Zahlkoerpern*,
 Inventiones Mathematicae 73 (1983), 349-366,
@@ -1238,9 +1241,9 @@ the exceptional denominator alone solves the remaining splitting problem.
 The exact certificate `scripts/check_sixth_mode.py` verifies the moment
 identities, exceptional resultant, collision factor, smoothness minors,
 and this nonexceptional rejection. No finite search failure is used.
-The remaining twelve types and other construction routes are not settled
-by the reductions in this section; no eleven-distinct-integer solution
-or general impossibility theorem is established.
+The remaining twelve types are treated for normalized finiteness in
+Section 5.32. No eleven-distinct-integer solution or general impossibility
+theorem is established.
 
 ### 5.6 Effective rank computation for the sixth-mode Jacobian
 
@@ -5161,14 +5164,523 @@ remaining center-square conditions are used in the final sieve. It does
 not exclude the other17 shift-chain types or solve the unrestricted
 size-eleven PTE existence problem.
 
+### 5.32 Finiteness for all eighteen symmetric shift-chain types
+
+**Theorem 14 (complete normalized shift-lift finiteness).** There are only
+finitely many pairs of disjoint rational sets `A=-A`, `B=-B`, each of size
+ten, with equal moments through degree nine, for which the shift `t=1`
+and cancellation construction of Section 5.1 produces two sets of eleven
+distinct entries. Consequently, allowing an arbitrary common center and
+nonzero rational shift yields only finitely many affine-equivalence
+classes of successful inputs and outputs for this construction.
+
+This theorem covers all eighteen types, including the twelve types whose
+finiteness was previously unproved. It does not enumerate the finite set,
+provide an effective height bound, or decide whether any valid size-eleven
+output exists. In particular, it excludes an infinite family of
+inequivalent solutions obtained by this construction; the unrestricted
+size-eleven problem remains open.
+
+**Proof.** Section 5.1 gives an exhaustive finite list of maximal chain
+types. We number them in the order produced by its partition enumeration
+(increasing `m`, number of A chain pairs, then the two length lists).
+The older “fifth mode” is type 2 below; the older “sixth mode” excluded
+in Section 5.31 is type 10, not type 6 of this table.
+
+| Type | m | A pair lengths | B pair lengths | Necessary curve genus | Argument |
+|---|---:|---|---|---:|---|
+| 1 | 1 | (4) | (1,1,1,2) | 2 | Sections 5.2–5.3 |
+| 2 | 1 | (1,3) | (1,1,3) | 3 | Section 5.4 |
+| 3 | 1 | (1,3) | (1,2,2) | 3 | Below |
+| 4 | 1 | (2,2) | (1,1,3) | 2 | Below |
+| 5 | 1 | (2,2) | (1,2,2) | 2 | Below |
+| 6 | 1 | (1,1,2) | (1,4) | 4 | Below |
+| 7 | 1 | (1,1,2) | (2,3) | 4 | Below |
+| 8 | 1 | (1,1,1,1) | (5) | 4 | Below |
+| 9 | 2 | (3) | (1,1,1,2) | 2 | Sections 5.2–5.3 |
+| 10 | 2 | (1,2) | (1,1,3) | 3 | Section 5.5; exclusion in 5.31 |
+| 11 | 2 | (1,2) | (1,2,2) | 3 | Below |
+| 12 | 2 | (1,1,1) | (1,4) | 2 | Below |
+| 13 | 2 | (1,1,1) | (2,3) | 2 | Below |
+| 14 | 3 | (2) | (1,1,1,2) | 2 | Sections 5.2–5.3 |
+| 15 | 3 | (1,1) | (1,1,3) | 2 | Below |
+| 16 | 3 | (1,1) | (1,2,2) | 2 | Below |
+| 17 | 4 | (1) | (1,1,1,2) | 2 | Sections 5.2–5.3 |
+| 18 | 5 | () | (1,1,1,1,1) | 3 | Below |
+
+For each type every valid configuration maps, with finite fibers, to a
+fixed smooth projective curve over Q of genus at least two. Faltings's
+theorem [6, Theorem 7] makes its rational-point set finite. The finite
+union over the eighteen types is finite. Normalization by the common
+symmetry center and the nonzero shift then proves the affine statement.
+
+Here are the remaining twelve reductions, including all exceptional
+branches. Every lower-case center variable denotes a square of a rational
+center; `S,T` and `U,V` denote the sum and product of the specified pair
+of squared centers. Write
+
+\[
+ M_L(k,z)=\sum_{j=0}^{k}\binom{2k}{2j}z^{k-j}
+                    \sum_{d\in O_L}d^{2j},\qquad
+ C_m(k)=\tfrac12\sum_{d\in O_{2m}}d^{2k}.
+\]
+
+For two squared centers use `p_0=2`, `p_1=S`,
+`p_k=S p_(k-1)-T p_(k-2)`; substitute these into `M_L` when taking a
+pair of centers. For three or four singleton squares, Newton's identities
+determine the unique monic cubic or quartic from its initial power sums.
+All displayed eliminations start with the exact four even moments of
+orders 2,4,6,8. Resultants stated up to proportionality differ only by a
+nonzero rational constant.
+
+#### Type 3: (1,(1,3),(1,2,2))
+
+Let a,b be the A length-one and length-three squared centers; let c be
+the B singleton square and S,T the sum/product of the two B length-two
+squares. The first two equations determine
+
+\[
+ a=2S-3b+c-5/4,
+\quad T=-\frac{16S^2-96Sb+32Sc-64S+96b^2-48bc+156b-20c+27}{32}.
+\]
+
+The resultant in S of the two remaining equations factors as
+
+\[
+ (4b-25)(4b-9)(4b-1)(4c-1)^3
+ ((b-c-1)^2-4c)^2 H_3(b,c),
+\]
+
+where
+
+\[
+ H_3=1024b^2-1520bc+636b+640c^2-1860c+2025.
+\]
+
+The c=1/4 factor puts a B vertex in the centered A chain. The b=1/4
+and b=9/4 factors repeat A vertices. At b=25/4 the prescribed A chains
+have additional unit edges, so they cannot be the specified maximal
+chains; equivalently they contradict the degree-nine edge bound for a
+nontrivial disjoint seed. Finally the squared factor says that the B
+singleton is one of the vertices of an A length-three chain. Thus a
+valid input lies on H3(b,c)=0.
+
+Writing b=u²,c=v² and homogenizing gives a smooth plane quartic. A useful
+smoothness certificate is that every nonempty principal minor of
+
+\[
+\begin{pmatrix}2048&-1520&636\\-1520&1280&-1860\\636&-1860&4050\end{pmatrix}
+\]
+
+is nonzero: they are 2048,1280,4050,311040,7889904,1724400,−2747105280.
+Indeed, at a singular point of a quartic quadratic in U²,V²,W², the
+squares of its nonzero coordinates are killed by the corresponding
+principal submatrix. This is impossible here. The quartic has genus
+three. For each b,c the third moment equation is a cubic in S with
+nonzero constant leading coefficient. It gives at most three S, then
+fixes a,T and all remaining squared centers. Thus the fibers are finite.
+
+#### Type 4: (1,(2,2),(1,1,3))
+
+Let S,T be the sum/product of the A length-two squares; let c be the B
+length-three square, and U,V the sum/product of its two singleton squares.
+The first two equations give
+
+\[
+ U=2S-3c-3/4,\qquad
+ V=(8S^2-48Sc-24S+16T+48c^2+66c+9)/8.
+\]
+
+The resultant in T of the remaining equations is proportional to
+
+\[
+ (4c-9)(4c-1)(-6S+20c+25)(-2S+4c+1)
+ [4S^2-16Sc-20S+16c^2+24c+25].
+\]
+
+Values c=1/4,9/4 give collisions with the central chain. For the linear
+branch S=2c+1/2 the third equation forces T=(4c−1)²/16; the A centers
+are ±(v−1/2),±(v+1/2), where c=v², and their length-two chains overlap
+the B length-three chain. On the quadratic branch,
+S=2v²+5/2±2v and T=(2v∓1)²(2v±3)²/16. These centers also overlap the
+B chain. The coefficients of T in these equations vanish only at c=−11/4
+or c=1/4,9/4. The former is not a rational square; the latter are already
+excluded. Hence no positive-dimensional exceptional branch was discarded.
+
+Every valid input must therefore satisfy
+
+\[
+ S=(20c+25)/6,\quad T=(240c^2+40c+167)/48,\quad
+ U=(44c+91)/12,\quad V=(256c^2+97c+466)/36.
+\]
+
+The coefficient determining T is a nonzero multiple of 4c+11. Since
+c,T,V are all rational squares, so is their product. This gives a
+rational point on
+
+\[
+ Y^2=3c(240c^2+40c+167)(256c^2+97c+466).
+\]
+
+The right side has degree five and is squarefree, so the curve has genus
+two. All center squares are determined by c and two quadratic equations;
+the rational-point fibers are finite.
+
+#### Type 5: (1,(2,2),(1,2,2))
+
+Let `c=w^2` be the B singleton-center
+square. Let `S,T` be the sum and product of the two A length-two
+center-squares, and `U,V` those of the two B length-two center-squares.
+The first two moments give
+
+```
+U = (8S-4c+1)/8,
+V = (-64Sc+16S+128T+48c^2-56c+11)/128.
+```
+
+The third residual is
+`-3(4c-1)(-96Sc+88S+128T+80c^2-200c+173)/512`.
+The factor `c=1/4` puts the B singleton in the centered A chain. Otherwise
+solve for `T`; the fourth residual becomes
+`(4c-1)(4c-9)(4c-25)(16S-20c+85)/4096`.
+At `c=9/4` the A squared-center polynomial has root 1, so that its length-two
+chain overlaps the centered A chain. At `c=25/4` it has root 4, so that
+an A vertex coincides with the B singleton. The remaining branch is
+
+```
+S=(20c-85)/16,  T=(80c^2-840c+589)/256,
+U=(12c-83)/16,  V=(4c-49)(4c-9)/256.
+```
+
+Because `c,T,V` are rational squares, this gives a rational point on
+
+```
+Y^2=c(80c^2-840c+589)(4c-49)(4c-9).                 (R5)
+```
+
+The right side is squarefree of degree five, so its smooth projective
+model has genus two. Each `c` fixes both center quadratics and hence
+only finitely many configurations.
+
+#### Type 6: (1,(1,1,2),(1,4))
+
+Let a be the A length-two square, S,T its singleton sum/product, b the B
+singleton square and c the B length-four square. The first two equations
+give
+
+\[
+ S=-2a+b+4c+17/4,
+\quad T=(12a^2-8ab-32ac-28a+16bc+17b+24c^2+8c+16)/4.
+\]
+
+The resultant in b is proportional to
+
+\[
+ (a-c)((a-c-1)^2-4c) E_6(a,c)H_6(a,c),
+\]
+
+where
+
+\[
+\begin{split}
+ E_6&=3a^2-8ac-7a+6c^2+2c+4,\\
+ H_6&=a^3-5a^2c-9a^2+10ac^2+15ac+24a
+                         -10c^3+10c^2-20c-16.
+\end{split}
+\]
+
+The first two factors make the A length-two chain overlap a B length-four
+chain. The third equation is linear in b with coefficient proportional
+to E6. If E6=0, its constant coefficient also has to vanish. Their
+resultant in a is a nonzero multiple of c(c−4)²(c−1)³. For c=0 the
+reflected B chains coincide; for c=1 or4 they meet the centered A chain.
+Thus E6 is nonzero on every valid input, b is uniquely determined, and
+H6(a,c)=0.
+
+The projective cubic H6=0 is smooth: its affine singularity ideal
+(H6,∂aH6,∂cH6) is the unit ideal over Q, and its intersection with the
+line at infinity is given by
+A³−5A²C+10AC²−10C³, with discriminant −200 at C=1.
+Its three affine intersections with a=0 are simple, since
+H6(0,c)=−2(5c³−5c²+10c+8) has discriminant −1483200.
+At each of its three distinct points at infinity, the function a=A/Z
+has a simple pole; A is nonzero there. The double cover a=u² therefore
+has six simple branch places. It is geometrically connected (a has odd
+valuation at these places), and its smooth completion has genus four
+by Riemann–Hurwitz. Every valid rational configuration supplies a
+rational point on this cover. With a,c fixed, the formula for b and then
+S,T give finite fibers.
+
+#### Type 7: (1,(1,1,2),(2,3))
+
+Let a and S,T describe the A length-two pair and singleton squares;
+let b,c be the B length-two and length-three squares. The first two
+moments fix
+
+\[
+ S=-2a+2b+3c+7/4,
+\quad T=\frac{48a^2-64ab-96ac-32a+16b^2+96bc+32b+48c^2-12c+9}{16}.
+\]
+
+The resultant in b of the remaining equations is proportional to
+
+\[
+ (4c-9)(4c-1)^2(8a-12c-5)
+ [16a^2-32ac-8a+16c^2-8c+1]^2 H_7(a,c),
+\]
+
+where
+
+\[
+ H_7=256a^3-1280a^2c-64a^2+2560ac^2-2560ac-2976a
+                         -960c^3+3920c^2+780c+3159.
+\]
+
+The c factors put B vertices in the central A chain. The squared
+factor is 16[a−(v+1/2)²][a−(v−1/2)²], c=v², which forces a cross-color
+overlap. On the remaining linear branch a=(12c+5)/8, the third moment,
+away from c=1/4,9/4, forces b=(20c+19)/24. The fourth moment then is a
+nonzero multiple of (4c−9)(4c−1)²(4c+11). Its only remaining possibility
+c=−11/4 is not a rational square. Hence every valid input satisfies
+H7(a,c)=0.
+
+This cubic is smooth over the algebraic closure: the affine singularity
+ideal is the unit ideal; the cubic at infinity has discriminant
+−1630745395200, and H7(0,c) has discriminant −1165197783859200.
+Neither affine intersection set has repeated roots, and A≠0 at infinity.
+As for type6, the cover a=u² has six simple branch places and genus four.
+For fixed a,c, the third moment is a polynomial of degree at most two
+in b. All its coefficients can vanish only when
+8a−12c−5=0 and (4c−1)(4c−9)=0, which are already excluded. Thus the
+map to this genus-four curve has finite fibers even at a vanishing
+quadratic leading coefficient.
+
+#### Type 8: (1,(1,1,1,1),(5))
+
+Put `b=v^2` for the B length-five
+center. The four A singleton-center squares have prescribed power sums
+`p_k=M_5(k,b)-C_1(k)` for `1<=k<=4`, so their monic quartic `K_b` is
+uniquely determined. Its discriminant is
+
+```
+disc(K_b) = 5(4b-1)^2 h8(b)/2^24,
+h8(b) = 26214400b^10 - 904396800b^9 + 13285785600b^8
+ -130282291200b^7 + 1026147491840b^6 -6126693150720b^5
+ +21780357808640b^4 -27633876692480b^3 +12983200818768b^2
+ +1848981232152b +6457704345.
+```
+
+The case `b=1/4` gives a B vertex in the centered A chain and is invalid.
+Complete rational splitting makes the quartic discriminant a rational
+square, giving `Y^2=5h8(b)`. This squarefree degree-ten model has genus
+four. The uniquely determined quartic and finitely many square-root
+choices give finite fibers.
+
+#### Type 11: (2,(1,2),(1,2,2))
+
+Let a,b be the A singleton and length-two squares, c the B singleton
+square, and S,T the sum/product of the B length-two squares. Then
+
+\[
+ a=2S-2b+c-2,
+\quad T=-(2S^2-8Sb+4Sc-11S+6b^2-4bc+11b-4c+9)/4.
+\]
+
+Both remaining moments contain a factor −S+b+1, which makes a=c and
+therefore repeats a vertex between colors. Remove that factor. Their
+resultant in S is proportional to
+
+\[
+ (4c-9)(4c-1)
+ [16b^2-32bc-8b+16c^2-8c+1]H_{11}(b,c),
+\quad H_{11}=16b^2+80bc-140b-80c^2+280c-281.
+\]
+
+The first two factors put a B singleton in the centered length-four A
+chain, and the quadratic factor puts it in the A length-two chain.
+Thus H11(b,c)=0. Its even plane quartic, with b=u²,c=v², has derivative
+matrix
+
+\[
+\begin{pmatrix}32&80&-140\\80&-160&280\\-140&280&-562\end{pmatrix},
+\]
+
+whose nonempty principal minors are 32,−160,−562,−11520,−37584,11520,829440.
+They are all nonzero, so the quartic is smooth of genus three. The third
+moment after cancellation is a quadratic in S with nonzero constant
+leading coefficient. Hence all fibers are finite.
+
+#### Type 12: (2,(1,1,1),(1,4))
+
+Put `b=v^2` for the B length-four
+center and `c=w^2` for its singleton center. The three A singleton squares
+have `p_k=M_4(k,b)+c^k-C_2(k)`. Their fourth Newton residual is
+`-4b(b-4)(b-1)(b+4c-10)`. The possibilities `b=0,1,4` force a B vertex
+into the centered A chain. Consequently `c=(10-b)/4`. The resulting
+cubic has discriminant `-h12(b)/64`, where
+
+```
+h12(b)=50b^6-1650b^5+26675b^4-187600b^3+49540b^2-34390b-81.
+```
+
+Thus every valid configuration maps with finite fibers to the smooth
+genus-two curve `Y^2=-h12(b)`.
+
+#### Type 13: (2,(1,1,1),(2,3))
+
+Put `b=v^2` and `c=w^2` for the B
+length-two and length-three centers. Now
+`p_k=M_2(k,b)+M_3(k,c)-C_2(k)`. The fourth Newton residual is
+`-(b-1)(4c-9)(4c-1)(6b+4c-25)/8`. The first three factors force B/A
+collisions. Hence `b=(25-4c)/6`. The cubic discriminant is `-h13(c)/62208`,
+where
+
+```
+h13(c)=921600c^6-24832000c^5+192608000c^4-644627200c^3
+       +936509680c^2-438571880c-82872167.
+```
+
+Since `62208=3*144^2`, a square discriminant yields the squarefree
+sextic curve `Y^2=-3h13(c)`, again of genus two with finite fibers.
+
+#### Type 15: (3,(1,1),(1,1,3))
+
+Let `c` be the B length-three center
+square, `S,T` the symmetric functions of the A singleton squares, and
+`U,V` those of the B singleton squares. Eliminating the first two
+moments gives
+
+```
+U=S-3c+27/4,
+V=(-48Sc+108S+16T+96c^2-228c+27)/16.
+```
+
+The third residual is
+`-3(4c-9)(-96Sc+12S+48T+160c^2+160c-47)/64`.
+Here `c=9/4` makes the B chain overlap the centered A chain. Eliminating
+`T`, the fourth residual becomes
+`(4c-25)(4c-9)(4c-1)(-8S+20c+15)/64`.
+The three constant choices of `c` all cause B/A collisions. The remaining
+branch is
+
+```
+S=(20c+15)/8,   T=(160c^2-20c+49)/96,
+U=(69-4c)/8,    V=(2c-23)(4c-31)/48.
+```
+
+The square condition on `cTV` gives the squarefree genus-two curve
+
+```
+Y^2=2c(2c-23)(4c-31)(160c^2-20c+49).              (R15)
+```
+
+The same two quadratic polynomials prove finite fibers.
+
+#### Type 16: (3,(1,1),(1,2,2))
+
+Now `c` is the B singleton-center
+square, `S,T` refer to the A singleton squares, and `U,V` to the two B
+length-two center-squares. The first two moments give
+
+```
+U=(4S-4c+31)/8,
+V=(-16S^2-32Sc+296S+64T+48c^2-296c-73)/128.
+```
+
+Write `D=4S+4c-51`. For `D!=0`, the third moment gives
+
+```
+T=(64S^3+64S^2c-944S^2+192Sc^2-1376Sc+1996S
+   -320c^3+2320c^2-1996c-441)/(64D).
+```
+
+The fourth residual then factors as
+
+```
+(4c-25)(4c-1)(-4S+4c+1)(-4S+4c+9)(-4S+4c+49)
+ (12S+20c-195)/(1024D^2).
+```
+
+At `D=0`, the third residual is
+`-3(4c-25)(4c-21)(4c-1)/64`. The values `c=1/4,25/4` are direct
+B-singleton/A-central collisions; `c=21/4` is not a rational square.
+Thus a valid configuration has `D!=0`. The same collisions exclude the
+first two factors of the fourth residual. For `S=c+j/4`, with
+`j=1,9,49`, substitution gives the A squared-center polynomial
+`(X-c)(X-j/4)`. Hence an A singleton coincides with the B singleton;
+these branches are invalid. What remains is
+
+```
+S=(195-20c)/12,  T=(160c^2-1335c+2304)/36,
+U=4(9-c)/3,      V=2(c-6)(4c-9)/3.
+```
+
+Again `cTV` is square, giving
+
+```
+Y^2=6c(c-6)(4c-9)(160c^2-1335c+2304).             (R16)
+```
+
+Its right side is squarefree of degree five, so this is genus two.
+The fixed center quadratics give finite fibers, including possible
+multiple-root parameter values (which cannot yield a valid seed).
+
+#### Type 18: (5,(),(1,1,1,1,1))
+
+Double all centers. The centered A chain then has positive squared
+vertices 1,9,25,49,81. Equality of the first four even moments fixes
+the first four elementary symmetric coefficients of the five B center
+squares. Their product is z² for a rational z. Consequently they are
+the roots of
+
+\[
+ Q_z(X)=X^5-165X^4+8778X^3-172810X^2+1057221X-z^2.
+\]
+
+Complete rational splitting forces the discriminant of this polynomial
+to be a rational square. That discriminant is
+
+\[
+\begin{split}
+ d(z)={}&3125z^8+108276547500z^6-1117199475459133506z^4\\
+       &+533350028141359954915500z^2
+         +2470517618419162907684321203125.
+\end{split}
+\]
+
+It is squarefree of degree eight. Thus Y²=d(z) has genus three.
+For each z the polynomial fixes the five center squares, giving finite
+fibers. The auxiliary square z is essential: discriminant alone as a
+function of an unrestricted constant coefficient would only give a
+quartic hyperelliptic model of genus one.
+
+#### Verification and scope
+
+The exact certificate `scripts/check_all_shift_chain_types.py` rebuilds
+the moment equations, verifies their elimination identities, and checks
+the exceptional branches, squarefree hyperelliptic polynomials, smooth
+plane quartics, and the six simple branch places of each genus-four
+cover. The finite-fiber arguments above are part of the mathematical
+proof. No search bound, approximate genus computation, GRH assumption,
+or conjecture about a Tate–Shafarevich group enters Theorem 14.
+
+The conclusion changes the scope of the remaining work: the entire
+symmetric-size-ten shift route is a finite collection of fixed
+rational-point problems, with explicitly necessary lifting conditions.
+The genus bounds and Faltings do not replace those point calculations.
+Section 5.31 separately excludes type 10; the theorem here does not
+claim exclusions for the other seventeen types.
+
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
 of disjoint eleven-element integer sets and no general impossibility proof
 has been established. Section 5 gives a distinct-entry shift-lift reduction and
-normalized finiteness for six of eighteen chain types, and Section5.31 now
-excludes valid distinct-entry lifts in the sixth type. The remaining types
-and their required rational-point problems are not classified. Section 3
+normalized finiteness for all eighteen chain types (Theorem 14), and
+Section 5.31 excludes valid distinct-entry lifts in the older sixth mode
+(type 10 in the complete table). The remaining seventeen types' required
+rational-point sets and lifting conditions are not classified. Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,
 or at least eight per side under symmetry. The remaining splitting and
@@ -5222,3 +5734,10 @@ Introduction, Section 1.2, and Section 4.4, equation (10).
 [Record](https://arxiv.org/abs/2608.28543),
 [full text](https://arxiv.org/html/2608.28543v1).
 
+
+[6] G. Faltings, *Endlichkeitssätze für abelsche Varietäten über Zahlkörpern*,
+Inventiones Mathematicae 73 (1983), 349–366, Theorem 7;
+erratum, Inventiones Mathematicae 75 (1984), 381.
+[DOI](https://doi.org/10.1007/BF01388432),
+[original paper](https://pazuki.perso.math.cnrs.fr/index_fichiers/Faltings83.pdf),
+[erratum](https://doi.org/10.1007/BF01388572).
