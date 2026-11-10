@@ -41,6 +41,11 @@ multithreaded sieve retains only six colliding configurations, checked
 independently with rational arithmetic. This finite box does not
 classify the unbounded rational-point sets.
 
+Section 5.34 gives an exact Kummer certificate that the Jacobian of the
+type-16 genus-two necessary curve has rank at least two. Thus the direct
+classical Chabauty rank criterion does not apply to that curve. This is
+an obstruction to one route, not an exclusion of type 16.
+
 ## Splitting-pencil arithmetic
 
 [PENCIL_SELMER.md](PENCIL_SELMER.md) studies an explicit quintic–sextic
