@@ -5672,6 +5672,88 @@ Section 5.31 separately excludes type 10; the theorem here does not
 claim exclusions for the other seventeen types.
 
 
+### 5.33 Exact bounded center search in four remaining types
+
+For types 4, 5, 15 and 16, write the last squared center as
+`c=(n/d)^2`, with `n>=0`, `d>0`, and `gcd(n,d)=1`. An exact search over
+`n<=1000000`, `d<=1000000` leaves only the following configurations
+in which both center quadratics split completely into rational squares:
+
+| Type | n/d | First center pair | Second center pair | Invalidity |
+|---|---|---|---|---|
+| 4 | 1/2 | 2, 1 | 5/2, 3/2 | repetitions and cross-color overlap |
+| 5 | 7/2 | 3, 1 | 2, 0 | repetitions and cross-color overlap |
+| 5 | 9/2 | 4, 2 | 3, 1 | cross-color overlap |
+| 15 | 1/2 | 3/2, 1/2 | 5/2, 3/2 | repetitions and cross-color overlap |
+| 15 | 7/2 | 9/2, 7/2 | 3/2, 1/2 | cross-color overlap |
+| 16 | 3/2 | 7/2, 1/2 | 3, 0 | repetitions and cross-color overlap |
+
+Signs and pair order do not change the reflected chains. Substitution
+in the original chain lists verifies all four moment equations, but
+none is a disjoint, distinct-entry seed. The exceptional branches were
+already excluded in Section 5.32. Thus there is no valid input of these
+four types in this **center-height box**. This is not a height bound
+on all rational points or on the final integer PTE sets.
+
+Let `S,T` and `U,V` be the two center-quadratic coefficient pairs in
+Section 5.32. Put `D=12,16,24,12` for types 4,5,15,16 respectively.
+The scaled center squares `X=D*d^2*u^2` are roots of
+
+```
+X^2-Sbar X+Tbar,
+Sbar=D*d^2*S(n^2/d^2),  Tbar=D^2*d^4*T(n^2/d^2),
+```
+
+and likewise for `U,V`. All barred coefficients are integers. Rational
+roots of a monic integral polynomial are integers. Therefore both
+original centers are rational if and only if
+
+```
+r^2=Sbar^2-4Tbar,
+Xplus=(Sbar+r)/2, Xminus=(Sbar-r)/2,
+D*Xplus and D*Xminus are nonnegative integer squares.
+```
+
+Indeed a rational number whose square is an integer is integral, and
+the centers are `sqrt(D*Xplus)/(D*d)` and
+`sqrt(D*Xminus)/(D*d)`. Integer square-root decisions are exact;
+floating point supplies only an initial root guess.
+
+For each of the 32 primes from 7 through 149, the sieve checks whether
+each reduced center polynomial has two roots in `{D*r^2:r in F_p}`.
+No prime divides `D`. The homogeneous coordinates `(n^2,d^2)` include
+the denominator-zero chart. The pair `(n,d)=(0,0) mod p` is discarded
+only because it violates primitivity. A Chinese-remainder wheel for
+7,11,13,17 enumerates every numerator surviving those four tests.
+Subsequent prime tests and the exact rational-square test only discard
+impossible configurations. The input height cap of ten million bounds
+all signed 128-bit intermediates strictly below overflow.
+
+The completed million-height run visited 60,468,577,849 wheel candidates;
+six primitive pairs survived all modular tests, and all six passed the
+exact center-square test. The independent Python checker rebuilds the
+four even-moment identities, checks the actual C++ coefficient tables,
+compares a direct rational-arithmetic enumeration through height 100,
+and reconstructs the original chains to certify every collision above.
+This is a finite computation, not an effective replacement for Faltings
+or an unbounded rational-point classification.
+
+Reproduction:
+
+```sh
+mkdir -p build
+g++ -O3 -std=c++17 -fopenmp scripts/search_four_shift_types.cpp -o build/search_four_shift_types
+build/search_four_shift_types 1000000 12 > build/four_types_1000000.txt
+python scripts/check_four_shift_search.py
+python scripts/check_four_shift_search.py build/four_types_1000000.txt
+```
+
+The optional last two C++ arguments select an inclusive denominator
+interval without changing the numerator bound. Only a run containing
+a `COMPLETE` line counts as finished; the whole-box checker also
+requires denominators 1 through the stated height. Binaries and search
+output stay in ignored `build/`.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair

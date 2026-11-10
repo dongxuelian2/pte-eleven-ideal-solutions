@@ -34,6 +34,13 @@ colliding orbit points. The upstream arithmetic dependencies are listed
 in that proof. The other seventeen types' rational-point sets and lifting
 conditions have not been completely determined.
 
+[The exact bounded search in §5.33](PROOF.md#533-exact-bounded-center-search-in-four-remaining-types)
+excludes types 4, 5, 15 and 16 when their specified rational center
+`n/d` has `0<=n<=1000000`, `1<=d<=1000000` in lowest terms. The C++
+multithreaded sieve retains only six colliding configurations, checked
+independently with rational arithmetic. This finite box does not
+classify the unbounded rational-point sets.
+
 ## Splitting-pencil arithmetic
 
 [PENCIL_SELMER.md](PENCIL_SELMER.md) studies an explicit quintic–sextic
