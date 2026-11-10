@@ -111,9 +111,18 @@ certificates = {4:[(17,18,238,240),(23,34,538,68)],
                 5:[(11,12,118,96),(13,16,154,132)],
                 15:[(17,20,290,132),(41,38,1614,448)],
                 16:[(11,12,118,96),(13,20,170,68)]}
+field_discriminants = {4:[-231,-155],5:[505],15:[-215],16:[34185]}
 T = s.symbols("T")
 for typ,certs in certificates.items():
     poly = f if typ==4 else families[typ][0]
+    discs = []
+    for g,_ in s.factor_list(poly,x)[1]:
+        if s.degree(g,x)==2:
+            d = int(s.prod(q for q,e in s.factorint(s.discriminant(g,x)).items() if e % 2))
+            discs.append(d if d % 4 == 1 else 4*d)
+    assert sorted(discs) == field_discriminants[typ]
+    # Both quadratic Minkowski bounds are smaller than sqrt(|disc|).
+    assert all(abs(d) < 1000**2 for d in discs)
     for p,n1,n2,disc in certs:
         assert s.discriminant(poly,x) % p != 0 and s.LC(s.Poly(poly,x)) % p != 0
         assert finite_counts(poly,p) == (n1,n2)
@@ -127,5 +136,6 @@ for typ,certs in certificates.items():
     assert not rational_square(Q(certs[0][3],certs[1][3]))
     print(f"PASS type {typ}: two ordinary simple reductions with distinct real quadratic fields.")
 print("The specialization/Rosati argument gives rational NS rank one for all four curves.")
+print("PASS: descent-field discriminants and the unconditional class-generator bound 1000.")
 print("Both classical and standard quadratic-Chabauty rank criteria fail for types 5, 15, 16.")
 print("No rank upper bound, complete rational-point set or valid PTE output asserted.")

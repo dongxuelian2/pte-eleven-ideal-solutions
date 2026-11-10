@@ -5942,6 +5942,57 @@ counts over F_p and F_{p²}, checks good reduction, ordinarity and exact
 irreducibility, and verifies the distinct fixed fields. No approximate
 Frobenius roots or numerical endomorphism estimates enter this proof.
 
+### 5.37 Software-assisted Selmer upper bounds and exact ranks
+
+An exact two-descent computation gives the following bounds and ranks:
+
+| Curve | dim Sel²(J/Q) | dim J(Q)[2] | Independently proved lower bound | Rank conclusion |
+|---|---:|---:|---:|---|
+| R4 | 5 | 2 | 1 | 1≤rank≤3 |
+| R5 | 6 | 3 | 3 | rank=3 |
+| R15 | 7 | 3 | 4 | rank=4 |
+| R16 | 5 | 3 | 2 | rank=2 |
+
+The upper bounds are software-assisted: `scripts/check_shift_curve_selmer.m`
+uses Magma's documented odd-degree two-Selmer implementation, explicitly
+selecting `Al:="TwoSelmerGroupOld"`. It was executed successfully in
+Magma2.30-1 through the official calculator. The returned group orders
+are32,64,128,32 and the rational two-torsion orders are4,8,8,8. The
+script asserts every value. The Python checker supplies the independent
+lower bounds, not an independent implementation of the full descent.
+
+No GRH assumption is used in these upper bounds. The script explicitly
+sets `SetClassGroupBounds(1000)`. Every nontrivial field in the descent
+algebra Q[c]/f(c) is quadratic, with fundamental discriminants
+
+    R4: −231,−155; R5: 505; R15: −215; R16: 34185.
+
+Their unconditional Minkowski bounds are below1000 (indeed below93).
+For a real quadratic field the bound is √D/2; for an imaginary one it
+is2√|D|/π. The script checks the actual maximal-order discriminants
+and Minkowski bounds before running descent, and the Python checker
+independently reconstructs the same fundamental discriminants from
+the quadratic factors. Thus the imposed class-generator bound is
+unconditional. Magma's printed suggestion to use GRH for performance
+does not change this setting or enable that assumption.
+
+The exact Kummer sequence
+
+    0 → J(Q)/2J(Q) → Sel²(J/Q) → Sha(J/Q)[2] → 0
+
+gives rank≤dim Sel²−dim J(Q)[2]. Combining with Sections5.34–5.35
+proves the displayed exact ranks for R5,R15,R16; in these three cases
+it also gives Sha(J/Q)[2]=0. No finiteness of the full Tate–Shafarevich
+group, saturated Mordell–Weil basis or rational-point completeness
+is inferred. R4 remains a rank interval, not a rank-one certificate.
+
+The software interfaces and their correctness/rigour conventions are
+documented in the primary Magma handbook:
+[two-Selmer groups](https://docs.magma-maths.org/ArithmeticGeometry/HyperellipticCurves/jacobians-number-fields.html)
+and [class-group bounds](https://docs.magma-maths.org/GlobalFields/NumberFieldsAndOrders/ideal-class-group.html).
+The reproducible Magma program is a separate optional check; no Magma
+installation is required to run the Python and C++ certificates above.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair

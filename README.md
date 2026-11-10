@@ -48,6 +48,13 @@ Section 5.36 proves rational Néron–Severi rank one for all four Jacobians,
 so the standard quadratic-Chabauty rank inequality also fails for those
 three curves. These obstruct those direct criteria, not the chain types.
 
+Section 5.37 adds software-assisted exact two-Selmer upper bounds, with
+unconditional quadratic class-group bounds. Together with the independent
+Kummer certificates, these give exact ranks 3,4,2 for types 5,15,16 and
+the interval 1≤rank≤3 for type 4. Reproduce the upper bounds with
+`scripts/check_shift_curve_selmer.m` in Magma; no rational-point
+completeness or saturated basis is asserted.
+
 ## Splitting-pencil arithmetic
 
 [PENCIL_SELMER.md](PENCIL_SELMER.md) studies an explicit quintic–sextic
