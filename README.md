@@ -41,25 +41,26 @@ multithreaded sieve retains only six colliding configurations, checked
 independently with rational arithmetic. This finite box does not
 classify the unbounded rational-point sets.
 
-Sections 5.34–5.35 give exact Kummer rank lower bounds 1,3,4,2 for the
-genus-two necessary curves of types 4,5,15,16 respectively. Thus the
-direct classical Chabauty rank criterion does not apply to types 5,15,16.
-Section 5.36 proves rational Néron–Severi rank one for all four Jacobians,
-so the standard quadratic-Chabauty rank inequality also fails for those
-three curves. These obstruct those direct criteria, not the chain types.
-
-Section 5.37 adds software-assisted exact two-Selmer upper bounds, with
-unconditional quadratic class-group bounds. Together with the independent
-Kummer certificates, these give exact ranks 3,4,2 for types 5,15,16 and
-the interval 1≤rank≤3 for type 4. Reproduce the upper bounds with
+Sections 5.37 and 5.39 combine software-assisted two-Selmer upper bounds
+with exact Kummer certificates to give ranks **3,3,4,2** for types
+**4,5,15,16**, respectively, and Sha[2]=0 for all four. The new type-4
+certificate consists of four explicit rational degree-two divisors,
+an existing rational point, and a five-by-five character matrix of
+determinant one. Its discovery used Fisher–Yan's third-party software;
+the lower-bound certificate is independently checked by SymPy.
+Section 5.36 proves rational Néron–Severi rank one for all four
+Jacobians, so both direct Chabauty rank criteria fail for all four
+necessary curves. These obstructions do not exclude the chain types.
+Reproduce the upper bounds, with unconditional quadratic class bounds, using
 `scripts/check_shift_curve_selmer.m` in Magma; no rational-point
 completeness or saturated basis is asserted.
 
 Section 5.38 proves that the type-4 rational Richelot/double-Richelot
 graph has exactly two Jacobian vertices, with no split quotient or
 additional compatible 2-power-isogenous Jacobian. An exact Galois-action
-argument closes this route to further models; the rank interval remains
-1≤rank≤3. The proof has independent SymPy and Magma checks.
+argument closes this route to further models. The separate rank-three
+result does not classify the rational points. The graph proof has
+independent SymPy and Magma checks.
 
 ## Splitting-pencil arithmetic
 
@@ -114,6 +115,7 @@ Python 3 and the existing SymPy package suffice:
 ```sh
 python scripts/check_all_shift_chain_types.py
 python scripts/check_type4_richelot_graph.py
+python scripts/check_type4_rank_three.py
 python scripts/check_sixth_mode_qc_roots13.py
 python scripts/check_sixth_mode_candidate_sieve.py
 python scripts/pencil_selmer/verify.py

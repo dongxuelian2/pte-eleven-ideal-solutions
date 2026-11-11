@@ -1,5 +1,6 @@
 // Software-assisted upper bounds; run in a fresh Magma session.
-// The independent lower bounds are check_shift_curve_rank_obstructions.py.
+// Independent lower bounds: check_shift_curve_rank_obstructions.py and
+// check_type4_rank_three.py (the latter sharpens type 4 to rank three).
 // No GRH assumption: every nontrivial descent field is quadratic, and
 // its unconditional Minkowski bound is checked below against 1000.
 SetColumns(0);

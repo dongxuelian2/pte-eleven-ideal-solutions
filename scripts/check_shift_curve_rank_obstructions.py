@@ -137,5 +137,6 @@ for typ,certs in certificates.items():
     print(f"PASS type {typ}: two ordinary simple reductions with distinct real quadratic fields.")
 print("The specialization/Rosati argument gives rational NS rank one for all four curves.")
 print("PASS: descent-field discriminants and the unconditional class-generator bound 1000.")
-print("Both classical and standard quadratic-Chabauty rank criteria fail for types 5, 15, 16.")
+print("Both direct Chabauty rank criteria fail for types 5, 15, 16.")
+print("check_type4_rank_three.py supplies the additional type-4 rank-three certificate.")
 print("No rank upper bound, complete rational-point set or valid PTE output asserted.")

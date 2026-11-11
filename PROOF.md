@@ -5822,7 +5822,8 @@ The other necessary genus-two curves in the bounded search satisfy
     rank J(R4)(Q)≥1, rank J(R5)(Q)≥3, rank J(R15)(Q)≥4.
 
 Thus the direct classical Chabauty rank criterion fails for R5 and
-R15 as well as R16. The R4 lower bound does not decide its applicability.
+R15 as well as R16. The R4 lower bound in this section does not decide
+its applicability; Section5.39 strengthens it to rank three.
 
 **Proof for R5 and R15.** Use the monic change X=hc, Z=h²Y and
 the rational components of the odd-degree Kummer map from Section5.34.
@@ -5936,8 +5937,9 @@ For all four curves the usual inequality is consequently
     rank J(Q) < g+ρ_Q−1 = 2.
 
 The lower bounds in Sections5.34–5.35 violate it for R5, R15 and
-R16. For R4 its applicability still requires a rank-one certificate;
-the interval in Section5.37 does not supply one.
+R16. Section5.39 proves rank three for R4, so the inequality fails
+for that curve too. Neither direct criterion applies to any of these
+four necessary curves.
 The checker `scripts/check_shift_curve_rank_obstructions.py` independently
 counts over F_p and F_{p²}, checks good reduction, ordinarity and exact
 irreducibility, and verifies the distinct fixed fields. No approximate
@@ -5945,11 +5947,12 @@ Frobenius roots or numerical endomorphism estimates enter this proof.
 
 ### 5.37 Software-assisted Selmer upper bounds and exact ranks
 
-An exact two-descent computation gives the following bounds and ranks:
+An exact two-descent computation, combined with the independent lower
+bounds in Sections5.34–5.35 and5.39, gives:
 
 | Curve | dim Sel²(J/Q) | dim J(Q)[2] | Independently proved lower bound | Rank conclusion |
 |---|---:|---:|---:|---|
-| R4 | 5 | 2 | 1 | 1≤rank≤3 |
+| R4 | 5 | 2 | 3 | rank=3 |
 | R5 | 6 | 3 | 3 | rank=3 |
 | R15 | 7 | 3 | 4 | rank=4 |
 | R16 | 5 | 3 | 2 | rank=2 |
@@ -5982,10 +5985,11 @@ The exact Kummer sequence
     0 → J(Q)/2J(Q) → Sel²(J/Q) → Sha(J/Q)[2] → 0
 
 gives rank≤dim Sel²−dim J(Q)[2]. Combining with Sections5.34–5.35
-proves the displayed exact ranks for R5,R15,R16; in these three cases
-it also gives Sha(J/Q)[2]=0. No finiteness of the full Tate–Shafarevich
-group, saturated Mordell–Weil basis or rational-point completeness
-is inferred. R4 remains a rank interval, not a rank-one certificate.
+and5.39 proves the displayed exact ranks and Sha(J/Q)[2]=0 for all
+four curves. No finiteness of the full Tate–Shafarevich group, saturated
+Mordell–Weil basis or rational-point completeness is inferred. The
+two-descent alone gives only rank≤3 for R4; its lower bound comes from
+the five explicit independent classes below.
 
 The software interfaces and their correctness/rigour conventions are
 documented in the primary Magma handbook:
@@ -6093,11 +6097,113 @@ output. It passed in Magma2.30-1; no class-group assumption, rank
 algorithm or point-search bound enters this result.
 
 This closes the search for additional vertices in this rational
-2-power graph. It does not determine the rank of J(C), which remains
-between one and three, or classify C(Q). Higher descent on either of
-the two vertices and odd-degree isogenies are not excluded. In
-particular, finding this dual does not by itself improve Section5.37's
-Selmer bound or settle the type-4 lifting conditions.
+2-power graph. The graph calculation itself does not determine the
+rank or classify C(Q). Section5.39 separately proves rank three.
+Higher descent on either vertex and odd-degree isogenies are not
+excluded, and the type-4 lifting conditions remain unresolved.
+
+### 5.39 Exact rank three for type 4 from explicit rational divisors
+
+**Proposition.** For the type-4 curve C of Section5.38,
+
+    rank J(C)(Q)=3,    Sha(J(C)/Q)[2]=0.
+
+In particular, its rank is not one. Together with Section5.36 this
+excludes the direct classical and standard quadratic-Chabauty rank
+criteria for the last of the four curves R4,R5,R15,R16.
+
+**Proof.** Write f=3x(240x²+40x+167)(256x²+97x+466) and h=184320.
+In addition to P=(1/4,270), consider the four degree-two divisors
+specified by the Mumford pairs (uᵢ,vᵢ) below. Each denotes the effective
+divisor defined by uᵢ(x)=0, y=vᵢ(x), minus2∞.
+
+    u₁=x²+(4243480/243765769)x+520159249/975063076,
+    v₁=(896286184264773x+269660901168378)/3805914951397;
+
+    u₂=x²+x/4+25/16,
+    v₂=855/4−72x;
+
+    u₃=x²+(12779/40500)x+7456/10125,
+    v₃=(1314152x+22476112)/151875;
+
+    u₄=x²+(2465261/3168750)x+1042247/1014000,
+    v₄=−(4410362474/171640625)x+4413599413/13731250.
+
+For each i, uᵢ is monic and square-free, coprime to f, and
+uᵢ divides f−vᵢ² exactly. Thus these are rational divisor classes
+D₁,D₂,D₃,D₄; rationality of the individual support points is not
+required. We prove that D₁,D₂,D₃,D₄,[P−∞] have independent images
+in J(Q)/2J(Q).
+
+Use the monic model X=hx, Z=h²y, and the usual odd-degree two-Kummer
+map. Put q=x²+x/6+167/240 and L=Q(α), q(α)=0. Project the
+Kummer map to the rational component at X=0 and to the L component
+at X=hα, and also take the norm of the latter. For a monic degree-two
+divisor (u,v), these two rational square classes are
+
+    δ₀=u(0),    Nδ_L=Res(q,u).
+
+Indeed its transformed Mumford polynomial is h²u(X/h), and the
+factors h² and h⁴ disappear modulo squares. For [P−∞] the
+corresponding values are h/4 and h²q(1/4). Exact evaluation gives:
+
+| Class | δ₀ | Nδ_L |
+|---|---:|---:|
+| D₁ | 1 | 32925841 |
+| D₂ | 1 | 1 |
+| D₃ | 2330 | 164629205 |
+| D₄ | 2505 | 82479231705 |
+| [P−∞] | 5 | 5 |
+
+Every entry is a square-class representative: the ratio of the exact
+value to the displayed integer is a rational square. Rational norms
+alone miss D₂, so one must retain a character of the full quadratic
+component. The polynomial q has a simple root2 modulo17. At the
+corresponding split prime of L, all five quadratic-component values
+are units. For Dᵢ their residue square classes are those of uᵢ(2),
+whereas for [P−∞] the value is h(1/4−2). Their residues modulo17
+are respectively
+
+    9, 5, 9, 10, 15.
+
+Apply the five characters v₂(δ₀), v₃(δ₀), v₅(δ₀),
+v₁₃(Nδ_L), and the quadratic nonresidue bit at (17,α−2), in
+that order. In the row order of the table, the resulting matrix is
+
+    [0 0 0 1 0]
+    [0 0 0 0 1]
+    [1 0 1 1 0]
+    [0 1 1 1 1]
+    [0 0 1 0 0].
+
+Its determinant is1 over Z, hence it is invertible over F₂. These
+characters vanish on squares; the five Kummer classes are therefore
+independent. Since f has one rational linear factor and two irreducible
+quadratic factors, dim J(Q)[2]=2. Consequently
+
+    rank J(Q)=dim J(Q)/2J(Q)−2 ≥ 5−2=3.
+
+Section5.37 supplies the unconditional upper bound3. Equality and
+the Kummer exact sequence give Sha(J/Q)[2]=0. ∎
+
+The four divisors were found using the
+[Fisher–Yan Cassels–Tate package](https://github.com/TomAFisher/Cassels-Tate-pairing--Genus-2),
+revision `56c26b9fd2f0ca88b4d6612f82db335638d6eec6`, with Magma2.30-1.
+The method and software are described on
+[Tom Fisher's paper page](https://www.dpmms.cam.ac.uk/~taf1000/papers/genus2ctp.html).
+All31 nonzero Selmer covering models were constructed; their computed
+pairing was zero. Searching the twisted Kummer surfaces then found
+points lifting to the covering surfaces. Transporting their images
+back to the odd-degree curve gave the displayed divisors.
+
+The proof above no longer depends on that search, its completeness,
+floating-point height estimates, or the computed pairing. The compact
+checker `scripts/check_type4_rank_three.py` reconstructs every divisor
+identity, resultant square class, split-prime residue and the determinant
+using exact rational arithmetic. Only the separate upper bound retains
+the software-assisted descent dependency stated in Section5.37.
+These divisor classes do not give a saturated Mordell–Weil basis or
+a complete list of C(Q), and they do not solve the PTE lifting problem.
 
 ## 6. Open boundary
 
