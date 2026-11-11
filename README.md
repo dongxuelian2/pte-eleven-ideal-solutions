@@ -55,6 +55,12 @@ the interval 1≤rank≤3 for type 4. Reproduce the upper bounds with
 `scripts/check_shift_curve_selmer.m` in Magma; no rational-point
 completeness or saturated basis is asserted.
 
+Section 5.38 proves that the type-4 rational Richelot/double-Richelot
+graph has exactly two Jacobian vertices, with no split quotient or
+additional compatible 2-power-isogenous Jacobian. An exact Galois-action
+argument closes this route to further models; the rank interval remains
+1≤rank≤3. The proof has independent SymPy and Magma checks.
+
 ## Splitting-pencil arithmetic
 
 [PENCIL_SELMER.md](PENCIL_SELMER.md) studies an explicit quintic–sextic
@@ -107,6 +113,7 @@ Python 3 and the existing SymPy package suffice:
 
 ```sh
 python scripts/check_all_shift_chain_types.py
+python scripts/check_type4_richelot_graph.py
 python scripts/check_sixth_mode_qc_roots13.py
 python scripts/check_sixth_mode_candidate_sieve.py
 python scripts/pencil_selmer/verify.py
