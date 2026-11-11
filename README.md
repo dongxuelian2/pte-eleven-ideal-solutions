@@ -31,8 +31,17 @@ one type completely. The historical “sixth mode” is **type 10** in the
 new exhaustive table. Its certified quadratic-Chabauty calculation isolates
 48 local roots; the exact elliptic-image sieve leaves only eight known
 colliding orbit points. The upstream arithmetic dependencies are listed
-in that proof. The other seventeen types' rational-point sets and lifting
-conditions have not been completely determined.
+in that proof.
+
+[Theorem 15, §5.40](PROOF.md#540-complete-exclusion-of-type-16-by-an-individual-square-condition)
+also excludes **type 16 at every rational height**. Keeping two individual
+square conditions gives a quartic birational to
+`Y²=X³+44X²+100X`. An explicit two-isogeny descent proves rank zero;
+good reduction determines its four rational points. Back-substitution
+leaves only an irrational-center obstruction or repeated entries.
+The proof and SymPy checker need no external arithmetic service or GRH.
+The remaining sixteen types' rational-point sets and lifting conditions
+have not been completely determined.
 
 [The exact bounded search in §5.33](PROOF.md#533-exact-bounded-center-search-in-four-remaining-types)
 excludes types 4, 5, 15 and 16 when their specified rational center
@@ -50,7 +59,8 @@ determinant one. Its discovery used Fisher–Yan's third-party software;
 the lower-bound certificate is independently checked by SymPy.
 Section 5.36 proves rational Néron–Severi rank one for all four
 Jacobians, so both direct Chabauty rank criteria fail for all four
-necessary curves. These obstructions do not exclude the chain types.
+necessary curves. These rank obstructions alone do not exclude the chain
+types; the separate individual-square argument above excludes type 16.
 Reproduce the upper bounds, with unconditional quadratic class bounds, using
 `scripts/check_shift_curve_selmer.m` in Magma; no rational-point
 completeness or saturated basis is asserted.

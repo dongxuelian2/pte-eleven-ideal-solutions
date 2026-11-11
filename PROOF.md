@@ -6205,14 +6205,146 @@ the software-assisted descent dependency stated in Section5.37.
 These divisor classes do not give a saturated Mordell–Weil basis or
 a complete list of C(Q), and they do not solve the PTE lifting problem.
 
+### 5.40 Complete exclusion of type 16 by an individual square condition
+
+**Theorem 15.** Type 16, namely `(3,(1,1),(1,2,2))`, has no valid
+distinct-entry rational configuration, at any height.
+
+The genus-two curve R16 retains only the product square condition `cTV`.
+Instead retain the separate necessary conditions `c=v²` and `V=y²`.
+The exceptional branches were already excluded in Section 5.32. Every
+remaining valid configuration would therefore give a rational point on
+
+```
+B: y² = (2/3)(v²-6)(4v²-9).
+```
+
+We first prove the complete list
+
+```
+B(Q) = {(3/2,0), (-3/2,0), (0,6), (0,-6)}.             (40.1)
+```
+
+Here B denotes the smooth projective model; it has no rational points at
+infinity since its leading coefficient `8/3` is not a rational square.
+
+**Birational model.** Set `t=v-3/2`. The quartic becomes
+
+```
+y² = -30t+14t²+16t³+(8/3)t⁴.
+```
+
+The substitution `X=-10-30/t`, `Y=-30y/t²` gives
+
+```
+E: Y² = X³+44X²+100X.
+```
+
+Its inverse is `v=3/2-30/(X+10)`, `y=-30Y/(X+10)²`.
+The omitted point `(3/2,0)` corresponds to the identity of E.
+There is no rational point of E with `X=-10`, since that would require
+`Y²=2400`. Thus it suffices to determine E(Q).
+
+**Elementary two-isogeny descent.** The 2-isogenous curve is
+
+```
+E': Y² = X³-88X²+1536X.
+```
+
+For `E_{A,B}:Y²=X(X²+AX+B)` use the usual descent homomorphism
+`alpha(O)=1`, `alpha((0,0))=B` and `alpha((X,Y))=X`, with values
+in `Q*/Q*²`. Its kernel is the image of the dual 2-isogeny.
+Every image class has a signed squarefree representative `d|B`.
+For a nonexceptional point in that class, writing `X=d u²/v²`
+in lowest terms gives the necessary equation
+
+```
+w² = d u⁴ + A u²v² + (B/d)v⁴,   u,v,w integral, gcd(u,v)=1.    (40.2)
+```
+
+The support bound follows directly by taking valuations in the elliptic
+equation at primes not dividing B. Equation (40.2) follows by substituting
+`Y=d u w/v³`; a rational number whose square is integral is integral.
+The two exceptional image classes 1 and B are retained explicitly below.
+The standard isogeny index formula is
+
+```
+2^rank E(Q) = |alpha(E(Q))| |alpha'(E'(Q))| / 4.
+```
+
+It follows from the exact sequence for the two isogenies and the
+Mordell–Weil theorem: both rational isogeny kernels have dimension one
+over F2. See [Fisher, Section 2](https://www.dpmms.cam.ac.uk/~taf1000/papers/higherdesc.pdf)
+for this exact sequence and rank formula. No Selmer software or
+assumption on Sha is needed in the following calculation.
+
+For `A=44,B=100`, the candidate classes are `±1,±2,±5,±10`.
+The following table excludes all but 1 and 10. The residue column lists
+the entire set of right-hand sides of (40.2) in the primitive projective
+charts, modulo the indicated prime power.
+
+| d | modulus | right-hand-side residues |
+|---|---:|---|
+| -10, -1 | 9 | 6, 8 |
+| 2, 5 | 9 | 2, 5, 6 |
+| -5 | 16 | 3, 11, 12 |
+| -2 | 16 | 8, 14 |
+
+For modulus `p^e`, these charts are `(u,1)` for every residue u, and
+`(1,v)` with `p|v`. They exhaust primitive pairs up to multiplication by
+a unit, whose fourth power does not change squarehood. The square
+residues modulo 9 are `{0,1,4,7}` and those modulo 16 are `{0,1,4,9}`,
+disjoint from the displayed sets. The classes 1 and 10 actually occur,
+at O and `(10,80)`, respectively. Hence `alpha(E(Q))={1,10}`.
+
+For `A=-88,B=1536`, the candidate classes are `±1,±2,±3,±6`.
+For negative d all three coefficients on the right of (40.2) are
+negative, so no nonzero real pair can satisfy it. For either d=2 or
+d=3, the primitive chart residues modulo 5 are exactly `{2,3}`, which
+contain no square. The remaining classes 1 and 6 occur at O and
+`(0,0)` because `1536=6*16²`. Thus `alpha'(E'(Q))={1,6}` and
+the rank formula proves `rank E(Q)=0`.
+
+**Torsion and the complete quartic list.** The discriminant of the
+displayed integral model is `2^17*3*5^4`, and direct counting gives
+`#E(F7)=4`, `#E(F11)=12`. Prime-to-p torsion injects at good reduction.
+Using both primes also excludes 7- and 11-primary torsion, so the
+rational torsion order divides `gcd(4,12)=4`. The four distinct points
+
+```
+O, (0,0), (10,80), (10,-80)
+```
+
+are rational; moreover `2(10,80)=(0,0)`. Since the rank is zero, this
+is all of E(Q). The inverse birational map gives exactly (40.1).
+
+**Back-substitution.** Equation (40.1) leaves only `c=0` and `c=9/4`.
+For `c=0`, Section 5.32 gives `S=65/4`, `T=64`, so the polynomial
+of the two A singleton-center squares has discriminant
+`S²-4T=129/16`, not a rational square. There is no rational lift.
+For `c=9/4`, its roots are `49/4` and `1/4`. The latter forces
+A singleton vertices `±1/2`. The centered A chain has length six
+and already contains `-5/2,-3/2,-1/2,1/2,3/2,5/2`, so the entries
+are not distinct. This excludes the final possibility and proves
+Theorem 15.
+
+The exact checker `scripts/check_type16_exclusion.py` verifies the
+birational identities, the complete local residue tables, both finite
+field point counts, the doubling identity and the final collisions.
+Its finite computations certify the descent argument; they impose no
+bound on the height of a rational center. This removes type 16 even
+though its product-condition genus-two Jacobian has rank two and fails
+the direct Chabauty criteria. Together with type 10, two of the eighteen
+chain types are now completely excluded.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
 of disjoint eleven-element integer sets and no general impossibility proof
 has been established. Section 5 gives a distinct-entry shift-lift reduction and
 normalized finiteness for all eighteen chain types (Theorem 14), and
-Section 5.31 excludes valid distinct-entry lifts in the older sixth mode
-(type 10 in the complete table). The remaining seventeen types' required
+Sections 5.31 and 5.40 exclude valid distinct-entry lifts in types 10
+(the older sixth mode) and 16. The remaining sixteen types' required
 rational-point sets and lifting conditions are not classified. Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,
