@@ -1147,7 +1147,8 @@ https://doi.org/10.1007/BF01388432.
 
 ### 5.4 A fifth mode: a smooth plane quartic
 
-This gives a fifth normalized finiteness result, not a distinct size-eleven construction or an exclusion of the mode.
+This gives a fifth normalized finiteness result. Section 5.45 later excludes
+this mode completely by determining its elliptic quotient.
 
 Consider m=1, aa=(1,3), bb=(1,1,3). The centered A chain is {-1/2,1/2}. Let the length-three A and B chain centers be +/-u and +/-v, and the A singleton centers +/-w. Put a=u^2,b=v^2,c=w^2. The two B singleton-center squares must have power sums
  p_k=4^(-k)+sum_{d=-1}^1 (u+d)^(2k)+c^k-sum_{d=-1}^1(v+d)^(2k), k=1,2,3,4.
@@ -1170,11 +1171,12 @@ This quartic is smooth even over the algebraic closure. Write T as a quadratic i
  M=[[16,-40,-58],[-40,160,50],[-58,50,190]].
 At a singular projective point, the nonzero coordinates' squares would lie in the kernel of the corresponding principal submatrix. All nonempty principal minors are nonzero: diagonal entries 16,160,190; two-by-two minors 960,-324,27900; determinant -163840. No singular point exists. A smooth plane quartic is geometrically integral and has genus 3. Faltings therefore gives finitely many rational points, hence finitely many normalized valid configurations in this fifth mode. Indeed a,b determine c, and the quadratic fixes the other two squared centers, leaving finitely many sign choices.
 
-A rational point alone is not sufficient: a,b,c must be rational squares; the quadratic must split into rational squares; and all twenty input vertices must be distinct with no cross-color unit edge. The visible points (u,v)=(3/2,1/2),(5/2,3/2) belong to the excluded D=0 branch. No complete rational-point determination is claimed.
+A rational point alone is not sufficient: a,b,c must be rational squares; the quadratic must split into rational squares; and all twenty input vertices must be distinct with no cross-color unit edge. The visible points (u,v)=(3/2,1/2),(5/2,3/2) belong to the excluded D=0 branch.
 
 For effective arithmetic, one elliptic quotient is
  y^2=-240v^4+760v^2+81, y=8u^2-20v^2-29.
-This may assist a future descent or elliptic Chabauty computation, but neither ranks nor a complete point set have been certified here. The necessary quartic has genuine rational points, so a simple local-solubility obstruction cannot exclude the whole projective curve.
+Section 5.45 proves rank zero for this quotient by elementary two-isogeny
+descent and determines its complete rational-point set. The necessary quartic has genuine rational points, so a simple local-solubility obstruction cannot exclude the whole projective curve.
 
 The exact SymPy certificate `scripts/check_fifth_mode.py` checks the
 elimination identities, exceptional branch, principal minors, quotient
@@ -6334,8 +6336,7 @@ field point counts, the doubling identity and the final collisions.
 Its finite computations certify the descent argument; they impose no
 bound on the height of a rational center. This removes type 16 even
 though its product-condition genus-two Jacobian has rank two and fails
-the direct Chabauty criteria. Together with type 10, two of the eighteen
-chain types are now completely excluded.
+the direct Chabauty criteria.
 
 ### 5.41 A scalar ambiguity obstructs a cubic-quotient shortcut for type 5
 
@@ -6610,9 +6611,8 @@ are ±9/2. Both original seeds are therefore the identical set
 ```
 
 They are not disjoint. This excludes the final image, completes
-both fake branches, and proves Theorem 16. Together with types 10
-and 16, three of the eighteen symmetric chain types are now
-completely excluded. The original size-eleven problem remains open.
+both fake branches, and proves Theorem 16. The original size-eleven
+problem remains open.
 
 The independent SymPy checker
 `scripts/check_type5_scalar_normalization.py` reconstructs the square
@@ -6893,14 +6893,123 @@ the elliptic change of variables and the surviving original-chain
 collision. The complete descent, rank, saturation and rational-image
 certificate is the separate Magma script cited above.
 
+### 5.45 Complete exclusion of type 2 by an elementary elliptic descent
+
+**Theorem 19.** Type 2, `(1,(1,3),(1,1,3))`, has no valid
+distinct-entry rational configuration at any height. The proof uses an
+elementary two-isogeny descent and exact reduction counts; it does not
+depend on a computer algebra rank calculation.
+
+Section 5.4 proves that a valid configuration, with rational length-three
+centers `±u,±v`, necessarily satisfies
+
+```
+H(u²,v²)=8u⁴-40u²v²-58u²+80v⁴+50v²+95=0.
+```
+
+Consequently `y=8u²-20v²-29` gives a rational point on
+
+```
+D: y²=-240v⁴+760v²+81.
+```
+
+We determine this entire elliptic quotient, rather than only search for
+points to a height bound. Its complete affine rational-point list is
+
+```
+(v,y)=(0,±9), (±1/2,±16), (±3/2,±24),                 (45.1)
+```
+
+where the signs in each pair are independent. The leading coefficient
+`-240` is not a rational square, so the smooth projective quartic has
+no rational points at infinity.
+
+**Explicit elliptic model.** For `v≠0` the formulas
+
+```
+X=9(y+9)/(8v²)+95/2,   Y=9X/(2v)
+```
+
+give a birational map to
+
+```
+E: Y²=X³-95X²+2560X.
+```
+
+Conversely, for `Y≠0`,
+
+```
+v=9X/(2Y),   y=(8/9)(X-95/2)v²-9.
+```
+
+These substitutions verify both equations exactly. A birational map
+between smooth projective curves extends to an isomorphism. The two
+exceptional points `(0,±9)` map to `O` and `(0,0)` respectively.
+
+**Rank zero by two-isogeny descent.** Use the descent homomorphism and
+rank formula established in Section 5.40. Here `A=-95,B=2560`, and the
+dual model has `A'=190,B'=-1215`. The quadratic
+`X²-95X+2560` has discriminant `-1215`, so it is positive for all real
+X; hence every nonzero real point of E has `X>0`. The only candidate
+squareclasses for its descent image are therefore `1,2,5,10`.
+The classes 1 and 10 occur at `O` and `(0,0)`. Both remaining classes
+are excluded modulo 3 in the primitive quartic equation
+
+```
+w²=d a⁴+A a²b²+(B/d)b⁴,   gcd(a,b)=1.
+```
+
+On the dual curve the candidate classes are `±1,±3,±5,±15`.
+Classes 1 and -15 occur at its two isogeny-kernel points; all six other
+classes are excluded by the following exact table.
+
+| curve | d | modulus | complete primitive-chart residues |
+|---|---:|---:|---|
+| E | 2, 5 | 3 | 2 |
+| dual | -1, 15 | 16 | 7, 12, 15 |
+| dual | 3, -5 | 16 | 3, 11, 12 |
+| dual | -3 | 128 | 5, 21, 29, 69, 80, 93, 117, 125 |
+| dual | 5 | 128 | 5, 13, 21, 77, 80, 85, 101, 109 |
+
+For a prime power `p^e`, the charts are `(a,1)` for every residue a,
+and `(1,b)` for `p|b`, as in Section 5.40. Each displayed residue set
+is disjoint from the square residues for its modulus. Thus both descent
+images have order two and
+`2^rank E(Q)=2·2/4=1`. In particular `rank E(Q)=0` unconditionally.
+
+**All rational points and the lift.** The integral model E has
+discriminant `-2^22·3^5·5^3`. Direct counts give
+`#E(F7)=#E(F11)=10`. Good reduction at these two distinct primes bounds
+the entire rational torsion order by 10, including its 7- and 11-primary
+parts. The following ten distinct rational points therefore exhaust
+E(Q):
+
+```
+O, (0,0), (16,±144), (40,±120), (64,±192), (160,±1440).
+```
+
+The inverse map gives exactly (45.1). At `v=0`, the necessary value
+`u²=(y+20v²+29)/8` is `19/4` or `5/2`, neither a rational square.
+For `v=±1/2` or `±3/2`, the B length-three chains contain at least one
+of the centered A vertices `±1/2`, violating disjointness. All points
+are thus excluded before needing the remaining singleton-center
+conditions. This proves Theorem 19.
+
+The independent exact checker `scripts/check_type2_exclusion.py`
+verifies the polynomial identities, all residue tables, both finite-field
+counts, the ten rational points and every final obstruction. The optional
+Magma checker `scripts/check_type2_exclusion.m` independently verifies
+the isomorphism, rank-zero result and complete inverse-image list;
+it is not a dependency of the elementary proof.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
 of disjoint eleven-element integer sets and no general impossibility proof
 has been established. Section 5 gives a distinct-entry shift-lift reduction and
 normalized finiteness for all eighteen chain types (Theorem 14), and
-Sections 5.31, 5.40 and 5.42–5.44 exclude valid distinct-entry lifts in types
-10 (the older sixth mode), 16, 5, 15 and 4. The remaining thirteen types' required
+Sections 5.31, 5.40 and 5.42–5.45 exclude valid distinct-entry lifts in types
+10 (the older sixth mode), 16, 5, 15, 4 and 2. The remaining twelve types' required
 rational-point sets and lifting conditions are not classified. Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,

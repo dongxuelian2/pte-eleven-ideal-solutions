@@ -70,9 +70,15 @@ remove two of three fake two-cover classes. Local scalar-square
 normalization and elliptic Chabauty over Q(sqrt(5)) exhaust the last
 class and leave only a repeated-entry seed. The certificate transports
 the original center coordinate through the exact minimal-model
-isomorphism and uses unconditional class-group proof bounds. Thus
-types 4, 5, 10, 15 and 16 are completely excluded; thirteen chain types
-and the original size-eleven problem remain open.
+isomorphism and uses unconditional class-group proof bounds.
+
+[Theorem 19, §5.45](PROOF.md#545-complete-exclusion-of-type-2-by-an-elementary-elliptic-descent)
+excludes **type 2 at every rational height**. An elementary two-isogeny
+descent proves rank zero for its elliptic quotient, and good reduction
+exhausts its ten rational points. Each point forces an irrational center
+or a collision. Its independent SymPy checker needs no arithmetic service
+or GRH. Thus types 2, 4, 5, 10, 15 and 16 are completely excluded; twelve
+chain types and the original size-eleven problem remain open.
 
 Sections 5.37 and 5.39 combine software-assisted two-Selmer upper bounds
 with exact Kummer certificates to give ranks **3,3,4,2** for types
