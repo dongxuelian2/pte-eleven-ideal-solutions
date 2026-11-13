@@ -6403,13 +6403,222 @@ linear factor from the first quadratic, one from the second, and
 the whole third quadratic. Its degree-four norm defines an elliptic
 twist independently of the forgotten rational scalar. Computing all
 rational images on those twists still requires appropriate rank,
-Mordell–Weil index and Chabauty completeness arguments. Neither this
-repair nor the cubic calculation excludes type 5 here.
+Mordell–Weil index and Chabauty completeness arguments. This repair
+alone does not exclude type 5. Section 5.42 instead uses the extra
+original square conditions to normalize the scalar and finish both
+branches with two different elliptic quotients.
 
 The independent SymPy checker `scripts/check_type5_cubic_scalar.py`
 verifies the rational point, quadratic-field identity and both cubic
 norms exactly. The obstruction uses no class group, height bound or
 assumption on a Tate–Shafarevich group.
+
+### 5.42 Complete exclusion of type 5 by normalized two-cover descent
+
+**Theorem 16 (software-assisted).** Type 5, namely
+`(1,(2,2),(1,2,2))`, has no valid distinct-entry rational configuration
+at any height. The proof combines an elementary scalar-square lemma,
+two-cover descent on a necessary genus-two curve, and two rank-one
+elliptic Chabauty calculations over quadratic fields. No GRH assumption
+is used.
+
+Section 5.41 concerns arbitrary points on the sextic curve. The original
+center conditions supply extra information which removes its scalar
+ambiguity. Put
+
+```
+q1(c)=80c²-840c+589,
+q2(c)=80c²-40c+4869,
+q3(c)=80c²-1064c+5125,
+f=q1 q2 q3,  A=Q[theta]/f(theta).
+```
+
+**Scalar-square lemma.** Suppose c arises from a genuine type-5
+configuration, and let `c0=49/4` or `81/4`. If
+
+```
+c-theta = lambda (c0-theta) z²,   lambda in Q*, z in A*,
+```
+
+then lambda is a rational square.
+
+**Proof.** The original center conditions imply that c and each q_i(c)
+are rational squares. The latter three conditions retain T and both
+center discriminants separately. Also U,V are nonnegative, giving
+
+```
+c>=83/12,  (4c-49)(4c-9)>=0,  hence c>=49/4.
+```
+
+Each c0 is a rational square, and the three values q_i(c0) are,
+respectively, `(48²,128²,64²)` for 49/4 and
+`(128²,192²,128²)` for 81/4. All factors are irreducible over Q,
+so none vanishes at a rational c or c0.
+
+For an odd prime p other than 5, at least one q_i has p-unit
+discriminant: their discriminants are `2^10*505`, `-2^14*95` and
+`-2^14*31`. Its leading coefficient 80 is also a p-unit. The local
+quadratic algebra is therefore unramified and etale. Write r for
+its root. If v_p(c)<0, then it is even because c is square, and
+every valuation of c-r equals v_p(c). If c is integral, an inert
+quadratic factor gives a unit c-r. For a split factor its two roots
+are distinct modulo p, so at most one of c-r and c-r' has positive
+valuation. Their product is q_i(c)/80, of even valuation, so both
+valuations are even. The same argument applies to c0. The displayed
+squareclass identity in this unramified algebra now forces v_p(lambda)
+to be even.
+
+At p=5, v_5(c) is even. If it were negative, the unique lowest
+valuation term in q1(c) would be 80c², of valuation `1+2v_5(c)`,
+which is odd. Thus v_5(c)>=0. The Newton polygon of q3 has two
+length-one segments, giving Q5-roots of valuations 3 and -1.
+At the latter root r, both c and c0 are integral, and
+
+```
+(c-r)/(c0-r) = (1-c/r)/(1-c0/r) in 1+5 Z5.
+```
+
+This is a square in Q5, so lambda is a Q5-square and v_5(lambda)
+is even.
+
+At p=2, the even valuation v_2(c) must be -2. Indeed if it is
+nonnegative, q1(c) is 5 modulo 8 and is not a square. If it is at
+most -4, divide q1(c) by its leading term 80c². The resulting ratio
+is 1 modulo 8: the other two terms have relative valuations at least
+3 and 4. Its normalized leading unit is 5 modulo 8, again impossible.
+
+The first quadratic splits over Q2 since 505 is a 2-adic square.
+Its roots are `r±=(105±4sqrt(505))/20`. They satisfy
+
+```
+v2(r±)=-2,  v2(r+-r-)=1,  4r±=1 mod8.
+```
+
+Since c is square of valuation -2, `4c=1 mod8`. Thus both c-r±
+have valuations at least one, and at least one has valuation exactly
+one. Their product q1(c)/80 has even valuation. Consequently both
+valuations are odd. The same holds for c0, so each corresponding
+ratio has even valuation. The squareclass identity forces
+v_2(lambda) even.
+
+Finally the two real roots of q1 are below 49/4, since
+`sqrt(505)<35`. Thus c-r and c0-r are positive at both real
+embeddings. The squareclass identity makes lambda positive.
+A positive rational number of even valuation at every prime is a
+rational square, proving the lemma.
+
+This argument does not contradict the representative-change example
+in Section 5.41: it uses the individual square conditions and their
+real and p-adic consequences, which were absent from that shortcut.
+In particular, once a fake class is represented by c0-theta, these
+extra hypotheses justify the fixed cubic norm twist for genuine
+type-5 configurations. They do not classify arbitrary points on C.
+
+**The two normalized branches.** The scalar-square lemma makes both
+fake classes amenable to fixed norm quotients. The first is excluded
+by a cubic quotient. In the second, retaining c as an individual square
+gives a different quartic quotient of rank one.
+
+The certificate is `scripts/check_type5_exclusion.m`, run
+successfully with Magma 2.30-1. Its use of descent, elliptic rank,
+saturation and elliptic Chabauty is an explicit arithmetic-software
+dependency. The class-group search and proof bounds are separate maps:
+the proof map is the actual Minkowski bound for every order encountered.
+Consequently even auxiliary fields introduced inside elliptic descent
+are certified without assuming that a fixed numerical bound covers them.
+
+First `TwoCoverDescent(C)` returns exactly two classes, and the checker
+verifies that they are represented by `49/4-theta` and `81/4-theta`.
+For the first, put `K=Q(r)`, `q1(r)=0`, and use
+
+```
+g(c)=(c-r)q3(c)/80,
+gamma=g(49/4)=(256/5)(49/4-r).
+```
+
+By the scalar-square lemma, a genuine configuration in that class
+has `g(c)/gamma` square in K, so it gives a K-point on
+`z²=gamma*g(c)`. If `g(c)=c³+g2*c²+g1*c+g0`, the map
+`u=gamma*c`, `v=gamma*z` identifies this curve with
+
+```
+E: v²=u³+gamma*g2*u²+gamma²*g1*u+gamma³*g0,
+phi:E->P1,  phi(u,v)=(u:gamma).
+```
+
+Its K-rational point `P=(gamma*49/4,gamma²)` has infinite order.
+Magma determines rank E(K)=1 and torsion order two. Starting with P,
+`Saturation([P],2:TorsionFree:=true)` returns a generator of a
+2-saturated subgroup modulo torsion. Adjoining the full torsion
+subgroup gives an explicitly constructed subgroup G of finite odd
+index in E(K); no claim that P alone is saturated at every prime is
+needed.
+
+The call `Chabauty(G->E,phi:IndexBound:=2)` returns three elements
+`0,±G.2`, whose rational images are exactly `{49/4,infinity}`; its
+returned index bound is 16. Because the actual subgroup index is odd,
+it is coprime to that bound. By the documented index convention this
+is the complete rational-image set for E(K), not just for G. See
+[Magma elliptic Chabauty](https://magma.maths.usyd.edu.au/magma/handbook/text/1568).
+
+The leading coefficient 512000 of the sextic is nonsquare, so C has
+no rational point at infinity; original configurations also have
+finite c. At c=49/4, the B paired-center squares have sum U=4 and
+product V=0. One paired center is zero, so its two reflected
+length-two chains repeat the same vertices. This excludes the
+remaining rational image and excludes the first branch.
+
+For the second branch, let `K=Q(r)` with `q2(r)=0`, so
+`K=Q(sqrt(-95))`. Write `c0=81/4`, `gamma=c0-r`, and
+
+```
+h(c)=c(c-r)q3(c).
+```
+
+The cubic norm of the scalar-normalized identity implies
+`((c-r)q3(c))/((c0-r)q3(c0))` is a square in K. Since c/c0 is
+also a rational square, h(c)/h(c0) is a K-square. Here
+`q3(c0)=128²`, `c0=(9/2)²`, so h(c0) has squareclass gamma.
+Thus every genuine configuration in this branch gives a K-point on
+the quartic `z²=gamma*h(c)`.
+
+Set `b=-1064`, `d=5125`, and `L=-gamma*r*d`. Substituting
+`U=1/c`, `Y=z/c²`, then `u=L*U`, `v=L*Y`, gives the cubic model
+
+```
+E: v²=u³+gamma(d-rb)u²+L*gamma(b-80r)u+L²*80gamma,
+phi:E->P1,  phi(u,v)=(L:u).
+```
+
+The original c is nonzero by c>=49/4, so the transformation loses
+no genuine input. The quartic point at c0 has
+`z0=gamma*(9/2)*128`, giving the explicit cubic point
+`(L/c0,L*z0/c0²)`.
+
+The checker proves that this point is of infinite order, the rank
+over K is one, and the full torsion subgroup has order two. The
+same 2-saturation and finite-odd-index construction as before now
+gives a complete elliptic Chabauty result: three group elements,
+index bound 8, and rational images exactly `{0,81/4}`.
+The image c=0 has S=-85/16, so cannot be a sum of squared centers.
+At c=81/4, the A center-square polynomial has roots 16,4, and the
+B center-square polynomial has roots 9,1. The B singleton centers
+are ±9/2. Both original seeds are therefore the identical set
+
+```
+{-9/2,-7/2,-5/2,-3/2,-1/2,1/2,3/2,5/2,7/2,9/2}.
+```
+
+They are not disjoint. This excludes the final image, completes
+both fake branches, and proves Theorem 16. Together with types 10
+and 16, three of the eighteen symmetric chain types are now
+completely excluded. The original size-eleven problem remains open.
+
+The independent SymPy checker
+`scripts/check_type5_scalar_normalization.py` reconstructs the square
+polynomials, discriminants, both base-point values, local root formulas
+and Newton data. The valuation argument above, rather than a finite
+congruence search, establishes the lemma at every prime and height.
 
 ## 6. Open boundary
 
@@ -6417,8 +6626,8 @@ The original distinct-entry size-11 problem remains unsolved here: no pair
 of disjoint eleven-element integer sets and no general impossibility proof
 has been established. Section 5 gives a distinct-entry shift-lift reduction and
 normalized finiteness for all eighteen chain types (Theorem 14), and
-Sections 5.31 and 5.40 exclude valid distinct-entry lifts in types 10
-(the older sixth mode) and 16. The remaining sixteen types' required
+Sections 5.31, 5.40 and 5.42 exclude valid distinct-entry lifts in types
+10 (the older sixth mode), 16 and 5. The remaining fifteen types' required
 rational-point sets and lifting conditions are not classified. Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,

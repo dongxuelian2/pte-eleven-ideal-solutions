@@ -40,7 +40,7 @@ square conditions gives a quartic birational to
 good reduction determines its four rational points. Back-substitution
 leaves only an irrational-center obstruction or repeated entries.
 The proof and SymPy checker need no external arithmetic service or GRH.
-The remaining sixteen types' rational-point sets and lifting conditions
+The remaining fifteen types' rational-point sets and lifting conditions
 have not been completely determined.
 
 [The exact bounded search in §5.33](PROOF.md#533-exact-bounded-center-search-in-four-remaining-types)
@@ -49,6 +49,16 @@ excludes types 4, 5, 15 and 16 when their specified rational center
 multithreaded sieve retains only six colliding configurations, checked
 independently with rational arithmetic. This finite box does not
 classify the unbounded rational-point sets.
+
+[Theorem 16, §5.42](PROOF.md#542-complete-exclusion-of-type-5-by-normalized-two-cover-descent)
+also excludes **type 5 at every rational height**. An elementary
+scalar-square lemma repairs the fake-cover ambiguity using the original
+center conditions. Two rank-one elliptic Chabauty computations, over
+Q(sqrt(505)) and Q(sqrt(-95)), exhaust both normalized branches and
+leave only collisions or a negative center-square sum. All class-group
+proof bounds use actual Minkowski bounds. Thus types 5, 10 and 16 are
+completely excluded; the remaining fifteen types and the original
+size-eleven problem remain open.
 
 Sections 5.37 and 5.39 combine software-assisted two-Selmer upper bounds
 with exact Kummer certificates to give ranks **3,3,4,2** for types
