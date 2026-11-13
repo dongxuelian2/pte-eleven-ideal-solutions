@@ -40,15 +40,14 @@ square conditions gives a quartic birational to
 good reduction determines its four rational points. Back-substitution
 leaves only an irrational-center obstruction or repeated entries.
 The proof and SymPy checker need no external arithmetic service or GRH.
-The remaining fifteen types' rational-point sets and lifting conditions
-have not been completely determined.
 
 [The exact bounded search in §5.33](PROOF.md#533-exact-bounded-center-search-in-four-remaining-types)
 excludes types 4, 5, 15 and 16 when their specified rational center
 `n/d` has `0<=n<=1000000`, `1<=d<=1000000` in lowest terms. The C++
 multithreaded sieve retains only six colliding configurations, checked
 independently with rational arithmetic. This finite box does not
-classify the unbounded rational-point sets.
+classify the unbounded rational-point sets; the later theorems below
+exclude these four types at all heights by separate arguments.
 
 [Theorem 16, §5.42](PROOF.md#542-complete-exclusion-of-type-5-by-normalized-two-cover-descent)
 also excludes **type 5 at every rational height**. An elementary
@@ -56,9 +55,24 @@ scalar-square lemma repairs the fake-cover ambiguity using the original
 center conditions. Two rank-one elliptic Chabauty computations, over
 Q(sqrt(505)) and Q(sqrt(-95)), exhaust both normalized branches and
 leave only collisions or a negative center-square sum. All class-group
-proof bounds use actual Minkowski bounds. Thus types 5, 10 and 16 are
-completely excluded; the remaining fifteen types and the original
-size-eleven problem remain open.
+proof bounds use actual Minkowski bounds.
+
+[Theorem 17, §5.43](PROOF.md#543-complete-exclusion-of-type-15-by-a-quadratic-unit-normalization)
+excludes **type 15 at every rational height**. An elementary ideal and
+unit argument in Q(sqrt(15)) restricts all genuine configurations to two
+explicit squareclasses. Two rank-one elliptic Chabauty certificates
+exhaust their rational images, leaving only nonsquare center parameters
+or collisions.
+
+[Theorem 18, §5.44](PROOF.md#544-complete-exclusion-of-type-4-by-individual-component-norms)
+excludes **type 4 at every rational height**. Individual component norms
+remove two of three fake two-cover classes. Local scalar-square
+normalization and elliptic Chabauty over Q(sqrt(5)) exhaust the last
+class and leave only a repeated-entry seed. The certificate transports
+the original center coordinate through the exact minimal-model
+isomorphism and uses unconditional class-group proof bounds. Thus
+types 4, 5, 10, 15 and 16 are completely excluded; thirteen chain types
+and the original size-eleven problem remain open.
 
 Sections 5.37 and 5.39 combine software-assisted two-Selmer upper bounds
 with exact Kummer certificates to give ranks **3,3,4,2** for types
@@ -70,7 +84,8 @@ the lower-bound certificate is independently checked by SymPy.
 Section 5.36 proves rational Néron–Severi rank one for all four
 Jacobians, so both direct Chabauty rank criteria fail for all four
 necessary curves. These rank obstructions alone do not exclude the chain
-types; the separate individual-square argument above excludes type 16.
+types; the separate individual-square and normalized-cover arguments
+above exclude all four.
 Reproduce the upper bounds, with unconditional quadratic class bounds, using
 `scripts/check_shift_curve_selmer.m` in Magma; no rational-point
 completeness or saturated basis is asserted.
