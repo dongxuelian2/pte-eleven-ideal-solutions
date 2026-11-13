@@ -6337,6 +6337,80 @@ though its product-condition genus-two Jacobian has rank two and fails
 the direct Chabauty criteria. Together with type 10, two of the eighteen
 chain types are now completely excluded.
 
+### 5.41 A scalar ambiguity obstructs a cubic-quotient shortcut for type 5
+
+Keeping the separate squared-center discriminants in type 5 gives the
+necessary genus-two curve
+
+```
+C: y² = (80c²-840c+589)(80c²-40c+4869)(80c²-1064c+5125).
+```
+
+The three factors are respectively `256T`, `256(S²-4T)` and
+`256(U²-4V)` from Section 5.32. Since `256³=4096²`, every valid
+configuration maps to C. This curve is different from the earlier
+product-condition curve R5.
+
+There is an important obstruction to using a cubic elliptic quotient
+of a fake two-cover class on C. Let `A=Q[theta]/(f(theta))`, with f the
+displayed sextic. The even-degree fake descent class of a nonbranch
+point with coordinate c is the class of `c-theta` in
+`A*/(A*² Q*)`; thus a rational scalar is forgotten. This convention is
+the one in [Bruin–Stoll, Section 2](https://www.mathe2.uni-bayreuth.de/stoll/papers/twocoverdescent.pdf)
+and the [Magma two-cover descent documentation](https://magma.maths.usyd.edu.au/magma/handbook/text/1619),
+which also illustrates the safe even-degree norm construction.
+
+Here is an explicit counterexample to applying that construction with
+an odd-degree norm. Put `K=Q(r)`, where `80r²-840r+589=0`, so
+`K=Q(sqrt(505))`. Over K take the monic cubic
+
+```
+g(c)=(c-r)(80c²-1064c+5125)/80,
+delta0=49/4-theta,
+gamma=g(49/4)=(256/5)(49/4-r).
+```
+
+Projection to `K[theta]/g(theta)` and its degree-three norm give
+`Norm(delta0)=gamma`. The rational point `(49/4,393216)` lies on C.
+For this c, the fixed cubic curve `z²=gamma*g(c)` has the K-rational
+points `z=±gamma`.
+
+However, `delta0` and `2delta0` represent exactly the same fake class,
+while `Norm(2delta0)=8gamma`. The curve `z²=8gamma*g(c)` has no
+K-point above `c=49/4`, because its right side is `8gamma²` and 2 is
+not a square in K. Indeed if `(a+b sqrt(505))²=2`, with a,b rational,
+the irrational coefficient gives `ab=0`. This would require either
+2 or `2/505` to be a rational square, both impossible by their
+prime valuations.
+
+Consequently a fake two-cover class does not determine this fixed
+cubic elliptic twist. In general
+
+```
+c-theta = q delta z²,   q in Q*,
+```
+
+gives `g(c)=q³ Norm(delta) Norm(z)²`, so a rational nonsquare factor
+q remains. A rational-image calculation on one fixed cubic twist,
+even if complete, therefore does not by itself classify the fake
+branch. This is a concrete failure of the shortcut, not a claim
+that the branch has no rational points.
+
+An even-degree norm repairs this particular ambiguity: q to an even
+power is a square. For example over
+`K'=Q(sqrt(505),sqrt(-95))`, a monic quartic factor consists of one
+linear factor from the first quadratic, one from the second, and
+the whole third quadratic. Its degree-four norm defines an elliptic
+twist independently of the forgotten rational scalar. Computing all
+rational images on those twists still requires appropriate rank,
+Mordell–Weil index and Chabauty completeness arguments. Neither this
+repair nor the cubic calculation excludes type 5 here.
+
+The independent SymPy checker `scripts/check_type5_cubic_scalar.py`
+verifies the rational point, quadratic-field identity and both cubic
+norms exactly. The obstruction uses no class group, height bound or
+assumption on a Tate–Shafarevich group.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
