@@ -27,8 +27,11 @@ def rank(rows):
    else:piv[i]=y;break
  return len(piv)
 perms=list(permutations(range(5)))
+A5=[p for p in perms if sum(p[i]>p[j] for i in range(5) for j in range(i+1,5))%2==0]
+assert len(A5)==60
 assert len(V)==16
 for m in V[1:]:assert rank({image(m,p) for p in perms})==4
+for m in V[1:]:assert rank({image(m,p) for p in A5})==4
 # Intersection matrix of H and sum of the 16 exceptional curves.
 assert 16*(-2)==-32
 # Isotropy is a^2=8 b^2, impossible for nonzero rationals since 8 is nonsquare.

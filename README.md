@@ -1,5 +1,10 @@
 # Ideal Prouhet–Tarry–Escott Solutions of Size 11
 
+**Research allocation (15 November 2026):** Further work on the original
+size-eleven problem is stopped. Manuscript preparation prioritizes the
+proved eighteen-type finiteness theorem and complete type exclusions.
+The original existence problem remains open.
+
 The original target remains open: construct two disjoint sets of eleven
 distinct integers with equal power sums through degree ten, or prove that
 none exist. Their monic root polynomials must differ by a nonzero constant:
@@ -115,8 +120,8 @@ remove the former GRH hypothesis.
 
 [The Kummer obstruction](kummer_obstruction/KUMMER_FIBRATION_OBSTRUCTION.md)
 proves that the seven nonzero Selmer twisted Kummers admit no genus-one
-fibration over Q, any finite odd-degree extension, or any quadratic
-extension. This excludes that shortcut; it does not exclude rational
+fibration over Q, any finite odd-degree extension, or any extension
+of degree less than ten. This excludes that shortcut; it does not exclude rational
 points or determine the Jacobian rank. A nonzero Cassels–Tate pairing or
 two further independent rational divisor classes would distinguish the
 current rank-one and rank-three routes. Neither is supplied here.

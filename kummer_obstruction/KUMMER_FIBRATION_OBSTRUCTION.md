@@ -4,9 +4,9 @@
 
 Let J be the genus-two Jacobian in the certified PTE pencil computation. For each of its seven nonzero rational 2-Selmer classes ε, let Xε be the minimal resolution of the associated twisted Kummer quartic (the precise twist, not an arbitrarily chosen geometrically isomorphic quartic).
 
-**Theorem.** Xε admits no genus-one fibration defined over Q. More strongly, no such fibration exists after any finite odd-degree extension of Q, or after any quadratic extension of Q. A section is not assumed in this statement.
+**Theorem.** Xε admits no genus-one fibration defined over Q. More strongly, no such fibration exists after any finite odd-degree extension of Q, or after any extension of degree less than ten. A section is not assumed in this statement.
 
-This is an unconditional structural obstruction, not a bounded point search. It does not exclude rational points on Xε, does not compute a Cassels–Tate pairing, does not determine the Jacobian rank, and does not solve the original size-eleven PTE problem. It rules out a specific proposed way of replacing the current Kummer-point problem by a rational elliptic fibration. No claim is made for other even-degree extensions.
+This is an unconditional structural obstruction, not a bounded point search. It does not exclude rational points on Xε, does not compute a Cassels–Tate pairing, does not determine the Jacobian rank, and does not solve the original size-eleven PTE problem. It rules out a specific proposed way of replacing the current Kummer-point problem by a rational elliptic fibration. No claim is made for even-degree extensions of degree at least ten.
 
 ## 1. The curve's geometric endomorphism ring
 
@@ -32,7 +32,7 @@ The rational Weierstrass point identifies J[2] with
 
 V={ (v1,...,v5) in F2^5 : v1+...+v5=0 },
 
-with S5 acting by coordinate permutations. V is irreducible: a nonzero vector has weight two or four; its S5 orbit spans V in either case.
+with S5 acting by coordinate permutations. V is irreducible under both S5 and A5: a nonzero vector has weight two or four, and A5 is transitive on each of these two weight sets. Weight-two vectors span V, while sums of pairs of distinct weight-four vectors give weight-two vectors.
 
 Moreover H¹(S5,V)=0. Indeed F2^5=F2·(1,1,1,1,1) ⊕ V, since five is odd. Shapiro identifies H¹(S5,F2^5) with H¹(S4,F2), which is one-dimensional. Under this identification the inclusion of the constant module induces restriction H¹(S5,F2)→H¹(S4,F2). The sign homomorphism restricts nontrivially, so this map is an isomorphism. The direct-summand cohomology then forces H¹(S5,V)=0. No semisimplicity assertion in characteristic two is being used.
 
@@ -58,7 +58,7 @@ and its intersection matrix is diag(4,−32). We deliberately use Galois invaria
 
 If aH+bE has square zero, then a²=8b². For rational a,b this forces a=b=0. A genus-one fibration defined over Q would supply a nonzero Galois-invariant geometric fiber class with square zero, a contradiction. This excludes genus-one fibrations even without a rational section or with a nonsplit genus-zero base.
 
-## 4. Odd-degree and quadratic extensions
+## 4. Odd-degree extensions and extensions of degree less than ten
 
 Let G=V⋊S5 be the image on the nodes, and let L/Q be finite. Its restricted image H_L⊂G has index dividing [L:Q].
 
@@ -68,9 +68,17 @@ If [L:Q] is odd, normality of V gives
 
 which is both a power of two and a divisor of the odd number [G:H_L]. Hence V⊂H_L.
 
-If [L:Q]=2, the image has index one or two. Since the S5-module V is nontrivial and irreducible, [S5,V]=V. Thus G_ab=S5_ab=C2, and every index-two subgroup contains V. Again V⊂H_L.
+More generally, suppose [G:H_L]<10. Put U=H_L∩V and let P be the image of H_L in S5. Then
+
+    [G:H_L]=[S5:P] [V:U].
+
+If U were proper, [V:U]≥2, so [S5:P]<5. The only possibilities are P=S5 and P=A5. Indeed an index-three or index-four subgroup would give a transitive homomorphism S5→S3 or S5→S4. Simplicity of A5 and 60>|S4| force A5 into its kernel. The image then has order at most two, which cannot be transitive on three or four letters; the unique index-two subgroup is A5.
+
+The subspace U is P-stable. Irreducibility under S5 and A5 forces U=0, giving [V:U]=16, a contradiction. Thus V⊂H_L. In particular this holds whenever [L:Q]<10, because the restricted-image index divides the extension degree. This adds degrees four, six and eight to the previous quadratic case.
 
 In both cases the nodes remain transitive, so the invariant intersection form remains diag(4,−32). The same isotropic-class argument rules out a genus-one fibration over L.
+
+The argument uses only a rational Weierstrass point, quintic Galois group S5, geometric Picard rank seventeen, and a nonzero true translation-twist class. It therefore applies more generally to such genus-two Jacobians. The Galois-module and Picard-space framework is standard; see Skorobogatov–Zarhin, [Kummer varieties and their Brauer groups](https://arxiv.org/abs/1612.05993), Sections 2 and 4. The low-degree conclusion is an elementary subgroup-index refinement of that framework. It uses invariance of the geometric hyperplane class, not descent of every invariant class to a line bundle, so no Brauer splitting assumption is inserted. A nonzero Mordell–Weil class modulo two is included: its underlying Jacobian torsor may be trivial, but its node J[2]-torsor is nontrivial.
 
 ## Reproducibility and review
 
