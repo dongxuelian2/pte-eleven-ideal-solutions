@@ -161,6 +161,9 @@ and quadratic-divisor witnesses, every intersection, and the exact identity
 linking the known point to mask 4. Generated intermediate files go to
 `build/pencil_selmer/`, not the source tree.
 
+Run `python -m unittest discover -s tests -v` to check that the verifier
+rejects incomplete, duplicated, or malformed local-prime records.
+
 The `.m` files are Magma inputs. `certify_global_basis.m` independently
 certifies the global completeness; `selected_sunits.m` is retained only as
 historical discovery code and is not a proof dependency. The four local
