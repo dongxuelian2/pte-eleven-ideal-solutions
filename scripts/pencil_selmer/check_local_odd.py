@@ -2,11 +2,14 @@ import json,re
 from pathlib import Path
 p=Path(__file__).parent
 o=p.parents[1]/'build'/'pencil_selmer';o.mkdir(parents=True,exist_ok=True)
-d=json.load(open(o/'space_after_5_7.json'));raw=dict(success=True,truncated=False,stdout=(p/'local_odd.txt').read_text());assert raw['success'] and not raw['truncated']
+d=json.load(open(o/'space_after_5_7.json'))
+blocks=(p/'local_odd.txt').read_text().split('PRIME ')[1:]
+primes=[int(block.splitlines()[0]) for block in blocks]
+assert len(primes)==3 and set(primes)=={3,773,3087467}, primes
 a=d['allowed_masks']
 def pack(row):return sum(x<<i for i,x in enumerate(row))
 def rows(s):return [[int(x.strip())for x in z.split(',')]for z in re.findall(r'\[([^]]+)\]',s)]
-for block in raw['stdout'].split('PRIME ')[1:]:
+for block in blocks:
  prime=int(block.splitlines()[0]);vstr,tstr=block.split('VECTORS')[1].split('TORSION');v=rows(vstr);ts=rows(tstr)
  cols=list(map(pack,v[:14]));loc=list(map(pack,ts+v[14:]));span={0}
  for z in loc:span|={t^z for t in list(span)}

@@ -2,9 +2,12 @@ import json,re
 from pathlib import Path
 p=Path(__file__).parent
 o=p.parents[1]/'build'/'pencil_selmer';o.mkdir(parents=True,exist_ok=True)
-d=json.load(open(o/'global_space.json'));raw=dict(success=True,truncated=False,stdout=(p/'local_5_7.txt').read_text());assert raw['success'] and not raw['truncated']
+d=json.load(open(o/'global_space.json'))
+blocks=(p/'local_5_7.txt').read_text().split('PRIME ')[1:]
+primes=[int(block.splitlines()[0]) for block in blocks]
+assert len(primes)==2 and set(primes)=={5,7}, primes
 a=d['allowed_masks']
-for block in raw['stdout'].split('PRIME ')[1:]:
+for block in blocks:
  prime=int(block.splitlines()[0]);v=[[int(x.strip())for x in z.split(',')] for z in re.findall(r'\[([^]]+)\]',block)];assert len(v)==15
  def pack(row):return sum(x<<i for i,x in enumerate(row))
  cols=list(map(pack,v[:14]));beta=pack(v[-1]);assert beta

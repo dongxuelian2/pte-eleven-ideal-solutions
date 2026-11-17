@@ -49,7 +49,10 @@ def rows(text):
 def pack(row):
     assert all(v in [0, 1] for v in row)
     return sum(v << i for i, v in enumerate(row))
-for block in (p/'local_remaining.txt').read_text().split('PRIME ')[1:]:
+blocks = (p/'local_remaining.txt').read_text().split('PRIME ')[1:]
+primes = [int(block.splitlines()[0]) for block in blocks]
+assert len(primes) == 2 and set(primes) == {61, 35498020282877}, primes
+for block in blocks:
     prime = int(block.splitlines()[0])
     vtext, ttext = block.split('VECTORS')[1].split('TORSION')
     v, torsion = rows(vtext), rows(ttext)
@@ -93,4 +96,5 @@ assert {0,real1,real2,real1^real2} == {0,5,10,15}
 print('Exact real Kummer image: span{10100,01010}, increasing-a order.')
 print('Known point has mask 4; exact square identity passed.')
 runpy.run_path(str(p/'check_global_basis.py'))
-print('All certificate checks passed. Unconditional Selmer dimension 3; 1 <= rank <= 3.')
+print('Exact checks and recorded Magma outputs passed; Magma arithmetic was not rerun.')
+print('With the recorded arithmetic: Selmer dimension 3; 1 <= rank <= 3.')
