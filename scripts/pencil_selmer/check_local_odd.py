@@ -11,6 +11,9 @@ def pack(row):return sum(x<<i for i,x in enumerate(row))
 def rows(s):return [[int(x.strip())for x in z.split(',')]for z in re.findall(r'\[([^]]+)\]',s)]
 for block in blocks:
  prime=int(block.splitlines()[0]);vstr,tstr=block.split('VECTORS')[1].split('TORSION');v=rows(vstr);ts=rows(tstr)
+ count_v,count_t,width={3:(14,4,8),773:(15,3,6),3087467:(16,4,8)}[prime]
+ assert len(v)==count_v and len(ts)==count_t
+ assert all(len(row)==width and set(row)<={0,1} for row in v+ts)
  cols=list(map(pack,v[:14]));loc=list(map(pack,ts+v[14:]));span={0}
  for z in loc:span|={t^z for t in list(span)}
  assert len(span)=={3:8,773:4,3087467:8}[prime]

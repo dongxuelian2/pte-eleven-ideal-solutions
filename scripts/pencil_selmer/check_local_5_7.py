@@ -9,6 +9,7 @@ assert len(primes)==2 and set(primes)=={5,7}, primes
 a=d['allowed_masks']
 for block in blocks:
  prime=int(block.splitlines()[0]);v=[[int(x.strip())for x in z.split(',')] for z in re.findall(r'\[([^]]+)\]',block)];assert len(v)==15
+ assert all(len(row)==4 and set(row)<={0,1} for row in v)
  def pack(row):return sum(x<<i for i,x in enumerate(row))
  cols=list(map(pack,v[:14]));beta=pack(v[-1]);assert beta
  def img(z):

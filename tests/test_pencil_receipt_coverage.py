@@ -4,6 +4,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import re
 from pathlib import Path
 
 
@@ -33,6 +34,8 @@ class ReceiptCoverageTest(unittest.TestCase):
                     'empty': '',
                     'missing': blocks[0] + ''.join('PRIME ' + b for b in blocks[1:-1]),
                     'duplicate': original + 'PRIME ' + blocks[1],
+                    'missing row': re.sub(r'\[[^\]]+\]', '', original, count=1),
+                    'invalid bit': re.sub(r'\[\s*[01]', '[2', original, count=1),
                 }
                 for case, text in variants.items():
                     with self.subTest(file=name, case=case):

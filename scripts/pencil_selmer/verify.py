@@ -57,6 +57,7 @@ for block in blocks:
     vtext, ttext = block.split('VECTORS')[1].split('TORSION')
     v, torsion = rows(vtext), rows(ttext)
     assert len(v) == 15 and len(torsion) == 3
+    assert all(len(row) == 6 and set(row) <= {0, 1} for row in v + torsion)
     # All local-image generators have even valuations at these omitted primes.
     assert all(all(z == 0 for z in row[::2]) for row in torsion + v[14:])
     span = {0}
