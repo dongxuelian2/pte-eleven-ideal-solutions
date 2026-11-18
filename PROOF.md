@@ -1135,7 +1135,8 @@ The curves have the rational control points (b,y)=(1,336),(4,1920),
 (9,3240),(16,384). They produce only the trivial A=B consisting of the
 ten half-integers +/-1/2,+/-3/2,+/-5/2,+/-7/2,+/-9/2; the certificate
 explicitly verifies this rejection. Their rational points have not been
-completely determined. Any further point must still pass the rational-
+completely determined except for C3, whose list is proved in Section 5.46.
+Any further point must still pass the rational-
 square, complete-splitting, and noncollision conditions. These four
 reductions alone do not treat the other fourteen chain types; the complete
 normalized finiteness theorem for all eighteen appears in Section 5.32.
@@ -7061,14 +7062,92 @@ Magma checker `scripts/check_type2_exclusion.m` independently verifies
 the isomorphism, rank-zero result and complete inverse-image list;
 it is not a dependency of the elementary proof.
 
+### 5.46 Complete exclusion of type 14 by Chabauty at seven
+
+**Theorem 20 (software-assisted).** Type 14, `(3,(2),(1,1,1,2))`, has
+no valid distinct-entry shift lift at any rational height. The necessary
+genus-two curve C3 of Section 5.3 has rational points
+
+    ∞, (9,3240), (9,−3240).
+
+**Rank.** The [Magma certificate](scripts/check_type14_exclusion.m) applies
+`RankBounds` to the Jacobian of `C3: y²=−3h3(b)`. It sets a class-group
+proof callback returning the actual Minkowski bound for every order.
+The calculation uses the quintic field of discriminant −7745836638000
+and proof bound 136074, and gives an upper bound of one. The class
+`D=[(9,3240)−∞]` has infinite order. The same script verifies this with
+`Order(D)=0`, and the nonzero logarithm below gives an independent
+verification. Thus the rank is exactly one.
+
+**Point completeness.** Use the monic model `Y²=F(X)` obtained by
+`X=−2700b`, `Y=2700²y`. The reduction at seven is smooth. Its rational
+points over F₇ are the point at infinity and `(4,±3)`. The three stated
+rational points already occupy these three disks.
+
+Let `(U,V)` be the reduced Mumford representative of `25D` on the
+monic model. The [independent checker](scripts/check_type14_seven_adic.py)
+uses [Cantor addition](https://doi.org/10.1090/S0025-5718-1987-0866101-0)
+to compute the following exact data:
+
+    deg U=2,   U ≡ (X−5)² mod 7,
+    v₇(disc U)=2,   (disc U)/7² ≡ 5 mod 7,
+    7V ≡ 5X+3 mod 7,   F(5) ≡ 5 mod 7.
+
+Since 5 is nonsquare modulo seven, the roots `x₁,x₂` of U are in the
+unramified quadratic local extension. Their difference has valuation
+one and each reduces to 5. The ordinates `y_i=V(x_i)` are units since
+`y_i²=F(x_i)`. Also `y₁−y₂` has valuation zero by the leading coefficient
+of V. Their reductions are therefore the two opposite square roots
+of 5. If `P_i=(x_i,y_i)` and ι is the hyperelliptic involution, then
+`25D=[P₁−ι(P₂)]`, with both points in the same disk.
+
+For `ω₀=dX/(2Y)` and `ω₁=X dX/(2Y)`, compute the logarithm of `25D`
+by integrating on this disk from `ι(P₂)` to `P₁`. With `h=x₁−x₂` and
+`Y₀=−y₂`, the pair of integrals is
+
+    h/(2Y₀) · (1,x₂) mod 7².
+
+In fact `Y` is a unit and admits an integral power series in `X−x₂`
+on the disk. Terms of degree `k≥2` in the primitive have valuation
+at least `k−v₇(k)≥2` because `v₇(h)=1`. The first coordinate has
+valuation one. The ratio λ of the second to the first lies in Z₇
+and satisfies `λ≡5 mod 7`. Since the rank is one, `ω₁−λω₀` annihilates
+the logarithm of the entire rational Mordell–Weil group.
+
+The reduction of this differential is nonzero at every F₇-point.
+At the two finite points `X=4` differs from 5, and at infinity `ω₁`
+is a unit in a local parameter while `ω₀` vanishes. On each disk an
+integral power series differential with unit constant coefficient has
+an injective primitive on `7Z₇`. Indeed, upon subtracting its values
+at `t₁,t₂`, all degree `k≥2` terms have valuation at least
+`v₇(t₁−t₂)+k−1−v₇(k)>v₇(t₁−t₂)`. The linear term therefore cannot be
+cancelled. For any two rational points in the same disk, the integral
+of the annihilating differential between them is zero by the
+Jacobian logarithm. Each disk contains at most one rational point,
+so the three known points exhaust C3(Q). This is the local argument
+of [effective Chabauty](https://doi.org/10.1215/S0012-7094-85-05240-8).
+The Magma script also verifies the complete list independently with
+the [rank-one Chabauty intrinsic](https://magma.maths.usyd.edu.au/magma/handbook/text/1620).
+
+**Back-substitution.** A valid input has `b=v²≠0` and maps to a finite
+point of C3 by the discriminant relation in Section 5.3. The only
+possible b is 9. Then `a=(5b+3)/3=16`, and the singleton-square cubic is
+
+    K(X)=(4X−1)(4X−9)(4X−81)/64.
+
+Up to sign and permutation the A center is 4, the B length-two center
+is 3 and the B singleton centers are 1/2, 3/2, 9/2. With the prescribed
+offsets both input sets are `{±1/2,±3/2,±5/2,±7/2,±9/2}`. They coincide,
+contradicting the disjointness required in Section 5.1. ∎
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
 of disjoint eleven-element integer sets and no general impossibility proof
 has been established. Section 5 gives a distinct-entry shift-lift reduction and
 normalized finiteness for all eighteen chain types (Theorem 14), and
-Sections 5.31, 5.40 and 5.42–5.45 exclude valid distinct-entry lifts in types
-10 (the older sixth mode), 16, 5, 15, 4 and 2. The remaining twelve types' required
+Sections 5.31, 5.40 and 5.42–5.46 exclude valid distinct-entry lifts in types
+10 (the older sixth mode), 16, 5, 15, 4, 2 and 14. The remaining eleven types' required
 rational-point sets and lifting conditions are not classified. Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,

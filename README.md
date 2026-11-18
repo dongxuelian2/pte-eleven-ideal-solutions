@@ -86,7 +86,13 @@ excludes **type 2 at every rational height**. An elementary two-isogeny
 descent proves rank zero for its elliptic quotient, and good reduction
 exhausts its ten rational points. Each point forces an irrational center
 or a collision. Its independent SymPy checker needs no arithmetic service
-or GRH. Thus types 2, 4, 5, 10, 15 and 16 are completely excluded; twelve
+or GRH.
+
+[Theorem 20, §5.46](PROOF.md#546-complete-exclusion-of-type-14-by-chabauty-at-seven)
+excludes **type 14 at every rational height**. A certified rank-one bound
+and Chabauty at seven give exactly `∞` and `(9,±3240)` on its necessary
+genus-two curve. The finite value `b=9` makes the two sets coincide.
+Types 2, 4, 5, 10, 14, 15 and 16 are now completely excluded. Eleven
 chain types and the original size-eleven problem remain open.
 
 Sections 5.37 and 5.39 combine software-assisted two-Selmer upper bounds
