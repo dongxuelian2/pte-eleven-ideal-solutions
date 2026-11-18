@@ -18,6 +18,11 @@ For type 1 the two disks modulo 73 contain only the collision centers
 discriminant field and a second division at two dyadic places treat 0.
 [Theorem 37, §5.65](PROOF.md#565-complete-exclusion-of-type-1-by-descent-over-the-discriminant-field)
 
+In type 6 the base cubic has rank two. Three of its 93,312 classes
+modulo 216 can contain a valid lift. Their representatives have
+squared centers \((a,c)=(1,1),(9,1),(16,4)\).
+[Proposition 38, §5.66](PROOF.md#566-a-genus-three-model-and-three-global-residue-classes-for-type-6)
+
 In type 3, two squareclass pairs survive local tests. A rank-zero elliptic
 curve eliminates one. For the other, elliptic Chabauty over the field of
 discriminant −15 leaves one finite parameter, which makes the two input sets

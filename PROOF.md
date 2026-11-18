@@ -9104,6 +9104,66 @@ Run `gp -s 300M -fq scripts/type1_descent/sextic.gp` and
 `magma scripts/type1_descent/sextic_logs.m` from the repository root.
 
 
+### 5.66 A genus-three model and three global residue classes for type 6
+
+**Proposition 38.** Give the cubic \(H_6(a,c)=0\) of §5.32 the origin
+\(O=(1,0)\). It has rank two and torsion of order two. In its group
+modulo 216 every valid type-6 configuration belongs to one of the
+three classes represented by \((1,1),(9,1),(16,4)\).
+
+**Proof.** On a valid configuration the coefficient \(E_6\) in §5.32
+is nonzero. Reduction of the third moment equation modulo \(H_6\)
+simplifies the B singleton square and the A singleton sum and product to
+\[
+ b=(5a-c+5)/4,\quad S=(-3a+15c+22)/4,\quad
+ T=(8a^2-40ac-67a+80c^2+95c+149)/16.
+\]
+Put \(c=v^2\). For \(v\ne0\) the substitution \(w=(a-4)/v\) yields
+the smooth plane quartic with affine equation
+\[
+ vw^3-5v^2w^2+10v^3w-10v^4+3w^2-25vw+50v^2-40=0.
+\]
+Its inverse is \(a=4+vw,\ c=v^2\). This gives a genus-three model for
+the required square cover. In particular, at an odd prime \(p\nmid30\)
+an integral candidate reducing to \((4,0)\) requires 40/3 to be a
+square modulo \(p\). Indeed \(H_6(a,0)=(a-4)^2(a-1)\) and the
+coefficient of \(c\) is \(-40\) at \((4,0)\). It follows that
+\(w\) is a unit there and reduces to a root of \(3w^2-40\).
+
+The minimal elliptic model is
+\[
+ y^2+xy+y=x^3+x^2-2913x+80031.
+\]
+The rank bounds both equal two and the torsion subgroup has order two.
+Put \(P=(4,0),Q=(4,1)\) on the plane cubic and let \(U=(1,1)-P\).
+The point \(U\) has order two. Exact rational division verifies that
+no nonzero binary combination of \(P,Q,U\) is divisible by two and
+no nonzero combination of \(P,Q\) with coefficients in
+\(\{0,1,2\}\) is divisible by three. Hence \(P,Q\) give bases modulo
+9 and 27. Modulo 216 the classes are parametrized uniquely by
+\(iP+jQ+tU\) with \(i,j\bmod216\) and \(t\bmod2\).
+
+At each good prime below, enumerate the projective plane cubic.
+Keep all points at infinity. For an affine point, test the three
+center squares, the two singleton square roots of \(X^2-SX+T\)
+with multiplicity, and the quartic condition at \((4,0)\).
+Reduce the surviving points in the finite elliptic group modulo the
+given multiple. Intersect with the reductions of the coefficient
+classes, lifting the surviving classes between stages.
+
+| Multiple | Primes | Global classes left |
+|---|---|---|
+| 9 | 7, 11, 13, 17, 41, 61, 73, 307 | 4 of 81 |
+| 27 | 197, 271, 397, 647 | 3 of 729 |
+| 216 | 7, 13, 23, 31, 41, 43, 67, 73 | 3 of 93,312 |
+
+The final classes are \(P+U,P-Q+U,-P+2Q+U\). The group law gives the
+representatives asserted in the statement. At those three points
+\(c=1\) or 4, so the length-four B chain meets the centered A chain.
+Other rational points in their cosets remain to be determined. ∎
+[Rank, quartic, division and reduction certificate](scripts/check_type6_classes.m)
+
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
