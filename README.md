@@ -1,11 +1,11 @@
 # Ideal Prouhet–Tarry–Escott Solutions of Size 11
 
-Fourteen of the eighteen normalized types in the symmetric shift construction
+Fifteen of the eighteen normalized types in the symmetric shift construction
 are excluded at every rational height. In type 17, elliptic Chabauty excludes
 the odd multiples. On the even branch, two descents put every candidate on
 an elliptic curve over a quartic field. At its unique dyadic place the
 direction required by the chain lies outside the global 2-Selmer image.
-Types 6, 7, 8 and 18 remain open.
+Types 7, 8 and 18 remain open.
 [Theorem 32, §5.60](PROOF.md#560-complete-exclusion-of-type-17-by-a-dyadic-selmer-obstruction)
 
 In type 12, both parity classes lead to rank-one elliptic curves over a
@@ -18,10 +18,17 @@ For type 1 the two disks modulo 73 contain only the collision centers
 discriminant field and a second division at two dyadic places treat 0.
 [Theorem 37, §5.65](PROOF.md#565-complete-exclusion-of-type-1-by-descent-over-the-discriminant-field)
 
-In type 6 the base cubic has rank two. Three of its 93,312 classes
-modulo 216 can contain a valid lift. Their representatives have
-squared centers \((a,c)=(1,1),(9,1),(16,4)\).
-[Proposition 38, §5.66](PROOF.md#566-a-genus-three-model-and-three-global-residue-classes-for-type-6)
+In type 6, two collision classes span the logarithm space of a genus-two
+Jacobian over the quadratic field of discriminant −551. This exhausts
+two of the three possible disks. An affine descent on degree-one divisor
+classes determines the missing dyadic direction on the other twist and
+excludes the last disk at every rational height.
+[Theorem 40, §5.68](PROOF.md#568-complete-exclusion-of-type-6-by-dyadic-descent-on-the-remaining-twist)
+
+In type 7, the rank-two base cubic leaves five classes modulo 216.
+Their representatives are collisions. Each class still requires an
+all-height argument.
+[Proposition 41, §5.69](PROOF.md#569-five-global-residue-classes-on-the-type-7-cubic)
 
 In type 3, two squareclass pairs survive local tests. A rank-zero elliptic
 curve eliminates one. For the other, elliptic Chabauty over the field of

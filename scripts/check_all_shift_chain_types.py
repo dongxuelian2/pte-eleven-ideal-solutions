@@ -240,6 +240,16 @@ for typ,right,H in [(6,lambda k:B**k+moment(4,k,C),H6),(7,lambda k:moment(2,k,B)
         aa=(12*C+5)/8;bb=(20*C+19)/24
         proportional(eq[0].subs(A,aa),(4*C-9)*(4*C-1)*(24*B-20*C-19),(B,C))
         proportional(eq[1].subs({A:aa,B:bb},simultaneous=True),(4*C-9)*(4*C-1)**2*(4*C+11),(C,))
+        # The linear subresultant recovers b off the exceptional fibers.
+        br=(10*A-4*C+15)/6
+        assert s.expand(H.subs(A,(4*C-15)/10)+27*(4*C-25)*(144*C**2+440*C+1225)/125)==0
+        linear=s.Poly(s.subresultants(*eq,B)[-2],B)
+        leading=s.rem(linear.nth(1),H,A)
+        assert s.rem(linear.nth(0)+leading*br,H,A)==0
+        exceptional=(4*C-9)**4*(4*C-1)**6*(4*C+11)*(144*C**2+152*C+529)*(144*C**2+440*C+1225)
+        proportional(s.resultant(leading,H,A),exceptional,(C,))
+        assert s.expand(ss.subs(B,br)-(16*A+20*C+81)/12)==0
+        assert s.cancel(tt.subs(B,br)+(128*A**2-640*A*C+48*A+80*C**2-1380*C-1701)/144)==0
         g=s.groebner(s.Poly(eq[0],B).all_coeffs(),A,C)
         assert all(g.reduce(z)[1]==0 for z in [8*A-12*C-5,16*C*C-40*C+9])
     proportional(s.resultant(*eq,B),expected,(A,C))

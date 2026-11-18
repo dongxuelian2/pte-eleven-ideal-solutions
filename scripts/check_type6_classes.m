@@ -67,4 +67,18 @@ m:=216;
 s216:=Sieve({i+m*j+m^2*t:i,j in [0..m-1],t in [0,1]|
              (i mod 27)+27*(j mod 27) in s27},m,[7,13,23,31,41,43,67,73]);
 assert s216 eq {m^2+1,m^2+(m-1)+2*m,m^2+1+(m-1)*m};
-print "Three of 93312 global classes remain. Their representatives are (1,1), (9,1) and (16,4).";
+// Refine the class of (9,1) at 7 for the dyadic proof in section 5.68.
+for i,j in [0..6] do
+    if i+j gt 0 then assert #DivisionPoints(i*P0+j*Q0,7) eq 0; end if;
+end for;
+m := 1512;
+lifts := {m^2+((1+216*i) mod m)+m*((-1+216*j) mod m):i,j in [0..6]};
+lifts := Sieve(lifts,m,[67]); assert #lifts eq 7;
+assert Sieve(lifts,m,[79]) eq {m^2+1+m*(m-1)};
+Mm,iso := MinimalModel(E); L := pAdicField(2,160);
+EL := EllipticCurve([L!a:a in aInvariants(Mm)]);
+for P in [P0,Q0] do
+    R := 1512*(EL![L!a:a in Eltseq(iso(P))]);
+    assert Valuation(-R[1]/R[2]) ge 5;
+end for;
+print "Three classes modulo 216, and a single lift of the (9,1) class modulo 1512.";
