@@ -1,16 +1,17 @@
 # Ideal Prouhet–Tarry–Escott Solutions of Size 11
 
-Twelve of the eighteen normalized types in the symmetric shift construction
+Thirteen of the eighteen normalized types in the symmetric shift construction
 are excluded at every rational height. In type 17, elliptic Chabauty excludes
 the odd multiples. On the even branch, two descents put every candidate on
 an elliptic curve over a quartic field. At its unique dyadic place the
 direction required by the chain lies outside the global 2-Selmer image.
-Types 1, 6, 7, 8, 12 and 18 remain open.
+Types 1, 6, 7, 8 and 18 remain open.
 [Theorem 32, §5.60](PROOF.md#560-complete-exclusion-of-type-17-by-a-dyadic-selmer-obstruction)
 
-For type 12, the two center squares force the sum of the two Mordell–Weil
-coefficients on its product curve to be odd, leaving two parity classes.
-[Proposition 33, §5.61](PROOF.md#561-two-surviving-parity-classes-for-type-12)
+In type 12, both parity classes lead to rank-one elliptic curves over a
+cubic field. Elliptic Chabauty at 907 forces the squared center to be
+1 or 9. Each value makes the two chains share a vertex.
+[Theorem 34, §5.62](PROOF.md#562-complete-exclusion-of-type-12-by-two-rank-one-covers)
 
 In type 3, two squareclass pairs survive local tests. A rank-zero elliptic
 curve eliminates one. For the other, elliptic Chabauty over the field of
