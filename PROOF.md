@@ -8018,16 +8018,254 @@ group and one dimension of rational 2-torsion. It follows that
 Proposition 26 supply the lower bound. ∎
 [Magma's class-group proof-bound semantics](https://magma.maths.usyd.edu.au/magma/handbook/text/416)
 
+### 5.56 Complete exclusion of type 9 by the heights of three collinear points
+
+**Theorem 28.** In type 9, the singleton cubic on the necessary branch
+\(4u^2=10b+9\) has three distinct rational roots for exactly one finite
+rational parameter, \(b=4\). Allowing multiplicities gives just one
+additional split fiber, at \(b=0\). The fiber at four gives overlapping chains.
+Consequently type 9 has no valid rational shift lift.
+
+**Proof.** Type 9 is the case \(m=2\) of §5.2. Put \(b=v^2\), where
+\(\pm v\) are the centers of the length-two B chains. The three squared
+singleton centers must be distinct rational roots \(R\) of the following
+cubic, displayed in homogeneous coordinates \([R:B:W]\) with \(b=B/W\).
+It is \(64K\) from §5.2 on \(W=1\).
+\[
+\begin{split}
+C={}&64R^3-(352B+688W)R^2
+ +(432B^2+1840BW+2124W^2)R\\
+ &+216B^3-492B^2W-1974BW^2-2025W^3=0 .
+\end{split}
+\]
+The following matrix and its projective inverse carry this plane cubic
+to \(E:y^2+y=x^3+x^2+295x+1109\) and back, respectively.
+\[
+ L=\begin{pmatrix}-44&-84&347\\-1088&3102&4064\\16&6&-28\end{pmatrix},
+ \qquad
+ J=\begin{pmatrix}2884&7&36757\\-896&112&5152\\1456&28&5908\end{pmatrix}.
+\]
+Substitution in the homogeneous Weierstrass equation gives a nonzero
+constant times \(C\), and \(LJ\) is a nonzero scalar matrix. The curve
+is Cremona 2535j1. Its full rational group is infinite cyclic, generated
+by \(G=(31,202)\). The generator is in Cremona's tables. The accompanying
+Magma check also obtains rank bounds \([1,1]\), trivial torsion and a
+certified generator of the full Mordell–Weil group, using unconditional
+class-group proof bounds.
+[Cremona generator table](https://raw.githubusercontent.com/JohnCremona/ecdata/master/allgens/allgens.00000-09999)
+· [Mordell–Weil certificate](scripts/check_type9_group.m)
+
+Suppose a finite fiber has three distinct rational roots. They give
+three points on the line \(B=bW\).
+The linear change of coordinates preserves their collinearity. Hence
+their images \(P_i=n_iG\) on the Weierstrass cubic satisfy
+\(n_1+n_2+n_3=0\). Write \(M=\max_i|n_i|\). One of the other
+indices has absolute value at most \(M/2\), since the largest absolute
+value is the sum of the two smaller ones. The origin \([0:1:0]\) maps
+back to \([7:112:28]\), so a fiber containing it has \(b=4\).
+For now take \(b\ne4\).
+
+**Height variation in one fiber.** Let \(b=N/D\) in lowest terms with
+\(D>0\), and \(H=\max(|N|,D)\). Let \(H_C\) be the maximum absolute
+primitive integral coordinate of a point of \(C\). For an affine root
+\(r=R/W\), the rational number \(Dr\) satisfies an integral cubic
+with leading coefficient 64. Thus \(64Dr\) is integral. The monic
+cubic for \(Dr/H\) has its three lower coefficients bounded in absolute
+value by \(1040/64,4396/64,4707/64\), respectively. The Cauchy root
+bound gives \(|Dr|<80H\). The integral coordinates
+\([64Dr:64N:64D]\) and the reduced ratio \(B/W=N/D\) yield
+\[
+                H\le H_C\le 5120H .
+\]
+Write \(H_E\) for the analogous projective height on the plane
+Weierstrass equation. The maximum absolute row sums of \(L,J\) are
+less than 9000 and 40000. Therefore \(H_E\le9000H_C\) and
+\(H_C\le40000H_E\).
+
+For a finite point on \(E\), write \(x=a/t^2, y=c/t^3\) in reduced
+form with \(t>0\). Indeed a prime with negative \(x\)-valuation has
+\(2v_p(y)=3v_p(x)\), and at the other primes \(y\) is integral.
+Put \(U=\max(\sqrt{|a|},t)\). The primitive projective coordinates are
+\([at:c:t^3]\). We have
+\[
+                 U^3/1000\le H_E\le40U^3 .
+\]
+For the upper bound the equation gives
+\(|c|^2\le |c|U^3+1406U^6\). For the lower bound, \(|x|\le100\)
+implies \(U^3\le1000t^3\). If \(x<-100\) the right side of the
+Weierstrass equation is less than \(-1/4\), which is impossible.
+For \(x>100\) the equation gives \(|y|>x^{3/2}/2\).
+
+Use base-two logarithms and put \(h(P)=\log_2\max(|a|,t^2)\).
+For any two points of our fiber these estimates give
+\[
+ 2^{3(h(P_i)-h(P_j))/2}
+ \le1000\cdot40\cdot9000\cdot40000\cdot5120<2^{60}.
+\]
+Thus the naive heights differ by less than 40.
+
+**Passage to the canonical height.** Define
+\(\lambda(P)=\lim_{k\to\infty}4^{-k}h(2^kP)\).
+The canonical-height theorem gives \(\lambda(nP)=n^2\lambda(P)\).
+We give explicit bounds in this normalization. For a reduced
+\(x=A/B\), the homogeneous coordinate pair for \(x(2P)\) is
+\[
+\begin{split}
+F&=A^4-590A^2B^2-8874AB^3+82588B^4,\\
+D_2&=4A^3B+4A^2B^2+1180AB^3+4437B^4 .
+\end{split}
+\]
+Put \(d=2079016875\). For each \(V=A,B\) the certificate exhibits
+integral cubic forms \(S_V,T_V\) such that
+\(dV^7=S_VF+T_VD_2\), with the sum of absolute coefficients of
+\(S_V,T_V\) less than \(2^{46}\). The identities give
+\(\gcd(F,D_2)\mid d\) since \(\gcd(A,B)=1\). Taking the larger
+coordinate \(|V|=\max(|A|,|B|)\) bounds the unreduced maximum below
+by \(d|V|^4/2^{46}\). Each of \(F,D_2\) has coefficient sum in
+absolute value below \(2^{17}\). Dividing out the gcd and telescoping
+under doubling gives
+\[
+ -46\le h(2P)-4h(P)\le17,\qquad
+ -46/3\le\lambda(P)-h(P)\le17/3 .
+\]
+There are no nonzero torsion points where a doubling iterate could be
+the origin. The reduced numerator and denominator of \(x(32G)\) have
+maximum of bit length 149. In particular
+\[
+ \lambda(G)\ge(148-46/3)/32^2>1/8 .
+\]
+The canonical heights of any two points of the fiber differ by less
+than \(40+(17+46)/3=61\). Choosing the indices of largest and smallest
+absolute value gives \(3M^2\lambda(G)/4<61\).
+Since \(3\cdot26^2/32>61\), every index satisfies \(|n_i|\le25\).
+The quadratic-height input is the canonical height theorem in
+Silverman, *The Arithmetic of Elliptic Curves*, VIII.9.
+[Book](https://doi.org/10.1007/978-0-387-09494-6)
+
+**Exact fibers.** Project the 51 multiples from \(-25G\) through \(25G\)
+back using \(J\). The finite parameters occurring more than once are
+exactly the following. Each pair records \((n,R/W)\).
+
+| \(b\) | Points in the index interval |
+|---|---|
+| 0 | \((-2,25/4),(1,9/4)\) |
+| 4 | \((-3,49/4),(0,1/4),(3,81/4)\) |
+
+At zero the cubic factors as \((4R-9)^2(4R-25)\). The exceptional
+fiber at four, including the origin, factors as
+\((4R-1)(4R-49)(4R-81)\). Thus four is the only finite rational
+parameter with three distinct rational roots. For repeated roots, §5.3
+gives the discriminant of the monic cubic as \(-b h_2(b)/4\).
+The leading coefficient of \(h_2\) is a unit at 7, and its values
+on residues 0 through 6 are \(2,1,6,1,3,2,6\) modulo 7. A rational
+root would be 7-integral and reduce to a root, so only \(b=0\) has a
+multiple root. At \(b=4\) we have \(v=\pm2\). The
+length-two B chain centered at 2 contains \(3/2\), also a vertex of
+the centered length-four A chain. This excludes the lift. ∎
+[Exact moment, height and fiber certificate](scripts/check_type9_exclusion.py)
+
+**Corollary (a genus-four rational-point set).** Write \(f(R,B,W)\) for
+the homogeneous cubic above. The projective curve in coordinates
+\([r:s:B:W]\) given by
+\[
+ f(r,B,W)=0,\qquad
+ \frac{f(r,B,W)-f(s,B,W)}{r-s}=0
+\]
+is smooth of genus four and has exactly nine rational points. In the
+chart \(W=1\), they are obtained by taking the first two roots in the
+three orderings of \((9/4,9/4,25/4)\) over \(b=0\), and the six
+orderings of \((1/4,49/4,81/4)\) over \(b=4\).
+
+**Proof.** The second equation is a homogeneous quadratic polynomial.
+The two equations record two ordered roots of the cubic. Equal
+coordinates \(r=s\) require a multiple root. In any affine base chart
+the third root is determined by their sum. No point has \(B=W=0\).
+The discriminant in §5.3 has six simple zeros over the algebraic closure.
+Above infinity, use \(B=1\) and divide the cubic by 64. Its discriminant
+at \(W=0\) is \(-675/4\), which is nonzero. Hence every singular fiber
+of the projection has just one double root.
+
+For distinct \(r,s\) the equations locally reduce to \(f(r)=f(s)=0\).
+Their differentials are independent when both roots are simple. At a
+double root the derivative in the base coordinate is nonzero by
+smoothness of the original plane cubic, and the other root is simple.
+For \(r=s\) the derivative of the quadratic equation with respect to
+\(s\) is \(f''(r)/2\ne0\), again giving independence. The ordered-root
+curve is thus a smooth complete intersection of degrees two and three.
+The geometric cubic cover is irreducible, and its discriminant has
+simple zeros, so its monodromy group is \(S_3\). Transitivity on
+ordered pairs of distinct roots gives geometric irreducibility of the
+ordered-root curve. Adjunction gives genus four. A rational point
+above infinity would give two distinct real roots and hence three.
+The negative discriminant rules this out. The two finite split fibers of
+Theorem 28 give precisely the nine listed points. ∎
+
+### 5.57 Simultaneous local lifts in fifteen types
+
+**Proposition 29.** Let \(S\) be any finite set of rational primes.
+In each of types 1, 2, 3, 5–12, 14, 15, 17 and 18 there are infinitely
+many rational choices of a specified B center \(t\) for which the
+complete signed chain equations admit a valid lift over \(\mathbf R\)
+and over every \(\mathbf Q_p\) for \(p\in S\). The same value of \(t\)
+works at all the chosen places. Its rational height is unbounded.
+
+**Proof.** At the starting configuration take both input sets to be
+\(\{\pm1/2,\pm3/2,\pm5/2,\pm7/2,\pm9/2\}\). Tile each positive side
+by consecutive prescribed chains. For A, the first \(m\) vertices
+belong to the centered chain. Number the moving pairs from 1 through 5,
+first the remaining A blocks and then the B blocks, in order of increasing
+position within each color. Denote their positive centers by \(z_j\).
+The order of the lengths matters. The certificate supplies one explicit
+ordering for each of the fifteen types. Set \(t=z_5\).
+
+Let \(F_i\) be the difference of the power sums of degree \(2i\),
+\(1\le i\le4\). They vanish at the starting configuration. Let
+\(I_j\subset\{1,3,5,7,9\}\) be the doubled positive vertices of block
+\(j\), and \(\epsilon_j=1\) for A and \(-1\) for B. After scaling each
+row by a nonzero rational constant, the matrix of first derivatives is
+\[
+                  M_{ij}=\epsilon_j\sum_{q\in I_j}q^{2i-1}.
+\]
+In each ordering the first four columns form an invertible matrix.
+Choose the unique tangent vector \(v\) with \(Mv=0\) and \(v_5=1\).
+For example, type 3 uses the ordered A lengths \((3,1)\) and B lengths
+\((2,1,2)\); its vector is \((210,200,126,246,201)/201\).
+A vertex on block \(+j\) moves with derivative \(v_j\), a vertex on
+its reflection with \(-v_j\), and a fixed vertex with derivative zero.
+For every pair of vertices in different prescribed chains initially
+at distance zero or one, the two derivatives are unequal. These are
+finite rational checks on the twenty labeled vertices.
+[Derivative and collision checks for all fifteen orderings](scripts/check_shift_local_branches.py)
+
+The real and \(p\)-adic implicit function theorems now give, at each
+specified place, analytic functions \(z_1(t),\ldots,z_4(t)\) solving the
+four equations near the initial \(t_0\). An unwanted equality of
+vertices or an unwanted unit difference that holds at \(t_0\) has a
+simple zero there by the derivative check. All remaining unwanted
+equalities already fail at \(t_0\). Thus on a sufficiently small
+punctured neighborhood all twenty vertices are distinct and their only
+unit differences are the nine prescribed monochromatic edges. The
+odd moments vanish by symmetry, so §5.1 gives a valid local shift lift.
+Weak approximation gives infinitely many distinct rational \(t\) in
+these neighborhoods simultaneously, hence unbounded rational height. ∎
+
+In particular this applies to every type still open after §5.56 and to
+type 9 itself. Adding finitely many local solubility tests, with all
+center signs and noncollision conditions retained, cannot exclude any
+of these types. The comparison of the three *global* Mordell–Weil
+indices in Theorem 28 supplies the additional arithmetic restriction
+for type 9. Proposition 29 also allows different values of the other
+four centers at different places.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
 of disjoint eleven-element integer sets and no general impossibility proof
 has been established. Section 5 gives a distinct-entry shift-lift reduction and
 normalized finiteness for all eighteen chain types (Theorem 14), and
-Sections 5.31, 5.40, 5.42–5.46, 5.49 and 5.55 exclude valid distinct-entry
-lifts in types 10 (the older sixth mode), 16, 5, 15, 4, 2, 14, 11 and 13.
-The rational-point sets and lifting conditions for the other nine
-types remain to be classified. Section 3
+Sections 5.31, 5.40, 5.42–5.46, 5.49, 5.55 and 5.56 exclude valid
+distinct-entry lifts in types 2, 4, 5, 9, 10 (the older sixth mode), 11,
+13, 14, 15 and 16. The remaining types are 1, 3, 6, 7, 8, 12, 17 and 18. Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,
 or at least eight per side under symmetry. The remaining splitting and

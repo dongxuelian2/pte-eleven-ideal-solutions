@@ -1,8 +1,17 @@
 # Ideal Prouhet–Tarry–Escott Solutions of Size 11
 
-Nine of the eighteen normalized types in the symmetric shift construction
-are excluded at every rational height. The latest exclusion is type 13.
-[Proof, §§5.54–5.55](PROOF.md#554-six-independent-prym-classes-forced-by-a-type-13-lift)
+Ten of the eighteen normalized types in the symmetric shift construction
+are excluded at every rational height. For type 9, the three singleton roots
+give collinear points on a rank-one elliptic curve. Comparing their heights
+bounds their generator indices by 25. The only fiber with three distinct
+rational roots has overlapping chains. The associated genus-four curve of
+ordered roots has exactly nine rational points. Types 1, 3, 6, 7, 8, 12,
+17 and 18 remain open. [Theorem 28, §5.56](PROOF.md#556-complete-exclusion-of-type-9-by-the-heights-of-three-collinear-points)
+
+For all eight open types, every finite set of primes admits simultaneous
+local lifts with a common rational center of unbounded height. This also
+holds for seven excluded types, including type 9.
+[Proposition 29, §5.57](PROOF.md#557-simultaneous-local-lifts-in-fifteen-types)
 
 In §5.32 all five nontrivial
 doubled B centers in type 18 have a common reduced denominator D, supported
@@ -101,8 +110,7 @@ cover. Two independent divisor logarithms prove rank two for its
 Jacobian and give an annihilating differential that is a unit in all
 three disks.
 The three rational points there force a collision or a zero chain center.
-Types 2, 4, 5, 10, 11, 14, 15 and 16 are now completely excluded.
-Ten chain types and the original size-eleven problem remain open.
+This completes the exclusion of type 11.
 
 [Proposition 22, §5.48](PROOF.md#548-exact-product-rank-and-two-cubic-field-covers-for-type-13)
 proves rank two for the type-13 product Jacobian and identifies the
