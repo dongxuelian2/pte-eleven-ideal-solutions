@@ -8775,6 +8775,47 @@ the centered A chain. The exceptional branches \(b=0,1,4\) of the fourth
 moment already give collisions by §5.32. This proves the type exclusion. ∎
 
 
+### 5.63 Two surviving global parity classes for type 1
+
+**Proposition 35.** Put \(b=v^2\) for the square of the length-two B
+center in type 1, and set \(a=16384\) and
+\[
+ f_1(B)=aB^3+38672B^2+33144B+11025,\qquad
+ E_1:Y^2=X^3+38672X^2+33144aX+11025a^2.
+\]
+For any valid lift, the point with \(X=ab\) lies in one of two classes
+of \(E_1(\mathbf Q)/2E_1(\mathbf Q)\), represented by the points above
+\(b=0,1\). Fourteen of the sixteen global classes are excluded.
+
+**Proof.** By §5.2, \(5b+4\) is square. The constant coefficient of the
+singleton cubic of §5.59 is \(-f_1(b)\), after scaling its leading
+coefficient to 64. Hence \(f_1(b)\) is square, and
+\((ab,a\sqrt{f_1(b)})\) gives the claimed point. Changing its ordinate
+sign has no effect modulo twice the group. The full group is torsion-free
+of rank four. The certificate computes a basis and represents its sixteen
+parity classes by sums with coefficients zero or one.
+
+At each prime in the table below, reduce into
+\(E_1(\mathbf F_p)/2E_1(\mathbf F_p)\). For integral \(b\), retain the
+residues where \(b,5b+4\) are squares and all three singleton roots
+are squares, allowing multiplicity. For a pole, \((5b+4)/b\) reduces
+to 5 and is square. The three singleton squares divided by \(b\) are
+squares and integral at \(p\), since their cubic after division by
+\(b^3\) has integral coefficients and unit leading coefficient. They
+must reduce to the roots of \(64z^3-1152z^2+7232z-16384\). Retain the
+group identity for a pole whenever both necessary tests pass.
+
+| Prime | 7 | 67 | 73 | 107 | 257 |
+|---|---|---|---|---|---|
+| Global classes left after intersection | 8 | 6 | 5 | 4 | 2 |
+
+Exact rational division by two identifies these last classes with the
+two stated representatives. In particular the argument restricts lifts
+of arbitrary rational height. Each class still contains infinitely
+many group elements. ∎
+[Group, reduction and rational division checks](scripts/check_type1_parity.m)
+
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
