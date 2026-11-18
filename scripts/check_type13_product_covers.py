@@ -163,4 +163,12 @@ twist = s.Poly(s.cancel(-delta_beta**4*(M1/delta_beta + 2*x*M2 + x*x*delta_beta*
                        - delta_beta*reduced.as_expr().subs(x, delta_beta*x)), x)
 assert all(s.rem(co, Ftheta, theta) == 0 for co in twist.all_coeffs())
 
-print("PASS: Type 13 Kummer classes, beta local conditions, signed sum quartic, and Prym determinant.")
+nonzero_roots = reduced.exquo(s.Poly(x, x))
+for p, root, degrees in [(7, 1, [4]), (29, 24, [1, 3])]:
+    assert N.subs(c, root) % p == 0 and s.diff(N, c).subs(c, root) % p != 0
+    coefficients = [reduce_rational(z.subs(theta, root), p) for z in nonzero_roots.all_coeffs()]
+    fp = s.Poly.from_list(coefficients, x, modulus=p)
+    assert fp.degree() == 4 and fp.is_sqf
+    assert sorted(q.degree() for q, _ in fp.factor_list()[1]) == degrees
+
+print("PASS: Type 13 Kummer classes, beta local conditions, signed sum quartic, and Prym factor degrees.")

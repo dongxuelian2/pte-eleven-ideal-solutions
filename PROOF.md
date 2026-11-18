@@ -7725,6 +7725,15 @@ double cover and the substitution \(x\mapsto\delta x\). The checker
 verifies the twist identity and the squarefreeness of the quintic.
 [Bruin, Theorem 5.1](https://arxiv.org/abs/math/0408069)
 
+A nonzero root of the determinant generates a quartic extension of
+\(K\) with Galois closure group \(S_4\). Indeed, the quartic has
+squarefree reduction of degrees \((4)\) at \(\theta\equiv1\pmod7\)
+and \((1,3)\) at \(\theta\equiv24\pmod{29}\). Thus its Galois group
+contains a 4-cycle and a 3-cycle. Its order is divisible by 12, and
+the index-two subgroup \(A_4\) contains no 4-cycle. The root field has
+no proper intermediate field over \(K\) since a point stabilizer in
+\(S_4\) is maximal. The Prym rank remains undetermined.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
