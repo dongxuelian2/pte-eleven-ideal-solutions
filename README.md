@@ -1,11 +1,11 @@
 # Ideal Prouhet–Tarry–Escott Solutions of Size 11
 
-Thirteen of the eighteen normalized types in the symmetric shift construction
+Fourteen of the eighteen normalized types in the symmetric shift construction
 are excluded at every rational height. In type 17, elliptic Chabauty excludes
 the odd multiples. On the even branch, two descents put every candidate on
 an elliptic curve over a quartic field. At its unique dyadic place the
 direction required by the chain lies outside the global 2-Selmer image.
-Types 1, 6, 7, 8 and 18 remain open.
+Types 6, 7, 8 and 18 remain open.
 [Theorem 32, §5.60](PROOF.md#560-complete-exclusion-of-type-17-by-a-dyadic-selmer-obstruction)
 
 In type 12, both parity classes lead to rank-one elliptic curves over a
@@ -13,10 +13,10 @@ cubic field. Elliptic Chabauty at 907 forces the squared center to be
 1 or 9. Each value makes the two chains share a vertex.
 [Theorem 34, §5.62](PROOF.md#562-complete-exclusion-of-type-12-by-two-rank-one-covers)
 
-For type 1, a rank-one elliptic cover excludes the parity class of the
-center square 1 at every rational height. The remaining class reduces
-to 0 modulo 73 and its elliptic cover has rank at most two.
-[Theorem 36, §5.64](PROOF.md#564-split-two-descent-and-exclusion-of-the-odd-center-class-for-type-1)
+For type 1 the two disks modulo 73 contain only the collision centers
+0 and 1. A rank-one elliptic cover treats 1. A descent over the sextic
+discriminant field and a second division at two dyadic places treat 0.
+[Theorem 37, §5.65](PROOF.md#565-complete-exclusion-of-type-1-by-descent-over-the-discriminant-field)
 
 In type 3, two squareclass pairs survive local tests. A rank-zero elliptic
 curve eliminates one. For the other, elliptic Chabauty over the field of

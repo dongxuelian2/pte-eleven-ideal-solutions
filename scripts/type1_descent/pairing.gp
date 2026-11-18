@@ -1,13 +1,15 @@
 \\ Cassels' tangent-plane formula for split two-torsion.
 \\ All symbol arguments below are exact field elements.
+isolationIndex=1;
 localroot(u,p,pi,md,precision)={
   my(v=idealval(nf,u,p),unit=u/pi^v,e=p[3],z,fac);
   if(v%2,error("odd square valuation"));
   if(p[1]!=2,
-    z=nfmodprlift(nf,sqrt(nfmodpr(nf,unit,md)),md),
-    if(p[4]!=1,error("dyadic residue field"));
-    for(mask=0,2^(2*e+1)-1,
-      z=sum(k=0,2*e,bittest(mask,k)*pi^k);
+    z=nfbasistoalg(nf,nfmodprlift(nf,sqrt(nfmodpr(nf,unit,md)),md)),
+    my(f=p[4],g=ffgen(nfmodpr(nf,1,md)));
+    my(reps=vector(2^f,k,nfbasistoalg(nf,nfmodprlift(nf,sum(i=0,f-1,bittest(k-1,i)*g^i),md))));
+    for(mask=0,2^(f*(2*e+1))-1,
+      z=sum(k=0,2*e,reps[1+((mask>>(f*k))%2^f)]*pi^k);
       if(idealval(nf,z^2-unit,p)>2*e,break)));
   if(idealval(nf,z^2-unit,p)<=if(p[1]==2,2*e,0),error("initial Hensel root"));
   fac=Mat([p,precision+2*e]);
@@ -19,12 +21,12 @@ localx(es,ds,p,pi)={
   my(vs=apply(z->idealval(nf,z,p),[es[2],es[3],es[2]-es[3]]),v,x);
   for(attempt=1,50000,
     v=vecmin(vs)-3+random(vecmax(vs)-vecmin(vs)+12+2*p[3]);
-    x=es[1+random(3)]+pi^v*(1+random(90)+random(20)*w+random(13)*w^2);
+    x=es[1+random(3)]+pi^v*nfbasistoalg(nf,vector(#nf.zk,k,random(60))~);
     if(!setsearch(Set(es),x) && prod(k=1,3,nfislocalpower(nf,p,(x-es[k])/ds[k],2)),return(x)));
   error("missing local lift",p);
 };
 interval(z)={
-  my(t=2^256,k=floor(real(nfeltembed(nf,z)[1])*t));
+  my(t=2^256,k=floor(real(nfeltembed(nf,z)[isolationIndex])*t));
   if(sg(z-k/t)<0 || sg((k+1)/t-z)<0,error("real interval"));
   [k/t,(k+1)/t];
 };

@@ -8817,8 +8817,8 @@ at \(ar\) now makes \((b-r)(b_0-r)\) square in \(\mathbf Q(r)\).
 At 73 the polynomial \(f_1\) splits with distinct roots, and 5 is a
 nonsquare, so there is no pole. Testing the character at all three roots
 and imposing the center and singleton squares gives just \(b=b_0\)
-modulo 73 in each class. Each of these two disks still requires a
-global rational-point determination. ∎
+modulo 73 in each class. Theorems 36 and 37 determine the eligible
+centers in these disks. ∎
 [Group, reduction and rational division checks](scripts/check_type1_parity.m)
 
 
@@ -8933,15 +8933,186 @@ From the repository root, run `gp -s 300M -fq scripts/type1_descent/verify.gp`
 and `magma scripts/type1_descent/disk73.m`.
 
 
+### 5.65 Complete exclusion of type 1 by descent over the discriminant field
+
+**Theorem 37.** Type 1 has no valid distinct-entry lift at any rational height.
+In the two disks of Proposition 35 the only squared centers satisfying the
+necessary center and singleton conditions are respectively 0 and 1.
+
+**The discriminant character.** Theorem 36 handles the class of 1.
+In the class of 0 write \(b=v^2\). If \(v\ne0\), then \(k=v_2(v)\ge3\).
+In fact \(k<0\) would make \(5+4/v^2\) a square congruent to 5 modulo 8.
+At the ramified prime of the cubic field of Theorem 36, the normalized
+valuation of its root \(r\) is \(-4\), and \(1-1/r\) is nonsquare.
+For odd \(v\), substituting \(v^2\) for 1 does not change this local
+squareclass, as \(v^2-1\in8\mathbf Z_2\). This contradicts Proposition 35.
+For \(k=1,2\), respectively, \((5v^2+4)/4\) is 6 or 5 modulo 8.
+
+Use the sextic
+\[
+ h(B)=-800B^6+2625B^5-12050B^4+529B^3+54448B^2+53744B+14400.
+\]
+The discriminant of the singleton cubic with leading coefficient 64 is
+\(2^{26}h(b)\), so \(h(b)\) is a square. The sextic is irreducible.
+Let \(F=\mathbf Q(\theta)\) with \(h(\theta)=0\). We claim that
+\(s=1-b/\theta\) is square in \(F\).
+
+Its norm is \(h(b)/14400\). Away from the primes above
+\(D=\{2,3,5,23,41,2111,11801,144461\}\), the polynomial has unit leading
+and constant coefficients and unit discriminant. For integral \(b\), at
+most one prime over a given rational prime divides \(b-\theta\), and it
+has residue degree one. The square norm forces that valuation to be even.
+At a pole the valuation is even because \(b=v^2\). This puts \(s\) in
+the group of squareclasses unramified outside \(D\).
+
+The discriminant of \(F\) is 14755078257381100. PARI certifies that its
+factor base generates the class group, and all its generators are
+principal. For each set of places used in this proof, the verifier
+checks the expected number of independent unit squareclasses by
+valuations and local squareclass maps. Thus all the global upper
+spaces used below are unconditional.
+
+Start with the norm-square subspace. The class of \(s\) is trivial at
+every place above 2 and 73. At 2 one has
+\(v_{\mathfrak p}(b/\theta)>2v_{\mathfrak p}(2)\) because \(k\ge3\);
+at 73 the numerator \(b\) reduces to zero and \(\theta\) is a unit.
+These conditions leave dimension eight. For each odd \(l\in D\), put
+\(t_i=v_i(\theta)\) at the primes above \(l\). For integral \(b\), the
+valuation vector of \(s\) modulo two is \((\max(t_i,0))_i\), up to
+corrections supported where \(b\) and the integral \(\theta\) have the
+same residue. Such a residue must be rational and must pass the two
+center-square tests, the product-square test and the split square-root
+test for the singleton cubic. For a pole at \(l\ne5\) the vector is
+\((t_i)_i\) modulo two. A pole at 5 would give \(5+4/v^2\) of valuation one.
+Taking the linear span of all these possibilities suffices. The
+successive dimensions at \(3,5,23,41,2111,11801,144461\) are
+\(6,5,4,2,1,0,0\). This proves the claim.
+[Field, character and squareclass verification](scripts/type1_descent/sextic.gp)
+
+**The sextic elliptic cover.** Put \(d=-5\theta\) and
+\[
+ E:\quad Y^2=X(X-d\theta)(X+4d/5),\qquad X=db .
+\]
+The three square conditions on \(b,5b+4,s\) give a point \(R\in E(F)\).
+The split two-descent of §5.64 gives Selmer dimension five and hence
+rank at most three. The five explicit basis triples are indexed by bits
+of weights \(1,2,4,8,16\). The three nonidentity two-torsion points have
+masks 27, 7 and 28. Their classes are distinct, so they span the image
+of all torsion modulo doubling.
+[Selmer basis and tangent points](scripts/type1_descent/sextic_tangents.gp)
+
+Use the completions \(F_1,F_2\) of ramification and residue degrees
+\((2,1),(1,3)\) above 2. At each place scale the abscissa by \(c^2\)
+and ordinate by \(c^3\), choosing the positive rational power of 2 for
+which \(c\theta\) is a unit. Both models are integral. Write
+\(m=105\cdot2^7\) and \(\Lambda_i=m\log E(F_i)\) on the scaled models.
+The local abscissas in the data file give Kummer bases of dimensions
+4 and 5. Hence their scaled logarithms generate the lattices.
+Locally number these points starting at one. The logarithms of points
+2,3 in the first list and 3,4,5 in the second form lattice bases.
+The matrices of all the local basis logarithms modulo \(2\Lambda_i\) are
+\[
+ U_1=\begin{pmatrix}0&1&0&0\\0&0&1&0\end{pmatrix},
+ \qquad U_2=(0_{3\times2}\mid I_3).
+\]
+For the computation use \(z=-X/Y\) of the \(m\)-multiple. The invariant
+differential is an integral even power series in \(z\), with constant
+term one, so \(\log(z)-z\in z^3\mathcal O_{F_i}\). All nonzero
+parameters computed are in \(2^7\mathcal O_{F_i}\). Multiplying either
+inverse basis matrix by 256 makes it integral. Thus the indicated
+bits, including those after one more division by 2, follow from the
+precision in the certificate.
+[Local abscissas](scripts/type1_descent/sextic_local_points.txt) ·
+[Local logarithm verification](scripts/type1_descent/sextic_logs.m)
+
+Let \(T=(0,0)\). The parameter of \(R-T\) is \(X/Y\) on the scaled
+model and equals
+\[
+ \frac{\pm v}{2c\theta}
+ \left((1-b/\theta)(1+5b/4)\right)^{-1/2}.
+\]
+At both places the square-root correction is a unit congruent to
+\(\pm1\) modulo 4, since \(k\ge3\) and \(v_2(\theta)\) is respectively
+0 and 2. In the product of the two lattices, dividing
+\(m\log(R-T)\) by \(2^{k-2}\) gives the primitive vector
+\(u=(1,1,1,1,1)\) modulo two. Indeed the scaled leading term is an
+odd rational unit times \(256/(c\theta)\), with either sign at each
+place. The certificate checks its five bits. The cubic error in the
+logarithm cannot change them since \(v_2(z)=k-1\) and the inverse
+basis matrices have denominators dividing 256.
+
+In particular \(R-T\) has infinite order. In the free group modulo
+torsion write it as \(2^j Q\) with \(Q\) primitive at 2. The leading
+vector of the product logarithm of \(Q\) must also be \(u\). On the
+five-dimensional Selmer group the joint logarithm map modulo two has
+rank two and misses \(u\). Its kernel consists of the four torsion
+masks and their translates by 13. Thus the logarithm of \(Q\) is
+even, and after a torsion translation its Kummer mask is 13.
+
+**One more division.** Write \(e_i\) for the three roots of the elliptic
+cubic and \(d_i\) for the entries of the mask-13 triple. Its projective
+two-cover \(C\) has equations \(d_i z_i^2=X-e_i\) on the affine chart.
+For each \(i\), omit \(z_i\) and take the tangent \(L_i\) to the resulting
+conic at the supplied field point. Use the two squareclass functions
+\(F_C=(L_2L_3,L_1L_3)\). Their values are unchanged modulo squares
+by projective rescaling. They extend as squareclasses at a zero by
+removing the even order of vanishing.
+
+Here is the local comparison used in the calculation. If two points
+on \(C\) differ by \(V\) in its Jacobian \(E\), the quotient of their
+\(F_C\)-values is the ordinary Kummer class of \(V\). Indeed the
+tangent section on \(C\) cuts out \(2D_i\), where \(D_i\) is a fiber
+of the degree-two projection to the conic. The class \(D_j-D_k\) is
+the two-torsion point \((e_i,0)\) for the complementary index \(i\):
+the two deck involutions flip signs \(z_j,z_k\), and their product is
+the deck translation of the two-cover fixing the square root of
+\(X-e_i\). Thus \(L_j/L_k\), equal to \(L_jL_k\) modulo squares,
+has divisor twice a representative of that two-torsion class.
+Evaluation on a degree-zero divisor gives its usual Kummer coordinate.
+On the target elliptic curve the images of the two points differ by
+\(2V\).
+[Descent functions on coverings](https://doi.org/10.1112/jlms/jds063)
+
+Take a local reference lift on \(C\) at each place in the calculation.
+Write \(F_p\) for its pair of squareclasses and \(M_p\) for the complete
+local Kummer image. Any global point on \(C\) gives a single global
+pair \(g\) with \(g_p-F_p\in M_p\) in additive squareclass notation.
+The support consists of the model's bad places, the primes of the
+entries \(d_i\) and the primes of the coefficient ideals of the
+tangents. Away from these places the primitive tangent has even
+valuation on the smooth conic, as in §5.64, and both functions have
+even valuation. The verifier ranges over the entire resulting pair of
+global squareclass spaces. It imposes the affine linear constraints
+at each finite place in the support and at both real places.
+
+At our two dyadic places the final abscissa in each data list fixes
+the reference elliptic image \(P_i\). In the corresponding bases
+\(m\log P_i/2\) has bits \((1,0)\) and \((1,1,1)\).
+For every compatible global pair add to these bits the local images
+under \(U_i\) of \(g_p-F_p\). The result is exactly the residue of
+\(m\log Q/2\) for any global lift. In every solution of the linear
+system the first coordinate at the ramified place plus the second
+coordinate at the unramified cubic place is **one**. This functional
+vanishes on zero and on \(u\). The logarithm of \(Q\) can therefore
+neither be divisible by four nor have the required leading vector.
+This contradiction rules out every nonzero \(v\) in the zero disk.
+At \(v=0\) the reflected B chains coincide. Together with Theorem 36
+this proves the exclusion. ∎
+[Four-cover linear system](scripts/type1_descent/sextic_four.gp)
+
+Run `gp -s 300M -fq scripts/type1_descent/sextic.gp` and
+`magma scripts/type1_descent/sextic_logs.m` from the repository root.
+
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
 of disjoint eleven-element integer sets and no general impossibility proof
 has been established. Section 5 gives a distinct-entry shift-lift reduction and
 normalized finiteness for all eighteen chain types (Theorem 14), and
-Sections 5.31, 5.40, 5.42–5.46, 5.49, 5.55, 5.56, 5.58, 5.60 and 5.62 exclude valid
-distinct-entry lifts in types 2, 3, 4, 5, 9, 10 (the older sixth mode),
-11, 12, 13, 14, 15, 16 and 17. The remaining types are 1, 6, 7, 8 and 18.
+Sections 5.31, 5.40, 5.42–5.46, 5.49, 5.55, 5.56, 5.58, 5.60, 5.62 and 5.65 exclude valid
+distinct-entry lifts in types 1, 2, 3, 4, 5, 9, 10 (the older sixth mode),
+11, 12, 13, 14, 15, 16 and 17. The remaining types are 6, 7, 8 and 18.
 Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,
