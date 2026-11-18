@@ -8769,6 +8769,8 @@ For \(h\in p\mathbf Z_p\) and \(k\ge2\),
 strictly smaller valuation than every higher term. This proves
 \(b=b_0\) in both classes.
 
+The singleton squares at the two anchors are respectively
+\(\{1,9,25\}/4\) and \(\{25,49,81\}/4\).
 At \(b=1\) the B length-four chain centered at 1 contains \(1/2\); at
 \(b=9\) the one centered at 3 contains \(3/2\). Both vertices belong to
 the centered A chain. The exceptional branches \(b=0,1,4\) of the fourth
@@ -8810,9 +8812,13 @@ group identity for a pole whenever both necessary tests pass.
 | Global classes left after intersection | 8 | 6 | 5 | 4 | 2 |
 
 Exact rational division by two identifies these last classes with the
-two stated representatives. In particular the argument restricts lifts
-of arbitrary rational height. Each class still contains infinitely
-many group elements. ∎
+two stated representatives. For a root \(r\) of \(f_1\) the abscissa character
+at \(ar\) now makes \((b-r)(b_0-r)\) square in \(\mathbf Q(r)\).
+At 73 the polynomial \(f_1\) splits with distinct roots, and 5 is a
+nonsquare, so there is no pole. Testing the character at all three roots
+and imposing the center and singleton squares gives just \(b=b_0\)
+modulo 73 in each class. Each of these two disks still requires a
+global rational-point determination. ∎
 [Group, reduction and rational division checks](scripts/check_type1_parity.m)
 
 
