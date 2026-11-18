@@ -5656,6 +5656,65 @@ fibers. The auxiliary square z is essential: discriminant alone as a
 function of an unrestricted constant coefficient would only give a
 quartic hyperelliptic model of genus one.
 
+**Denominators of the individual squares.** Write the five doubled
+B centers as `y_i=n_i/D` with `D>0` and with the six integers primitive
+as a tuple. Then every prime divisor of D is `1 mod 10` and divides
+none of the n_i. All five n_i are odd. Hence the doubled centers have
+one common reduced denominator D, and the original centers have one
+common reduced denominator 2D. If any doubled center is an integer,
+the configuration is the colliding seed.
+
+To see this, the four equations after clearing denominators are
+`sum_i n_i^(2j)=M_j D^(2j)` for `1<=j<=4`, where
+`M_j=sum_{a in {1,3,5,7,9}} a^(2j)`. If 2 divides D, the fourth powers
+modulo 16 count the odd n_i, so all are even. If 3 divides D, the sixth
+powers modulo 9 count the units, so all are divisible by 3. Both
+contradict primitivity. If 5 divides D, the fourth powers modulo 5
+force all five n_i to be units, since their number is 0 or 5. Write
+`n_i^4=1+5a_i mod 25`. The fourth-power equation gives
+`sum_i a_i=−1 mod 5`, while the eighth powers then sum to
+`5+10 sum_i a_i=20 mod 25`, a contradiction.
+
+For a prime p>5 dividing D, put `x_i=n_i² mod p`. Newton's identities
+make the first four elementary symmetric functions of the x_i zero.
+Their monic root polynomial over F_p is `X^5−e_5`. If `e_5=0`, all n_i
+vanish modulo p. Otherwise the polynomial is separable and its five
+nonzero roots have ratios running through all fifth roots of unity.
+This forces `5|(p−1)` and hence `p=1 mod 10`. In particular every n_i
+is coprime to D. Now D is odd, so reducing the fourth powers modulo 16
+counts exactly five odd n_i, as for the seed.
+
+If one doubled center is integral then D=1. The second moment bounds
+the absolute values of the odd n_i by `sqrt(165)<13`. At least one has
+absolute value in `{1,3,5,7,9}`, since five copies of 11 exceed the
+second moment. As the first four coefficients of the monic root
+polynomial of the five squares agree with the seed polynomial, one
+common root makes their constant terms agree too. Thus the centers
+have exactly the seed absolute values. The undoubled A and B sets
+then coincide.
+
+**Sharp local scope.** For every `p=1 mod 10` and every `e>=1` there
+are solutions of the same four moment equations over Q_p for which
+all five doubled B centers have valuation `−e`. Indeed, set `D=p^e`
+and choose n_i modulo p whose squares are the five fifth roots of
+unity. All five roots are squares, because every element of the
+odd-order subgroup of order five is a square in that subgroup. The
+four cleared equations hold modulo p. Fix one n_i and lift the
+remaining four by Hensel's lemma. The derivative matrix of the four
+equations has columns `(2j n_i (n_i²)^(j−1))_(j=1..4)`. Its determinant
+is a product of units and a Vandermonde determinant on four distinct
+squares. The lifted centers are distinct up to sign, and their
+negative valuations prevent collisions with the A centers. This
+classifies the positive local denominator valuations. The global
+existence of a noncolliding rational tuple remains open.
+
+**Certified lower bound.** In the [rigid-prime proof](TYPE18_RIGID_PRIMES.md),
+521 finite-field obstructions give the uniform lower bound
+`D > 2.07 × 10^153` for any noncolliding tuple. The signed monodromy
+group of `P(Y²)−c` and Hasse–Weil give an absolute cutoff for the
+finite prime classification. The integer bound has a separate
+certificate that uses only verified obstructions.
+
 #### Verification and scope
 
 The exact certificate `scripts/check_all_shift_chain_types.py` rebuilds

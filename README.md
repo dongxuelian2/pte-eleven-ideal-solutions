@@ -3,7 +3,11 @@
 **Research allocation (15 November 2026):** Further work on the original
 size-eleven problem is stopped. Manuscript preparation prioritizes the
 proved eighteen-type finiteness theorem and complete type exclusions.
-The original existence problem remains open.
+The original existence problem remains open. In §5.32 all five nontrivial
+doubled B centers in type 18 have a common reduced denominator D, supported
+at primes `1 mod 10`. Each positive denominator valuation at those primes
+is locally possible. A [certificate of 521 rigid primes](TYPE18_RIGID_PRIMES.md)
+forces `D > 2.07 × 10^153`.
 
 The original target remains open: construct two disjoint sets of eleven
 distinct integers with equal power sums through degree ten, or prove that
@@ -119,9 +123,9 @@ principal-ideal relations and a complete Minkowski-bound verification
 remove the former GRH hypothesis.
 
 [The Kummer obstruction](kummer_obstruction/KUMMER_FIBRATION_OBSTRUCTION.md)
-proves that the seven nonzero Selmer twisted Kummers admit no genus-one
-fibration over Q, any finite odd-degree extension, or any extension
-of degree less than ten. This excludes that shortcut; it does not exclude rational
+proves that the least extension degree permitting a genus-one fibration
+over a split projective line on each of the seven nonzero Selmer twisted
+Kummers is ten. All odd-degree extensions are still excluded. The result does not exclude rational
 points or determine the Jacobian rank. A nonzero Cassels–Tate pairing or
 two further independent rational divisor classes would distinguish the
 current rank-one and rank-three routes. Neither is supplied here.

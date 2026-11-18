@@ -270,6 +270,16 @@ f=s.prod(X-(2*j-1)**2 for j in range(1,6));q=s.expand(f-f.subs(X,0)-Z*Z)
 P18=s.discriminant(q,X)
 assert s.degree(P18,Z)==8 and s.degree(s.gcd(P18,s.diff(P18,Z)),Z)==0
 assert s.expand(q-(X**5-165*X**4+8778*X**3-172810*X**2+1057221*X-Z*Z))==0
+# Absolute prime cutoff in TYPE18_RIGID_PRIMES.md.
+seed_derivative = s.diff(f, X)
+critical_resultant = s.resultant(f - Z, seed_derivative, X)
+assert s.degree(critical_resultant, Z) == 4
+assert s.discriminant(seed_derivative, X) == 2**42 * 3**5 * 5 * 11**3 * 47 * 59
+assert s.discriminant(critical_resultant, Z) == 2**202 * 3**27 * 5**11 * 11**15 * 47**3 * 59**3
+assert critical_resultant.subs(Z, f.subs(X, 0)) == 3**10 * 5**6 * 7**2 * 11**5 * 59**2 * 181**2 * 1231 * 2417
+assert seed_derivative.subs(X, 0) == 3**2 * 11 * 59 * 181
+assert all(s.isprime(p) for p in (2, 3, 5, 7, 11, 47, 59, 181, 1231, 2417))
+print('PASS: all branch-exception factors for the type-18 rigid-prime cutoff.')
 for poly,var in [(P4,C),(P18,Z)]:
     assert s.degree(s.gcd(poly,s.diff(poly,var)),var)==0
 print('Types 4 and 18: squarefree hyperelliptic degrees 5 and 8, genera 2 and 3.')

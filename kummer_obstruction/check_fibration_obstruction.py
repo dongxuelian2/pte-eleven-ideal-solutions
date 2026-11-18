@@ -36,4 +36,24 @@ for m in V[1:]:assert rank({image(m,p) for p in A5})==4
 assert 16*(-2)==-32
 # Isotropy is a^2=8 b^2, impossible for nonzero rationals since 8 is nonsquare.
 assert not s.sqrt(8).is_Rational
-print('Exact field, Frobenius, module, and intersection-form checks passed.')
+# Degree-ten field: the subgroup preserving an affine coordinate half-space.
+U=[m for m in V if (m>>4)&1==0]
+P=[p for p in perms if p[4]==4]
+assert len(U)==8 and rank(U)==3 and len(P)==24
+assert all(image(u,p) in U for u in U for p in P)
+B=[(u,p) for u in U for p in P]
+assert len(V)*len(perms)==1920 and len(B)==192
+assert (len(V)*len(perms))//len(B)==10
+def affine_orbit(m):return {u^image(m,p) for u,p in B}
+O0=affine_orbit(0)
+O1=affine_orbit(next(m for m in V if m not in O0))
+assert O0==set(U) and len(O0)==len(O1)==8
+assert O0.isdisjoint(O1) and O0|O1==set(V)
+# Actual integral divisor D=2H-sum_{O0} E_i, not a presumed half-even-eight.
+gram=s.diag(4,*([-2]*16))
+D=s.Matrix([2]+[-1 if m in O0 else 0 for m in V])
+H=s.Matrix([1]+[0]*16)
+assert (D.T*gram*D)[0]==0 and (D.T*gram*H)[0]==8
+# Restricted invariants have basis H,sum_{O0}E,sum_{O1}E.
+assert s.diag(4,-2*len(O0),-2*len(O1))==s.diag(4,-16,-16)
+print('Exact field, Frobenius, module, degree-ten orbit, and divisor checks passed.')
