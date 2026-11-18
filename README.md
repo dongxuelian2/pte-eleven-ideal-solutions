@@ -1,17 +1,22 @@
 # Ideal Prouhet–Tarry–Escott Solutions of Size 11
 
-Eleven of the eighteen normalized types in the symmetric shift construction
-are excluded at every rational height. In type 3, two squareclass pairs
-survive local tests. A rank-zero elliptic curve eliminates one. For the
-other, elliptic Chabauty over the field of discriminant −15 leaves one
-finite parameter, which makes the two input sets share a vertex.
-[Theorem 30, §5.58](PROOF.md#558-complete-exclusion-of-type-3-by-elliptic-chabauty)
+Twelve of the eighteen normalized types in the symmetric shift construction
+are excluded at every rational height. In type 17, elliptic Chabauty excludes
+the odd multiples. On the even branch, two descents put every candidate on
+an elliptic curve over a quartic field. At its unique dyadic place the
+direction required by the chain lies outside the global 2-Selmer image.
+Types 1, 6, 7, 8, 12 and 18 remain open.
+[Theorem 32, §5.60](PROOF.md#560-complete-exclusion-of-type-17-by-a-dyadic-selmer-obstruction)
 
-Types 1, 6, 7, 8, 12, 17 and 18 remain open. Every valid type-17 lift
-would give an even multiple on a specified rank-one elliptic curve.
-The odd-multiple branch forces a collision. The even branch maps to a
-genus-three curve whose Jacobian has rank at most two.
-[Proposition 31, §5.59](PROOF.md#559-the-odd-multiple-branch-of-type-17)
+For type 12, the two center squares force the sum of the two Mordell–Weil
+coefficients on its product curve to be odd, leaving two parity classes.
+[Proposition 33, §5.61](PROOF.md#561-two-surviving-parity-classes-for-type-12)
+
+In type 3, two squareclass pairs survive local tests. A rank-zero elliptic
+curve eliminates one. For the other, elliptic Chabauty over the field of
+discriminant −15 leaves one finite parameter, which makes the two input sets
+share a vertex.
+[Theorem 30, §5.58](PROOF.md#558-complete-exclusion-of-type-3-by-elliptic-chabauty)
 
 For type 9, comparing three collinear points on a rank-one elliptic curve
 determines all split fibers. The associated genus-four curve of ordered

@@ -1,4 +1,4 @@
-"""Prove the norm bound of Proposition 27 by integer counts and rational intervals."""
+"""Prove the norm bounds in §§5.55 and 5.60 by prime counts and rational intervals."""
 from argparse import ArgumentParser
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
@@ -44,15 +44,15 @@ def read_histogram(lines):
     return hist
 
 
-def prove(hist):
-    length_lo, length_hi = log_interval(SUPPORT)
+def prove(hist, support=SUPPORT, bound=BOUND, disc=DISC, real_places=2):
+    length_lo, length_hi = log_interval(support)
     prime_sum = 0
     for (e, b, m), count in hist.items():
         lower = Q(2**e * (256+b), 256)
-        upper = min(Q(SUPPORT), Q(2**e * (257+b), 256))
+        upper = min(Q(support), Q(2**e * (257+b), 256))
         log_lower = log_interval(lower)[0]
         log_upper = log_interval(upper)[1]
-        if upper <= BOUND:
+        if upper <= bound:
             term = (4*count*log_lower * Q(max(0, length_lo-log_upper), length_lo)
                     / (m*(upper+1)))
         else:
@@ -66,31 +66,41 @@ def prove(hist):
     pi_lo, pi_hi = Q(314159, 100000), Q(314160, 100000)
     ell = Q(length_lo, SCALE)
     arch = 12*(gamma_lo + Q(log_interval(4*pi_lo)[0], SCALE) - pi_hi**2/(4*ell))
-    arch += 2*(1 - 2*Q(log_interval(2)[1], SCALE)/ell)
-    margin = Q(prime_sum, SCALE) + arch - Q(log_interval(DISC)[1], SCALE)
-    assert Q(prime_sum, SCALE) > Q(50333, 1000)
-    assert margin > Q(8, 100)
-    print(f"Prime sum > 50.333, explicit-formula margin > 0.080, norm bound {BOUND}")
+    arch += real_places*(1 - 2*Q(log_interval(2)[1], SCALE)/ell)
+    margin = Q(prime_sum, SCALE) + arch - Q(log_interval(disc)[1], SCALE)
+    if disc == DISC:
+        assert Q(prime_sum, SCALE) > Q(50333, 1000) and margin > Q(8, 100)
+    else:
+        assert margin > Q(26, 100)
+    print(f"Norm bound {bound}, explicit-formula margin > {int(margin*1000)}/1000")
 
 
 def main():
     parser = ArgumentParser(description=__doc__)
     parser.add_argument('counter', type=Path, help='compiled prime_counts executable')
     parser.add_argument('--jobs', type=int, default=1)
+    parser.add_argument('--type17', action='store_true', help='verify the totally real Type 17 field')
     args = parser.parse_args()
+    support = 2**20 if args.type17 else SUPPORT
     block = 10_000_000
 
     def subtotal(lo):
-        hi = min(SUPPORT, lo+block-1)
-        result = subprocess.run([args.counter.resolve(), str(lo), str(hi)],
+        hi = min(support, lo+block-1)
+        command = [args.counter.resolve(), str(lo), str(hi)]
+        if args.type17:
+            command.append('type17')
+        result = subprocess.run(command,
                                 check=True, capture_output=True, text=True)
         return read_histogram(result.stdout.splitlines())
 
     hist = Counter()
     with ThreadPoolExecutor(max_workers=args.jobs) as pool:
-        for result in pool.map(subtotal, range(2, SUPPORT+1, block)):
+        for result in pool.map(subtotal, range(2, support+1, block)):
             hist.update(result)
-    prove(hist)
+    if args.type17:
+        prove(hist, support, support, 58160039859394517078535559761100800000, 12)
+    else:
+        prove(hist)
 
 
 if __name__ == '__main__':

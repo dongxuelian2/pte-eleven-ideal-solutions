@@ -1,5 +1,5 @@
-// Count prime-ideal powers in rational bins for Proposition 27.
-// Usage: prime_counts FIRST LAST. The interval is in rational primes.
+// Count prime-ideal powers in rational bins for sections 5.55 and 5.60.
+// Usage: prime_counts FIRST LAST [type17]. The interval is in rational primes.
 #include <pari/pari.h>
 
 #include <bit>
@@ -18,38 +18,42 @@ constexpr char field[] =
 using Bin = std::tuple<unsigned, unsigned, unsigned>;
 using Histogram = std::map<Bin, std::uint64_t>;
 
-void record_powers(Histogram& counts, std::uint64_t norm, unsigned multiplicity) {
-    for (std::uint64_t n = norm, m = 1; n <= cutoff; ++m) {
+void record_powers(Histogram& counts, std::uint64_t norm, unsigned multiplicity, unsigned long limit) {
+    for (std::uint64_t n = norm, m = 1; n <= limit; ++m) {
         unsigned exponent = std::bit_width(n) - 1;
         unsigned bin = ((n << 8) >> exponent) - 256;
         counts[{exponent, bin, static_cast<unsigned>(m)}] += multiplicity;
-        if (n > cutoff / norm) break;
+        if (n > limit / norm) break;
         n *= norm;
     }
 }
 
 int main(int argc, char** argv) {
-    if (argc != 3) return 2;
+    if (argc != 3 && (argc != 4 || std::string(argv[3]) != "type17")) return 2;
+    const bool type17 = argc == 4;
+    const unsigned long limit = type17 ? 1UL << 20 : cutoff;
     unsigned long lo = std::stoul(argv[1]), hi = std::stoul(argv[2]);
-    if (lo < 2 || lo > hi || hi > cutoff) return 2;
+    if (lo < 2 || lo > hi || hi > limit) return 2;
     pari_init(160000000, 1000000);
-    GEN poly = gp_read_str(field);
+    GEN poly = gp_read_str(type17
+        ? "x^12-472*x^10+75282*x^8-4450612*x^6+64570537*x^4-277288596*x^2+234027000"
+        : field);
     GEN nf = nfinit(poly, DEFAULTPREC);
     GEN index = nf_get_index(nf);
-    GEN bound = utoipos(cutoff);
+    GEN bound = utoipos(limit);
     Histogram counts;
     forprime_t primes;
     if (u_forprime_init(&primes, lo, hi)) {
         pari_sp clean = avma;
         for (ulong p; (p = u_forprime_next(&primes));) {
-            if (p <= cutoff / p || umodiu(index, p) == 0) {
+            if (p <= limit / p || umodiu(index, p) == 0) {
                 GEN ideals = idealprimedec_limit_norm(nf, utoipos(p), bound);
                 for (long i = 1; i < lg(ideals); ++i)
-                    record_powers(counts, itou(pr_norm(gel(ideals, i))), 1);
+                    record_powers(counts, itou(pr_norm(gel(ideals, i))), 1, limit);
             } else {
                 // Dedekind factorization applies. Only degree one can contribute.
                 long roots = Flx_nbroots(ZX_to_Flx(poly, p), p);
-                if (roots) record_powers(counts, p, roots);
+                if (roots) record_powers(counts, p, roots, limit);
             }
             set_avma(clean);
         }

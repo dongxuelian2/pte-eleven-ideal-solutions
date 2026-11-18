@@ -8495,9 +8495,176 @@ The tangent formula on \(E_0\) gives
                        Y^2=F(u)(F(u)+5H(u)).
 \]
 The octic is squarefree and an unconditional descent gives two as an
-upper bound for the rank of its Jacobian. This leaves the even
-branch open. ∎
+upper bound for the rank of its Jacobian. Section 5.60 treats the even
+branch. ∎
 [Single-root ranks, parity covers and Chabauty certificate](scripts/check_type17_odd_branch.m)
+
+
+### 5.60 Complete exclusion of type 17 by a dyadic Selmer obstruction
+
+**Theorem 32.** Type 17 admits no valid distinct-entry lift at any rational height.
+
+**Proof.** Proposition 31 treats the odd multiples. For an even multiple
+write the product point as \(2Q\) and put \(T=X(Q)\), \(a=11025=105^2\). Define
+\[
+\begin{aligned}
+ g(T)&=T^3-4131T^2+472aT-16a^2,\\
+ A(T)&=T^4-944aT^2+128a^2T+a^2(472^2-4\cdot4131\cdot16),\\
+ B(T)&=A(T)+20a g(T).
+\end{aligned}
+\]
+The duplication formula in §5.59 gives \(x=A(T)/(4ag(T))\) and
+\(x+5=B(T)/(4ag(T))\). Since \(g(T)=Y(Q)^2\) and \(x,x+5>0\)
+are squares, \(g(T),A(T),B(T)\) are all nonzero squares.
+
+**Two simultaneous descents.** The odd-degree curves \(y^2=gA\) and
+\(y^2=gB\) have respective two-cover descent sets of sizes two and one.
+Both contain the identity. In the first set the nonidentity element
+projects to a nonsquare in the cubic field defined by \(g\). These
+are exact upper sets for the images of rational points. To check the
+projections, take a representative \(v\) in the product of the cubic
+and quartic fields and divide by its total norm. The norm of the actual
+abscissa class is a square. Changing its representative by a rational
+scalar changes this normalization by a sixth power, since the total
+degree is seven. The two projections share the class of \(T-r\) for a
+root \(r\) of \(g\). The second descent makes this class trivial, which
+selects the identity in the first descent as well. In particular
+\(T-\theta\) is square in \(K=\mathbf Q(\theta)\) for a root of \(A\).
+The cubic abscissa character distinguishes the two parities in
+\(E_0(\mathbf Q)=\mathbf ZG\), since \(X(G)-r\) is nonsquare. Thus
+\(Q\in 2E_0(\mathbf Q)\).
+[Bruin–Stoll, two-cover descent](https://arxiv.org/abs/0803.2052)
+
+Write \(s=-T/Y(Q)\). On the integral model of \(E_0\), the generator has
+formal parameter \(-4/15\). The formal group over \(4\mathbf Z_2\) is
+closed under addition and its duplication series begins with \(2s\).
+Consequently \(k=v_2(s)\ge3\) and \(v_2(T)=-2k\).
+
+**A quartic-field elliptic curve.** Let \(w^4-194w^2-96w+8302=0\)
+and \(\theta=3(2w^3+4w^2-240w-532)\). Then \(K=\mathbf Q(w)\).
+Write \(h(U)=A(U)/(U-\theta)\). Since \(A(T)\) and \(T-\theta\) are
+nonzero squares in \(K\), there is a point \(R=(T,Y')\) on
+\(E:Y'^2=h(T)\) over \(K\). The cubic \(h\) is monic, integral and
+irreducible. Its root field over \(K\) has absolute model
+\[
+ L:\quad z^{12}-472z^{10}+75282z^8-4450612z^6+
+              64570537z^4-277288596z^2+234027000=0.
+\]
+This field is totally real with discriminant
+\(58160039859394517078535559761100800000\). Apply the explicit formula
+of §5.55 with \(n=r_1=12\) and support \(X=b=2^{20}\). If the prime
+ideals of norm at most \(b\) generated a proper subgroup, all prime-power
+terms in the support would have multiplier one in the cyclic quotient
+used there. The rational interval calculation gives
+\(A_{\rm arch}+S-\log|D_L|>262/1000\), contradicting the explicit
+formula. PARI reduces every prime ideal in this range to a factor base
+of norms at most 1000. With this unconditional generating bound,
+Magma computes \(\operatorname{Cl}(L)\cong\mathbf Z/2\) and
+\(\dim_{\mathbf F_2}\operatorname{Sel}^{(2)}(E/K)=2\).
+
+**The local logarithm lattice.** There is one prime of \(K\) above two.
+Write \(D\) for its completion, \(\pi\) for a uniformizer and
+\(\mathfrak p\) for its maximal ideal. The extension is totally ramified
+of degree four, so \(1,\pi,\pi^2,\pi^3\) is an integral basis over
+\(\mathbf Z_2\). The cubic \(h\) has one root in \(D\). Hence
+\(E(D)/2E(D)\) has dimension five, four from the Lie group and one
+from the local two-torsion. Put
+\[
+   m=105\cdot 2^{12},\qquad \Lambda=m\log_E E(D).
+\]
+The certificate constructs five points with independent local Kummer
+images. Their scaled logarithms generate \(\Lambda\) over \(\mathbf Z_2\),
+because their images span modulo two and the logarithm kills torsion.
+For each point the formal parameter \(z\) of its \(m\)-multiple has
+\(v_\pi(z)\ge44\). On this model negation sends \(z\) to \(-z\).
+The invariant differential in \(z\) has integral even coefficients and
+constant term one. Integrating gives \(\log_E(z)=z+O(z^3)\) with
+dyadically integral coefficients. Thus the first binary digits below
+are determined at the precision used.
+
+In the ordered basis \((2^{12},2^{11}\pi,2^{11}\pi^2,2^{11}\pi^3)\)
+of \(2^{11}\mathfrak p\), the five logarithms are integral and their
+residue matrix has rank four. It follows that \(\Lambda=2^{11}\mathfrak p\).
+Localizing the two global Selmer generators and expressing them in
+the five Kummer classes therefore computes the map from the global
+Selmer group to \(\Lambda/2\Lambda\). Its image has dimension two.
+Adjoining the vector \((1,0,0,0)\) raises the rank to three.
+
+**The direction forced by the chain.** With \(z=-T/Y'\) we have
+\[
+        (z/s)^2=g(T)/h(T)\in 1+2^{2k}\mathcal O_D.
+\]
+Both cubics are monic integral and \(v_2(T)=-2k\).
+Of the two factors \(z/s-1,z/s+1\), the one of smaller valuation has
+valuation one (here \(v_2(2)=1\)). Thus for one sign,
+\(z=\pm s(1+2^{2k-1}\eta)\) with \(\eta\in\mathcal O_D\).
+The same congruence holds for \(\log_E R\). In particular
+\(2^{-k}m\log_E R\) is primitive in \(\Lambda\) and reduces to
+\((1,0,0,0)\) in the displayed basis.
+
+To see why this residue must belong to the global Selmer image, divide
+\(R\) by the largest possible power \(2^j\) in \(E(K)\), writing
+\(R=2^jR_0\). The nonzero logarithm and finite generation ensure that
+\(j\) is finite. The global Kummer class of \(R_0\) is nonzero and the
+map from the two-dimensional Selmer group to \(\Lambda/2\Lambda\) is
+injective. Hence \(m\log_E R_0\) is primitive, forcing \(j=k\).
+Its residue would be the excluded vector. This contradiction proves
+the even-branch exclusion and completes the proof. ∎
+
+To reproduce the field bound, compile the prime counter as in §5.55
+and run the following commands from the repository root.
+
+```sh
+python3 scripts/type13_prym_class/check_bound.py build/type13-class/prime_counts --type17
+gp -fq scripts/check_type17_factor_base.gp
+magma scripts/check_type17_even_branch.m
+```
+
+[Factor-base relations](scripts/check_type17_factor_base.gp) ·
+[Two-cover descents, field identification and Selmer logarithms](scripts/check_type17_even_branch.m)
+
+
+### 5.61 Two surviving parity classes for type 12
+
+**Proposition 33.** Write \(b\) for the square of the length-four B center.
+A valid type-12 lift gives a point \(mP_1+nP_9\) with \(m+n\) odd on the
+rank-two elliptic curve
+\[
+ E_{12}:Y^2=X^3-240X^2+215aX+90a^2,\qquad a=160,\quad X=ab,
+\]
+where \(P_1=(160,-2400)\) and \(P_9=(1440,50400)\).
+
+**Proof.** From §5.32, \(b\) and \(10-b\) are squares. The three
+singleton squares have product \(f(b)/64\), where
+\(f(b)=160b^3-240b^2+215b+90\). Indeed their monic cubic, multiplied
+by 64, is
+\[
+ 64Z^3-(240b+320)Z^2+(320b^2+280b+436)Z-f(b).
+\]
+Thus \(f(b)\) is a square, giving the point with \(X=ab\).
+The full Mordell–Weil group is free on \(P_1,P_9\).
+
+Let \(w^3+38w-504=0\) and \(r=(4-w)/8\), so \(f(r)=0\).
+At the ramified prime of \(\mathbf Q(w)\) over two, take the integer
+valuation with \(v(2)=2\). We have \(v(w)=1,\ v(r)=-5,\ v(a)=10\).
+The equation \(b+(10-b)=10\) expresses 10 as a sum of two rational
+squares. Their roots must both be dyadic units. Indeed unequal
+valuations give an even valuation for the sum, while two roots of equal
+valuation \(j\) give valuation \(2j+1\), since two odd squares sum to
+2 modulo 8. Hence \(v(b)=0\). The Kummer character at the root \(ar\)
+is represented by \(a(b-r)\), whose valuation is five. The same holds
+at both generators (with \(b=1,9\)). Valuation modulo two is additive
+on the Mordell–Weil group, so \(m+n\equiv1\pmod2\).
+
+For a surviving class indexed by \(b_0=1\) or \(9\), put \(d=b_0-r\).
+The same abscissa character makes \((b-r)/d\) square. Multiplying by the
+two center squares gives a point with \(X=-db\) on
+\[
+           Y^2=X(X+10d)(X+rd).
+\]
+The two-torsion has order four, and unconditional two-descent gives
+rank upper bounds three and four for the two covers, respectively. ∎
+[Group and valuation certificate](scripts/check_type12_center_parity.m)
 
 
 ## 6. Open boundary
@@ -8506,10 +8673,10 @@ The original distinct-entry size-11 problem remains unsolved here: no pair
 of disjoint eleven-element integer sets and no general impossibility proof
 has been established. Section 5 gives a distinct-entry shift-lift reduction and
 normalized finiteness for all eighteen chain types (Theorem 14), and
-Sections 5.31, 5.40, 5.42–5.46, 5.49, 5.55, 5.56 and 5.58 exclude valid
+Sections 5.31, 5.40, 5.42–5.46, 5.49, 5.55, 5.56, 5.58 and 5.60 exclude valid
 distinct-entry lifts in types 2, 3, 4, 5, 9, 10 (the older sixth mode),
-11, 13, 14, 15 and 16. The remaining types are 1, 6, 7, 8, 12, 17 and 18.
-Section 5.59 reduces type 17 to its even-multiple branch. Section 3
+11, 13, 14, 15, 16 and 17. The remaining types are 1, 6, 7, 8, 12 and 18.
+Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,
 or at least eight per side under symmetry. The remaining splitting and
