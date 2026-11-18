@@ -95,6 +95,18 @@ genus-two curve. The finite value `b=9` makes the two sets coincide.
 Types 2, 4, 5, 10, 14, 15 and 16 are now completely excluded. Eleven
 chain types and the original size-eleven problem remain open.
 
+[Proposition 21, §5.47](PROOF.md#547-a-fixed-squareclass-for-type-11)
+fixes the type-11 denominator form `m^2+5mn-5n^2` to the squareclass
+`-5`, excluding the entire `-1` branch. Three genus-three covers
+have certified rank upper bound two. The same square conditions reduce
+each cover to three relevant residue disks at 37.
+
+[Proposition 22, §5.48](PROOF.md#548-exact-product-rank-and-two-cubic-field-covers-for-type-13)
+proves rank two for the type-13 product Jacobian and identifies the
+only two Kummer classes compatible with a square center. The resulting
+genus-one covers are defined over a cubic field. One has certified rank
+upper bound one.
+
 Sections 5.37 and 5.39 combine software-assisted two-Selmer upper bounds
 with exact Kummer certificates to give ranks **3,3,4,2** for types
 **4,5,15,16**, respectively, and Sha[2]=0 for all four. The new type-4

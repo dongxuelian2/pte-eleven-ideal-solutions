@@ -7140,6 +7140,212 @@ is 3 and the B singleton centers are 1/2, 3/2, 9/2. With the prescribed
 offsets both input sets are `{±1/2,±3/2,±5/2,±7/2,±9/2}`. They coincide,
 contradicting the disjointness required in Section 5.1. ∎
 
+### 5.47 A fixed squareclass for type 11
+
+**Proposition 21.** For a valid type-11 lift, let \(a,b,c,S,T\) be as
+in Section 5.32. Then \(c\ne49/4\). Write
+\(w=(b-9)/(c-49/4)=m/n\) with coprime integers \(m,n\) and \(n>0\).
+There is an integer \(k\ne0\) with
+
+\[
+ m^2+5mn-5n^2=-5k^2.
+\]
+
+In addition \(m:n\) reduces to \(0:1\) or \(4:1\) modulo 37. In
+particular the denominator \(n\) is prime to 37.
+
+To recover the center data, substitute the formulas for \(a,T\) from
+Section 5.32 into the third and fourth moments and cancel the collision
+factor `−S+b+1`. Modulo \(H_{11}\) the linear subresultant in \(S\) is
+proportional to \(L(S-S_0)\), where
+
+\[
+ S_0=(5b-4c+16)/3,\qquad L=16bc+4b-16c^2+56c-85.
+\]
+
+The resultant of \(L,H_{11}\) in \(b\) is
+\(16(4c-49)(4c-9)^2(4c-1)\). The values \(c=1/4,9/4\) belong to the
+centered A chain. At \(c=49/4\), the conic has \(b=9,-123/2\). A
+rational center square must use \(b=9\), where the two canceled
+moments have common roots \(S=4,5\), giving \(a=1/4,9/4\) respectively.
+Both repeat a centered A vertex. This excludes \(c=49/4\) and proves
+\(S=S_0\) in every valid lift.
+
+The line \(b=9+w(c-49/4)\) through \((9,49/4)\) gives the parameterization
+below after the seed root is removed.
+
+\[
+\begin{aligned}
+D&=w^2+5w-5,                    & F_A&=25w^2-53w+27,\\
+F_B&=41w^2-70w+30,              & F_C&=49w^2-37w-5,\\
+F_E&=(4w-5)(47w-40).
+\end{aligned}
+\]
+
+Then
+
+\[
+ a=-\frac{15F_A}{4D},\qquad b=-\frac{3F_B}{2D},
+ \qquad c=\frac{F_C}{4D},\qquad
+ T=\frac{F_E(5w-4)^2}{2D^2}.
+\]
+
+The reflected B length-two chains require nonzero centers, so \(T\)
+is a nonzero square and \(2F_E\) is a square. The discriminant of
+\(F_B\) is \(-20\), and its leading coefficient is positive. Since
+\(b>0\), one has \(D<0\).
+
+For each of these quadratic forms \(F\), put \(F_h=n^2F(m/n)\);
+in particular \(D_h=m^2+5mn-5n^2\). If a prime \(p\notin\{2,3,5\}\)
+divides \(D_h\), then \(p\nmid n\). The resultant
+\(\operatorname{Res}(D,F_A)=-36\) shows that \(p\nmid F_{A,h}\).
+The square condition on \(a\) therefore forces \(v_p(D_h)\) even.
+Primitivity makes \(D_h\) odd. If \(3\mid D_h\), then \(3\nmid n\)
+and \(u=(2m+5n)/3\) is integral. From \(4D_h=9(u^2-5n^2)\) and the
+nonsquareness of 5 modulo 3, it follows that \(v_3(D_h)=2\).
+The negative integer \(D_h\) thus has squarefree part \(d=-1\) or
+\(d=-5\).
+
+The four forms
+
+\[
+ dD_h,\qquad -15dF_{A,h},\qquad -6dF_{B,h},\qquad dF_{C,h}
+\]
+
+are integer squares. Testing the 38 projective residues modulo 37
+gives \(m:n\in\{23:1,30:1\}\) for \(d=-1\), and
+\(m:n\in\{0:1,4:1\}\) for \(d=-5\). For the first pair \(2F_{E,h}\)
+reduces, up to rescaling by a square, to 19 and 8 respectively.
+Both residues are nonsquares modulo 37. This excludes the entire
+\(d=-1\) squareclass and proves the proposition. ∎
+
+The fixed squareclasses also give four genus-two necessary curves
+\(Y^2=G(w)\), one for each polynomial
+
+\[
+ G\in\{-2DF_AF_B,\ 3DF_AF_C,\ 30DF_BF_C,\ -2F_AF_BF_C\}.
+\]
+
+Indeed the squareclasses of \(D,F_A,F_B,F_C\) are respectively
+\(-5,3,30,-5\), and each displayed scalar makes the indicated product
+a square. Each polynomial is a squarefree sextic. The checker
+`scripts/check_all_shift_chain_types.py` verifies the elimination,
+parameterization, resultants, residue table and squarefreeness.
+
+The same squareclasses give three genus-three covers for which the
+rank bound is below the genus. Set \(r=(47w-40)/(4w-5)\), so
+\(w=5(r-8)/(4r-47)\). The condition \(T\ne0\) makes this change of
+coordinate valid. Define
+\[
+ d_r=r^2-11r-1,\qquad a_r=r^2-261r-1,\qquad
+ b_r=7r^2-2r+18,\qquad c_r=9r^2-69r-49 .
+\]
+The three necessary models are
+\[
+ Y^2=r d_r a_r b_r,\qquad Y^2=r d_r b_r c_r,\qquad
+ Y^2=r a_r b_r c_r .
+\]
+They come from \(-DF_AF_BF_E\), \(15DF_BF_CF_E\) and
+\(-F_AF_BF_CF_E\), respectively. The substitutions and square
+scaling factors are checked in `scripts/check_all_shift_chain_types.py`.
+
+The Magma certificate in `scripts/check_type11_genus3_rank_bounds.m`
+computes a 2-Selmer group of dimension five for each Jacobian using
+the full Minkowski proof bounds. The factor degrees \(1,2,2,2\)
+give three independent rational 2-torsion classes, so the rank is
+at most two in each case. At 37, all three curves have good reduction
+and the Type 11 restrictions permit only \(r\equiv0,8\). They give
+one Weierstrass residue disk and two non-Weierstrass disks on each
+curve. A proof of point completeness still requires information
+about the Mordell–Weil images in these disks.
+
+### 5.48 Exact product rank and two cubic-field covers for type 13
+
+Put
+
+    N(c)=-240c³+1600c²−260c+475, α=25/4, β=1/4.
+
+The cubic in Section 5.32 gives the product N(c)/144 of the three A
+singleton squares. Let u₁,u₂,u₃ be the corresponding centers.
+Retaining c=w² and b=v²=(25−4c)/6 gives the necessary genus-two curve
+
+    H: y²=6c(25−4c)N(c), y=72vwu₁u₂u₃.
+
+**Proposition 22.** The Jacobian J of H has rational rank two. The
+classes P=[(β,135)−∞], Q=[(19/4,2565/2)−∞], T₀=[(0,0)−∞] and
+Tα=[(α,0)−∞] form a basis of J(Q)/2J(Q).
+
+**Proof.** N is irreducible modulo 31, and its values at 0 and α are
+nonzero. Thus H is smooth of genus two, and its rational two-torsion
+has dimension two. An unconditional two-Selmer computation gives
+rank at most two. [Magma checker](scripts/check_type13_product_covers.m)
+
+For the lower bound, make the equation monic by X=ac, Y=a²y with
+a=5760 and use the odd-degree Kummer injection. The two rational-root
+components of the four classes are as follows.
+[Stoll, §4](https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/all/98/3/83397/implementing-2-descent-for-jacobians-of-hyperelliptic-curves)
+
+    P:(10,−15), Q:(190,−15), T₀:(285,−10), Tα:(10,−15).
+
+At a rational Weierstrass point the derivative component is a³f'(c).
+First-coordinate valuations at 2, 3 and 19 leave P+Tα as the only
+possible nonzero relation. In K=Q(θ), N(θ)=0, its cubic component
+is represented by (β−θ)/(α−θ). At the simple root θ=6 modulo 11,
+both factors are units and the ratio reduces to the nonsquare 10.
+The four independent classes give rank at least 4−2=2 and prove the
+basis assertion. ∎
+
+Any non-Weierstrass point (c,y) of H with c a nonzero rational square
+has Kummer first coordinate of squareclass 10. The same valuations
+force its full J(Q)/2J(Q) class to be P or Tα, giving
+
+    c−θ=δz² for some z∈K,
+    δ∈{α−θ,β−θ}.
+
+Both possible classes also have second rational coordinate −15. Since a(c−α)=−8640b has the same squareclass as −15b, the other B-center variable b is automatically a rational square.
+
+Every valid type-13 lift maps to one of the two genus-one curves over K.
+
+    Cδ: w²−δz²=θ, 4w²+6v²=25.
+
+They have K-rational points (5/2,0,1) for δ=α−θ and (1/2,2,1) for
+δ=β−θ. The degree-eight map to c=w² has four distinct branch values
+0, α, θ and ∞, each of ramification index two. Their smooth completions
+therefore have genus one. The map
+
+    Cδ→Eδ, X=dw², Y=−18δ²wvz,
+    Eδ: Y²=X(X−dα)(X−dθ), d=−6δ,
+
+has degree four, as its sign fibers show. The four even sign changes
+act freely, including at infinity, and therefore give translations
+by the full rational two-torsion of Jac(Cδ). With the displayed K-point
+as origin, the map is multiplication by two followed by an isomorphism
+to Eδ and translation by the origin's image Q₀. Here Q₀ is (dα,0) in
+the α case and (d/4,−18δ²) in the β case.
+
+For any two-isogeny φ:Eδ→E' and its dual ψ, all points of Cδ(K) therefore have c among the values of
+
+    E'(K)→P¹, R↦X(ψ(R)+Q₀)/d.
+
+Indeed [2]=ψφ, so take R=φ(S) after identifying Cδ with its Jacobian.
+
+In the α case, choose the kernel (dθ,0). A standard model of E' is
+
+    Y²=X(X²+A'X+B'),
+    A'=2d(α−2θ), B'=d²α².
+
+The two-Selmer group of E' has dimension two and E'(K)[2] has
+dimension one, so rank E'(K)≤1. The same upper bound holds for
+Jac(C_(α−θ)). The certificate uses the full Minkowski proof bounds.
+
+For this model the necessary rational map simplifies to
+
+    c=α(X²+A'X+B')/(X−dα)².
+
+The [exact checker](scripts/check_type13_product_covers.py) verifies the
+Kummer characters and the coordinate maps. The rational center values
+on both covers remain to be classified.
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair

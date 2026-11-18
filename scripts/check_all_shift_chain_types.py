@@ -119,6 +119,8 @@ eq(fourth_residual(p),-(b-1)*(4*c-9)*(4*c-1)*(6*b+4*c-25)/8)
 central_collision(2,2,s.Integer(1))
 for center in [Q(1,2),Q(3,2)]:central_collision(2,3,center)
 K=root_poly(p[:4]).subs(b,(25-4*c)/6)
+h13_product=-240*c**3+1600*c*c-260*c+475
+eq(-K.subs(x,0),h13_product/144)
 h13=921600*c**6-24832000*c**5+192608000*c**4-644627200*c**3+936509680*c*c-438571880*c-82872167
 eq(s.discriminant(K,x),-h13/62208)
 assert 432**2==3*62208
@@ -259,6 +261,75 @@ H11=16*B*B+80*B*C-140*B-80*C*C+280*C-281
 J=16*B*B-32*B*C-8*B+16*C*C-8*C+1
 proportional(s.resultant(*eq,S),(4*C-9)*(4*C-1)*J*H11,(B,C))
 assert s.Poly(eq[0],S).degree()==2 and not s.Poly(eq[0],S).LC().has(B,C)
+
+# Type 11: recover the center squares and fix the denominator form's squareclass.
+S11=(5*B-4*C+16)/3
+L11=16*B*C+4*B-16*C*C+56*C-85
+linear_subresultant=s.subresultants(*eq,S)[-2]
+proportional(s.rem(linear_subresultant,H11,B),s.rem(L11*(S-S11),H11,B),(B,C,S))
+assert s.expand(s.resultant(L11,H11,B)-16*(4*C-49)*(4*C-9)**2*(4*C-1))==0
+assert s.expand(H11.subs(C,s.Rational(49,4))-8*(B-9)*(2*B+123))==0
+exception={B:9,C:s.Rational(49,4)}
+proportional(s.gcd(*(q.subs(exception) for q in eq),S),(S-4)*(S-5),(S,))
+assert [a.subs(exception).subs(S,v0) for v0 in (4,5)]==[s.Rational(1,4),s.Rational(9,4)]
+a11=a.subs(S,S11)
+t11=t.subs(S,S11)
+assert s.cancel(a11-(4*B-5*C+26)/3)==0
+assert s.rem(t11+(4*C-9)*(5*B-4*C+4)/6,H11,B)==0
+
+w=s.symbols('w')
+d11=w*w+5*w-5
+fa=25*w*w-53*w+27
+fb=41*w*w-70*w+30
+fc=49*w*w-37*w-5
+fe=(4*w-5)*(47*w-40)
+fj=4643*w**4-18384*w**3+27840*w*w-18880*w+4800
+param={B:-3*fb/(2*d11),C:fc/(4*d11)}
+assert s.cancel(H11.subs(param,simultaneous=True))==0
+assert s.cancel((B-9-w*(C-s.Rational(49,4))).subs(param,simultaneous=True))==0
+assert s.cancel(a11.subs(param,simultaneous=True)+15*fa/(4*d11))==0
+assert s.cancel(t11.subs(param,simultaneous=True)-fe*(5*w-4)**2/(2*d11**2))==0
+assert s.cancel((S11*S11-4*t11).subs(param,simultaneous=True)-3*fj/(4*d11**2))==0
+assert s.discriminant(fb,w)==-20
+assert s.resultant(d11,fa,w)==-36
+assert s.resultant(d11,fb,w)==225
+assert s.resultant(d11,fc,w)==-1620
+
+modulus=37
+square_residues={r*r%modulus for r in range(modulus)}
+normalize=[s.Poly(f,w).homogenize(Z).as_expr() for f in (d11,fa,fb,fc,fe)]
+projective_residues=[(r,1) for r in range(modulus)]+[(1,0)]
+for squareclass,expected in [(-1,[(23,1),(30,1)]),(-5,[(0,1),(4,1)])]:
+    factors=[squareclass,-15*squareclass,-6*squareclass,squareclass,2]
+    def residue_passes(residue,count):
+        subs={w:residue[0],Z:residue[1]}
+        return all(int(k*f.subs(subs))%modulus in square_residues
+                   for k,f in zip(factors[:count],normalize[:count]))
+    assert [r for r in projective_residues if residue_passes(r,4)]==expected
+    assert [r for r in projective_residues if residue_passes(r,5)]==(
+        [] if squareclass==-1 else expected)
+assert all(s.Poly(f,w).degree()==6 and s.degree(s.gcd(f,s.diff(f,w),w),w)==0
+           for f in (-2*d11*fa*fb,3*d11*fa*fc,30*d11*fb*fc,-2*fa*fb*fc))
+
+r11=s.symbols('r')
+w11=5*(r11-8)/(4*r11-47)
+dr=r11*r11-11*r11-1
+ar=r11*r11-261*r11-1
+br=7*r11*r11-2*r11+18
+cr=9*r11*r11-69*r11-49
+assert s.cancel(((47*w-40)/(4*w-5)).subs(w,w11)-r11)==0
+for original,model,scale in [
+        (-d11*fa*fb*fe,r11*dr*ar*br,3375),
+        (15*d11*fb*fc*fe,r11*dr*br*cr,50625),
+        (-fa*fb*fc*fe,r11*ar*br*cr,3375)]:
+    assert s.cancel((4*r11-47)**8*original.subs(w,w11)-scale**2*model)==0
+    reduction=s.Poly(model,r11,modulus=37)
+    assert reduction.degree()==7 and reduction.gcd(reduction.diff()).degree()==0
+    assert reduction.eval(0)==0
+    assert int(reduction.eval(8))%37 in square_residues-{0}
+assert [(47*w0-40)*pow((4*w0-5)%37,-1,37)%37 for w0 in [0,4]]==[8,0]
+print('Type 11: individual square functions and squareclass obstruction at 37 verified.')
+
 # Even plane quartic smoothness: every principal minor is nonzero.
 for name,poly,variables in [('3',H3,(B,C)),('11',H11,(B,C))]:
     h=s.Poly(poly,*variables).homogenize(Z).as_expr()
