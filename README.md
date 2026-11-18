@@ -13,9 +13,10 @@ cubic field. Elliptic Chabauty at 907 forces the squared center to be
 1 or 9. Each value makes the two chains share a vertex.
 [Theorem 34, §5.62](PROOF.md#562-complete-exclusion-of-type-12-by-two-rank-one-covers)
 
-For type 1, reduction at five primes leaves two of the sixteen global
-parity classes on its rank-four product curve.
-[Proposition 35, §5.63](PROOF.md#563-two-surviving-global-parity-classes-for-type-1)
+For type 1, a rank-one elliptic cover excludes the parity class of the
+center square 1 at every rational height. The remaining class reduces
+to 0 modulo 73 and its elliptic cover has rank at most two.
+[Theorem 36, §5.64](PROOF.md#564-split-two-descent-and-exclusion-of-the-odd-center-class-for-type-1)
 
 In type 3, two squareclass pairs survive local tests. A rank-zero elliptic
 curve eliminates one. For the other, elliptic Chabauty over the field of
