@@ -1,9 +1,10 @@
 # Ideal Prouhet–Tarry–Escott Solutions of Size 11
 
-**Research allocation (15 November 2026):** Further work on the original
-size-eleven problem is stopped. Manuscript preparation prioritizes the
-proved eighteen-type finiteness theorem and complete type exclusions.
-The original existence problem remains open. In §5.32 all five nontrivial
+Nine of the eighteen normalized types in the symmetric shift construction
+are excluded at every rational height. The latest exclusion is type 13.
+[Proof, §§5.54–5.55](PROOF.md#554-six-independent-prym-classes-forced-by-a-type-13-lift)
+
+In §5.32 all five nontrivial
 doubled B centers in type 18 have a common reduced denominator D, supported
 at primes `1 mod 10`. Each positive denominator valuation at those primes
 is locally possible. A [certificate of 521 rigid primes](TYPE18_RIGID_PRIMES.md)
@@ -113,10 +114,15 @@ upper bound one.
 exclude the entire alpha class and the part of the beta class where
 the length-two center has 2-adic valuation at least two. Formal
 logarithms and exact local halves give Selmer obstructions at two.
-Only the beta class with center valuation one remains.
+This reduces the problem to the beta class with center valuation one.
 [Sections 5.52–5.53](PROOF.md#552-two-odd-prime-restrictions-and-a-dyadic-local-family-for-type-13)
 restrict that class to the beta residue at 11 and 23 and give an explicit
 genus-two Prym from the three individual singleton squares.
+[Propositions 26 and 27, §§5.54–5.55](PROOF.md#554-six-independent-prym-classes-forced-by-a-type-13-lift)
+exclude this last branch. A valid lift would force six independent Prym
+classes. An unconditional class-group certificate for the degree-twelve
+field makes the two-descent rank upper bound five. The exact Prym rank
+lies between three and five.
 
 Sections 5.37 and 5.39 combine software-assisted two-Selmer upper bounds
 with exact Kummer certificates to give ranks **3,3,4,2** for types

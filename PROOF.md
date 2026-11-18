@@ -7732,7 +7732,291 @@ and \((1,3)\) at \(\theta\equiv24\pmod{29}\). Thus its Galois group
 contains a 4-cycle and a 3-cycle. Its order is divisible by 12, and
 the index-two subgroup \(A_4\) contains no 4-cycle. The root field has
 no proper intermediate field over \(K\) since a point stabilizer in
-\(S_4\) is maximal. The Prym rank remains undetermined.
+\(S_4\) is maximal.
+
+### 5.54 Six independent Prym classes forced by a type-13 lift
+
+**Proposition 26 (software-assisted).** Let \(J/K\) be the beta Prym of
+Section 5.53. Every valid type-13 lift gives six independent elements
+of \(J(K)\) modulo torsion. In particular, \(\operatorname{rank}J(K)\le5\)
+excludes type 13 at every rational height.
+
+**Proof of the proposition.** Write \(H(c,t)=q_2(c,t,1)^2-4tN(c)/9\).
+Put \(h=c-\beta\). Section 5.52 gives \(h\in23\mathbf Z_{23}\), and
+\(h=0\) produces a collision. Label and sign the rational singleton
+centers \(a,b,d\) so that they reduce to \(1/2,3/2,5/2\) respectively.
+This is possible since their squared residues at \(\beta\) are distinct
+and nonzero. Use the ordered sums
+\[
+  -a-b+d,\quad a-b+d,\quad -a+b+d,\quad a+b+d .
+\]
+For each sum \(v\) the point on the cover has \(t=v^2, r=vz, s=q_2/r\)
+with the *same* global \(z^2=(c-\theta)/\delta\).
+For \(h=0,z=1\) the sums are \(1/2,3/2,7/2,9/2\).
+Write \(D_i\) for the four collision images on \(J\) and \(A_i\)
+for the images of a putative lift in the same order. We use
+\(D_1,D_2,D_3,A_1,A_2,A_3\).
+
+The map is Bruin's tangent-line construction. Here are its coordinates
+to specify the signs of both the global classes and their logarithms.
+Primes on \(t,r,s\) denote differentiation with respect to \(c\).
+Set
+\[
+ a_0=t'/\delta-(r')^2,\quad
+ b_0=(t')^2-10t'/3+5-r's',\quad k=-320\delta/3-(s')^2 .
+\]
+The monic support polynomial in the model of Section 5.53 is
+\(U=X^2+2\delta b_0 X/k+\delta^2 a_0/k\). Its ordinate is the
+remainder modulo \(U\) of
+\[
+ \delta^2\left[
+ (r'+Xs'/\delta)\left(\frac{c-\theta}{2\delta}
+              -\frac{X}{\delta}\left(\frac{10c+50}{3}-2t\right)\right)
+ +(r+Xs/\delta)\left(-\frac1{2\delta}
+              -\frac{X}{\delta}(2t'-10/3)\right)\right].
+\]
+Indeed in Bruin's pencil \(Q=M_1/\delta-2xM_2+\delta x^2M_3\)
+take \(V=(c,t,1)^t, W=(1,t',0)^t\). The tangent condition on \(x\)
+is \(a_0-2b_0x+kx^2=0\). The vector
+\(Q((r'-xs')V-(r-xs)W)\) is then perpendicular to both \(V,W\).
+Its second coordinate gives the signed ruling coordinate
+relative to \(V\times W\), whose second coordinate is one.
+To check the ordinate identity, put \(q_v=r-xs,\ q_w=r'-xs'\),
+\(I=q_wV-q_vW\), and \(n=V\times W\). At a root of the tangent
+quadratic we have \(QI=\lambda n\). Taking
+\(V\times((QV)\times(QW))\) gives \(q_v\lambda n\) by the vector
+triple product and \(-q_v\det(Q)n/\lambda\) by the adjugate
+identity. Hence \(\lambda^2=-\det Q\) generically. This gives a
+single rational Mumford divisor map over \(K\).
+Changing coordinates by \(X=-\delta x\) and scaling the signed
+coordinate by \(\delta^2\) gives the formula above. Reversing \(z\)
+negates the image. These formulas describe a morphism on the smooth
+projective cover, including points outside this affine chart.
+[Bruin, Section 6](https://arxiv.org/html/math/0408069v2)
+
+Use the three split places over 23 in the order
+\(\theta\equiv11,13,21\). The reduction orders are \(n_j=640,720,408\).
+In each block of two coordinates use \(\log(n_j P)/23\) in the
+basis \(dX/(2Y),X\,dX/(2Y)\). Denote the matrix of the three exact
+collision rows by \(B\). Its reduction is
+\[
+ \bar B=-\begin{pmatrix}4&11&0&15&7&4\\22&17&2&8&3&11\\20&4&21&20&12&22\end{pmatrix}.
+\]
+In particular the collision subgroup has free rank three, since the
+fourth image satisfies \(D_1=D_2+D_3-D_4\). The
+[certificate](scripts/check_type13_beta_prym.m) verifies the group
+identity over \(K\) and computes the logarithms by translating
+\(n_jD_i\) to a divisor with two distinct integral support abscissas
+and unit ordinates. In that chart the first-order displacement of
+each root of \(U\) is \(-U(X_0)/U'(X_0)\) modulo \(23^2\).
+
+For the local branch with \(z(0)=1\) at all three places, write the
+three moving logarithms as
+\[
+ B+(h/23)(C_1+hC_2+h^2C_3+\cdots).
+\]
+The pullbacks of the two differentials at each place are
+\((-2s/\delta,2r)\,dc/H_t\). To verify this identification, adjunction
+on the canonical intersection of three quadrics gives the affine
+canonical generator \(dc/H_t\) up to a constant. The Jacobian
+determinant of the three cover equations in \(t,r,s\) is
+\(2H_t\) up to sign. Linear coordinates multiply this generator, so
+\(r\,dc/H_t,s\,dc/H_t\) span the anti-invariant differentials. The
+map negates under the involution. Evaluating the pullbacks at two
+collision points with independent pairs \((r,s)/H_t\) determines
+them exactly. The certificate uses the trace of the moving Mumford
+support and verifies the identity over \(K\). Since \(H_t,r,\delta\)
+are units on the disks at 23, the unintegrated series are integral,
+and \(nC_n\) has integral coefficients for all \(n\ge1\).
+
+First take equal signs of \(z\) at the three places, up to global
+negation. Subtract \(B\) from the moving rows and remove the three
+factors \(h/23\). The resulting determinant vanishes to order at
+least two in \(h\) in characteristic zero. Indeed, write the derivative
+rows as \(u_i(h)R(h)+v_i(h)S(h)\), where \(u_i,v_i\) are scalar
+functions shared across the three embeddings. One can take
+\(u_i=\sqrt{t_i}/H_t, v_i=q_2/(\sqrt{t_i}H_t)\); all embedding
+dependence is in the vectors \(R,S\) through \(z,1/z,\delta,n_j\).
+Choose a nonzero constant combination killing both \(u_i(0),v_i(0)\).
+After integrating and dividing by \(h\), this combination has zero
+constant term and its linear term belongs to the original two-plane.
+The other two rows span that plane at zero (the coefficient pairs
+have rank two). This kills the linear determinant term as well.
+The certificate computes
+\[
+ \det\binom{\bar B}{\bar C_1+h\bar C_2+h^2\bar C_3}
+      \equiv 7h^2 \pmod{(23,h^3)} .
+\]
+Higher terms cannot cancel it for \(h\ne0\) in \(23\mathbf Z_{23}\).
+A term of degree \(k\ge3\) has denominator valuation at most
+\(\lfloor k/22\rfloor\), since it uses three indices with
+\(\sum(n_i-1)=k\) and \(v_{23}(n)\le(n-1)/22\).
+Thus all six logarithms are independent in the equal-sign case.
+
+For mixed signs, change the global sign to leave exactly one
+negative block \(j\) with sign matrix \(S_j\). With
+\(u=h/23\), the determinant of the six rows reduces to
+\(\det\binom{\bar B}{(\bar B+u\bar C_1)S_j}\). The three results are
+\[
+ u(11+20u),\qquad u(21+18u),\qquad u(10+3u).
+\]
+The exact constant term vanishes because at \(u=0\) the last three rows
+differ from \(B\) only in a two-dimensional block. The determinant
+is an integral convergent power series in \(u\) on \(\mathbf Z_{23}\),
+since the integrated coefficients carry \(23^{n-1}/n\). After dividing
+by \(u\), its constant term is a unit. For \(h\ne0\), dependence
+therefore requires \(u\equiv19,18,12\), respectively. In these
+three cases the matrix has rank five modulo 23. Its normalized left
+null vectors in the order \(D_1,D_2,D_3,A_1,A_2,A_3\) are
+\[
+ (8,7,8,15,4,1),\quad (12,5,22,10,3,1),\quad (19,1,21,13,8,1).
+\]
+
+If the six global classes are dependent modulo torsion, a primitive
+integer relation to torsion reduces to a nonzero multiple of the
+corresponding vector. The torsion has trivial 23-primary part. At a split place over 23 the special fiber has order prime to 23
+and the good-reduction formal kernel over \(\mathbf Q_{23}\) is
+torsion-free by its logarithm. Hence the same relation must vanish
+in every finite quotient of order 23.
+
+Use the two places above 1181 given by \(\theta=99,198\) modulo
+1181. A pole of \(c\) is impossible there. Otherwise the integral
+ratios \(a^2/c,b^2/c,d^2/c\) split the reduction of
+\(144X^3-240X^2-80X+240\), a squarefree cubic with just one root.
+The two good reductions of \(J\) have orders \(1383036,1338324\),
+each divisible exactly once by 23. Multiplication by the order divided
+by 23 projects onto its order-23 subgroup, up to an automorphism.
+Taking the projection of \(D_1\) as generator, the three fixed
+logarithms are \((1,11,21)\) and \((1,16,17)\).
+
+Enumerate the residues \(c\) for which \(c,(25-4c)/6,(c-\theta)/\delta\)
+are squares and the singleton cubic splits into three squares with
+multiplicity. For each such \(c\) enumerate every ordered signed
+triple \((a,b,d)\), evaluate the three moving classes, and allow
+both signs of \(z\) at each place independently. Every divisor
+encountered here lies in the displayed Mumford chart. The
+distinct residue tuples \((c,a,b,d)\) satisfying the indicated
+relation have the following counts.
+
+| Place or intersection | First relation | Second relation | Third relation |
+|---|---:|---:|---:|
+| \(\theta=99\) | 8 | 20 | 16 |
+| \(\theta=198\) | 18 | 16 | 22 |
+| Both places | 0 | 0 | 0 |
+
+The rational numbers \(c,a,b,d\) have the same residues at both
+places. Thus none of the three primitive relations is possible.
+This also proves independence in the mixed-sign case. ∎
+
+### 5.55 Unconditional class-group certification for the beta Prym
+
+**Proposition 27 (software-assisted).** The ordinary ideal class group
+of the degree-twelve quartic-root field \(L\) of Section 5.53 is
+\((\mathbf Z/2)^2\). The beta Prym satisfies
+\(3\le\operatorname{rank}J(K)\le5\).
+
+**Corollary.** Type 13 has no valid distinct-entry shift lift. By
+Proposition 24 only the beta class could lift, and Proposition 26
+would then give six independent elements of \(J(K)\).
+
+**Proof.** We use the integral model
+\[
+\begin{split}
+P(X)={}&X^{12}-4X^{11}-68X^{10}-18698X^9+336998X^8-500324X^7\\
+ &+7039932X^6-194015520X^5+1041300636X^4-3497537936X^3\\
+ &+20028904184X^2-109223576168X+269574001992 .
+\end{split}
+\]
+The [descent certificate](scripts/check_type13_beta_prym_rank.m) verifies
+an isomorphism from this field to the absolute field of the quartic
+factor of the Prym quintic. The field has signature \((2,5)\) and
+absolute discriminant \(D=172707117717588564754287819295488000000\).
+
+Put \(X=2^{31}\), \(b=48000001\), \(\ell=\log X\), and
+\[
+ F(x)=\max(1-|x|/\ell,0)/\cosh(x/2).
+\]
+We first prove that the prime ideals of norm at most \(b\) generate
+\(\operatorname{Cl}(L)\). If their span were proper, its quotient would
+have a cyclic quotient of prime order \(d\). Class field theory would
+give a cyclic extension \(E/L\) of degree \(d\), unramified at all
+finite places and split at the real places, in which every such prime
+splits completely. Apply the explicit formula to \(\zeta_E\) and
+\(\zeta_L\), subtract and divide by \(d-1\). The discriminant term is
+\(\log D\), the pole terms cancel, and the remaining nontrivial zeros
+are those of the entire nontrivial abelian Hecke \(L\)-functions in
+\(\zeta_E/\zeta_L\), counted with multiplicity.
+[Miller, Section 4, explicit formula with general signature](https://www.impan.pl/shop/en/publication/transaction/download/product/83125)
+
+The real part of each zero contribution is nonnegative throughout
+the critical strip. Indeed, for \(a=\Re(s)-1/2\) this real part is
+the Fourier transform at \(\Im(s)\) of \(F(x)\cosh(ax)\). The
+triangle function has nonnegative Fourier transform. For
+\(|a|<1/2\) the Fourier transform of \(\cosh(ax)/\cosh(x/2)\) is
+\(2\pi\Re(\operatorname{sech}(\pi(t+ia)))\), also nonnegative.
+For \(|a|=1/2\) the ratio is one. The compact piecewise smooth test
+is admissible by smoothing, or by the \(O((1+t^2)^{-1})\) decay of
+its transforms and the standard zero-counting bound.
+
+Write \(A\) for the archimedean term. With \(n=12\) and \(r_1=2\)
+we have
+\[
+ A\ \ge\
+ n\left(\gamma+\log(4\pi)-\frac{\pi^2}{4\ell}\right)
+ +r_1\left(1-\frac{2\log2}{\ell}\right).
+\]
+In the explicit formula the two subtracted integrals have integrands
+\((1-F(x))/(2\sinh(x/2))\) and \((1-F(x))/(2\cosh(x/2))\).
+For \(F=\operatorname{sech}(x/2)\) their integrals are \(\log2\)
+and \(\pi/2-1\). The triangular cutoff increases them by at most
+\(\ell^{-1}\int_0^\infty x/\sinh(x)\,dx=\pi^2/(4\ell)\) and
+\(\ell^{-1}\int_0^\infty x/(2\cosh^2(x/2))\,dx=2\log2/\ell\).
+
+For \(q=N\mathfrak p\), \(t=q^m\le X\), the unsigned prime term is
+\[
+ w(t,m)=\frac{4\log(t)}{m(t+1)}\left(1-\frac{\log t}{\ell}\right).
+\]
+Its multiplier is the average of the nontrivial characters of the
+cyclic quotient on \(\mathrm{Frob}_{\mathfrak p}^m\).
+It equals one when \(t\le b\) and is always at least \(-1\).
+Consequently \(\log D\ge A+S\), where in a lower bound for \(S\)
+we may give any term outside the verified range weight \(-w(t,m)\).
+
+The [prime-power counter](scripts/type13_prym_class/prime_counts.cpp)
+groups \(t\) into bins with endpoints
+\(l=2^e(256+j)/256,\ u=\min(X,2^e(257+j)/256)\),
+\(0\le j<256\), retaining the exponent \(m\). For \(p>\sqrt X\)
+outside the index of \(\mathbf Z[X]/P\), only prime ideals of degree
+one contribute and their number is the number of distinct roots of
+\(P\bmod p\). At all other primes it decomposes \(p\) in the maximal
+order. For a bin inside the verified range it uses the lower bound
+\(4\log(l)(1-\log(u)/\ell)/(m(u+1))\). For every other bin,
+including one crossing \(b\), it uses the negative of the upper
+bound \(4\log(u)(1-\log(l)/\ell)/(m(l+1))\).
+
+The [rational interval check](scripts/type13_prym_class/check_bound.py)
+gives \(S>50.333\) and \(A+S-\log D>0.080\). It bounds logarithms
+by the positive atanh series with a geometric remainder and rounds
+each contribution down. This contradicts the explicit formula and
+proves the claimed generating bound.
+
+Finally, PARI's exact prime-ideal relation test reduces every prime ideal
+of norm at most \(b\) to its factor base. Every prime ideal in this
+base has norm at most 1000. This proves the stronger generating bound
+1000 independently of a provisional class group or unit index.
+The [standard PARI check](scripts/type13_prym_class/check_factor_base.gp)
+uses the library routine directly. The parallel version partitions
+only the outer rational-prime iterator in that routine. The norm
+bound within a worker is at least \(b\), so the same assertion holds
+for every ideal in the required range.
+
+With this proven bound for \(L\) and the Minkowski bound 419 for \(K\),
+Magma computes the class groups \((\mathbf Z/2)^2\) and \(0\),
+respectively. The two-descent gives a six-dimensional 2-Selmer
+group and one dimension of rational 2-torsion. It follows that
+\(\operatorname{rank}J(K)\le5\). The three collision classes in
+Proposition 26 supply the lower bound. ∎
+[Magma's class-group proof-bound semantics](https://magma.maths.usyd.edu.au/magma/handbook/text/416)
 
 ## 6. Open boundary
 
@@ -7740,9 +8024,9 @@ The original distinct-entry size-11 problem remains unsolved here: no pair
 of disjoint eleven-element integer sets and no general impossibility proof
 has been established. Section 5 gives a distinct-entry shift-lift reduction and
 normalized finiteness for all eighteen chain types (Theorem 14), and
-Sections 5.31, 5.40, 5.42–5.46 and 5.49 exclude valid distinct-entry
-lifts in types 10 (the older sixth mode), 16, 5, 15, 4, 2, 14 and 11.
-The rational-point sets and lifting conditions for the other ten
+Sections 5.31, 5.40, 5.42–5.46, 5.49 and 5.55 exclude valid distinct-entry
+lifts in types 10 (the older sixth mode), 16, 5, 15, 4, 2, 14, 11 and 13.
+The rational-point sets and lifting conditions for the other nine
 types remain to be classified. Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,
