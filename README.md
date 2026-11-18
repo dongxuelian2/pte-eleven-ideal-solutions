@@ -114,6 +114,9 @@ exclude the entire alpha class and the part of the beta class where
 the length-two center has 2-adic valuation at least two. Formal
 logarithms and exact local halves give Selmer obstructions at two.
 Only the beta class with center valuation one remains.
+[Sections 5.52–5.53](PROOF.md#552-two-odd-prime-restrictions-and-a-dyadic-local-family-for-type-13)
+restrict that class to the beta residue at 11 and 23 and give an explicit
+genus-two Prym from the three individual singleton squares.
 
 Sections 5.37 and 5.39 combine software-assisted two-Selmer upper bounds
 with exact Kummer certificates to give ranks **3,3,4,2** for types

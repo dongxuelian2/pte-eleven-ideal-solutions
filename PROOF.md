@@ -7625,6 +7625,106 @@ so \(Q\) also has class outside \(H\), a contradiction.
 The conic condition already gives \(m\ge1\), so \(m=1\) remains.
 Then \(c-\beta=-6((v/2)^2-1)\in16\mathbf Z_2\). ∎
 
+### 5.52 Two odd-prime restrictions and a dyadic local family for type 13
+
+Every valid type-13 lift satisfies \(c-\beta\in11\mathbf Z_{11}\) and
+\(c-\beta\in23\mathbf Z_{23}\). To see this, put \(D=-3h_{13}\) and
+write the monic singleton cubic as
+\[
+ G_c(X)=X^3-\frac{240c+1200}{144}X^2
+            +\frac{-80c^2+2080c+1816}{144}X-\frac{N(c)}{144}.
+\]
+Its square discriminant makes \(D(c)\) a square. If \(v_p(c)<0\),
+then \(D(c)/c^6\) reduces to the leading coefficient of \(D\), equal
+to 6 at 11 and 7 at 23. Both residues are nonsquares, so \(c\) is
+integral at both primes. The three roots of \(G_c\) are then integral
+there. Requiring \(c\), \((25-4c)/6\), and all three roots of the
+reduced cubic, with multiplicity, to be squares leaves the residues
+\(3,9\) at 11 and \(6,8,12\) at 23.
+
+The beta class requires \((c-\theta)/(\beta-\theta)\) to be a square.
+At 11, choose the simple root \(\theta\equiv6\) of \(N\). For
+\(c\equiv9\) the ratio reduces to the nonsquare 10. At 23 the choices
+\(\theta\equiv11,13\) give nonsquare residues 19 and 10 for
+\(c\equiv8,12\), respectively. Thus only the residue of \(\beta\)
+survives at each prime.
+
+Over \(\mathbf Q_2\), the center-square and full cubic splitting
+conditions hold throughout \(c=\beta+2^{11}\mathbf Z_2\). Indeed,
+write \(c=\beta+h\). The ratios \(c/\beta=1+4h\) and
+\(((25-4c)/6)/4=1-h/6\) are in \(1+8\mathbf Z_2\), so both
+B-center squares exist with \(v_2(v)=1\). At \(h=0\), the singleton
+roots are \(r=1/4,9/4,25/4\). For each such \(r\), the shifted
+cubic \(G_{\beta+h}(r+X)\) has integral coefficients, constant
+coefficient of valuation at least seven, and linear coefficient of
+valuation 2, 3, or 3, respectively. Hensel's lemma gives a root
+within \(16\mathbf Z_2\) of each \(r\). The three neighborhoods are
+disjoint and each consists of squares. The beta squareclass also
+holds locally since \((c-\theta)/(\beta-\theta)=1+h/(\beta-\theta)\)
+is a square in the cubic completion of Section 5.50.
+The [exact checker](scripts/check_type13_product_covers.py) verifies
+the residue tables and shifted-polynomial bounds.
+
+The actual Mordell–Weil group of \(F\) also obstructs the repeated
+halving used in the alpha proof. For \(G=P_\beta+T_\alpha^F\), the
+Kummer triple is \((1,\rho,\rho)\), where
+\(\rho=(\beta-\theta)/(\alpha-\theta)\). This follows by multiplying
+the triple of \(P_\beta\) by that of the Weierstrass point
+\(T_\alpha^F\), using the derivative at the vanishing factor.
+The ratio \(\rho\) reduces to the nonsquare 10 at the place
+\(\theta\equiv6\pmod{11}\), giving \(G\notin2F(K)\). At two,
+\(\rho=1-6/(\alpha-\theta)\) is a square since the correction has
+valuation nine in the normalization of Section 5.50. Hence
+\(G\in2F(L)\) for the completion \(L\) at two. Its formal parameter
+has valuation four by the
+calculation of Proposition 25 at \(c=\beta\), so \(G\) has infinite
+order. In particular the localization kernel already contains a
+nonzero class coming from an explicit global point.
+
+### 5.53 A signed-sum quartic and its beta Prym
+
+Let \(e_1,e_2,e_3\) be the coefficients of \(G_c\) in elementary
+symmetric order. For three rational singleton centers \(u_i\), put
+\(t=(u_1+u_2+u_3)^2\). With \(s=u_1u_2+u_1u_3+u_2u_3\), one has
+\(t-e_1=2s\) and \(s^2=e_2+2u_1u_2u_3(u_1+u_2+u_3)\). Consequently
+\[
+ ((t-e_1)^2-4e_2)^2=64te_3.
+\]
+In homogeneous coordinates \((c,t,Z)\), the quadratic on the left
+before squaring is
+\[
+ q_2=t^2-\frac{10c+50Z}{3}t+5c^2-30cZ+19Z^2.
+\]
+The quartic is smooth. In the affine chart \(Z=1\), its equation and
+the two partial derivatives generate the unit ideal. At infinity its
+binary quartic has distinct roots. Both statements are verified by the
+[exact checker](scripts/check_type13_product_covers.py).
+
+Over \(K\), let \(q(c,Z)\) be the degree-two homogenization of
+\((-N(c)/240)/(c-\theta)\). Set
+\[
+ q_1=t(c-\theta Z),\qquad q_3=-(320/3)q(c,Z).
+\]
+The signed-sum quartic is \(q_2^2=q_1q_3\). Each of the lines
+\(t=0\) and \(c-\theta Z=0\) cuts out twice a degree-two divisor.
+Their degree-two classes are distinct because a smooth plane quartic
+has no degree-two map to \(\mathbf P^1\). They therefore give a
+nontrivial étale double cover by adjoining a square root of
+\(q_1/(\delta Z^2)\), with \(\delta=\beta-\theta\). Every beta lift
+maps to that cover since \(t\) and \((c-\theta)/\delta\) are squares.
+The signs of the singleton centers can be chosen with \(t\ne0\).
+
+Write \(M_i\) for the symmetric matrix of \(q_i\). Bruin's determinant
+construction identifies the Prym with the Jacobian of the genus-two
+curve
+\[
+ Y^2=-\delta\det(M_1+2xM_2+x^2M_3).
+\]
+The formula uses the matrices of \(q_1/\delta,q_2,\delta q_3\) for the
+double cover and the substitution \(x\mapsto\delta x\). The checker
+verifies the twist identity and the squarefreeness of the quintic.
+[Bruin, Theorem 5.1](https://arxiv.org/abs/math/0408069)
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
