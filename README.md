@@ -109,6 +109,12 @@ only two Kummer classes compatible with a square center. The resulting
 genus-one covers are defined over a cubic field. One has certified rank
 upper bound one.
 
+[Propositions 24 and 25, §§5.50–5.51](PROOF.md#550-complete-exclusion-of-the-type-13-alpha-class)
+exclude the entire alpha class and the part of the beta class where
+the length-two center has 2-adic valuation at least two. Formal
+logarithms and exact local halves give Selmer obstructions at two.
+Only the beta class with center valuation one remains.
+
 Sections 5.37 and 5.39 combine software-assisted two-Selmer upper bounds
 with exact Kummer certificates to give ranks **3,3,4,2** for types
 **4,5,15,16**, respectively, and Sha[2]=0 for all four. The new type-4
