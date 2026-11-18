@@ -7256,8 +7256,7 @@ give three independent rational 2-torsion classes, so the rank is
 at most two in each case. At 37, all three curves have good reduction
 and the Type 11 restrictions permit only \(r\equiv0,8\). They give
 one Weierstrass residue disk and two non-Weierstrass disks on each
-curve. A proof of point completeness still requires information
-about the Mordell–Weil images in these disks.
+curve. Section 5.49 exhausts these disks on the second model.
 
 ### 5.48 Exact product rank and two cubic-field covers for type 13
 
@@ -7346,15 +7345,115 @@ The [exact checker](scripts/check_type13_product_covers.py) verifies the
 Kummer characters and the coordinate maps. The rational center values
 on both covers remain to be classified.
 
+### 5.49 Complete exclusion of type 11 by Chabauty at 37
+
+**Theorem 23 (software-assisted).** Type 11, `(2,(1,2),(1,2,2))`,
+has no valid distinct-entry shift lift at any rational height.
+
+By Proposition 21, each valid lift maps to the second genus-three
+model of Section 5.47. Write it as
+\[
+ C:\ Y^2=f(r)=r(r^2-11r-1)(7r^2-2r+18)(9r^2-69r-49).
+\]
+Its reduction at 37 is smooth. The parameter \(w\) is integral at 37
+and reduces to 0 or 4. Both values make \(4w-5\) a unit, so
+\(r=(47w-40)/(4w-5)\) is integral at 37 and reduces to 8 or 0,
+respectively. The only points of \(C(\mathbf F_{37})\) with those
+abscissas are \((0,0)\) and \((8,\pm20)\). The rational points
+\((0,0),(8,\pm1500)\) occupy these three disks.
+
+**Rank and logarithms.** The [two-descent certificate](scripts/check_type11_genus3_rank_bounds.m)
+gives \(\operatorname{rank}J(\mathbf Q)\le2\) for \(J=\operatorname{Jac}(C)\).
+Consider \(P=[(8,1500)-\infty]\) and the degree-three Mumford class
+\(D=(u,v)\) in the convention \(Y=v(r)\) on its support, with
+\[
+ u=r^3-\frac{51}{4}r^2+\frac{23}{4}r+8,\qquad
+ v=\frac{415}{8}r^2+\frac{785}{8}r+20.
+\]
+The polynomial \(u\) is squarefree, is coprime to \(f\), and divides
+\(f-v^2\). In particular this specifies a rational divisor class.
+
+Let \(\omega_j=r^j\,dr/(2Y)\) for \(0\le j\le2\). We use the corresponding
+coordinates of the abelian logarithm. The exact computation below gives
+\[
+ \frac{\log(58624P)}{37}\equiv(25,28,33),\qquad
+ \frac{\log(58624D)}{37}\equiv(3,30,12)\pmod{37}.
+\]
+The cross product reduces to \((12,21,0)\), so the two logarithms are
+independent. The rank is therefore two. Taking the cross product
+after dividing each logarithm by 37 gives coefficients
+\((\lambda_0,\lambda_1,\lambda_2)\in\mathbf Z_{37}^3\) reducing to
+\((12,21,0)\). Then \(\omega=\sum_j\lambda_j\omega_j\) annihilates
+\(\log J(\mathbf Q)\), since the span already has dimension two.
+
+For the computation, translate by a local class
+\(B=[Q_1+Q_2+Q_3-3\infty]\), with the abscissas \(a_i\) distinct
+modulo 37 and the ordinates reducing to units \(b_i\). Lift the ordinate
+at the exact abscissa \(a_i\) by Hensel's lemma. The
+[exact checker](scripts/check_type11_thirty_seven_adic.py) uses the
+following data. All Mumford coefficients are listed in descending
+degree modulo \(37^2=1369\).
+
+| Class \(R\) | \((a_i,b_i)\) for \(B\) | \(u\) of \(B+58624R\) | \(v\) of \(B+58624R\) |
+| --- | --- | --- | --- |
+| \(P\) | \((1,-7),(3,8),(6,3)\) | \((1,693,101,1129)\) | \((1324,576,276)\) |
+| \(D\) | \((1,7),(6,-3),(8,-17)\) | \((1,540,876,1173)\) | \((808,1113,417)\) |
+
+The checker keeps \(B+nR\) in a regular Mumford chart by replacing it
+with \(2(B+nR)-B\) and adding \(R\) when the next bit is one. For
+coprime supports it composes the ordinate polynomials by the Chinese
+remainder theorem. For doubling it lifts \(v\) to \(v+u h\) modulo
+\(u^2\), where
+\[
+ h\equiv \frac{f-v^2}{u}(2v)^{-1}\pmod u.
+\]
+Reduction uses the monic form of \((f-v^2)/u\) and the opposite
+ordinate. All inversions have unit pivots and the checker verifies
+the degrees needed for the reductions. These are the unit cases
+of Cantor arithmetic. [Cantor, 1987](https://www.ams.org/mcom/1987-48-177/S0025-5718-1987-0866101-0/S0025-5718-1987-0866101-0.pdf)
+
+In each row \(B+58624R\) reduces to \(B\). Its monic \(u\) has three
+simple roots \(a_i'\) reducing to \(a_i\), and \(v\) chooses the same
+ordinate signs as \(B\). Thus \(58624R=\sum_i[Q_i'-Q_i]\), with
+\(a_i'-a_i\equiv-u(a_i)/u'(a_i)\pmod{37^2}\). Integrating
+\(\omega_j\) from \(Q_i\) to \(Q_i'\) gives
+\((a_i'-a_i)a_i^j/(2b_i)\bmod 37^2\). The terms of order at least two
+in each primitive have valuation at least two. This gives the two
+displayed logarithms entirely from arithmetic modulo \(37^2\).
+
+**The three disks.** On either disk over \(r=8\), use \(r-8\)
+as a parameter. The reduction of the numerator of \(\omega\) at
+8 is \(12+21\cdot8=32\bmod37\), and \(2Y\) is a unit. At the disk over
+\(r=0\), use \(Y\) as the parameter and write
+\(dr/(2Y)=dY/f'(r)\). Since \(f'(0)=882\equiv31\bmod37\),
+the constant coefficient there is \(12/31\), also a unit.
+
+In these parameters the differential has integral coefficients.
+In all three disks its local primitive is injective.
+For two parameters \(t_1,t_2\in37\mathbf Z_{37}\), the linear term of
+the difference has valuation \(v_{37}(t_1-t_2)\). A term of degree
+\(k\ge2\) has valuation at least
+\(v_{37}(t_1-t_2)+k-1-v_{37}(k)\), which is strictly larger.
+For any two rational points in the same disk the integral between
+them vanishes, since their difference is in \(J(\mathbf Q)\).
+Hence the three known rational points exhaust these disks.
+
+**Back-substitution.** At \(r=0\) one has \(w=40/47\), so \(F_E=0\)
+and \(T=0\). A valid lift requires \(T\ne0\). At \(r=8\) one has \(w=0\),
+and \(c=F_C/(4D)=1/4\), so the B singleton repeats a centered A
+vertex. Together with the squareclass exclusion of Proposition 21,
+this proves the theorem. ∎
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
 of disjoint eleven-element integer sets and no general impossibility proof
 has been established. Section 5 gives a distinct-entry shift-lift reduction and
 normalized finiteness for all eighteen chain types (Theorem 14), and
-Sections 5.31, 5.40 and 5.42–5.46 exclude valid distinct-entry lifts in types
-10 (the older sixth mode), 16, 5, 15, 4, 2 and 14. The remaining eleven types' required
-rational-point sets and lifting conditions are not classified. Section 3
+Sections 5.31, 5.40, 5.42–5.46 and 5.49 exclude valid distinct-entry
+lifts in types 10 (the older sixth mode), 16, 5, 15, 4, 2, 14 and 11.
+The rational-point sets and lifting conditions for the other ten
+types remain to be classified. Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,
 or at least eight per side under symmetry. The remaining splitting and

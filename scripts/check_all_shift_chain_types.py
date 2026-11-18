@@ -328,6 +328,8 @@ for original,model,scale in [
     assert reduction.eval(0)==0
     assert int(reduction.eval(8))%37 in square_residues-{0}
 assert [(47*w0-40)*pow((4*w0-5)%37,-1,37)%37 for w0 in [0,4]]==[8,0]
+assert w11.subs(r11,0)==s.Rational(40,47) and fe.subs(w,w11.subs(r11,0))==0
+assert w11.subs(r11,8)==0 and param[C].subs(w,0)==s.Rational(1,4)
 print('Type 11: individual square functions and squareclass obstruction at 37 verified.')
 
 # Even plane quartic smoothness: every principal minor is nonzero.

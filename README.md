@@ -92,14 +92,16 @@ or GRH.
 excludes **type 14 at every rational height**. A certified rank-one bound
 and Chabauty at seven give exactly `∞` and `(9,±3240)` on its necessary
 genus-two curve. The finite value `b=9` makes the two sets coincide.
-Types 2, 4, 5, 10, 14, 15 and 16 are now completely excluded. Eleven
-chain types and the original size-eleven problem remain open.
 
-[Proposition 21, §5.47](PROOF.md#547-a-fixed-squareclass-for-type-11)
-fixes the type-11 denominator form `m^2+5mn-5n^2` to the squareclass
-`-5`, excluding the entire `-1` branch. Three genus-three covers
-have certified rank upper bound two. The same square conditions reduce
-each cover to three relevant residue disks at 37.
+[Theorem 23, §5.49](PROOF.md#549-complete-exclusion-of-type-11-by-chabauty-at-37)
+excludes **type 11 at every rational height**. The squareclass
+calculation leaves three relevant residue disks at 37 on a genus-three
+cover. Two independent divisor logarithms prove rank two for its
+Jacobian and give an annihilating differential that is a unit in all
+three disks.
+The three rational points there force a collision or a zero chain center.
+Types 2, 4, 5, 10, 11, 14, 15 and 16 are now completely excluded.
+Ten chain types and the original size-eleven problem remain open.
 
 [Proposition 22, §5.48](PROOF.md#548-exact-product-rank-and-two-cubic-field-covers-for-type-13)
 proves rank two for the type-13 product Jacobian and identifies the
@@ -182,6 +184,7 @@ Python 3 and the existing SymPy package suffice:
 
 ```sh
 python scripts/check_all_shift_chain_types.py
+python scripts/check_type11_thirty_seven_adic.py
 python scripts/check_type4_richelot_graph.py
 python scripts/check_type4_rank_three.py
 python scripts/check_sixth_mode_qc_roots13.py
