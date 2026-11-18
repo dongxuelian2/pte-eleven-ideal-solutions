@@ -1,17 +1,26 @@
 # Ideal Prouhet–Tarry–Escott Solutions of Size 11
 
-Ten of the eighteen normalized types in the symmetric shift construction
-are excluded at every rational height. For type 9, the three singleton roots
-give collinear points on a rank-one elliptic curve. Comparing their heights
-bounds their generator indices by 25. The only fiber with three distinct
-rational roots has overlapping chains. The associated genus-four curve of
-ordered roots has exactly nine rational points. Types 1, 3, 6, 7, 8, 12,
-17 and 18 remain open. [Theorem 28, §5.56](PROOF.md#556-complete-exclusion-of-type-9-by-the-heights-of-three-collinear-points)
+Eleven of the eighteen normalized types in the symmetric shift construction
+are excluded at every rational height. In type 3, two squareclass pairs
+survive local tests. A rank-zero elliptic curve eliminates one. For the
+other, elliptic Chabauty over the field of discriminant −15 leaves one
+finite parameter, which makes the two input sets share a vertex.
+[Theorem 30, §5.58](PROOF.md#558-complete-exclusion-of-type-3-by-elliptic-chabauty)
 
-For all eight open types, every finite set of primes admits simultaneous
-local lifts with a common rational center of unbounded height. This also
-holds for seven excluded types, including type 9.
-[Proposition 29, §5.57](PROOF.md#557-simultaneous-local-lifts-in-fifteen-types)
+Types 1, 6, 7, 8, 12, 17 and 18 remain open. Every valid type-17 lift
+would give an even multiple on a specified rank-one elliptic curve.
+The odd-multiple branch forces a collision. The even branch maps to a
+genus-three curve whose Jacobian has rank at most two.
+[Proposition 31, §5.59](PROOF.md#559-the-odd-multiple-branch-of-type-17)
+
+For type 9, comparing three collinear points on a rank-one elliptic curve
+determines all split fibers. The associated genus-four curve of ordered
+roots has exactly nine rational points.
+[Theorem 28, §5.56](PROOF.md#556-complete-exclusion-of-type-9-by-the-heights-of-three-collinear-points)
+
+For fifteen types, including every open type, each finite set of primes
+admits simultaneous local lifts with a common rational center of unbounded
+height. [Proposition 29, §5.57](PROOF.md#557-simultaneous-local-lifts-in-fifteen-types)
 
 In §5.32 all five nontrivial
 doubled B centers in type 18 have a common reduced denominator D, supported
