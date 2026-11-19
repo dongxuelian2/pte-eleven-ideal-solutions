@@ -12,7 +12,9 @@ def main():
     args.add_argument('library', type=Path, help='directory containing libpari.so')
     args.add_argument('build', type=Path, help='directory for generated source and binary')
     args.add_argument('--jobs', type=int, default=1)
+    args.add_argument('--type18', action='store_true', help='check the Type 18 vertex field')
     opts = args.parse_args()
+    bound = 85_000_000 if opts.type18 else 48_000_001
     opts.build.mkdir(parents=True, exist_ok=True)
     text = opts.source.read_text()
     header = 'bnftestprimes(GEN bnf, GEN BOUND)\n{'
@@ -30,19 +32,21 @@ def main():
     flags = ['cc', '-O3', '-ffunction-sections', '-fdata-sections']
     subprocess.run([*flags, '-I', opts.include, '-c', source, '-o', obj], check=True)
     worker = Path(__file__).with_name('cover_range.c')
+    if opts.type18:
+        flags.append('-DTYPE18')
     subprocess.run([*flags, '-I', opts.include.parent, worker, obj, '-Wl,--gc-sections',
                     '-L', opts.library, f'-Wl,-rpath,{opts.library.resolve()}',
                     '-lpari', '-lm', '-o', binary], check=True)
 
     def check(lo):
-        hi = min(48_000_001, lo+999_999)
+        hi = min(bound, lo+999_999)
         result = subprocess.run([binary, str(lo), str(hi)], text=True,
                                 capture_output=True, check=True)
         assert result.stdout.strip() == f'PASS {lo} {hi}'
         return hi
 
     with ThreadPoolExecutor(max_workers=opts.jobs) as pool:
-        for hi in pool.map(check, range(2, 48_000_002, 1_000_000)):
+        for hi in pool.map(check, range(2, bound+1, 1_000_000)):
             print(f'Certified through {hi}', flush=True)
 
 

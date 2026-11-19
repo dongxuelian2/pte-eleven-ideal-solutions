@@ -1,4 +1,4 @@
-"""Prove the norm bounds for the Type 8, 13 and 17 fields by prime counts and rational intervals."""
+"""Prove the norm bounds for the Type 8, 13, 17 and 18 fields by prime counts and rational intervals."""
 from argparse import ArgumentParser
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
@@ -82,6 +82,7 @@ def main():
     group = parser.add_mutually_exclusive_group()
     group.add_argument('--type8', action='store_true', help='verify the Type 8 ordered-pair field')
     group.add_argument('--type17', action='store_true', help='verify the totally real Type 17 field')
+    group.add_argument('--type18', action='store_true', help='verify the Type 18 vertex field')
     args = parser.parse_args()
     support = 2**22 if args.type8 else (2**20 if args.type17 else SUPPORT)
     block = 10_000_000
@@ -89,8 +90,8 @@ def main():
     def subtotal(lo):
         hi = min(support, lo+block-1)
         command = [args.counter.resolve(), str(lo), str(hi)]
-        if args.type8 or args.type17:
-            command.append('type8' if args.type8 else 'type17')
+        if args.type8 or args.type17 or args.type18:
+            command.append('type8' if args.type8 else ('type17' if args.type17 else 'type18'))
         result = subprocess.run(command,
                                 check=True, capture_output=True, text=True)
         return read_histogram(result.stdout.splitlines())
@@ -103,6 +104,8 @@ def main():
         prove(hist, support, 2**17, 5528109**5, 0)
     elif args.type17:
         prove(hist, support, support, 58160039859394517078535559761100800000, 12)
+    elif args.type18:
+        prove(hist, support, 85_000_000, 5**6 * 11**9 * 1231**5 * 2417**5, 12)
     else:
         prove(hist)
 

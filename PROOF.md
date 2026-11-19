@@ -987,7 +987,7 @@ necessary distinctness and disjointness conditions.
 
 These results concern lifting a symmetric ideal size-ten pair. Theorem 14
 in Section 5.32 proves normalized finiteness for all eighteen chain types,
-and Section 5.31 excludes the previously named sixth mode. No size-eleven
+and the exclusions through §5.76 eliminate all eighteen at every rational height. No size-eleven
 witness or general nonexistence theorem is established. The lifting
 mechanism and Faltings's theorem are standard; the explicit all-type
 reductions and their exceptional-branch analysis are given here.
@@ -5706,8 +5706,7 @@ equations has columns `(2j n_i (n_i²)^(j−1))_(j=1..4)`. Its determinant
 is a product of units and a Vandermonde determinant on four distinct
 squares. The lifted centers are distinct up to sign, and their
 negative valuations prevent collisions with the A centers. This
-classifies the positive local denominator valuations. The global
-existence of a noncolliding rational tuple remains open.
+classifies the positive local denominator valuations. Theorem 49 in §5.76 rules out a noncolliding rational tuple globally.
 
 **Certified lower bound.** In the [rigid-prime proof](TYPE18_RIGID_PRIMES.md),
 521 finite-field obstructions give the uniform lower bound
@@ -10170,8 +10169,7 @@ Put \(q(T)=H(T)/(T-r)\). From \(H(S_a)=U/S_a\) and \(H(a)=U_0/a\),
 both squares, one obtains \(W_a^2=q(a)q(S_a)\), and inversion gives
 the reciprocal curve as in §5.73. Isolating the seed vertex on any
 one of the five required classes would force \(U=U_0\), hence all
-five vertices to coincide with the seed configuration. Exhaustion of
-such a class remains open.
+five vertices to coincide with the seed configuration. Theorem 49 isolates the vertex labeled 25.
 
 
 **Lemma 48 (class groups for the elliptic descents).** For each of
@@ -10217,17 +10215,161 @@ formula applies to the second. ∎
 [Quadratic towers, unit bases and local norm characters](scripts/check_type18_pair_fields.gp)
 
 
+### 5.76 Complete exclusion of Type 18 and rigidity of a ten-term progression
+
+**Theorem 49.** Suppose five rational numbers \(y_i\) satisfy
+\[
+ \sum_{i=1}^5 y_i^{2j}=1^{2j}+3^{2j}+5^{2j}+7^{2j}+9^{2j},
+ \qquad 1\le j\le4.
+\]
+Then the multiset of their absolute values is \(\{1,3,5,7,9\}\).
+In particular Type 18 has no valid lift at any rational height.
+
+**Proof.** Put \(S_i=y_i^2\) and \(U=\prod_i S_i\). Newton's identities give
+\(\prod_i(X-S_i)=XH(X)-U\) with \(H\) from Proposition 47. The
+denominator argument of §5.32 for Type 18 uses just the four displayed
+equations. It gives odd numerators, a common odd denominator, and only
+primes congruent to one modulo ten in that denominator. In particular
+every \(S_i\equiv1\pmod8\). At the primes in Proposition 47 the
+quintic splitting into squares \(S_i=y_i^2\) has the
+five distinct seed residues. This test includes multiplicities. Hence
+no zero or repeated square can occur. The vertex descent in Proposition
+47 applies directly to these data, irrespective of any chain edges:
+the points on \(Y^2=XH(X)\) exist since \(S_i H(S_i)=U\) is square.
+There is exactly one vertex in the class of 25. Denote it by \(S\).
+
+Let \(K=\mathbf Q(h)\), where \(h^4-h^3-991h^2+13345h-19455=0\).
+Set
+\[
+ r=(-h^3-23h^2+585h+5002)/73,\quad k=25-r,\qquad
+ q(T)=H(T)/(T-r)=T^3+c_2T^2+c_1T+c_0.
+\]
+The ratio \((S-r)/k\) is square in \(K\), while \(H(S)=U/S\) is
+square in \(\mathbf Q\). Thus \(kq(S)\) is square in \(K\), giving
+a point \(P(S)=(kS,Y)\) on
+\[
+ E:\quad Y^2=X^3+k c_2 X^2+k^2 c_1 X+k^3 c_0.
+\]
+The seed gives \(P_0=(25k,189k)\), since \(H(25)=189^2\).
+
+**Rank over the quartic field.** The cubic \(q\) is irreducible over
+\(K\). Its root field is the degree-twelve ordered-pair field \(M\) for
+\(H\) in Lemma 48. Its signature is \((12,0)\) and its discriminant is
+\(5^6 11^9 1231^5 2417^5\). The unconditional explicit-formula
+inequality of §5.55 with support \(2^{31}\) and norm bound
+\(85{,}000{,}000\) has positive margin exceeding \(0.28\). For
+unramified primes above the square root of the support, only degree-one
+primes contribute. If Frobenius fixes \(m\) roots of the quartic it
+fixes \(m(m-1)\) ordered pairs. At the exceptional and small primes
+the certificate decomposes the prime in the maximal order. PARI reduces
+the prime ideals in the generating range to a factor base of norms at
+most 1000. Using this proven bound only for a field identified with
+\(M\), and Minkowski bounds elsewhere, gives
+\[
+ \operatorname{Cl}(M)\simeq\mathbf Z/2,\qquad
+ \dim_{\mathbf F_2}\operatorname{Sel}_2(E/K)=3.
+\]
+There is no rational two-torsion over \(K\) by irreducibility of \(q\).
+Divide \(P_0\) by two over \(K\) while possible. Its infinite order is
+also verified by the calculation of \(24P_0\) below. Modulo the resulting
+point class the Selmer group has dimension two. On representatives of
+a basis the Cassels–Tate pairing is \(1\in\mathbf F_2\). The fixed-quartic
+certificate also checks both Jacobians and everywhere local solubility. Consequently
+the image of the Selmer group in \(\Sha(E/K)[2]\) has dimension at
+least two, since the pairing is alternating and Mordell–Weil classes
+are in its radical. The Kummer exact sequence and \(P_0\) give
+\(\operatorname{rank}E(K)=1\).
+[Class-group and rank certificates](scripts/type18_descent/README.md)
+
+**The entire dyadic disk.** There is one place above 2, unramified of
+degree four. Write \(L=K_v\), use \(v(2)=1\), and denote reduction
+in \(\mathbf F_{16}\) by a bar. The displayed Weierstrass model is
+integral at this place and \(k\) is a unit. Exact multiplication over
+\(K\), followed by reduction, gives for \(T=24P_0\)
+\[
+ v(X(T))=-6,\qquad v(Y(T))=-9,\qquad
+ \overline{\frac{-X(T)}{8Y(T)}}=\bar h^3+\bar h
+      \notin\mathbf F_2 .
+\]
+For a point with formal parameter \(z=-X/Y\) of valuation at least
+two, the formal logarithm has the same valuation and leading residue
+as \(z\). Indeed its series is \(z+\sum_{i\ge2}b_i z^i/i\) with
+\(b_i\) integral, by integrality of the invariant differential.
+Thus a nonzero point at this formal depth has nonzero logarithm, and \(P_0\) has infinite order. The logarithm of every
+global point, extended from the finite-index formal subgroup by
+multiplication, lies on the \(\mathbf Q_2\)-line spanned by
+\(\log(T)\). Every nonzero element of this line has the displayed
+leading residue, because every dyadic rational unit reduces to one.
+[Exact formal parameter calculation](scripts/type18_descent/logarithm.gp)
+
+Suppose \(S\ne25\), and write \(j=v(S-25)\ge3\). Choose the sign of
+\(Y\) so that \(Y/(189k)\equiv1\pmod4\). This choice exists because
+\(q(S)/q(25)\in1+8\mathcal O_L\) has a square root in
+\(1+4\mathcal O_L\) by the binomial series. In subtracting \(P_0\)
+from \(P(S)\) the slope is
+\[
+ m=\frac{Y+189k}{k(S-25)},\qquad v(m)=1-j.
+\]
+The addition formula gives \(X(P(S)-P_0)/m^2\equiv1\pmod2\) and
+\(Y(P(S)-P_0)/(-m^3)\equiv1\pmod2\), since the original coordinates
+and the Weierstrass coefficients are integral. Thus its formal
+parameter has valuation \(j-1\) and the leading residue of \(1/m\).
+But
+\[
+ \frac{1/m}{2^{j-1}}
+   =\frac{(S-25)/2^j}{189}\,\frac{2(189k)}{Y+189k}
+   \equiv1\pmod2 .
+\]
+This contradicts the residue of every nonzero global logarithm.
+Hence \(S=25\). Substitution gives \(U=25H(25)=945^2\), whose
+quintic has exactly the five seed roots. ∎
+
+**Corollary 50.** A rational multiset of ten terms having the same
+first nine power sums as a nonconstant ten-term arithmetic progression
+equals that progression. Equivalently, for
+\(F(T)=\prod_{j=0}^{9}(T-j)\), the only \(c\in\mathbf Q\) for which
+\(F(T)-c\) splits completely over \(\mathbf Q\) is \(c=0\).
+
+**Proof.** Translate and scale the given progression to
+\(\{\pm1,\pm3,\pm5,\pm7,\pm9\}\). Newton's identities make the two
+monic degree-ten root polynomials differ by a constant. The polynomial
+of the second multiset is even, so its roots group into five opposite
+pairs with multiplicity, including pairs of zeros if necessary.
+Their first four even power sums give Theorem 49. The converse
+translation gives the assertion about \(F\). ∎
+
+**Corollary 51.** A symmetric distinct-entry ideal size-eleven pair
+cannot arise by one rational shift and cancellation from any two
+disjoint ten-element sets. Any disjoint, distinct-entry predecessor of
+such a target has at least twelve entries per side.
+
+**Proof.** For finite signed indicators write the output as
+\(\nu=(1-T_h)u\), with \(T_hu(x)=u(x-h)\). Reflection about the target
+center \(c\) gives \(R_c\nu=-\nu\). Since
+\(R_c T_h=T_{-h}R_c\), the two functions \(R_{c-h/2}u\) and \(u\)
+have the same finite difference and hence are equal by finite support.
+Both predecessor sets are separately symmetric about \(c-h/2\). Their
+moments agree through degree nine by taking moments of the finite
+difference. Newton's identities force at least ten entries on each side.
+Two disjoint sets separately symmetric about one center cannot both
+have odd cardinality. At cardinality ten, translation and scaling
+give exactly the eighteen types of §5.1. The earlier exclusions and
+Theorem 49 rule them all out. The next even cardinality is twelve. ∎
+[Inverse shifts, general integer targets and historical examples](SHIFT_LIFT_SCOPE.md)
+
+
 ## 6. Open boundary
 
 The original distinct-entry size-11 problem remains unsolved here: no pair
 of disjoint eleven-element integer sets and no general impossibility proof
 has been established. Section 5 gives a distinct-entry shift-lift reduction and
 normalized finiteness for all eighteen chain types (Theorem 14), and
-Sections 5.31, 5.40, 5.42–5.46, 5.49, 5.55, 5.56, 5.58, 5.60, 5.62, 5.65, 5.68, 5.71 and 5.74 exclude valid
+Sections 5.31, 5.40, 5.42–5.46, 5.49, 5.55, 5.56, 5.58, 5.60, 5.62, 5.65, 5.68, 5.71, 5.74 and 5.76 exclude valid
 distinct-entry lifts in types 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 (the older sixth mode),
-11, 12, 13, 14, 15, 16 and 17. The remaining type is 18.
-Section 3
-restricts symmetric distinct-entry constructions. Section 4 applies to
+11, 12, 13, 14, 15, 16, 17 and 18. Corollary 51 extends the single-shift exclusion to arbitrary distinct ten-element predecessors of symmetric targets.
+For arbitrary distinct integer size-eleven targets, [Theorem 52 and Corollary 53](SHIFT_LIFT_SCOPE.md#minimum-ordered-distance-forces-symmetry)
+give an ordered distance sum of at least 22, and at least 24 under symmetry.
+Section 3 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,
 or at least eight per side under symmetry. The remaining splitting and
 higher-genus torsion and rational splitting problems in Sections 4.5–4.10

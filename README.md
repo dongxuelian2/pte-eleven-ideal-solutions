@@ -1,7 +1,9 @@
 # Ideal Prouhet–Tarry–Escott Solutions of Size 11
 
-Seventeen of the eighteen normalized types in the symmetric shift construction
-are excluded at every rational height. Type 18 remains open.
+All eighteen normalized types in the symmetric single-shift construction are
+excluded at every rational height. Every distinct-entry predecessor of a
+symmetric ideal size-eleven target under this operation has at least twelve
+entries on each side. The unrestricted size-eleven problem remains open.
 
 In type 17, elliptic Chabauty excludes
 the odd multiples. On the even branch, two descents put every candidate on
@@ -36,10 +38,19 @@ The other two give rank-three elliptic curves over a quartic field.
 The logarithms at 2 and 131 isolate the collision parameter in each class.
 [Theorem 46, §5.74](PROOF.md#574-complete-exclusion-of-type-8)
 
-For type 18, two-cover descent fixes the discriminant class and assigns
-the five vertex squares to five distinct classes, each required exactly once.
-A single vertex equal to its seed value forces a collision of both sets.
-[Proposition 47, §5.75](PROOF.md#575-prescribed-two-cover-classes-of-type-18)
+For Type 18 the elliptic cover marked by 25 has unconditional rank one over
+a quartic field. Its dyadic logarithm forces the marked square to equal 25,
+which determines all five squares. This also gives a statement independent
+of the shift construction. A ten-term rational arithmetic progression is
+uniquely determined among rational ten-term multisets by its first nine
+power sums. [Theorem 49 and Corollaries 50–51](PROOF.md#576-complete-exclusion-of-type-18-and-rigidity-of-a-ten-term-progression).
+[Shift constructions in the literature and the inverse theorem](SHIFT_LIFT_SCOPE.md)
+
+For any distinct integer eleven-term ideal solution, the sum of the eleven
+distances between corresponding entries in increasing order is at least 22,
+and at least 24 for a symmetric solution. In general size, attaining the
+elementary lower bound forces the target to have standard PTE symmetry.
+[Theorem 52 and Corollary 53](SHIFT_LIFT_SCOPE.md#minimum-ordered-distance-forces-symmetry)
 
 In type 3, two squareclass pairs survive local tests. A rank-zero elliptic
 curve eliminates one. For the other, elliptic Chabauty over the field of
@@ -52,7 +63,7 @@ determines all split fibers. The associated genus-four curve of ordered
 roots has exactly nine rational points.
 [Theorem 28, §5.56](PROOF.md#556-complete-exclusion-of-type-9-by-the-heights-of-three-collinear-points)
 
-For fifteen types, including every open type, each finite set of primes
+For fifteen types, each finite set of primes
 admits simultaneous local lifts with a common rational center of unbounded
 height. [Proposition 29, §5.57](PROOF.md#557-simultaneous-local-lifts-in-fifteen-types)
 
@@ -60,7 +71,7 @@ In §5.32 all five nontrivial
 doubled B centers in type 18 have a common reduced denominator D, supported
 at primes `1 mod 10`. Each positive denominator valuation at those primes
 is locally possible. A [certificate of 521 rigid primes](TYPE18_RIGID_PRIMES.md)
-forces `D > 2.07 × 10^153`.
+gives the earlier lower bound `D > 2.07 × 10^153` for a hypothetical noncollision. Theorem 49 excludes all such denominators.
 
 The original target remains open: construct two disjoint sets of eleven
 distinct integers with equal power sums through degree ten, or prove that
