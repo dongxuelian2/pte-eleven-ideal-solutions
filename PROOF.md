@@ -9542,8 +9542,7 @@ All five representatives are collisions. For \((4,49/4)\) one has
 \(b=1\), so the two length-two chains share \(3/2\). For
 \((1,25/4)\) one has \(b=0\), making the reflected B chains
 coincide. The other representatives have \(c=1/4\) or \(9/4\).
-The other rational points of these five classes remain to be
-determined. ∎
+Sections 5.70–5.71 determine the points satisfying the necessary chain conditions in all five classes. ∎
 
 The square cover \(b=v^2\) has a rational branch point at
 \((1,25/4)\). Restriction to the zero line
@@ -9553,9 +9552,374 @@ The square cover \(b=v^2\) has a rational branch point at
 \]
 The other two finite branch points are defined over
 \(\mathbf Q(\sqrt{-5})\), and the three simple poles lie at infinity.
-Riemann–Hurwitz gives genus four. This model singles out the
-class with vanishing B center for a further descent.
+Riemann–Hurwitz gives genus four. The descent in §5.70 starts from the rational branch point.
 [Rank, division and reduction certificate](scripts/check_type7_classes.m)
+
+
+### 5.70 Descent from the rational branch point of type 7
+
+**Proposition 42.** In four of the five classes in Proposition 41, the
+square and splitting conditions for a type-7 chain force the collision
+representative. The remaining class is that of \((9,9/4)\).
+
+Write \(u=a-1\). The line \(a=1\) cuts the cubic in \((1,25/4)\) and
+twice the origin \((1,1/4)\). On the genus-four cover of §5.69, put
+\(t=b/u\). Then \(c=(25+(10-6t)u)/4\), and the cubic divided by
+\(72u\) reads
+\[
+ A u^2+B u+C=0,\qquad
+ A=45t^3-145t^2+135t-27,\quad
+ B=-8(45t^2-80t+21),\quad C=144(5t-2).
+\]
+Putting \(y=(2Au+B)/8\) gives
+\[
+ y^2=5F(t),\qquad F(t)=27t^3-79t^2+57t-9.
+\]
+The inverse recovers \(u\) generically, so this is an isomorphism
+of the smooth projective base curves. Its only pole of \(t\) is the
+origin. At the other point on \(a=1\), \(t=2/5\). The Weierstrass
+coordinates \((135t,135y)\) have coefficients
+\([0,-395,0,38475,-820125]\).
+
+For any other lift, \(t=d z^2\), where \(d\) is a positive squarefree
+divisor of 30. Indeed \(5F(t)<0\) for \(t\le0\). At a prime \(p>5\)
+a pole of \(t\) has even order by the cubic equation. At a zero of
+its reduction the leading and constant coefficients of the quadratic
+in \(u\) are units, so \(u\) is a unit and \(tu=b\) is square.
+To select \(d\), reduce the coset \(R_0+216E(\mathbf Q)\) at
+\(11,17,19,41\). At a pole the unit squareclass is 15 by the leading
+coefficient 135. At a zero use \(27u^2+168u+288=0\) and the
+squareclass of \(u\). The five cosets give the following results in the
+order of Proposition 41. For the additional disk tests in the last
+column impose all five square conditions of that proposition on every
+finite fiber. A vanishing leading coefficient is retained.
+
+| \((a,c)\) | \(t_0\) | \(d\) | Prime forcing \(t\equiv t_0\) |
+|---|---:|---:|---:|
+| \((1,1/4)\) | \(\infty\) | 15 | |
+| \((9,9/4)\) | 2 | 2 | 17 |
+| \((4,49/4)\) | \(1/3\) | 3 | 17, 83 |
+| \((4,1/4)\) | 3 | 3 | 61 |
+| \((1,25/4)\) | \(2/5\) | 10 | 389 |
+
+**Cubic-field elliptic covers.** Let \(e\) be a root of \(F\) and write
+\(F(t)=27(t-e)(t^2+g_1t+g_0)\). In \(K=\mathbf Q(e)\) the
+two-descent character on the monic base model is \(135(t-e)\).
+Every point in a fixed coset has the character of its representative
+because 216 is even. Thus \(t-e\) has class \(\delta=t_0-e\) for a
+finite representative and class 135 at the origin. Put \(k=135d\delta\).
+Multiplying the square conditions gives the elliptic lift
+\[
+ X=kt,\qquad Y^2=X(X^2+kg_1X+k^2g_0).
+\]
+In the five rows its ranks over \(K\) are respectively \(0,3,3,2,2\).
+The first curve has torsion of order two, with abscissas zero and
+infinity. Since \(5F(0)=-45\), only the origin remains.
+
+The primes 61 and 389 are inert in \(K\). For the corresponding
+rank-two curves take the two global points in the logarithm certificate.
+At the anchor the ordinate is a unit. If \(N\) is the local reduction
+group order, the coordinates of \(\log([N]P_i)/p\) modulo \(p\)
+are obtained from the formal parameter \(-X/Y\) modulo \(p^2\).
+The third row is the tangent \(k/(2Y_0)\). In the power basis of
+\(h^3-8h-2=0\), the determinants, up to sign, are 31 at 61 and
+216 at 389. Both reduction orders are prime to \(p\).
+The first two logarithms thus span the global logarithm space over
+\(\mathbf Q_p\), and the tangent lies outside it. There is a single
+place, so negating the lift chooses the branch through the global
+anchor. A linear form annihilating the first two rows and taking a
+unit value on the third gives a function with a unique zero on the
+whole disk. Indeed the invariant differential has integral coefficients
+in \(t-t_0\), since its denominator is a unit. After integration a term
+of degree \(j\ge2\) has valuation at least
+\(jv_p(t-t_0)-v_p(j)>v_p(t-t_0)\).
+
+**A second descent for the rank-three rows.** On
+\(C_d:y^2=5F(dz^2)\), the two-cover calculation gives four possible
+classes for \(d=2\) and eight for \(d=3\). For the rows with
+\(t_0=2,1/3\), write \(z_0=1,1/3\), respectively. At 17, the
+only admissible classes in the sextic algebra are represented by
+\(z_0-\theta\) and \(-z_0-\theta\), where \(F(d\theta^2)=0\).
+For a component of even degree test that the norm of the ratio is
+square. For the odd-degree components the square characters must agree,
+since the class is defined modulo a common rational scalar. The
+certificate tests every class returned by two-cover descent. Changing
+the global sign of \(z\) exchanges the two classes, so take
+\(z_0-\theta\). This is the two-cover map of Bruin and Stoll.
+[Two-cover descent on hyperelliptic curves](https://arxiv.org/abs/0803.2052)
+
+Put \(n^2=d/3\), \(s=nz\), and let \(r\) satisfy
+\(9r^3-5r^2-3r+1=0\). Use \(n=1\) for \(d=3\). The factorization
+\[
+ F(3s^2)=9(9s^3-5s^2-3s+1)P(s),\qquad P(s)=9s^3+5s^2-3s-1
+\]
+yields an elliptic quartic over \(L=\mathbf Q(r,n)\). In the chosen
+two-cover class the product of the four factors corresponding to
+\((s-r)P(s)\) has the squareclass of its value at \(s_0=nz_0\).
+Indeed the four factors form a Galois-stable subset over \(L\) and
+the common rational scalar occurs to the fourth power. With
+\(k=(s_0-r)P(s_0)\), \(m=kP(r)\) the lift and its Weierstrass
+coordinates are
+\[
+ q^2=k(s-r)P(s),\qquad X=m/(s-r),\quad Y=mq/(s-r)^2,
+\]
+\[
+ Y^2=X^3+kP'(r)X^2+km(27r+5)X+9km^2 .
+\]
+For \(d=3\) its rank is one. At 83 the selected class forces
+\(z\equiv1/3\): the component characters for the other sign disagree.
+All three places have degree one. Two lift signs agree, and the minors
+of the anchor logarithm and its slope for the three pairs of places
+are nonzero (in cyclic order, 67, 70, 22). The same integral estimate
+as above bounds each disk by the single anchor. This proves \(t=1/3\).
+
+Finally the pairs of quadratic roots \(u\) at \(t=1/3,3,2/5\)
+are \(\{3,-9/2\},\{3,13/6\},\{0,-760/167\}\). In each the second
+value makes \(1+u\) a nonsquare. This proves the proposition. ∎
+[Squareclasses and reduction](scripts/type7_descent/classes.m) ·
+[Unconditional ranks](scripts/type7_descent/covers.m) ·
+[Odd-prime logarithms](scripts/type7_descent/odd_logs.gp)
+
+### 5.71 Complete exclusion of type 7
+
+**Theorem 43.** Type 7 admits no valid distinct-entry chain at any
+rational height. In its remaining class the necessary chain conditions
+force \((a,c)=(9,9/4)\).
+
+We use the local divisibility criterion of Selmer-group Chabauty.
+Here the two-isogeny and a lift of one abscissa class determine the
+local information it requires.
+[Stoll, *Chabauty without the Mordell–Weil group*](https://arxiv.org/abs/1506.04286)
+
+**Global descent on the sextic cover.** Use the last quartic of §5.70
+with \(n^2=2/3\) and \(s_0=n\). Shift its abscissa by
+\(j=-m/(2r)\), writing \(x=X-j\). The point over \(s=-r\) is now
+\(T=(0,0)\), and the curve and its two-isogenous curve have models
+\[
+ E:y^2=x(x^2+A x+B),\qquad E':y'^2=x'(x'^2-2A x'+D),
+ \qquad D=A^2-4B .
+\]
+Here \(A=kP'(r)+3j\), \(B=3j^2+2jkP'(r)+km(27r+5)\).
+Write \(s_i\) for the four elements listed in the certificate, and
+\(s_* = s_2\). The global image under the abscissa character
+\(\alpha\) for \(E\) lies in \(\langle s_1,s_2,s_3,s_4\rangle\).
+The isogeny Selmer space for \(E'\) is exactly \(\langle D\rangle\).
+In particular a point of \(E(L)\) of trivial abscissa class belongs to
+\(2E(L)\): it lifts along the dual isogeny to \(E'(L)\), where the
+two possible classes are represented by the identity and the kernel
+point of the dual isogeny.
+
+Here are details of the finite computations. The field has model
+\(h^6-96h^4+144h^2-54=0\), class number one and one place above 2,
+of ramification index six. PARI certifies its class group and units.
+On each curve the abscissa class is unramified outside the primes
+dividing \(2BD\) (including denominator ideals). Form the squareclasses
+of units with these primes inverted and intersect with the local
+images at those primes and all real places. For the two local images
+at a finite prime \(v\), the dimensions sum to
+\(2+[L_v:\mathbf Q_2]\) above 2 and to 2 elsewhere. This follows by
+composing the two isogenies and using the order of the local group
+modulo doubling. The certificate finds local points until the paired
+images attain this dimension. At a real place the negative abscissas
+occur precisely when the model has a negative root and a nonempty
+interval of negative abscissas with positive cubic value. The two
+resulting dimensions are 4 and 1, giving rank at most three for the sextic cover. The certificate identifies the basis
+by testing squares in the number field. Locally at 2 the kernel on
+the four-dimensional space is exactly \(\langle s_*\rangle\).
+
+**Separating the two classes in this kernel.** Let
+\(e=(-A+\sqrt D)/2\). A global point of nonzero abscissa in the
+class \(s_*\) can be written \(x=s_*u^2,\ y=s_*uv\), with
+\(v^2=s_*u^4+A u^2+B/s_*\). Choose the global point \((U,V,1)\)
+on \(s_*U^2+AUV+(B/s_*)V^2=1\) specified in the certificate.
+Put \(\gamma=s_*U-eV\). The norm of \((x-e)/\gamma\) is \(v^2\).
+Hilbert 90, or the identity \((w+v)^2/w=\operatorname{Tr}(w)+2v\)
+when \(w\bar w=v^2\), shows that
+\[
+ x-e=\lambda\gamma\cdot\text{square in }L(\sqrt D),
+ \qquad \lambda\in L^\times .
+\]
+Where the tangent value is nonzero, its squareclass in the quadratic
+extension is that of \(\lambda\):
+\[
+ \mathcal L(u,v)=(2s_*U+AV)u^2+AU+2BV/s_*-2v.
+\]
+In a fixed local abscissa class the possible \(\lambda\)'s form one
+coset of the local abscissa image of \(E'\). Indeed the second
+two-descent character is \(x-e\). On the image of \(E'\) under the
+dual isogeny it has class \(x'\), by the identity
+\(x(\widehat\phi(P'))-e=(x'-\sqrt D)^2/(4x')\).
+The kernel of squareclass extension is generated by \(D\), itself an
+abscissa class of \(E'\). These identities also describe the characters
+at the exceptional points by continuation of the usual descent map.
+
+The certificate exhibits one element \(\kappa\) in every required local
+coset. It evaluates \(\mathcal L\) on a local quartic point and tests
+membership of \(\kappa\mathcal L\) in the local image of \(E'\).
+At untested odd places the curves have good reduction, the coefficients
+of the model are integral, and \(s_*,D,\kappa\) and \(N(\gamma)=s_*\) are units.
+The conic point is integral there: the minimum valuation of its tangent
+coefficients is zero and the conic matrix is invertible. Thus the
+second character and \(\gamma\) are unramified and the local image on
+\(E'\) consists of both unramified classes. The finite test includes
+the support of the fractional ideal generated by the tangent coefficients.
+The real signs are tested by exact number-field signs. Consequently the
+global ratio \(\lambda/\kappa\) is in the dual Selmer space
+\(\langle D\rangle\). Every global point in this class satisfies
+\(x-e=\kappa\gamma\cdot\mathrm{square}\) in the quadratic extension.
+
+Write \(M=L_v\) at the unique dyadic place, with valuation \(v(2)=6\).
+Here \(s_*\) is square but \(\kappa\gamma\) is nonsquare in
+\(M(\sqrt D)\). Both \(\kappa(2s_*U+AV\pm2\sqrt{s_*})\) are
+nonsquares in \(M\), the trace-and-norm criterion for this assertion.
+Hence \(E(L)\cap2E(M)=2E(L)\). The local two-torsion consists of
+\(0,T\) because \(D\) is nonsquare. Since \(B=\alpha(T)\) is
+nonsquare, \(T\) has no local half. On quotienting by \(\langle
+T\rangle\), the local group has no two-torsion and the global subgroup
+still has the same divisibility property. It applies repeatedly.
+
+**The whole dyadic disk.** On the minimal rational base model the
+component group at 2 has order 3 and its nonsingular reduction
+has order 2 (additive reduction). The third formal subgroup has index
+24, so contains \(216E_{\rm base}(\mathbf Q_2)\).
+At the representative \((138,\pm675)\) the first abscissa derivative
+in the formal group parameter is \(\pm1350\), and higher coefficients
+are integral. As the minimal abscissa is \(135t-132\), this yields
+\(t\equiv2\pmod {16}\), hence \(z\equiv\pm1\pmod4\).
+For \(z\equiv-1\) the unit \((nz-r)P(nz)/k\) has the nonsquare
+class of its value at \(-1\): changing \(z\) by a multiple of four
+changes this unit by an element of valuation at least 15. Thus
+\(z=1+4\xi\) with \(\xi\in\mathbf Z_2\).
+
+Choose the sign of the lift so that \(q\) is on the branch through
+\(q(n)=k\). Write \(H(\xi)=P(1+4\xi)-P(1)\) for the difference of the
+elliptic lifts, using \(P(z)\) here for the point. For \(\xi\ne0\)
+its formal parameter has valuation \(9+v(\xi)\). Indeed the
+abscissa difference before subtraction has valuation \(25+v(\xi)\)
+and the ordinate sum has valuation 16 by the quartic formulas. The
+chord slope therefore has valuation \(-9-v(\xi)\).
+On the seventh formal subgroup the logarithm and exponential give
+inverse isometries with \(\mathfrak p^7\) for the displayed integral
+model, since \(7>v(2)\). In particular \(\mathfrak p^{19}\) maps into
+four times this subgroup.
+
+Set \(g(X)=(n+4nX-r)P(n+4nX)/k\). Its constant is 1 and the higher
+coefficients have valuations \(17,32,47,60\). Pulling back
+\(dx/(2y)\) gives
+\[
+ \log H(\xi)=-\frac{2n}{k}\int_0^\xi g(X)^{-1/2}\,dX .
+\]
+Its linear and quadratic coefficients have valuations 9 and 14.
+All coefficients of higher degree have valuation at least 19. For
+degrees 3 through 12 the valuations are
+\(25,24,35,40,51,44,55,60,71,70\). For degree \(i+1\), \(i\ge12\),
+the binomial expansion gives the lower bound \(9+3i-6v_2(i+1)\):
+a degree-\(i\) product contributes at least \(15i\), and its binomial
+denominator costs at most \(12i\). This bound is at least 19 and tends
+to infinity.
+
+Write \(\xi=2^j u\) with \(u\) an odd dyadic unit. Modulo
+\(\mathfrak p^{19}\), \(2^{-j}\log H(\xi)\) equals
+\(u\log H(1)\) for \(j=0\) and \(u\log H(2)/2\) for \(j\ge1\).
+For odd \(u\) the quadratic difference has the extra factor \(u^2-u\);
+for \(j\ge1\) the normalized quadratic term already has valuation at
+least 20. Modulo four times the local group, \(u\) can be replaced by
+an odd integer in its residue class modulo four.
+
+It remains to check two points. Modulo \(T\), \(H(1)\) admits one
+successive local halving and \(H(2)\) admits two. In both cases choose
+the final representative \(R\) modulo \(T\) having square abscissa.
+Neither \(R\) nor \(R+T\) has a local half. Moreover both
+\(\kappa\mathcal L(u,v)\) and \(D\kappa\mathcal L(u,v)\) for this
+representative are nonsquare, using \(u^2=x(R)/s_*\). Thus its class
+modulo doubling cannot come from a global point. Only the global
+abscissa classes 1 and \(s_*\) could give its local abscissa;
+the first would be globally divisible, and the second fails the
+tangent test. Translation by \(T\) preserves the image of the global
+subgroup. The certificate checks halving by extracting square roots
+of \(x\) and \(2x+A-2y/\sqrt x\), trying both signs, and checks the
+precision of each square test. By the logarithm congruence every
+\(H(\xi)\) with \(\xi\ne0\) has this same obstruction after division
+modulo \(T\): division is unique there and multiplication by an odd
+integer acts trivially modulo two. Global divisibility proved above
+would require the primitive class to be global. Hence \(\xi=0\).
+
+This forces \(t=2\). The quadratic gives \(u=a-1=8\) or \(144/23\).
+The latter makes \(a=167/23\) a nonsquare. The former gives
+\((a,c)=(9,9/4)\), a collision by §5.32. Proposition 42 treats the
+other four classes. ∎
+[Global isogeny and affine descent](scripts/type7_descent/sextic.gp) ·
+[Dyadic arithmetic and power-series coefficients](scripts/type7_descent/dyadic.m)
+
+
+### 5.72 The product covers and three two-cover classes of type 8
+
+**Proposition 44.** Let \(b=v^2\) be the squared B center in a valid
+type-8 chain. Every odd prime in the reduced denominator of \(v\) is
+1 modulo 20, and \(v_2(v)\ge-1\). Put
+\[
+ G(b)=5(256b^4-1152b^3+1824b^2-388b+405).
+\]
+The curve \(Y^2=G(b)\) has rational rank five, and the Jacobian of
+\(C:Y^2=bG(b)\) has rational rank four. In the two-cover descent on
+\(C\), each valid chain belongs to the class represented by
+\(b_0-\theta\) for one of \(b_0=1/4,9/4,25/4\), where
+\(\theta G(\theta)=0\) in the associated étale algebra.
+
+**Proof.** For the B polynomial put
+\(B_v(X)=\prod_{j=-2}^2(X-(v+j)^2)\). The singleton polynomial of
+§5.32 satisfies
+\[
+ (X-1/4)K_b(X)=B_v(X)-B_v(1/4),\qquad 256K_b(0)=G(b).
+\]
+All four roots of \(K_b\) are rational squares. Their product gives
+the quartic model; multiplication by the square \(b\) gives the
+genus-two model. A vanishing B center already repeats vertices.
+
+Suppose \(p\) is an odd denominator prime, or \(p=2\) and
+\(v_2(v)<-1\). After substituting \(X=bU\), the monic quartic
+\(K_b(bU)/b^4\) is integral locally. Its four roots are integral
+squares. The five normalized B vertices have square tending to 1
+modulo \(p\), and the normalized central A square is zero modulo
+\(p\). The reduction is therefore \(((U-1)^5+1)/U\). At 2 this
+polynomial has no linear root. At 5 it is \(U^4\); all four roots
+would be divisible by 5, while the constant term \(G(b)/(256b^4)\)
+has valuation exactly one. At every other odd prime the four roots
+are \(1-\zeta^i\), for \(1\le i\le4\) and a primitive fifth root of
+unity \(\zeta\). Splitting requires \(5\mid p-1\). The ratio
+\((1-\zeta^{-1})/(1-\zeta)=-\zeta^{-1}\) is square, and \(\zeta\)
+is square because its order is odd. Thus \(-1\) is square as well,
+giving \(p\equiv1\pmod {20}\).
+
+The quartic with the point over \(b=1/4\) has minimal model
+\(y^2=x^3-105150x+7613125\), with both rank bounds equal to five.
+For the genus-two Jacobian the rank upper bound is four and the
+rational torsion has order two. The points over
+\(1/4,3/4,9/4,4,25/4\), based at the rational point at infinity,
+give five independent images under the two-descent map. This proves
+the matching rank lower bound.
+
+Two-cover descent gives seven possible classes on \(C\). At
+\(13,17,19,43\) the denominator result ensures an affine reduction.
+Enumerate the square residues \(b\) for which \(K_b\) splits into
+squares. In each unramified factor of the descent algebra compare
+the component norm of \(b-\theta\) with that of the representative,
+allowing a common scalar as in §5.70. A factor where \(b-\theta\)
+vanishes is omitted from the test. The successive numbers of classes
+are 6, 5, 4 and 3, and the last three are precisely the stated ones.
+All three representatives are collisions by their explicit chain
+vertices. ∎
+[Product, ranks and two-cover certificate](scripts/check_type8_product.m)
+
+These classes give three explicit elliptic covers over the quartic
+field \(K=\mathbf Q(\rho)\), \(G(\rho)=0\). Write
+\(q(T)=G(T)/(1280(T-\rho))\). In the two-cover test the component at
+zero is \(b\); since both \(b\) and \(b_0\) are nonzero squares, the
+common rational scalar is square. Hence \((b-\rho)/(b_0-\rho)\)
+is square over \(K\). As \(G(b)\) and \(G(b_0)\) are also squares,
+the corresponding elliptic equation is \(W^2=q(b_0)q(b)\).
+Determining the other rational parameters in these three classes
+remains open.
 
 
 ## 6. Open boundary
@@ -9564,9 +9928,9 @@ The original distinct-entry size-11 problem remains unsolved here: no pair
 of disjoint eleven-element integer sets and no general impossibility proof
 has been established. Section 5 gives a distinct-entry shift-lift reduction and
 normalized finiteness for all eighteen chain types (Theorem 14), and
-Sections 5.31, 5.40, 5.42–5.46, 5.49, 5.55, 5.56, 5.58, 5.60, 5.62, 5.65 and 5.68 exclude valid
-distinct-entry lifts in types 1, 2, 3, 4, 5, 6, 9, 10 (the older sixth mode),
-11, 12, 13, 14, 15, 16 and 17. The remaining types are 7, 8 and 18.
+Sections 5.31, 5.40, 5.42–5.46, 5.49, 5.55, 5.56, 5.58, 5.60, 5.62, 5.65, 5.68 and 5.71 exclude valid
+distinct-entry lifts in types 1, 2, 3, 4, 5, 6, 7, 9, 10 (the older sixth mode),
+11, 12, 13, 14, 15, 16 and 17. The remaining types are 8 and 18.
 Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,

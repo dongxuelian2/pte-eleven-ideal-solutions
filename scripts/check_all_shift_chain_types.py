@@ -105,6 +105,12 @@ h8=26214400*b**10-904396800*b**9+13285785600*b**8-130282291200*b**7+102614749184
 eq(s.discriminant(K,x),5*(4*b-1)**2*h8/2**24)
 central_collision(1,5,Q(1,2))
 curve(8,5*h8,b,10,4)
+product8=5*(256*b**4-1152*b**3+1824*b**2-388*b+405)
+eq(256*K.subs(x,0),product8)
+v8=s.symbols('v8')
+B8=s.prod(x-(v8+j)**2 for j in range(-2,3))
+eq((x-Q(1,4))*K.subs(b,v8**2), B8-B8.subs(x,Q(1,4)))
+
 
 # Types 12 and 13.
 p=[None]+[moment(4,k,b)+c**k-central(2,k) for k in range(1,5)]
@@ -243,6 +249,16 @@ for typ,right,H in [(6,lambda k:B**k+moment(4,k,C),H6),(7,lambda k:moment(2,k,B)
         # The linear subresultant recovers b off the exceptional fibers.
         br=(10*A-4*C+15)/6
         assert s.expand(H.subs(A,(4*C-15)/10)+27*(4*C-25)*(144*C**2+440*C+1225)/125)==0
+        u7,t7=s.symbols('u7 t7')
+        a7=45*t7**3-145*t7**2+135*t7-27
+        b7=-8*(45*t7**2-80*t7+21)
+        c7=144*(5*t7-2)
+        f7=27*t7**3-79*t7**2+57*t7-9
+        assert s.expand(H.subs({A:1+u7,C:(25+(10-6*t7)*u7)/4})
+                        -72*u7*(a7*u7**2+b7*u7+c7))==0
+        assert s.expand(b7**2-4*a7*c7-320*f7)==0
+        assert s.expand(f7.subs(t7,3*u7**2)
+                        -9*(9*u7**3-5*u7**2-3*u7+1)*(9*u7**3+5*u7**2-3*u7-1))==0
         linear=s.Poly(s.subresultants(*eq,B)[-2],B)
         leading=s.rem(linear.nth(1),H,A)
         assert s.rem(linear.nth(0)+leading*br,H,A)==0
