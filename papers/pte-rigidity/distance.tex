@@ -1,0 +1,30 @@
+\section{The ordered distance of an ideal pair}\label{sec:distance}
+Let \(P,Q\) be the monic root polynomials of an ideal pair of size \(n\ge2\) with distinct integer entries. Since \(P-Q\) is a nonzero constant, their derivatives coincide. Rolle's theorem puts the \(n-1\) roots of \(P'=Q'\) strictly between consecutive roots of each polynomial. Each of the resulting \(n\) open intervals of monotonicity contains exactly one \(a_i\) and one \(b_i\). The order of \(a_i,b_i\) reverses in successive intervals because the sense of monotonicity reverses and the two polynomials differ by a fixed constant. This is the interlacing property of ideal pairs \cite[Theorem~2.1.3]{caley}.
+
+The unit-step inverse \(u\) from Proposition~\ref{prop:inverse} is therefore supported on \(n\) successive blocks of alternating sign. The \(i\)th block starts at \(\min(a_i,b_i)\) and ends just before \(\max(a_i,b_i)\). Between successive blocks there is at least one unused integer. Each sign occurs at \(L/2\) places by the degree-one moment of the target. The two supports have equal moments through degree \(n-2\). Newton's identities require \(L/2\ge n-1\).
+
+\begin{proposition}\label{prop:equality}
+If \(L=2(n-1)\), the two supports of \(u\) are preserved separately by a common reflection for \(n\) odd and exchanged by a common reflection for \(n\) even.
+\end{proposition}
+\begin{proof}
+At equality the inverse is itself an ideal pair of size \(n-1\). Its cumulative signed count stays between \(-1\) and \(1\) by the same interlacing argument (also immediate at size one). Every interior block has at most two entries and the first and last have at most one each. These upper bounds sum to \(2(n-1)\), so each is attained. Translate the first singleton to zero, choose its sign positive and let \(D\) be the last singleton. Let \(U,V\) be the monic polynomials whose roots are the starting integers of the positive and negative interior doubletons, respectively. Set \(R=V/U\) and note that \(U,V\) are coprime.
+
+Suppose first that \(n=2m+1\). Both endpoints are positive, \(\deg U=m-1\) and \(\deg V=m\). The two root polynomials of the inverse are
+\[
+ x(x-D)U(x)U(x-1),\qquad V(x)V(x-1).
+\]
+Their constant difference gives \(R(x)R(x-1)=x(x-D)+O(x^{-2m+2})\) in Laurent series at infinity. Write \(R^*(x)=-R(D-1-x)\). Its product satisfies the same estimate on substituting \(D-x\) for \(x\). Both functions start with \(x\). A nonzero difference \(R-R^*\) with leading term \(c x^e\) has \(e\ge-2m+2\) by its denominator degree. The leading term of the difference of products would then be \(2c x^{e+1}\), impossible by the common estimate. Thus \(R=R^*\), and the zeros and poles of \(R\) are each invariant under \(s\mapsto D-1-s\). The map \(t\mapsto D-t\) preserves both colors of entries, including the singletons.
+
+Suppose instead \(n=2m\). The last singleton is negative and \(\deg U=\deg V=m-1\). The root polynomials are \(xU(x)U(x-1)\) and \((x-D)V(x)V(x-1)\), giving
+\[
+ R(x)R(x-1)=\frac{x}{x-D}+O(x^{-2m+1}).
+\]
+Now \(R^*(x)=1/R(D-1-x)\) satisfies the same estimate by reflection and inversion of a unit series. For \(m=1\) we have \(U=V=1\) and the two singletons are exchanged directly. For larger \(m\) both functions start with one. If their difference began with \(cx^e\ne0\), again \(e\ge-2m+2\), whereas the product difference would start with \(2cx^e\), a contradiction. Thus reflection exchanges the zeros and poles of \(R\). It exchanges the two colors of entries, including the endpoints.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:distance}]
+Taking the unit difference reverses the reflection sign in Proposition~\ref{prop:equality} and moves the center from \(D/2\) to \((D+1)/2\). Thus equality forces the asserted target symmetry. The distance is even, so a nonsymmetric pair has \(L\ge2n\).
+
+For \(n=11\), equality \(L=20\) would give an ideal precursor of size ten. Its blocks consist of two positive singletons at the ends, four positive doubletons and five negative doubletons. The common reflection fixes one negative doubleton and pairs all the other blocks with equal lengths and colors. Exchanging colors to put the central doubleton first gives Type~5 in Table~\ref{tab:parts}. Its exclusion alone rules out \(L=20\). Hence \(L\ge22\). For every symmetric size-eleven target the inverse has even cardinality on each side by Proposition~\ref{prop:inverse}; consequently \(4\mid L\) and \(L\ge24\).
+\end{proof}
+If the entries all lie on a translate of \(d\Z\) with \(d>0\), translating and rescaling shows that the corresponding lower bounds are multiplied by \(d\). Wright's size-four example in the introduction attains \(2(n-1)=6\); the argument makes no sharpness assertion in size eleven.

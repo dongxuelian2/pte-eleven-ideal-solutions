@@ -1,0 +1,825 @@
+\section{The sixteen remaining chain models}\label{app:cases}
+
+We record the models, exceptional parameters and completeness arguments for
+Types~1--9 and 11--17. The notation $(m,\mathcal A,\mathcal B)$ means that
+$A$ has the central chain of length $2m$, and its other chains occur in
+reflected pairs with lengths in $\mathcal A$; the reflected chain pairs
+of $B$ have lengths in $\mathcal B$. All shifts have length one. A lower-case
+center parameter denotes the square of a rational center. We use the moment polynomials from \eqref{eq:chains}.
+For three singleton squares whose first power sums are $p_1,p_2,p_3$,
+we always use the exact monic polynomial
+\[
+ K(X)=X^3-p_1X^2+\frac{p_1^2-p_2}{2}X
+       -\frac{p_1^3-3p_1p_2+2p_3}{6}.
+\]
+Thus statements that this polynomial splits into squares include the
+individual center conditions. A finite-field test throughout this appendix
+retains repeated roots and every possible pole chart unless a stated
+valuation argument excludes that chart. An overlap, a zero reflected center,
+or a repeated singleton invalidates the proposed input.
+
+For Types~1, 9, 14 and 17, let $a=u^2$ be the noncentral $A$ center
+square, $b=v^2$ the $B$ doubleton center square, and set
+\[
+ p_k=C_m(k)+M_{5-m}(k,a)-M_2(k,b).
+\]
+The necessary noncollision branches for $m=1,2,3,4$ are respectively
+\[
+ a=5b+4,\quad a=(10b+9)/4,\quad a=(5b+3)/3,\quad a=(5b+1)/4.
+\]
+Every other factor of the fourth Newton residual forces an overlap.
+The factors $b=0$ give coincident reflected chains. The polynomial identities,
+including every discarded factor, are checked in
+\cert{check_shift_chains.py} and \cert{check_all_shift_chain_types.py}.
+
+\subsection{Type 1}\label{app:type1}
+\noindent\emph{Arithmetic details in Section~\ref{detail:type1}.}\enspace
+Here $(m,\mathcal A,\mathcal B)=(1,(4),(1,1,1,2))$ and $a=5b+4$.
+The three singleton squares are the roots of $K$ above. Their product gives
+a point on an elliptic curve with minimal coefficients
+$[1,0,0,-51865,3207225]$. Its rational group is torsion-free of rank four.
+The reductions of the full group modulo doubling at $7,67,73,107,257$,
+with both integral and pole tests, leave two classes represented by $b_0=0,1$.
+At 73 these classes require $b\equiv b_0$. This is a restriction to global
+parity classes, rather than a bound on the height of $b$.
+
+The root-field character turns each class into a cover over
+$K=\mathbf Q(w)$, where $w^3-w^2-330w-149578=0$ and
+$r=(-w^2+20w-5426)/7168$. For $d=5(b_0-r)$ the exact model is
+\[
+ E_d:Y^2=X(X-dr)(X+4d/5),\qquad X=db.
+\]
+It has full two-torsion. A split two-descent and two nondegenerate
+four-dimensional Cassels pairing minors give rank bounds two and one for
+$b_0=0,1$, respectively. In the second case the seed is non-torsion.
+For the three embeddings at 73 the primitive logarithm and parameter tangent
+are
+\[
+ L=(30,34,22),\qquad V=(55,61,36),\qquad
+ (L_iV_j-L_jV_i)_{i<j}=(33,16,28).
+\]
+At least two of the three signs agree. The corresponding logarithmic
+linear combination has a unit derivative, so its only zero in the entire
+disk is $b=1$. The doubleton then shares a vertex $1/2$ with the central
+chain.
+
+For $b_0=0$ write $b=v^2$. The center square $5b+4$ and the local character
+force $v_2(v)\geq3$ if $v\ne0$. Use the sextic
+\[
+ h(B)=-800B^6+2625B^5-12050B^4+529B^3+54448B^2+53744B+14400.
+\]
+The singleton discriminant gives $h(b)$ square. In $F=\mathbf Q(\theta)$,
+$h(\theta)=0$, the class of $1-b/\theta$ belongs to the norm-square
+$S$-unit space with
+$S=\{2,3,5,23,41,2111,11801,144461\}$. The local conditions at these
+primes, at 73 and at the real places force this class to be trivial.
+A second division at the two dyadic places then excludes the primitive
+logarithm direction forced by every nonzero $v$. The computation uses a
+certified class group of discriminant $14755078257381100$, complete local
+squareclass bases and a four-cover linear system. Thus the only parameter
+in this disk is $v=0$, which repeats reflected chains. The odd-prime
+linear term estimates and the dyadic primitive direction estimates apply
+to the whole corresponding disk.
+The group, parity, pairing and local calculations are given in
+\cert{check_type1_parity.m}, \cert{type1_descent/verify.gp},
+\cert{type1_descent/tangents.gp}, \cert{type1_descent/disk73.m},
+\cert{type1_descent/sextic.gp}, \cert{type1_descent/sextic_logs.m} and
+\cert{type1_descent/sextic_four.gp}.
+
+\subsection{Type 2}\label{app:type2}
+\noindent\emph{Arithmetic details in Section~\ref{detail:type2}.}\enspace
+The type is $(1,(1,3),(1,1,3))$. If $u,v$ are the length-three
+centers on the two sides, the noncollision factor of the moment equations is
+\[
+ 8u^4-40u^2v^2-58u^2+80v^4+50v^2+95=0.
+\]
+Put $y=8u^2-20v^2-29$. This gives
+\[
+ y^2=-240v^4+760v^2+81.
+\]
+For $v\ne0$, the substitution
+$X=9(y+9)/(8v^2)+95/2$, $Y=9X/(2v)$ identifies its smooth projective
+model with $E:Y^2=X^3-95X^2+2560X$. The two exceptional points
+$(0,\pm9)$ give the identity and $(0,0)$. The two-isogenous curve is
+$Y^2=X^3+190X^2-1215X$. For an isogeny descent class $d$, a point
+requires a primitive integral solution of
+\[
+ w^2=du^4+Au^2v^2+(B/d)v^4.
+\]
+On $E$ the only possible classes are $1,2,5,10$ by positivity; 2 and 5
+are excluded modulo 3. On the dual curve, among $\pm1,\pm3,\pm5,\pm15$,
+all except 1 and $-15$ are excluded in the primitive charts modulo
+16 or 128. Both descent images therefore have order two and the rank is
+zero. Good reduction at 7 and 11 bounds torsion by ten, and the ten points
+\[
+ O,(0,0),(16,\pm144),(40,\pm120),(64,\pm192),(160,\pm1440)
+\]
+attain this bound. The complete quartic list is
+$(v,y)=(0,\pm9),(\pm1/2,\pm16),(\pm3/2,\pm24)$.
+At $v=0$ the value of $u^2$ is $19/4$ or $5/2$; neither is square.
+At the other values the $B$ tripleton meets the central $A$ chain.
+There is no rational point at infinity since $-240$ is nonsquare.
+The elementary residue tables and every substitution are certified by
+\cert{check_type2_exclusion.py}; \cert{check_type2_exclusion.m} gives
+an additional arithmetic check.
+
+\subsection{Type 3}\label{app:type3}
+\noindent\emph{Arithmetic details in Section~\ref{app:type3-details}.}\enspace
+The type is $(1,(1,3),(1,2,2))$. Let $a,b$ be the singleton and
+tripleton center squares on $A$, $c$ the $B$ singleton square, and
+$S,T$ the sum and product of its doubleton squares. Moment elimination gives
+\[
+ 1024b^2-1520bc+636b+640c^2-1860c+2025=0,
+ \qquad S=(20b-8c+27)/6.
+\]
+To justify division in the second equality, the exceptional resultant is
+\[
+ (4c-25)(4c-9)(4c-1)^4
+ (80c^2-280c+281)(144c^2-616c+3025)(144c^2-328c+4489).
+\]
+The three quadratics have negative discriminant. The constant possibilities
+$c=1/4,9/4,25/4$ force overlaps or nonsquare $b$.
+Set $w=(b-25/4)/(c-25/4)$ and $z=(w-16)/(w-1)$.
+The direction $w=1$ gives $T=0$, and $c=25/4$ was already treated.
+With
+\[
+\begin{aligned}
+ L&=z^2-57z+1656,& A&=49z^2-393z+39744,\\
+ B&=9z^2+487z+14904,& C&=9z^2+247z+39744,\\
+ V&=2z^2-14z+1587,
+\end{aligned}
+\]
+one has $(a,b,c)=(A,B,C)/(4L)$ and $T=300zV/L^2$.
+Positivity gives $z>0$. The individual square conditions and the
+resultant support bounds reduce the squarefree parts of $L$ and the
+numerator times denominator of $z$ to
+$(d,k)=(1,6),(115,46)$. The projective tests use $2^{13}$ and $3^7$,
+and the support bounds $d\mid690$, $k\mid138$ come from resultants,
+so no other global squareclass can occur.
+
+The first pair gives a point on
+$E_6:Y^2=X(X^2-342X+59616)$ with $X=6z>0$.
+This curve has rank zero and torsion of order two, so its only finite
+rational abscissa is zero. For the second pair put $t=1656/z$ and
+$q(t)=t^2-131t/8+3381$. Then $t$, $10L(t)$ and $15q(t)$ are squares.
+The rational rank-one curve $E_{10}$ fixes the class of $t-r$, where
+$r=(57+15\sqrt{-15})/2$. Over $\mathbf Q(\sqrt{-15})$ use
+\[
+ \ell=64(16-r)\,3/5,\qquad
+ E:Y^2=X\bigl(X^2+\ell q'(r)X+\ell^2q(r)\bigr),\qquad t=r+X/\ell.
+\]
+The point with $X=7200\sqrt{-15}-26400$, $Y=360X$, and $(0,0)$
+generate a subgroup of finite odd index. This follows from rank one,
+the complete two-torsion and nondivisibility of both translates at 19.
+Elliptic Chabauty has index obstruction 4 and gives precisely the rational
+images $t=16,\infty$. Back-substitution gives only overlapping chains.
+The exact elimination and support bounds are in
+\cert{check_type3_exclusion.py}; ranks, indices and rational images are in
+\cert{check_type3_exclusion.m}.
+
+\subsection{Type 4}\label{app:type4}
+\noindent\emph{Arithmetic details in Section~\ref{detail:type4}.}\enspace
+The type is $(1,(2,2),(1,1,3))$. Let $c$ be the $B$ tripleton square,
+$S,T$ the symmetric functions of the $A$ doubleton squares, and $U,V$
+those of the $B$ singleton squares. The unique valid branch is
+\[
+ S=(20c+25)/6,\quad T=(240c^2+40c+167)/48,
+\]\[
+ U=(44c+91)/12,\quad V=(256c^2+97c+466)/36.
+\]
+The exceptional factors $c=1/4,9/4$, the linear branch $S=2c+1/2$
+and the quadratic branch in $S$ all give explicit common vertices.
+The remaining possible loss of degree has $c=-11/4$, which is not square.
+The original centers require $c$ and the three polynomials
+\[
+ q_T=3(240c^2+40c+167),\quad q_A=-80c^2+220c+31,
+ \quad q_B=3(-720c^2+2152c+275)
+\]
+to be squares. Descent on $Y^2=q_Tq_Aq_B$ gives three fake classes.
+The three individual quadratic component norms select the class of
+$c_0-\theta$, $c_0=1/4$. In an identity
+$c-\theta=\lambda(c_0-\theta)z^2$, unit valuations away from 2,3,5,
+the split Newton polygons at 3 and 5, and positivity at the two real
+roots of $q_A$ imply $\lambda\in\mathbf Q^{\times2}$.
+In particular the common scalar in a fake class is removed using the
+original individual squares.
+
+Take $s^2-s-1=0$, $r=(14+27s)/20$ and $\gamma=1/4-r$.
+Every valid configuration therefore lies over
+\[
+ z^2=\gamma(c-r)(720c^2+120c+501).
+\]
+Put $L=720\gamma$, $u=Lc$, $v=Lz$ to obtain its monic elliptic model.
+It has rank one over $\mathbf Q(\sqrt5)$, a non-torsion point above
+$c=1/4$, and torsion of order two. Saturating at two and adjoining
+torsion gives an odd-index subgroup. Elliptic Chabauty returns index
+obstruction 8 and complete images $c=1/4,\infty$. The finite image
+makes the paired-center squares 1 and 4 and repeats central vertices.
+An original center is finite. All auxiliary proof bounds are Minkowski
+bounds. The complete calculation is \cert{check_type4_exclusion.m},
+with independent identities and scalar normalization in
+\cert{check_type4_scalar_normalization.py}.
+
+\subsection{Type 5}\label{app:type5}
+\noindent\emph{Arithmetic details in Section~\ref{detail:type5}.}\enspace
+The type is $(1,(2,2),(1,2,2))$. For the singleton square $c$ of $B$,
+let $S,T$ and $U,V$ describe the two doubleton squares on $A$ and $B$.
+The noncollision branch is
+\[
+ S=(20c-85)/16,\quad T=(80c^2-840c+589)/256,
+\]\[
+ U=(12c-83)/16,\quad V=(4c-49)(4c-9)/256.
+\]
+The exceptional values $c=1/4,9/4,25/4$ give central or cross-color
+collisions. The necessary individual squares are $c$ and
+\[
+ q_1=80c^2-840c+589,\quad q_2=80c^2-40c+4869,
+ \quad q_3=80c^2-1064c+5125.
+\]
+Descent on $Y^2=q_1q_2q_3$ gives the two classes represented by
+$c_0=49/4,81/4$. The normalization lemma proves that
+$c-\theta=\lambda(c_0-\theta)z^2$ implies
+$\lambda\in\mathbf Q^{\times2}$. For odd primes outside 5 choose a
+quadratic factor with unit discriminant. Square norms then give even
+valuations. At 5, $c$ is integral and the root of $q_3$ of valuation
+$-1$ gives a square unit ratio. At 2, the conditions force $v_2(c)=-2$;
+the split roots of $q_1$ make corresponding root-difference valuations
+odd for both $c$ and $c_0$, so their ratios have even valuation.
+Finally $c\geq49/4$ and the two real roots of $q_1$ lie below this,
+which fixes the positive sign of $\lambda$.
+
+For $c_0=49/4$, take $K=\mathbf Q(r)$, $q_1(r)=0$, and
+$g(c)=(c-r)q_3(c)/80$, $\gamma=g(49/4)$.
+The cover $z^2=\gamma g(c)$ is elliptic of rank one and torsion order
+two over $K=\mathbf Q(\sqrt{505})$. An odd-index subgroup obtained
+by two-saturation gives complete rational images $49/4,\infty$,
+with index obstruction 16. At $49/4$, $V=0$, so a reflected doubleton
+pair repeats itself. For $c_0=81/4$, let $q_2(r)=0$ and
+$\gamma=c_0-r$. Use the extra square $c$ to obtain
+\[
+ z^2=\gamma c(c-r)q_3(c)
+\]
+over $K=\mathbf Q(\sqrt{-95})$. Inversion in $c$ gives a rank-one
+elliptic curve, again with torsion order two. The complete rational
+images are $0,81/4$ and the index obstruction is 8. The value zero
+has $S<0$; at $81/4$ both inputs are the ten half-integers from
+$-9/2$ to $9/2$. The cover has no additional rational infinity
+for the original sextic, whose leading coefficient is nonsquare.
+The certificates are \cert{check_type5_scalar_normalization.py} and
+\cert{check_type5_exclusion.m}. These checks retain the scalar in the
+fake descent until its squarehood has been proved.
+
+\subsection{Type 6}\label{app:type6}
+\noindent\emph{Arithmetic details in Section~\ref{detail:type6}.}\enspace
+The type is $(1,(1,1,2),(1,4))$. Let $a$ be the $A$ doubleton square,
+$S,T$ its singleton symmetric functions, $b$ the $B$ singleton square
+and $c$ its quadrupleton square. Moment elimination gives the smooth cubic
+\[
+ H_6=a^3-5a^2c-9a^2+10ac^2+15ac+24a-10c^3+10c^2-20c-16=0,
+\]
+and
+\[
+ b=(5a-c+5)/4,\quad S=(-3a+15c+22)/4,
+ \quad T=(8a^2-40ac-67a+80c^2+95c+149)/16.
+\]
+The eliminated factors $a-c$ and $(a-c-1)^2-4c$ are overlaps.
+The possible vanishing coefficient
+$E_6=3a^2-8ac-7a+6c^2+2c+4$ has resultant proportional to
+$c(c-4)^2(c-1)^3$; these values repeat reflected chains or meet the
+central chain. Thus the formulas apply to every valid input.
+The square cover $c=v^2$, resolved at $(a,c)=(4,0)$ by $a=4+vw$,
+has plane-quartic equation
+\[
+ vw^3-5v^2w^2+10v^3w-10v^4+3w^2-25vw+50v^2-40=0.
+\]
+The origin $(1,0)$ on $H_6$ gives minimal model
+$y^2+xy+y=x^3+x^2-2913x+80031$, of rank two and torsion order two.
+Exact division at 2 and 3 and simultaneous reduction modulo 216 leave
+exactly the classes represented by $(1,1),(9,1),(16,4)$.
+The pole charts and the extra branch condition $3w^2=40$ over $(4,0)$
+are retained in this reduction.
+
+For a common Prym construction put
+\[
+ t=(a-1)/c,\quad A=t^3-5t^2+10t-10,\quad B=-6t^2+5t+20,
+ \quad Y=2Ac+B.
+\]
+Then $Y^2=5t(32t^2-155t+192)$. In $K=\mathbf Q(r)$,
+$r^2=-551$, let $e=(155+r)/64$ and $h=-B(e)/(2A(e))$.
+The character of $q_1=a-1-ec$ is fixed in each class modulo 216,
+with representatives $-e,8-e,-e$. Adjoining its square root gives
+an unramified double cover of the quartic and a genus-two Prym.
+On one twist two independent collision divisors span the global
+logarithm space; their tangent determinants isolate the classes of
+$(1,1)$ and $(16,4)$.
+
+For the remaining twist, affine descent on divisor classes of degree one
+is needed. Its global affine space has dimension 14 after homogenization
+with parity, the even subspace has dimension 13, and scalars account
+for 11 dimensions. Two explicit classes $D,T$ span the quotient.
+The verifier constructs complete local images, including dimensions
+$8,6$ at the two dyadic places, and proves the requisite divisor
+representability via local Brauer obstructions. On the disk of
+$(9,1)$ the displacement, normalized by $(v-1)/8$, has primitive
+row $(1,0,0,0)$ outside the global span. Opposite local sheets add
+$(0,0,1,0)$, also outside that span. The integrated power-series
+bounds apply to the whole disk, not just its first coefficients.
+The only remaining value is $(a,c)=(9,1)$, a collision.
+Rank, class and exact-division data are in \cert{check_type6_classes.m}.
+The two Prym twists and their complete affine descent are in
+\cert{type6_descent/class_bounds.gp}, \cert{type6_descent/prym.m},
+\cert{type6_descent/beta_selmer.m} and \cert{type6_descent/beta_logs.m}.
+
+\subsection{Type 7}\label{app:type7}
+\noindent\emph{Arithmetic details in Section~\ref{detail:type7}.}\enspace
+The type is $(1,(1,1,2),(2,3))$. Let $a,S,T$ describe the doubleton
+and singleton squares on $A$, and $b,c$ the doubleton and tripleton
+squares on $B$. Every valid configuration lies on
+\[
+\begin{split}
+ H_7={}&256a^3-1280a^2c-64a^2+2560ac^2-2560ac-2976a\\
+       &-960c^3+3920c^2+780c+3159=0,
+\end{split}
+\]
+with
+\[
+ b=(10a-4c+15)/6,\quad S=(16a+20c+81)/12,
+\]\[
+ T=-(128a^2-640ac+48a+80c^2-1380c-1701)/144.
+\]
+The discarded factors are $4c-1,4c-9$, the overlap quadratic
+$16a^2-32ac-8a+16c^2-8c+1$, and $8a-12c-5$.
+On the last branch the next equation forces $c=-11/4$ unless there
+is already a collision. The subresultant coefficient can also vanish
+only at the two collision values, a negative square, or roots of
+quadratics with negative discriminant. This treats the exceptional loci.
+
+With origin $(1,1/4)$ the cubic has rank two and no torsion.
+Saturation at 2 and 3 followed by reductions modulo 216 leaves
+\[
+ (1,1/4),\ (9,9/4),\ (4,49/4),\ (4,1/4),\ (1,25/4).
+\]
+The square cover $b=v^2$ has genus four and the rational branch point
+$(1,25/4)$. Put $u=a-1$, $t=b/u$ and
+$c=(25+(10-6t)u)/4$. After removal of the branch factor its equation is
+\[
+ (45t^3-145t^2+135t-27)u^2-8(45t^2-80t+21)u+144(5t-2)=0,
+\]
+so $y^2=5F(t)$ with $F=27t^3-79t^2+57t-9$.
+The omitted origin is the pole $t=\infty$; the other point at $a=1$
+has $t=2/5$. The five classes give respectively
+\[
+ (t_0,d)=(\infty,15),(2,2),(1/3,3),(3,3),(2/5,10),\qquad t=dz^2.
+\]
+The support bound $d\mid30$ follows from the valuations at zeros and poles.
+For a root $e$ of $F$ over its cubic field, let
+$F(t)=27(t-e)(t^2+g_1t+g_0)$ and $k=135d(t_0-e)$, with the
+origin character used in the first row. The elliptic curves
+\[
+ Y^2=X(X^2+kg_1X+k^2g_0),\qquad X=kt
+\]
+have ranks $0,3,3,2,2$. The first is exhausted by its two-torsion.
+For the rank-two rows at 61 and 389, the determinants of two global
+logarithms and the parameter tangent are units, with residues 31 and
+216. A second descent in the sextic algebra treats the $d=3$ row
+at $t_0=1/3$ by a rank-one cover and transversality at 83.
+
+For the final row $d=2,t_0=2$, the same descent produces an elliptic
+curve over the sextic field $L=\mathbf Q(h)$,
+$h^6-96h^4+144h^2-54=0$. Its model has rational two-torsion and a
+two-isogenous curve. The paired isogeny Selmer spaces have dimensions
+4 and 1. Locally at the unique dyadic place, the kernel on the
+four-dimensional space has one nonzero class $s_*$. A conic lift of
+$s_*$ supplies the second descent character. Its two possible local
+halves both lie outside the global image. The power-series estimate
+on $z=1+4\xi$ bounds every higher coefficient, and division by the
+maximal local power of two forces one of those excluded halves unless
+$\xi=0$. The resulting point $(9,9/4)$ is a collision.
+All the other anchors give repeated or cross-color vertices.
+The initial group and branch checks are \cert{check_type7_classes.m};
+the complete cover, logarithm and divisibility data are
+\cert{type7_descent/classes.m}, \cert{type7_descent/covers.m},
+\cert{type7_descent/odd_logs.gp}, \cert{type7_descent/sextic.gp} and
+\cert{type7_descent/dyadic.m}.
+
+\subsection{Type 8}\label{app:type8}
+\noindent\emph{Arithmetic details in Section~\ref{detail:type8}.}\enspace
+The type is $(1,(1,1,1,1),(5))$. Scale the squared $B$ center and
+singleton squares by four, writing $B=4b$. Define
+\[
+ P_B(X)=(X-B)((X-B-4)^2-16B)((X-B-16)^2-64B),
+ \qquad F(B,X)=\frac{P_B(X)-P_B(1)}{X-1}.
+\]
+Every valid input requires the four roots of this monic quartic to be
+rational squares. Its constant term is $5f(B)$, where
+$f(T)=T^4-18T^3+114T^2-97T+405$. Denominator valuations imply
+that odd denominator primes are 1 modulo 20 and that $B$ is integral
+at two. Indeed the denominator reduction has roots $1-\zeta^i$;
+splitting forces fifth roots of unity, and square ratios force $-1$
+to be square. The exceptional prime 5 is ruled out by the constant
+coefficient valuation, and at two the denominator polynomial has no root.
+The genus-two two-cover descent fixes one of the classes represented by
+$B_0=1,9,25$.
+
+At 23, the class $B_0=1$ forces $B\equiv1$, and
+$F(1,X)=(X-1)(X-9)^2(X-25)$. Write $U=B-1,V=X-9$.
+Its quadratic tangent cone is $-64(2V^2-15U^2)$. Since 30 is
+nonsquare modulo 23, its valuation at a nonzero pair is exactly twice
+the minimum valuation, while higher terms have larger valuation.
+Thus the entire singular disk forces $B=1$, a repeated singleton.
+
+For $B_0=9,25$, let $r$ be a root of $f$, $q(T)=f(T)/(T-r)$,
+$g(T)=T^3q(1/T)/q(0)$, $t=1/B$, $t_0=1/B_0$, $k=g(t_0)$.
+The reciprocal cover has monic model
+\[
+ y^2=x^3+kg_2x^2+k^2g_1x+k^3g_0,\qquad x=kt.
+\]
+Use $K=\mathbf Q(h)$, $h^4-h^3+28h^2-54h+231=0$, with
+$r=(-2h^3+h^2-33h+129)/15$. The ordered-pair root field has degree
+12, signature $(0,6)$, discriminant $5528109^5$ and class group of
+order three. The explicit formula, with support $2^{22}$ and bound
+$2^{17}$, has margin greater than $0.862$; exact ideal reduction lowers
+the bound to 1000. Both reciprocal Selmer groups have dimension three.
+Three explicit point logarithms establish the matching rank three.
+
+For $B_0=9$ the primes $17,131,197,269$ fix the center residue.
+Two- and three-saturation give all global coefficient classes modulo
+16 and 9. Their simultaneous reductions make the three local signs
+at 131 equal. The three-row global logarithm matrix has a unit
+transverse tangent determinant. For $B_0=25$ the unique unramified
+quartic dyadic place suffices, and its odd-square parameter lies in
+one disk modulo eight. Here the common valuation of the three-row
+minors is one, and adjoining the rational tangent does not raise it.
+In each case the resulting annihilating form has a unit linear term;
+the integrated binomial expansion makes every nonlinear coefficient
+strictly smaller throughout the disk. Hence $B=9$ or 25. At both
+values $P_B(1)=0$, so the two sets share a vertex square.
+The certificates are \cert{check_type8_product.m},
+\cert{type8_descent/node.m}, \cert{type8_descent/factor_base.gp},
+\cert{type8_descent/covers.m}, \cert{type8_descent/logarithms.m} and
+\cert{type8_descent/signs.m}.
+
+\subsection{Type 9}\label{app:type9}
+\noindent\emph{Arithmetic details in Section~\ref{app:type9-details}.}\enspace
+Here $(m,\mathcal A,\mathcal B)=(2,(3),(1,1,1,2))$,
+$a=(10b+9)/4$. In homogeneous coordinates $[R:B:W]$, the singleton
+cubic is
+\[
+\begin{split}
+ 64R^3-(352B+688W)R^2+(432B^2+1840BW+2124W^2)R\\
+ \qquad+216B^3-492B^2W-1974BW^2-2025W^3=0.
+\end{split}
+\]
+The matrix
+\[
+ \begin{pmatrix}-44&-84&347\\-1088&3102&4064\\16&6&-28\end{pmatrix}
+\]
+carries it to $E:y^2+y=x^3+x^2+295x+1109$. The full rational
+group is generated by $G=(31,202)$ and has no torsion.
+Three roots in a common finite fiber give collinear points $n_iG$,
+so $n_1+n_2+n_3=0$. Put $M=\max|n_i|$. One index has absolute
+value at most $M/2$. Explicit denominator and duplication bounds
+compare the three naive heights in a common fiber and give
+$-46\leq h(2P)-4h(P)\leq17$. Telescoping gives bounds for the
+canonical height, and the proportional index gap gives $M\leq25$.
+The resulting finite group-index list is therefore an exhaustive
+consequence of a global height argument. Exact substitution in the
+pencil leaves only $b=4$, or $b=0$ when repeated roots are allowed.
+The first is the coincident half-integer configuration; the second
+has a zero reflected center. The group computation is
+\cert{check_type9_group.m}; the height constants, duplication identities
+and complete fiber test are \cert{check_type9_exclusion.py}.
+
+\subsection{Type 11}\label{app:type11}
+\noindent\emph{Arithmetic details in Section~\ref{app:type11-details}.}\enspace
+The type is $(2,(1,2),(1,2,2))$. Let $a,b$ be the $A$ singleton
+and doubleton squares, $c$ the $B$ singleton square and $S,T$ the
+symmetric functions of the two $B$ doubleton squares. The necessary
+noncollision conic is
+\[
+ 16b^2+80bc-140b-80c^2+280c-281=0,
+ \qquad S=(5b-4c+16)/3.
+\]
+The second formula can fail only at $c=1/4,9/4,49/4$.
+The first two values meet the central chain. At $49/4$ the only square
+choice is $b=9$, and the two residual possibilities for $S$ repeat
+central $A$ vertices. Put $w=(b-9)/(c-49/4)=m/n$ in lowest terms.
+The square conditions force
+\[
+ m^2+5mn-5n^2=-5k^2,\qquad m:n\equiv0:1\text{ or }4:1\pmod{37}.
+\]
+To obtain this conclusion the resultant support restricts the squarefree
+part to $-1$ or $-5$; the two residues for the $-1$ class fail the
+remaining product-square test at 37. The denominator is prime to 37.
+
+Use $r=(47w-40)/(4w-5)$. The excluded value $4w=5$ would give $T=0$.
+The genus-three curve needed for the last class is
+\[
+ C:Y^2=r(r^2-11r-1)(7r^2-2r+18)(9r^2-69r-49).
+\]
+At 37 only the disks of $(0,0),(8,\pm1500)$ are possible.
+The Jacobian has unconditional rank at most two. The two rational
+classes
+\[
+ P=[(8,1500)-\infty],\quad
+ D=\left(r^3-\tfrac{51}{4}r^2+\tfrac{23}{4}r+8,
+          \tfrac{415}{8}r^2+\tfrac{785}{8}r+20\right)
+\]
+have independent logarithms, since
+\[
+ \log(58624P)/37\equiv(25,28,33),\qquad
+ \log(58624D)/37\equiv(3,30,12)\pmod{37}.
+\]
+Their cross product is $(12,21,0)$. The corresponding annihilating
+differential has unit constant coefficient in all three disks, with
+values 32 at $r=8$ and $12/31$ in the $Y$-parameter at zero.
+Its integral is injective on each whole disk by the bound
+$k-1-v_{37}(k)>0$ for every nonlinear degree $k\geq2$.
+Thus the three rational anchors exhaust the eligible disks.
+At zero $T=0$; at $r=8$ one has $c=1/4$, a central collision.
+The exact rank bounds and local arithmetic are
+\cert{check_type11_genus3_rank_bounds.m} and
+\cert{check_type11_thirty_seven_adic.py}; the global squareclass reduction
+is included in \cert{check_all_shift_chain_types.py}.
+
+\subsection{Type 12}\label{app:type12}
+\noindent\emph{Arithmetic details in Section~\ref{detail:type12}.}\enspace
+The type is $(2,(1,1,1),(1,4))$. With $b$ the quadrupleton square
+and $c$ the singleton square on $B$, the fourth Newton residual is
+$-4b(b-4)(b-1)(b+4c-10)$. The first three factors repeat reflected
+chains or meet the central chain, so $c=(10-b)/4$. The singleton
+polynomial is defined exactly by
+$p_k=M_4(k,b)+((10-b)/4)^k-C_2(k)$, $k=1,2,3$.
+Its product and square conditions reduce the global parity classes to
+$b_0=1,9$, with $(b-r)/(b_0-r)$ square in the cubic field
+\[
+ K=\mathbf Q(w),\quad w^3+38w-504=0,\qquad r=(4-w)/8.
+\]
+Put $q(B)=B^2+(r-3/2)B+r^2-3r/2+43/32$.
+The product polynomial is $f(B)=160(B-r)q(B)$.
+For $b_0=1$ take $d=-160(1-r)$ and
+\[
+ E^{(1)}:y^2=x\bigl(x^2+dq'(10)x+d^2q(10)\bigr),\qquad x=d(b-10).
+\]
+For $b_0=9$ let $D=160(9-r)$, $c_0=10Dq(0)$, and
+\[
+ F(U)=(U-c_0/10)(U^2+10Dq_1U+10Dc_0).
+\]
+The model is $y^2=F(x+c_0/10)$ with $x=c_0/b-c_0/10$.
+Since $b$ and $10-b$ are squares, $b\ne0$ and no genuine point is
+lost in inversion. Both curves have rank one over $K$. Their Selmer
+groups have order 16 and rational two-torsion order two, and the
+Cassels--Tate pairing on the two-dimensional quotient by the seed
+and torsion is nonzero. The first descent uses a certified sextic
+field bound of 100 after field identification, and the second uses
+Minkowski bounds throughout.
+
+At 907 no pole is possible, since $-1$ is nonsquare. The three
+embeddings and the full singleton splitting tests leave only
+$b\equiv b_0$. The logarithm/tangent minors for the three pairs
+of embeddings are respectively $(698,516,760)$ and $(238,499,300)$.
+All are nonzero modulo 907. Two signs among three agree, so one
+minor supplies a function with a unit linear coefficient and integral
+derivative. Integration bounds prove its unique zero in the whole
+disk is $b=b_0$. Both values are collisions.
+The certificates are \cert{check_type12_center_parity.m},
+\cert{check_type12_fields.gp} and \cert{check_type12_exclusion.m}.
+
+\subsection{Type 13}\label{app:type13}
+\noindent\emph{Arithmetic details in Section~\ref{app:type13-details}.}\enspace
+The type is $(2,(1,1,1),(2,3))$. The $B$ doubleton and tripleton
+squares $b,c$ satisfy $6b+4c=25$ after removal of the collision
+factors $(b-1)(4c-9)(4c-1)$. The three singleton squares on $A$
+have polynomial $G_c$ defined by
+$p_k=M_2(k,(25-4c)/6)+M_3(k,c)-C_2(k)$.
+The product elliptic curve has two global Kummer classes, denoted
+$\alpha$ and $\beta$, with $\alpha=25/4$ and $\beta=1/4$.
+The cubic field may be written
+\[
+ K=\mathbf Q(\theta),\qquad
+ \theta^3-\tfrac{20}{3}\theta^2+\tfrac{13}{12}\theta-\tfrac{95}{48}=0.
+\]
+For the $\alpha$ class the two-isogenous model is
+$Y^2=X(X^2+aX+e^2)$, where
+$\delta=\alpha-\theta$, $d=-6\delta$, $e=d\alpha$ and
+$a=2d(\alpha-2\theta)$. Its center map is
+\[
+ c=\frac{\alpha(X^2+aX+e^2)}{(X-e)^2},\qquad
+ \frac{\alpha}{c}=1+24\delta^2t^2,\quad t=-X/Y.
+\]
+A valid lift has $XY(X-e)\ne0$. Over the unique ramified cubic
+dyadic completion, $\delta t=\pm v/(4w)$ where $c=w^2$ and
+$4w^2+6v^2=25$. The local divisibility character is injective on
+the global Selmer image. Repeated halving to the primitive point
+then requires one of two local halves that are both outside that
+image. This excludes the $\alpha$ class at all heights.
+The $\beta$ class similarly requires $v_2(v)=1$ and
+$c-\beta\in16\mathbf Z_2$; at 23 one has $c-\beta\in23\mathbf Z_{23}$.
+
+For the last class retain signed sums of the three singleton centers.
+If $t$ is the square of such a sum, their quartic is
+\[
+ q_2(c,t,1)^2=64t e_3(c),\quad
+ q_2=t^2-\tfrac{10c+50}{3}t+5c^2-30c+19.
+\]
+Write it as $q_2^2=q_1q_3$, with
+$q_1=t(c-\theta)$ and $q_3=64e_3(c)/(c-\theta)$.
+The double cover adjoining the square root of
+$q_1/(\beta-\theta)$ is unramified, and its Prym is the Jacobian
+of
+\[
+ Y^2=-(\beta-\theta)\det(M_1+2xM_2+x^2M_3),
+\]
+where $M_i$ are the symmetric matrices of the homogeneous quadratics.
+This exact determinant specifies the twist as well as the curve.
+The quartic-root field has absolute degree twelve, signature $(2,5)$
+and absolute discriminant
+$172707117717588564754287819295488000000$.
+The explicit formula with support $2^{31}$ proves the generating
+bound $48000001$, with margin above $0.080$; exact ideal relations
+reduce it to 1000. The ordinary class group is $(\mathbf Z/2)^2$.
+The Prym two-descent has Selmer dimension six and two-torsion
+dimension one, so its rank is at most five.
+
+A valid split triple supplies the ordered signed sums
+$-a-b+d,a-b+d,-a+b+d,a+b+d$. At $c=\beta$ these are
+$1/2,3/2,7/2,9/2$. Three fixed collision classes and three moving
+classes have independent logarithms. For equal signs at the three
+places above 23, the determinant after removing the three displacement
+factors has leading term $7(c-\beta)^2$ modulo 23. The full coefficient
+bounds prevent cancellation throughout the nonzero disk. For mixed
+signs the simultaneous reductions at the places above 1181 give
+empty intersections for the remaining three relation tests. This
+forces six independent global classes, contradicting rank at most five.
+The anchor $c=\beta$ itself is a collision.
+The complete data are \cert{check_type13_product_covers.py},
+\cert{check_type13_product_covers.m}, \cert{check_type13_alpha_selmer.m},
+\cert{check_type13_beta_tail.m}, \cert{check_type13_beta_prym_rank.m}
+and \cert{check_type13_beta_prym.m}. The unconditional ideal bound is
+reproduced by \cert{type13_prym_class/prime_counts.cpp},
+\cert{type13_prym_class/check_bound.py} and
+\cert{type13_prym_class/check_factor_base.gp}.
+
+\subsection{Type 14}\label{app:type14}
+\noindent\emph{Arithmetic details in Section~\ref{detail:type14}.}\enspace
+Here $(m,\mathcal A,\mathcal B)=(3,(2),(1,1,1,2))$ and
+$a=(5b+3)/3$. With $K$ defined at the beginning of the appendix,
+write its discriminant as $-4b h_3(b)/243$. The necessary smooth
+curve is $C:y^2=-3h_3(b)$, of genus two. Its points
+$\infty,(9,\pm3240)$ occupy all three residue disks at seven.
+The Jacobian has rank one, certified by two-descent with Minkowski
+bounds, and $D=[(9,3240)-\infty]$ is non-torsion.
+On the monic model $X=-2700b$, $Y=2700^2y$, exact Cantor
+arithmetic for $25D$ gives
+\[
+ U\equiv(X-5)^2,\quad v_7(\operatorname{disc}U)=2,
+ \quad \operatorname{disc}(U)/49\equiv5,\quad7V\equiv5X+3\pmod7.
+\]
+The nonsquare discriminant unit resolves the two support points in
+the unramified quadratic extension. Their displacement integrals
+produce the rank-one logarithm and an annihilating differential
+with unit coefficient in each of the three rational disks.
+The linear term dominates throughout $7\mathbf Z_7$, so each disk
+contains only its anchor. The finite parameter is $b=9$, and then
+\[
+ a=16,\qquad K(X)=(4X-1)(4X-9)(4X-81)/64.
+\]
+Both inputs are the same ten half-integers. The complete rank and
+point calculations are \cert{check_type14_exclusion.m} and
+\cert{check_type14_seven_adic.py}.
+
+\subsection{Type 15}\label{app:type15}
+\noindent\emph{Arithmetic details in Section~\ref{detail:type15}.}\enspace
+The type is $(3,(1,1),(1,1,3))$. Let $c$ be the $B$ tripleton
+square and $S,T$, $U,V$ the symmetric functions of the $A$ and
+$B$ singleton squares. After removal of $c=1/4,9/4,25/4$, all
+of which give collisions, the exact branch is
+\[
+ S=(20c+15)/8,\quad T=(160c^2-20c+49)/96,
+ \quad U=(69-4c)/8,\quad V=(2c-23)(4c-31)/48.
+\]
+In addition to $c$, the following must be rational squares:
+\[
+\begin{aligned}
+ q_T&=6(160c^2-20c+49),&q_A&=3(-80c^2+1960c+283),\\
+ q_B&=3(-80c^2+808c+2875),&q_V&=3(2c-23)(4c-31).
+\end{aligned}
+\]
+Put $K=\mathbf Q(\sqrt{15})$, $r=(245+64\sqrt{15})/20$ and
+$R=(c-r)/(1/4-r)$. Its norm is a rational square. The valuations
+outside 2,3,5 are even, and it is totally positive. The fundamental
+unit $4+\sqrt{15}$ and the local square test at 5 show that $R$
+has class 1 or 6. The identity
+$(3+\sqrt{15})^2=6(4+\sqrt{15})$ identifies the second class with
+the representative $c_0=49/4$. Thus only $c_0=1/4,49/4$ occur.
+
+Use $z^2=(c_0-r)(c-r)q(c)$, taking $q=q_B$ for $1/4$ and
+$q=q_V$ for $49/4$. Both cubics are rank-one elliptic curves over
+$K$, with torsion orders two and four respectively. The seed point,
+after two-saturation and addition of torsion, gives finite odd index.
+Elliptic Chabauty returns index obstruction 4 in both cases and the
+complete rational images
+\[
+ \{1/4,\infty\},\qquad\{31/4,23/2,49/4,\infty\}.
+\]
+The two extra finite values are nonsquares. At $1/4$ an $A$
+singleton meets its central chain; at $49/4$ both inputs coincide.
+The normalization is elementary in $K$ and every auxiliary class
+proof uses a Minkowski bound. See
+\cert{check_type15_unit_normalization.py} and
+\cert{check_type15_exclusion.m}.
+
+\subsection{Type 16}\label{app:type16}
+\noindent\emph{Arithmetic details in Section~\ref{detail:type16}.}\enspace
+The type is $(3,(1,1),(1,2,2))$. For its $B$ singleton square $c$,
+the unique noncollision branch is
+\[
+ S=(195-20c)/12,\quad T=(160c^2-1335c+2304)/36,
+ \quad U=4(9-c)/3,\quad V=2(c-6)(4c-9)/3.
+\]
+The vanishing elimination denominator gives only $c=1/4,25/4$
+or $21/4$. The first two collide and the third is nonsquare.
+The additional branches $S=c+j/4$, $j=1,9,49$, give a singleton
+square equal to $c$ and hence cross-color repetitions.
+Retaining $c=v^2$ and $V=y^2$ gives
+\[
+ y^2=\tfrac23(v^2-6)(4v^2-9).
+\]
+At $t=v-3/2$ the substitution $X=-10-30/t$, $Y=-30y/t^2$
+gives $E:Y^2=X^3+44X^2+100X$; the exceptional branch point
+$(3/2,0)$ is the identity. Its dual is $Y^2=X^3-88X^2+1536X$.
+Primitive isogeny charts modulo 9,16 and 5 give descent images
+$\{1,10\}$ and $\{1,6\}$, so the rank is zero. The good
+reduction orders 4 and 12 at 7 and 11 bound rational torsion by
+four. The points $O,(0,0),(10,\pm80)$ exhaust it. Consequently
+the quartic has exactly $(v,y)=(\pm3/2,0),(0,\pm6)$ and no
+rational infinity, since $8/3$ is nonsquare. At $c=0$ the
+$A$ singleton discriminant is $129/16$, a nonsquare. At $c=9/4$
+an $A$ singleton square is $1/4$, already in the central chain.
+Every local chart, map, group count and collision is checked by
+\cert{check_type16_exclusion.py}.
+
+\subsection{Type 17}\label{app:type17}
+\noindent\emph{Arithmetic details in Section~\ref{app:type17-details}.}\enspace
+Here $(m,\mathcal A,\mathcal B)=(4,(1),(1,1,1,2))$ and
+$4u^2=5b+1$. Put $x=1/b>0$. Both $x$ and $x+5$ are squares,
+and the singleton product makes
+$11025x^3-4131x^2+472x-16$ square. Thus
+\[
+ E_0:Y^2=X^3-4131X^2+11025\cdot472X-16\cdot11025^2,
+ \qquad X=11025x
+\]
+contains the product point. Its rational group is infinite cyclic,
+generated by $G=(11025/16,165375/64)$.
+For the cubic field $K_0=\mathbf Q(w)$,
+$w^3+w^2-240w+1120=0$, a root of the product polynomial is
+$r=(2w^2+5w+140)/3675$. On odd multiples $x-r$ has class
+$d=1/16-r$. The curve $Y^2=X(X+5d)(X-rd)$ has rank one,
+full two-torsion, and an explicitly two-saturated non-torsion point.
+Elliptic Chabauty returns index obstruction 16 and images
+$\infty,0,-5,1/16$. Positivity and finiteness leave $b=16$,
+whose doubleton meets the central octupleton. This handles all
+odd multiples.
+
+For an even multiple write the product point as $2Q$, set $T=X(Q)$,
+$a=11025$ and
+\[
+\begin{aligned}
+ g(T)&=T^3-4131T^2+472aT-16a^2,\\
+ A(T)&=T^4-944aT^2+128a^2T+a^2(472^2-4\cdot4131\cdot16),\\
+ B(T)&=A(T)+20ag(T).
+\end{aligned}
+\]
+Duplication gives $x=A/(4ag)$ and $x+5=B/(4ag)$; all three
+of $g,A,B$ are nonzero squares. The two-cover descents on
+$y^2=gA$ and $y^2=gB$ have sizes two and one. Compatibility
+in their common cubic factor selects the identity in both, so
+$T-\theta$ is square for a root $\theta$ of $A$, and
+$Q\in2E_0(\mathbf Q)$. Its formal parameter $s=-T/Y(Q)$ then
+satisfies $k=v_2(s)\geq3$ and $v_2(T)=-2k$.
+
+Write $K=\mathbf Q(w)$,
+$w^4-194w^2-96w+8302=0$, and
+$\theta=3(2w^3+4w^2-240w-532)$. The monic elliptic curve
+$Y'^2=h(T)=A(T)/(T-\theta)$ contains the putative point.
+Its two-division root field has degree twelve, is totally real,
+and has discriminant $58160039859394517078535559761100800000$.
+The explicit formula at support $2^{20}$ has margin greater than
+$0.262$. Exact ideal reduction to norm 1000 certifies class group
+$\mathbf Z/2$ and Selmer dimension two.
+At the unique totally ramified quartic dyadic place, put
+$m=105\cdot2^{12}$. Complete local Kummer images show that
+$m\log E(K_v)=2^{11}\mathfrak p$. In its basis
+$(2^{12},2^{11}\pi,2^{11}\pi^2,2^{11}\pi^3)$ the global Selmer
+image has dimension two and does not contain $(1,0,0,0)$.
+The ratio of the two forced formal parameters satisfies
+$(z/s)^2=g(T)/h(T)\in1+2^{2k}\mathcal O_{K_v}$.
+The normalized global logarithm therefore has precisely that excluded
+primitive vector. Dividing by the largest global power of two,
+using injectivity of the localized Selmer image, proves the
+contradiction at every height.
+The odd calculation is \cert{check_type17_odd_branch.m}; the
+unconditional field bound and the complete dyadic argument are
+\cert{check_type17_factor_base.gp} and
+\cert{check_type17_even_branch.m}, together with the
+\texttt{--type17} option of \cert{type13_prym_class/check_bound.py}.

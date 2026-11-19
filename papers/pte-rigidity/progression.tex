@@ -1,0 +1,527 @@
+\section{From a progression to five squareclasses}\label{sec:vertices}
+
+By an affine change of coordinates the ten terms become \(\{\pm1,\pm3,\pm5,\pm7,\pm9\}\). Their root polynomial is even. Newton’s identities allow only a change of the constant coefficient, so the competing polynomial is also even. Its rational roots come in opposite pairs, with any zero occurring with even multiplicity. We may thus write them as \(\pm y_1,\ldots,\pm y_5\). The odd moments agree automatically, leaving
+\begin{equation}\label{eq:four-even-moments}
+ \sum_{i=1}^{5}y_i^{2j}=\sum_{a\in\{1,3,5,7,9\}}a^{2j}
+ \qquad(1\leq j\leq4).
+\end{equation}
+No distinctness or nonvanishing assumption is imposed. Put
+\[
+ \mathcal A=\{1,9,25,49,81\},\qquad S_i=y_i^2,\qquad
+ U=\prod_i S_i,\qquad U_0=945^2,
+\]
+and define
+\begin{equation}\label{eq:H-polynomial}
+ H(X)=X^4-165X^3+8778X^2-172810X+1057221.
+\end{equation}
+Newton's identities, applied through degree four, give
+\begin{equation}\label{eq:split-quintic}
+ \prod_{i=1}^{5}(X-S_i)=XH(X)-U,\qquad
+ XH(X)-U_0=\prod_{a\in\mathcal A}(X-a).
+\end{equation}
+Thus the unfixed coefficient is itself a square, since
+$U=(\prod_i y_i)^2$. We will show that the vertex belonging to one
+specified squareclass must equal $25$; the second identity will then
+recover all five vertices.
+
+\begin{lemma}[Denominators]\label{lem:progression-denominators}
+Write $y_i=n_i/D$, where $D>0$ and
+$\gcd(n_1,\ldots,n_5,D)=1$. Every prime divisor of $D$ is congruent to
+$1$ modulo $10$ and divides none of the $n_i$. All five numerators are
+odd. In particular, the five fractions have the same reduced denominator,
+and $S_i\equiv1\pmod8$ in $\Z_2$. If one $y_i$ is integral, then
+$\{S_i\}_{i=1}^5=\mathcal A$ as multisets.
+\end{lemma}
+\begin{proof}
+Set $M_j=\sum_{a\in\{1,3,5,7,9\}}a^{2j}$. Clearing denominators gives
+\begin{equation}\label{eq:cleared-moments}
+ \sum_i n_i^{2j}=M_jD^{2j}\qquad(1\leq j\leq4).
+\end{equation}
+If $2\mid D$, fourth powers modulo $16$ show that the number of odd
+$n_i$ is divisible by $16$. That number lies between zero and five,
+so every $n_i$ is even, contrary to primitivity. If $3\mid D$, use
+sixth powers modulo $9$: a unit has sixth power one and a nonunit
+has sixth power zero. The number of units is divisible by nine and
+at most five, again contradicting primitivity.
+
+The prime $5$ requires one further modulus. Suppose $5\mid D$.
+Fourth powers modulo $5$ imply that the number of unit numerators
+is zero or five. The first possibility contradicts primitivity,
+so all five are units. Write $n_i^4=1+5a_i\pmod{25}$.
+The fourth-power equation in \eqref{eq:cleared-moments} gives
+$5+5\sum_i a_i\equiv0\pmod{25}$, or $\sum_i a_i\equiv-1\pmod5$.
+Squaring these congruences now gives
+\[
+ \sum_i n_i^8\equiv5+10\sum_i a_i\equiv20\pmod{25},
+\]
+whereas the eighth-power equation requires zero. Thus $5\nmid D$.
+
+Let $p>5$ divide $D$ and put $x_i=n_i^2\bmod p$. The four power
+sums vanish. Since $1,2,3,4$ are invertible modulo $p$, Newton's
+identities make the first four elementary symmetric functions vanish.
+The root polynomial is therefore $X^5-e_5$. If $e_5=0$, every $n_i$
+vanishes modulo $p$, which is impossible. Otherwise this polynomial
+has five distinct nonzero roots in $\F_p$. Their ratios exhaust the
+fifth roots of unity, so $5\mid p-1$. As $p$ is odd, $p\equiv1\pmod{10}$.
+The roots are nonzero, proving also that $p\nmid n_i$ for every $i$.
+
+We have proved that $D$ is odd. Now $M_2=9669\equiv5\pmod{16}$ and
+$D^4\equiv1\pmod{16}$. Fourth powers count the odd numerators, forcing
+all five to be odd. Their squares, divided by the odd square $D^2$,
+are one modulo eight.
+
+If some $y_i$ is integral, coprimality with $D$ gives $D=1$.
+The equation $\sum_i n_i^2=165$ bounds every $|n_i|$ by
+$\sqrt{165}<13$. If none belongs to $\{1,3,5,7,9\}$, all five odd
+absolute values must equal $11$, contradicting the same equation.
+A shared square is a common root of the two quintics in
+\eqref{eq:split-quintic}; evaluating their difference gives $U=U_0$.
+Their root multisets then agree.
+\end{proof}
+
+The restriction on denominator primes is sharp for these four equations
+considered locally. If $p\equiv1\pmod{10}$ and $e\ge1$, put $D=p^e$.
+Choose five nonzero residues $n_i$ whose squares are the fifth roots of
+unity. Such choices exist because squaring is an automorphism of the
+subgroup of order five. The four cleared equations hold modulo $p$.
+Fix one numerator and lift the other four. The derivative matrix has
+entries $2j n_i(n_i^2)^{j-1}$, for $1\le j\le4$. Its determinant is
+a product of units times the Vandermonde determinant of four distinct
+squares. Hensel's lemma therefore supplies a solution over $\Z_p$,
+and all five resulting $y_i$ have valuation $-e$. Thus the global
+argument cannot be replaced by a prohibition on negative valuations
+at every prime. The dyadic condition, in contrast, places every rational
+candidate in the single residue class used in Section~\ref{sec:marked}.
+
+The denominator restriction gives affine reduction at all primes needed
+below. It is important here that reduction retains multiplicity: a test
+that only looked for five candidate roots would not exclude a repeated
+vertex.
+
+\begin{proposition}[Five prescribed classes]\label{prop:five-classes}
+For a root $r$ of $H$, the vertices can be labeled by
+$a\in\mathcal A$ so that
+\begin{equation}\label{eq:five-squareclasses}
+ \frac{S_a-r}{a-r}\in\Q(r)^{\times2}.
+\end{equation}
+Each label occurs exactly once; in particular, all vertices are nonzero
+and pairwise distinct.
+\end{proposition}
+\begin{proof}
+The certificate \cert{check_type18_product_classes.m}
+gives exact assertions for the finite computations below. They use two-cover descent
+for genus-two curves as implemented in Magma; see \cite{BruinStoll,magma}.
+Every class-group bound used in this certificate is a Minkowski bound.
+
+Let $d(U)=\operatorname{disc}_X(XH(X)-U)$. Explicitly,
+\begin{align*}
+ d(U)={}&3125U^4+108276547500U^3-1117199475459133506U^2\\
+       &+533350028141359954915500U
+         +2470517618419162907684321203125.
+\end{align*}
+The split quintic has square discriminant, the square of the
+Vandermonde product. Consequently there are rational points with
+parameters $U$ and $S_i$ on, respectively,
+\[
+ C_d:\quad V^2=Ud(U),\qquad C_H:\quad V^2=SH(S).
+\]
+For the second assertion use $S_iH(S_i)=U$.
+
+First enumerate, for
+\[
+ p\in\{13,17,19,29,37,73,89,139,193\},
+\]
+all squares $u\in\F_p$ for which $XH(X)-u$ splits into square roots
+with total multiplicity five. The only result is $u=U_0\bmod p$;
+its roots are the five distinct elements of $\mathcal A\bmod p$.
+None of these primes is $1\pmod{10}$, so Lemma~\ref{lem:progression-denominators}
+applies. In particular even one such reduction rules out a zero or
+repeated global vertex and shows $U\ne0$.
+
+Here is the precise local comparison used to prune the descent classes.
+For $f=d$ or $H$, the algebra of the two-cover map for $V^2=Xf(X)$
+contains a rational factor at $X=0$. Represent a candidate by a polynomial
+$w(X)$ and normalize it to $\widetilde w(X)=w(X)/w(0)$. The class of a
+point with parameter $z$ has normalized representative $(z-X)/z$.
+At a good test prime, factor $f$ into monic irreducibles $f_\nu$.
+A necessary condition for compatibility with that parameter is
+\begin{equation}\label{eq:resultant-filter}
+ \operatorname{Res}\!\left(f_\nu,
+       \widetilde w(X)\frac{z-X}{z}\right)\in\F_p^{\times2}
+ \quad\text{for every }\nu.
+\end{equation}
+Indeed these resultants are norms of the relevant components, and
+norms of squares are squares. If a representative has a pole or a
+vanishing component modulo $p$, the certificate skips that comparison;
+it does not discard the class. Thus this is a necessary local test,
+with no assumption that norms detect all squares.
+
+For $C_d$, descent initially gives five classes. Testing the sole
+allowed parameter $U_0$ at $13$ and $19$ leaves two and then one,
+namely the class represented by $U_0-X$. For $C_H$ there are initially
+38 classes. Allowing any of the five seed residues, the successive
+tests at $13,17,29,37,73,89,139,193$ leave
+\[
+ 30,\ 22,\ 14,\ 13,\ 10,\ 8,\ 6,\ 5
+\]
+classes. The final set consists precisely of the classes $a-X$ for
+$a\in\mathcal A$. At $89$, each seed residue is compatible with just
+its own class. The five global vertices reduce to the five distinct
+seed residues, so each global class occurs exactly once. Finally the
+rational components $S_a$ and $a$ are squares. Their ratio removes
+the possible common scalar in the cover comparison, giving
+\eqref{eq:five-squareclasses} in the quartic component.
+\end{proof}
+
+The two auxiliary curves separate two roles of the same split quintic.
+The discriminant curve records the compatibility of its five roots as
+a collection; the vertex curve records an individual square root
+parameter. The proof above uses the latter classes individually, with
+the discriminant descent providing an additional check on the product
+parameter. In particular, the passage to a labeled vertex does not
+choose the smallest real root, impose an ordering on the $y_i$, or
+assume that their signs agree with the seed. Labels are determined by
+the local cover classes. This distinction lets the proof apply directly
+to rational multisets arising from an even root polynomial, before
+any chain decomposition has been made.
+
+This assignment is stronger than membership in a union of five covers.
+It forces a point on each labeled elliptic curve. The label $25$ will
+suffice, and its dyadic residue is already fixed by the denominator lemma.
+
+\section{The marked elliptic curve}\label{sec:marked}
+
+Let $S=S_{25}$. We specify all fields and models used in the rank and
+local arguments. Set
+\begin{align}
+ K&=\Q(h),&h^4-h^3-991h^2+13345h-19455&=0,\label{eq:quartic-K}\\
+ r&=\frac{-h^3-23h^2+585h+5002}{73},&k&=25-r.\label{eq:r-and-k}
+\end{align}
+The element $r$ is a root of $H$, and
+\[
+ q(T)=\frac{H(T)}{T-r}=T^3+c_2T^2+c_1T+c_0,
+\]\[
+ c_2=r-165,\qquad c_1=r^2-165r+8778,\qquad
+ c_0=r^3-165r^2+8778r-172810.
+\]
+Since $(S-r)/k$ and $H(S)=U/S$ are squares, $kq(S)$ is a square in
+$K$. Therefore $S$ supplies a point
+\begin{equation}\label{eq:marked-curve}
+ P(S)=(kS,Y)\in E(K),\qquad
+ E:\ Y^2=X^3+kc_2X^2+k^2c_1X+k^3c_0.
+\end{equation}
+The marked point is
+\begin{equation}\label{eq:marked-point}
+ P_0=(25k,189k),
+\end{equation}
+because $H(25)=189^2$. The following rank computation is unconditional;
+its class-group input is established before the descent is used.
+
+\subsection{A certified generating bound for the class group}
+
+\begin{lemma}\label{lem:type18-class-group}
+The cubic $q$ is irreducible over $K$. Its root field $M$ has degree
+12, signature $(12,0)$, discriminant
+\[
+ D_M=5^6 11^9 1231^5 2417^5,
+\]
+and $\Cl(M)\simeq\Z/2\Z$. Prime ideals of norm at most $1000$ generate
+$\Cl(M)$.
+\end{lemma}
+\begin{proof}
+An absolute defining polynomial for $M$ is
+\begin{align*}
+ B(T)={}&T^{12}-3T^{11}-5625T^{10}+44481T^9+9843099T^8
+ -99843252T^7\\
+ &-5998855201T^6+67870752036T^5+854290494639T^4\\
+ &-9750057898095T^3-2947764849192T^2
+ +213431600705238T-420745260940011.
+\end{align*}
+The certificate \cert{type18_descent/rank.m} checks the signature and
+maximal-order discriminant, irreducibility of $q$, and an isomorphism
+$M\simeq K[T]/(q)$. This is also the field of an ordered pair of
+distinct roots of the quartic \eqref{eq:quartic-K}.
+
+We establish first that primes of norm at most $b=85\,000\,000$
+generate. Put $X_*=2^{31}$, $\ell=\log X_*$, and
+\[
+ F(x)=\frac{\max(1-|x|/\ell,0)}{\cosh(x/2)},\qquad
+ \Phi(s)=\int_{-\infty}^{\infty}F(x)e^{(s-1/2)x}\,dx.
+\]
+For a field of degree $n$ with $r_1$ real embeddings the archimedean
+part of the explicit formula is
+\begin{align}\label{eq:explicit-arch}
+ A={}&n(\gamma+\log(8\pi))+\frac{r_1\pi}{2}
+ -n\int_0^\infty\frac{1-F(x)}{2\sinh(x/2)}\,dx
+ -r_1\int_0^\infty\frac{1-F(x)}{2\cosh(x/2)}\,dx.
+\end{align}
+We use the general-signature formula in \cite[Section~4]{miller}.
+For $F_0(x)=1/\cosh(x/2)$ the integrals are $\log2$ and $\pi/2-1$.
+Replacing $F_0$ by $F$ increases them by at most, respectively,
+\[
+ \frac1\ell\int_0^\infty\frac{x}{\sinh x}\,dx
+ =\frac{\pi^2}{4\ell},\qquad
+ \frac1\ell\int_0^\infty\frac{x}{2\cosh^2(x/2)}\,dx
+ =\frac{2\log2}{\ell}.
+\]
+Here the same upper bound includes the tail $x>\ell$ since $1\le x/\ell$.
+It follows that
+\begin{equation}\label{eq:arch-lower}
+ A\ge n\left(\gamma+\log(4\pi)-\frac{\pi^2}{4\ell}\right)
+       +r_1\left(1-\frac{2\log2}{\ell}\right).
+\end{equation}
+
+If the proposed generating subgroup were proper, its quotient would
+have a cyclic quotient of prime order $d$. The ordinary class field
+correspondence would give an extension $N/M$ of degree $d$, unramified
+at finite primes and split at real places, in which all primes of norm
+at most $b$ split completely. Subtract the explicit formula for
+$\zeta_M$ from that for $\zeta_N$ and divide by $d-1$.
+The pole terms cancel and the discriminant term becomes $\log D_M$.
+The remaining zeros belong to the nontrivial abelian Hecke
+$L$-functions. Their contributions have nonnegative real part without
+assuming the generalized Riemann hypothesis. To see this, for
+$|a|<1/2$ the Fourier transform of $\cosh(ax)/\cosh(x/2)$ is
+\[
+ 2\pi\Re\!\left(\operatorname{sech}(\pi(t+ia))\right)\ge0.
+\]
+The triangle function also has nonnegative Fourier transform, and
+multiplication convolves these transforms. At $|a|=1/2$ the ratio is
+one. The compact piecewise smooth test is admissible by smoothing;
+equivalently its transforms decay quadratically and the zero sum
+converges absolutely.
+
+For a prime ideal $\mathfrak p$ of norm $q$ and $t=q^m\le X_*$, the
+unsigned prime contribution is
+\[
+ w(t,m)=\frac{4\log t}{m(t+1)}\left(1-\frac{\log t}{\ell}\right).
+\]
+Its coefficient is the average of the nontrivial characters of the
+cyclic quotient at $\operatorname{Frob}_{\mathfrak p}^m$. It is one
+when $t\le b$ and is always at least $-1$. We therefore obtain
+\begin{equation}\label{eq:class-bound-contradiction}
+ \log D_M\ge A+S_{\mathrm{low}},
+\end{equation}
+where verified terms are counted positively and every other term may
+be counted negatively.
+
+The counter \cert{type13_prym_class/prime_counts.cpp}, in its
+\texttt{type18} mode, counts all prime-ideal powers through $X_*$.
+It decomposes small and exceptional primes in the maximal order.
+For $p>\sqrt{X_*}$ outside the quartic discriminant, only degree-one
+prime ideals can contribute. If Frobenius fixes $m$ quartic roots,
+it fixes $m(m-1)$ ordered pairs, giving exactly that many degree-one
+primes of $M$. This avoids factoring the degree-twelve polynomial at
+each such prime.
+
+Counts are binned, retaining the exponent $m$, in intervals
+\[
+ l=2^e(256+j)/256,\qquad
+ u=\min\{X_*,2^e(257+j)/256\},\quad0\le j<256.
+\]
+A bin with $u\le b$ uses the lower bound
+$4\log l(1-\log u/\ell)/(m(u+1))$.
+Every other bin, including a bin crossing $b$, uses the negative of
+$4\log u(1-\log l/\ell)/(m(l+1))$.
+The rational interval computation
+\cert{type13_prym_class/check_bound.py}, invoked with \texttt{--type18},
+uses $n=r_1=12$ in \eqref{eq:arch-lower} and proves
+\[
+ A+S_{\mathrm{low}}-\log D_M>0.28.
+\]
+Logarithms are enclosed using the positive atanh series and a geometric
+remainder; each bin contribution is rounded down. Thus the positive
+margin contradicts \eqref{eq:class-bound-contradiction} and proves the
+bound $b$.
+
+The generation argument uses the ordinary class group throughout.
+Passing to its cyclic quotient is what forces real places to split
+in the corresponding extension and makes the signatures subtract in
+exactly the same proportion as the degrees. The same subtraction
+removes the pole term, which would otherwise obstruct a useful bound
+with this compact test function. Every prime outside the verified
+range is charged its worst allowed sign, so neither the distribution
+of those primes among ideal classes nor an unproved splitting density
+enters the inequality.
+
+Finally \cert{type18_descent/check_factor_base.gp} applies PARI's exact
+prime-ideal relation test through $b$ to the field defined by $B$,
+and verifies that every prime in its factor base has norm at most
+$1000$. This is an exact reduction of the proven generating set,
+not an assumption about a provisional class group or unit index;
+see \cite{pari}. Hence $1000$ is a proven generating bound.
+With this bound, \cert{type18_descent/rank.m} computes class-group
+invariants $[2]$. The custom bound is used only after checking both
+the discriminant and a field isomorphism with $M$; other fields retain
+Minkowski bounds. This is the proof-bound interface of \cite{magma}.
+\end{proof}
+
+\subsection{The rank and the locally soluble quartics}
+
+\begin{proposition}\label{prop:marked-rank}
+The curve \eqref{eq:marked-curve} has $\operatorname{rank}E(K)=1$.
+\end{proposition}
+\begin{proof}
+Using Lemma~\ref{lem:type18-class-group}, the exact two-descent in
+\cert{type18_descent/rank.m} gives
+\[
+ \dim_{\F_2}\Sel_2(E/K)=3.
+\]
+Irreducibility of $q$ shows $E(K)[2]=0$. To distinguish rank one
+from rank three, we use two explicit everywhere locally soluble
+quartics, rather than infer rank from a point search.
+
+The quartics are $V^2=f_i(u)$, with
+$f_i(u)=\sum_{j=0}^4 a_{ij}(h)u^j/219$. For a compact specification,
+write a four-tuple $(b_3,b_2,b_1,b_0)$ for
+$b_3h^3+b_2h^2+b_1h+b_0$. Their coefficient tuples are
+\begingroup\small
+\begin{align*}
+ a_{14}&=3(326191125074,6862578283530,-228375184609562,359306674735384),\\
+ a_{13}&=(-68146848515935,-1146954650973021,42423477924819832,-67064446139806428),\\
+ a_{12}&=3(532419837520287,9948662909456332,-349661419343905572,551521283298925706),\\
+ a_{11}&=(-17476367657300689,-311397084968974479,11197832892950970757,-17680324780047370650),\\
+ a_{10}&=(70099333572212947,1276741669345440462,-45426339226399038625,71690263015899809025),\\[2pt]
+ a_{24}&=3(21676496499,-813389539308,8232971883903,-11541580840841),\\
+ a_{23}&=(2668272288424,-100136656976148,1013669592704180,-1421062099339992),\\
+ a_{22}&=3(13684809418338,-513673043233358,5200629586198914,-7290949365165148),\\
+ a_{21}&=(280668222680764,-10541234662342296,106777148298199184,-149707943110710504),\\
+ a_{20}&=(719625048806446,-27039042667262238,273964615213522625,-384132484185360732).
+\end{align*}
+\endgroup
+Here the common denominator is part of the specification; no change
+of squareclass is being made by clearing it. Each displayed tuple is
+interpreted in the fixed power basis of $K$ from
+\eqref{eq:quartic-K}, so the quartics can be reconstructed without
+choosing embeddings or matching numerical approximations to roots.
+
+The exact certificate \cert{type18_descent/pairing.m} checks that each
+quartic is squarefree and everywhere locally soluble. It also checks
+the Jacobian identifications: for
+$f=au^4+bu^3+cu^2+du+e$, put
+\[
+ I=12ae-3bd+c^2,\qquad
+ J=72ace+9bcd-27ad^2-27b^2e-2c^3.
+\]
+The curve with coefficients $[0,0,0,-27I,-27J]$ is verified to be
+$K$-isomorphic to $E$ for both quartics. The same certificate evaluates
+their Cassels--Tate pairing as $1\in\F_2$, in Magma's binary convention.
+Thus their images generate a subspace of dimension at least two in
+$\Sha(E/K)[2]$: an alternating pairing nonzero on two vectors makes
+them independent. The Kummer sequence
+\[
+ 0\longrightarrow E(K)/2E(K)\longrightarrow\Sel_2(E/K)
+ \longrightarrow\Sha(E/K)[2]\longrightarrow0
+\]
+therefore gives rank at most one. This does not require finiteness of
+$\Sha$. The exact calculation in Lemma~\ref{lem:dyadic-direction}
+shows that $P_0$ has infinite order, supplying the reverse inequality.
+\end{proof}
+
+\subsection{Excluding the entire dyadic disk}
+
+\begin{lemma}\label{lem:dyadic-direction}
+There is a unique place $v$ of $K$ above $2$, with ramification degree
+one and residue degree four. In $L=K_v$, normalize $v(2)=1$.
+For $T=24P_0$ on the displayed model,
+\[
+ v(X(T))=-6,\qquad v(Y(T))=-9,\qquad
+ \overline{\frac{-X(T)}{8Y(T)}}=\bar h^3+\bar h\notin\F_2.
+\]
+The point $P_0$ has infinite order.
+\end{lemma}
+\begin{proof}
+These are exact number-field computations in
+\cert{type18_descent/logarithm.gp}. The certificate also verifies that
+$k$ is a dyadic unit and that the given point lies on $E$.
+Modulo two the defining polynomial of $h$ is
+$h^4+h^3+h^2+h+1$, irreducible over $\F_2$; its root has degree four.
+In particular $\bar h^3+\bar h$ is neither zero nor one.
+
+The model is integral at $v$. Its invariant differential in the
+formal parameter $z=-X/Y$ has an integral power series, so
+\[
+ \log_E(z)=z+\sum_{i\ge2}b_i z^i/i,\qquad b_i\in\mathcal O_L.
+\]
+If $v(z)\ge2$, then
+$iv(z)-v_2(i)>v(z)$ for every $i\ge2$. Thus the series converges,
+preserves valuation, and preserves the leading residue.
+For $T$ its parameter has valuation three and nonzero logarithm,
+so $T$, and hence $P_0$, has infinite order.
+\end{proof}
+
+By Proposition~\ref{prop:marked-rank}, every global elliptic logarithm
+lies on the $\Q_2$-line generated by $\log_E(T)$. More explicitly,
+extend the logarithm from the subgroup $v(z)\ge2$ to $E(L)$ by
+multiplication by an integer taking a point into that subgroup, and
+then divide by that integer. The subgroup has finite index, so this
+extension is well defined and kills torsion. For any $P\in E(K)$,
+rank one gives an integral relation $mP=nT+R$ with $m\ne0$ and $R$
+torsion. It follows that $\log_E(P)=(n/m)\log_E(T)$.
+Every nonzero element of this line has normalized leading residue
+$\bar h^3+\bar h$, since a unit of $\Q_2$ reduces to one.
+
+We now compare this direction with the chord through $P_0$. This
+comparison uses a convergent logarithm on the whole admissible disk,
+not a finite expansion or a search to a specified rational height.
+
+\begin{proposition}\label{prop:marked-isolation}
+A rational $S\equiv1\pmod8$ satisfying
+\eqref{eq:five-squareclasses} for $a=25$ and with $H(S)$ a nonzero
+rational square must equal $25$.
+\end{proposition}
+\begin{proof}
+Suppose $S\ne25$ and set $j=v(S-25)\ge3$.
+Since $q(25)=189^2/k$ is a unit and $q$ has integral dyadic
+coefficients, $q(S)/q(25)\in1+8\mathcal O_L$.
+The convergent binomial series supplies a square root in
+$1+4\mathcal O_L$. Choose the sign of $Y$ in \eqref{eq:marked-curve}
+so that $Y/(189k)\equiv1\pmod4$. Then
+\[
+ Q=P(S)-P_0,\qquad m=\frac{Y+189k}{k(S-25)},\qquad v(m)=1-j.
+\]
+The addition formulas give
+\[
+ X(Q)=m^2-kc_2-kS-25k,\qquad
+ Y(Q)=-Y+m\bigl(kS-X(Q)\bigr).
+\]
+All original coordinates and coefficients are integral, whereas
+$v(m)\le-2$. Consequently
+\[
+ X(Q)/m^2\equiv1\pmod2,\qquad
+ Y(Q)/(-m^3)\equiv1\pmod2.
+\]
+In particular $Q$ lies in the formal subgroup with
+$v(z(Q))=j-1\ge2$, and the leading residue of $z(Q)$ equals that
+of $1/m$. But
+\[
+ \frac{1/m}{2^{j-1}}
+ =\frac{(S-25)/2^j}{189}\,
+   \frac{2(189k)}{Y+189k}\equiv1\pmod2.
+\]
+The first factor is a dyadic rational unit, and the second is one
+modulo two by the sign choice. The logarithm therefore has normalized
+leading residue one and is nonzero. This contradicts the global
+logarithm line, whose nonzero elements have normalized residue
+$\bar h^3+\bar h\notin\F_2$. Hence $S=25$.
+\end{proof}
+
+We can now finish the progression rigidity statement. The denominator
+lemma and Proposition~\ref{prop:five-classes} provide exactly the vertex
+required by Proposition~\ref{prop:marked-isolation}. Thus
+$U=25H(25)=945^2$, and \eqref{eq:split-quintic} gives
+$\{y_i^2\}=\mathcal A$ with multiplicity.
+
+Finally, translate and scale a nonconstant ten-term arithmetic
+progression to
+\[\{\pm1,\pm3,\pm5,\pm7,\pm9\}.\]
+If a rational
+multiset has the same first nine power sums, Newton's identities make
+its monic degree-ten root polynomial differ from the progression
+polynomial by a constant. It is therefore even. Its rational roots
+can be arranged in opposite pairs with multiplicity, including zero
+pairs if present. The first four even moments of one root from each
+pair are precisely \eqref{eq:four-even-moments}. The preceding argument
+recovers the five seed squares, so the full ten-term multiset is the
+progression. This proves Theorem~\ref{thm:progression} and supplies the
+progression case needed for the shift classification.

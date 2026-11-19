@@ -5,6 +5,8 @@ excluded at every rational height. Every distinct-entry predecessor of a
 symmetric ideal size-eleven target under this operation has at least twelve
 entries on each side. The unrestricted size-eleven problem remains open.
 
+The [English preprint](papers/pte-rigidity/main.tex) gives the progression rigidity theorem, the eighteen exclusions and the ordered distance theorem, with proofs and certificate references. The source uses LuaLaTeX, Latin Modern and DejaVu Serif. To build the PDF, run `latexmk -lualatex -outdir=../../build/pte-rigidity main.tex` in `papers/pte-rigidity/`.
+
 In type 17, elliptic Chabauty excludes
 the odd multiples. On the even branch, two descents put every candidate on
 an elliptic curve over a quartic field. At its unique dyadic place the

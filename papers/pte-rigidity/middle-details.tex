@@ -1,0 +1,840 @@
+\subsection{Type 11 and the three disks at 37}\label{app:type11-details}
+
+We give the global squareclass argument and the Chabauty calculation
+underlying Appendix~\ref{app:type11}. Retain its center-square variables
+$a,b,c$ and the sum and product $S,T$ of the two remaining squared
+centers. In the two higher moment equations the linear subresultant
+in $S$, modulo the conic of that appendix, is a nonzero multiple of
+\[
+ \bigl(16bc+4b-16c^2+56c-85\bigr)
+                 \left(S-\frac{5b-4c+16}{3}\right).
+\]
+The resultant of the first factor with the conic in $b$ is
+$16(4c-49)(4c-9)^2(4c-1)$. The exceptional values $1/4,9/4$
+meet the central chain. At $c=49/4$ the conic gives $b=9,-123/2$.
+The only nonnegative square choice $b=9$ gives $S=4,5$ in the two
+uncanceled equations, respectively forcing $a=1/4,9/4$. These also
+repeat a central vertex. This proves the displayed formula for $S$
+for every valid input and justifies the slope through $(b,c)=(9,49/4)$.
+
+For $w=(b-9)/(c-49/4)$ put
+\[
+\begin{aligned}
+ D&=w^2+5w-5,& F_A&=25w^2-53w+27,\\
+ F_B&=41w^2-70w+30,&F_C&=49w^2-37w-5,\\
+ F_E&=(4w-5)(47w-40).
+\end{aligned}
+\]
+The necessary center data are
+\begin{equation}\label{eq:md11-param}
+ a=-\frac{15F_A}{4D},\quad b=-\frac{3F_B}{2D},\quad
+ c=\frac{F_C}{4D},\quad T=\frac{F_E(5w-4)^2}{2D^2}.
+\end{equation}
+The quadratic $F_B$ is strictly positive on the real line, so $b>0$
+forces $D<0$. Write $w=m/n$ primitively with $n>0$, and homogenize
+all quadratic forms to the pair $(m,n)$. A prime $p\notin\{2,3,5\}$
+dividing $D_h$ does not divide $n$. Since
+$\operatorname{Res}(D,F_A)=-36$, it does not divide $F_{A,h}$,
+so $v_p(D_h)$ is even by the square condition on $a$. Primitivity
+makes $D_h$ odd. If $3\mid D_h$, then $3\nmid n$ and
+\[
+ 4D_h=9\left(\left(\frac{2m+5n}{3}\right)^2-5n^2\right).
+\]
+The parenthesis is a 3-adic unit because 5 is nonsquare modulo 3.
+Consequently $v_3(D_h)=2$. The negative squarefree part of $D_h$
+is therefore $d=-1$ or $-5$.
+
+The four integer forms
+$dD_h,-15dF_{A,h},-6dF_{B,h},dF_{C,h}$ are squares.
+The complete projective test modulo 37 leaves slopes $23,30$ for
+$d=-1$ and slopes $0,4$ for $d=-5$. The condition $T\ne0$
+requires $2F_{E,h}$ to be square. At the first two slopes its squareclass
+is represented by 19 and 8, both nonsquares modulo 37. Hence
+\begin{equation}\label{eq:md11-class}
+ D_h=-5k^2,\qquad w\equiv0,4\pmod{37}.
+\end{equation}
+The projective test also excludes $n\equiv0\pmod{37}$, which proves
+integrality of $w$ at the prime used below.
+
+Set $r=(47w-40)/(4w-5)$. The denominator cannot vanish for a valid
+input because it would make $T=0$. The squareclasses in
+\eqref{eq:md11-param} give a point on
+\[
+ C:Y^2=f(r)=r(r^2-11r-1)(7r^2-2r+18)(9r^2-69r-49).
+\]
+The residual slopes in \eqref{eq:md11-class} require $r\equiv8,0$
+at 37. The curve has good reduction there, so precisely three disks
+are eligible, containing $(0,0),(8,1500),(8,-1500)$.
+
+A full two-Selmer computation with Minkowski proof bounds gives
+dimension five. The four irreducible factors of degrees $1,2,2,2$
+contribute three independent rational two-torsion classes. Thus
+$\operatorname{rank}J(C)(\mathbf Q)\leq2$.
+Define
+\[
+ P=[(8,1500)-\infty],\qquad
+ D=\left(r^3-\frac{51}{4}r^2+\frac{23}{4}r+8,
+              \frac{415}{8}r^2+\frac{785}{8}r+20\right).
+\]
+The second expression is a Mumford divisor with $Y=v(r)$ on its
+support. Its support polynomial is squarefree, coprime to $f$ and
+divides $f-v^2$. For $\omega_j=r^jdr/(2Y)$, $j=0,1,2$, exact
+arithmetic modulo $37^2$ gives
+\[
+ \frac{\log(58624P)}{37}=(25,28,33),\qquad
+ \frac{\log(58624D)}{37}=(3,30,12)\pmod{37}.
+\]
+Their cross product is $(12,21,0)$. Both global logarithms are
+independent, so their span is the full rational logarithm space.
+There is an annihilating differential $\sum\lambda_j\omega_j$ with
+$(\lambda_0,\lambda_1,\lambda_2)\equiv(12,21,0)\pmod{37}$.
+
+To specify the local calculation, translate each multiple by a
+nonspecial effective divisor with three distinct abscissas and unit
+ordinates. The following table lists its residue coordinates and the
+Mumford endpoint of the translated multiple. Polynomial coefficients
+are in descending order modulo $1369$.
+\[
+\begin{array}{c|c|c|c}
+R&\text{auxiliary }(r,Y)&u_{B+58624R}&v_{B+58624R}\\ \hline
+P&(1,-7),(3,8),(6,3)&(1,693,101,1129)&(1324,576,276)\\
+D&(1,7),(6,-3),(8,-17)&(1,540,876,1173)&(808,1113,417)
+\end{array}.
+\]
+Hensel lifting at each fixed abscissa supplies the auxiliary ordinate.
+Unit-pivot Cantor composition and reduction~\cite{Cantor} certify the endpoints.
+For doubling, the ordinate lift is $v+uh$ with
+$h\equiv((f-v^2)/u)(2v)^{-1}\pmod u$. The endpoint support roots
+satisfy $r_i'-r_i\equiv-u(r_i)/u'(r_i)\pmod{37^2}$ and lie on
+the same sheets. Therefore the tiny integrals are
+$(r_i'-r_i)r_i^j/(2Y_i)\pmod{37^2}$. All nonlinear primitive
+terms have valuation at least two, which proves the stated logarithms.
+
+On the two disks over $r=8$, the numerator of the annihilator is
+$12+21\cdot8=32\pmod{37}$, a unit. On the Weierstrass disk use $Y$
+as parameter, so $dr/(2Y)=dY/f'(r)$ and the constant is
+$12/f'(0)=12/31\pmod{37}$, also a unit. Each primitive is injective
+on its whole disk. Indeed a nonlinear term of degree $k\geq2$
+in the difference at parameters $t_1,t_2\in37\mathbf Z_{37}$ has
+valuation at least
+\[
+ v_{37}(t_1-t_2)+k-1-v_{37}(k)>v_{37}(t_1-t_2).
+\]
+The unit linear term cannot cancel. Integrals between rational points
+in one disk vanish, so the three anchors exhaust the eligible disks.
+At $r=0$, $w=40/47$ gives $F_E=0$ and $T=0$. At $r=8$, $w=0$
+gives $c=1/4$. All three are invalid. The computations are
+\cert{check_type11_genus3_rank_bounds.m} and
+\cert{check_type11_thirty_seven_adic.py}, with the preceding elimination
+and squareclass tables in \cert{check_all_shift_chain_types.py}.
+
+\subsection{Type 13 and six forced Prym directions}\label{app:type13-details}
+
+We expand the global rank contradiction used in
+Appendix~\ref{app:type13}. Put
+\[
+ N(c)=-240c^3+1600c^2-260c+475,\quad
+ \alpha=25/4,\quad\beta=1/4,
+\]
+and let $K=\mathbf Q(\theta)$ with $N(\theta)=0$. The product of
+the three first-side singleton squares is $N(c)/144$. The two other
+center squares satisfy $b=(25-4c)/6$, $c=w^2$, so every input gives
+a point on the genus-two curve
+\[
+ H:y^2=6c(25-4c)N(c).
+\]
+Its two-Selmer group bounds the rank by two. The four classes
+\[
+ P=[(\beta,135)-\infty],\quad
+ Q=[(19/4,2565/2)-\infty],\quad
+ T_0=[(0,0)-\infty],\quad T_\alpha=[(\alpha,0)-\infty]
+\]
+are independent modulo doubling. To check this without assuming a
+point-search basis, pass to the monic model by $X=5760c$,
+$Y=5760^2y$. The two rational-root components of the Kummer images
+of these four classes are
+\[
+ (10,-15),\quad(190,-15),\quad(285,-10),\quad(10,-15).
+\]
+Valuations at 2,3,19 leave only $P+T_\alpha$ as a possible nonzero
+relation. In the cubic component its image is
+$(\beta-\theta)/(\alpha-\theta)$. At the simple residue root
+$\theta=6\pmod{11}$ the ratio is the nonsquare 10. Thus the four
+classes are independent and form a basis modulo doubling. A nonzero
+square value of $c$ forces the first rational Kummer coordinate to
+have class 10. The same valuation test reduces its class to
+$P$ or $T_\alpha$, giving precisely
+\begin{equation}\label{eq:md13-twists}
+ (c-\theta)/\delta\in K^{\times2},\qquad
+          \delta\in\{\alpha-\theta,\beta-\theta\}.
+\end{equation}
+Their second rational coordinate is $-15$, and hence the condition
+that $b$ be square is preserved. The group bounds and Kummer character
+calculations are \cert{check_type13_product_covers.m} and
+\cert{check_type13_product_covers.py}.
+
+\subsubsection{The alpha class and divisibility at the ramified dyadic place}
+
+The alpha cover is an intersection of quadrics over $K$,
+$w^2-\delta z^2=\theta$, $4w^2+6v^2=25$. Taking the kernel over
+$d\theta$, with $d=-6\delta$, on its associated elliptic curve gives
+\[
+ E':Y^2=X(X^2+aX+e^2),\quad
+ a=2d(\alpha-2\theta),\quad e=d\alpha,
+\]
+with rational center map
+\[
+ c=\frac{\alpha(X^2+aX+e^2)}{(X-e)^2},\qquad
+ \frac{\alpha}{c}=1+24\delta^2t^2,\quad t=-X/Y,
+ \qquad \delta t=\pm\frac{v}{4w}.
+\]
+A valid lift makes $XY(X-e)\ne0$.
+Use $K=\mathbf Q(u)$ with $u^3+u^2+315u+1983=0$ and
+$\theta=(u^2-3u+342)/60$. Its unique dyadic place has uniformizer
+$\pi=(u+1)^2/2$ satisfying
+$\pi^3+314\pi^2+26632\pi-347778=0$. Normalize $v_\pi(2)=3$.
+The valuations in $4w^2+6v^2=25$ give
+$v_2(w)=-1$, $m=v_2(v)\geq1$. Also
+$v_2(\delta)=-2$ and $v_2(e)=-3$. Put $s=X/e$.
+Since $c-\alpha=4\delta s/(s-1)^2$ has valuation $2m-1>0$,
+$s$ is not a unit. Translation by $(0,0)$ replaces $s$ by $1/s$
+without changing $c$, so arrange $v_2(s)=-(2m-1)$.
+
+On the integral model $x'=\pi^{10}X$, $y'=\pi^{15}Y$, the
+coefficients of $x'^2,x'$ have valuations 4 and 2. The point is
+formal, with
+\[
+ t'=-x'/y'=\kappa2^{m-1}h,\qquad
+ \kappa=(\delta\pi^5)^{-1},\quad v_\pi(\kappa)=1,
+ \quad h\in\mathbf Z_2^\times.
+\]
+The formal logarithm identifies this formal group $G$ with
+$\pi\mathcal O$, and $\log(t')\equiv t'\pmod{4t'\mathcal O}$.
+For a direct bound, set $-1/y'=t'^3U$. Then
+$U=1+a't'^2U+b't'^4U^2$, and the invariant differential is
+$(1+t'U'/(2U))dt'$. Its nonconstant terms lie in the ideal generated
+by $a't'^2,b't'^4$, both of valuation at least six. Their powers of
+$t'$ are even, so integration divides only by odd integers. The
+logarithm also has an integral compositional inverse.
+
+The global two-Selmer group of $E'$ has order four and injects on
+localizing at this dyadic place. Its two local torsion points are
+global: the other two would require a square root of
+$\theta(\theta-\alpha)$, whose norm is
+$35^2\cdot19/2^{10}$, a dyadic nonsquare. At the reference parameter
+$t'=\kappa$, there is a point $P_*$ with trivial local Kummer
+class, but every local half has Kummer class outside the localized
+global Selmer image. To specify this assertion, choose
+$z_*\equiv1\pmod{\pi^6}$ with $z_*^2=1-6/\delta$, and put
+\[
+ X_*=(5\delta(1+z_*)/2)^2,\qquad Y_*=-\delta X_*.
+\]
+It has $\delta(-X_*/Y_*)=1$. Its halves are calculated by the
+identity, on $y^2=x(x^2+a_2x+a_4)$,
+\[
+ r^2=x,\quad p=-y/r,\quad s^2=2x+a_2+2p,\quad
+ x_h=x+rs+p,\quad y_h=-y-(r+s)(rs+p).
+\]
+The square roots are certified by Hensel margins. On the integral
+model $x=60^2X$, $y=60^3Y$, coordinate accuracy exceeding
+$2v_\pi(y)+6$ preserves all Kummer squareclasses, since the three
+factor valuations are nonnegative and sum to $2v_\pi(y)$.
+The resulting injectivity and the two reference classes are checked
+by \cert{check_type13_alpha_selmer.m}.
+
+It follows that every global point locally divisible by two is
+globally divisible by two. Every chosen local half of such a point
+is global because all local two-torsion is global. Divide the
+putative formal point $m-1$ times within $G$, obtaining a global
+point $R$ whose logarithm is $\kappa h\pmod{4\pi\mathcal O}$.
+Choose an odd integer $j\equiv h\pmod4$. Then $R-jP_*\in4G$,
+so $R$ is locally divisible by two and has a global half. Its local
+half class is that of $j$ times a half of $P_*$, up to rational
+two-torsion. Both possible classes lie outside the global Selmer
+image, a contradiction. This excludes the alpha class on its whole
+rational parameter range.
+
+\subsubsection{The signed-sum quartic and its divisor map}
+
+For the beta class set $\delta=\beta-\theta$ and write the singleton
+centers as $a,b,d$. Their squared sum $t=(a+b+d)^2$ satisfies
+\[
+ ((t-e_1)^2-4e_2)^2=64te_3,
+\]
+where $e_i$ are the elementary symmetric functions of $a^2,b^2,d^2$.
+The homogeneous quadratic in $(c,t,Z)$ is
+\[
+ q_2=t^2-\frac{10c+50Z}{3}t+5c^2-30cZ+19Z^2.
+\]
+Let $q(c,Z)$ be the degree-two homogenization of
+$(-N(c)/240)/(c-\theta)$ and put
+$q_1=t(c-\theta Z)$, $q_3=-(320/3)q(c,Z)$.
+The smooth plane quartic is $q_2^2=q_1q_3$. The two lines defining
+$q_1$ cut twice distinct degree-two divisors. Equality of those
+classes would supply a degree-two pencil on a smooth plane quartic,
+which is impossible. Adjoining $\sqrt{q_1/(\delta Z^2)}$ therefore
+gives a nontrivial étale double cover. Every beta lift maps to it by
+\eqref{eq:md13-twists}. If $M_i$ is the symmetric matrix of $q_i$,
+its Prym is the Jacobian $J/K$ of
+\begin{equation}\label{eq:md13-prym}
+ Y^2=-\delta\det(M_1+2XM_2+X^2M_3).
+\end{equation}
+This is Bruin's determinant construction~\cite[Theorem~5.1]{BruinPrym}, with twist obtained from
+$q_1/\delta,q_2,\delta q_3$ and the change $X\mapsto\delta X$.
+The twist and smoothness are checked in
+\cert{check_type13_product_covers.py}.
+
+Write $H(c,t)=q_2(c,t,1)^2-4tN(c)/9$ and $h=c-\beta$.
+The necessary local reduction at 23 forces $h\in23\mathbf Z_{23}$.
+For $h=0$ the input collides. The three distinct nonzero singleton
+squares at that point allow their rational roots to be labeled and
+signed so that $(a,b,d)\equiv(1/2,3/2,5/2)\pmod{23}$.
+Use the ordered signed sums
+\[
+ v_1=-a-b+d,\quad v_2=a-b+d,\quad
+ v_3=-a+b+d,\quad v_4=a+b+d.
+\]
+For every sum take $t=v_i^2$, $r=v_i z$, $s=q_2/r$, with the
+same global square root $z^2=(c-\theta)/\delta$. At $h=0,z=1$
+the sums are $1/2,3/2,7/2,9/2$. Let $D_i$ be their four Prym
+images at this collision, and $A_i$ the images of a putative input.
+We shall show that $D_1,D_2,D_3,A_1,A_2,A_3$ are independent
+modulo torsion whenever $h\ne0$.
+
+Here are formulas fixing both the divisor images and all signs.
+Primes mean differentiation along $H(c,t)=0$. Put
+\[
+ a_0=t'/\delta-(r')^2,\quad
+ b_0=(t')^2-10t'/3+5-r's',\quad
+ k_0=-320\delta/3-(s')^2.
+\]
+The monic Mumford support on \eqref{eq:md13-prym} is
+\[
+ U=X^2+2\delta b_0X/k_0+\delta^2a_0/k_0.
+\]
+Its ordinate is the remainder modulo $U$ of
+\begin{multline}\label{eq:md13-ordinate}
+ \delta^2\left[
+ (r'+Xs'/\delta)\left(\frac{c-\theta}{2\delta}
+                      -\frac X\delta\left(\frac{10c+50}{3}-2t\right)\right)\right.\\
+ \left. +(r+Xs/\delta)\left(-\frac1{2\delta}
+                         -\frac X\delta(2t'-10/3)\right)\right].
+\end{multline}
+To derive it, take $V=(c,t,1)^t$, $W=(1,t',0)^t$ in the pencil
+$Q=M_1/\delta-2xM_2+\delta x^2M_3$. Its tangent condition is
+$a_0-2b_0x+k_0x^2=0$. Put $q_v=r-xs$, $q_w=r'-xs'$ and
+$I=q_wV-q_vW$. At a tangent root, $QI=\lambda(V\times W)$.
+The adjugate identity, together with the vector triple product, gives
+$\lambda^2=-\det Q$. The second coordinate of $V\times W$ is
+one, so it fixes the signed ruling coordinate. Changing to
+$X=-\delta x$ and scaling this coordinate by $\delta^2$ gives
+\eqref{eq:md13-ordinate}. This is one rational divisor map over $K$.
+Changing $z$ to $-z$ negates the image.
+
+\subsubsection{Equal signs and the analytic determinant}
+
+Order the three split places over 23 by
+$\theta\equiv11,13,21$. The reduction orders of $J$ are
+$n_1=640,n_2=720,n_3=408$. In each two-coordinate block use
+$\log(n_jR)/23$ in the differential basis
+$dX/(2Y),X\,dX/(2Y)$. The three fixed collision rows form a
+matrix $B$ with
+\[
+ \bar B=-\begin{pmatrix}
+ 4&11&0&15&7&4\\22&17&2&8&3&11\\20&4&21&20&12&22
+ \end{pmatrix}.
+\]
+These rows are independent. Exact Jacobian arithmetic also verifies
+$D_1=D_2+D_3-D_4$. To compute the rows, translate $n_jD_i$ to
+an effective degree-two divisor with distinct integral support roots
+and unit ordinates. A root displacement is $-U(x_0)/U'(x_0)$
+modulo $23^2$, so first-order tiny integrals give the displayed
+six-coordinate logarithms.
+
+For the branch with $z(0)=1$ at every place the moving rows have the
+convergent expansion
+\[
+ B+(h/23)(C_1+hC_2+h^2C_3+\cdots).
+\]
+The differential pullbacks along the signed-sum branch are
+$(-2s/\delta,2r)dc/H_t$. They can be verified on the canonical
+intersection of three quadrics: the Jacobian determinant of the
+cover equations in $t,r,s$ is $\pm2H_t$. Hence the anti-invariant
+canonical forms are spanned by $r\,dc/H_t,s\,dc/H_t$.
+Tracing the support of the signed divisor formula at two collision
+points with independent $(r,s)/H_t$ fixes the constants and signs.
+Here $H_t,r,\delta$ are units on the disks. Thus the unintegrated
+series are integral and $nC_n$ has integral coefficients for every
+$n\geq1$.
+
+Subtract the fixed rows and remove three factors $h/23$ from the
+six-by-six determinant. The reduced determinant has an exact zero
+of order at least two at $h=0$. For this assertion, write the three
+derivative rows as $u_i(h)R(h)+v_i(h)S(h)$, where the scalars
+$u_i,v_i$ are the same rational functions across the embeddings.
+One can use $u_i=\sqrt{t_i}/H_t$ and
+$v_i=q_2/(\sqrt{t_i}H_t)$, putting the dependence on $z,1/z,\delta$
+and $n_j$ in the common embedding vectors $R,S$. A nonzero constant
+combination kills both $u_i(0)$ and $v_i(0)$. After integration and
+division by $h$, this combination has zero constant term and linear
+term in the original two-plane. The other two derivative rows span
+that plane at zero. Both the constant and linear determinant terms
+therefore vanish. The first nonzero term is
+\[
+ \det\begin{pmatrix}\bar B\\
+       \bar C_1+h\bar C_2+h^2\bar C_3\end{pmatrix}
+        =7h^2\pmod{(23,h^3)}.
+\]
+It controls the full punctured disk. A coefficient of degree $k\geq3$
+in this determinant has denominator valuation at most
+$\lfloor k/22\rfloor$, since it is built from three integration
+indices satisfying $\sum(n_i-1)=k$ and
+$v_{23}(n_i)\leq(n_i-1)/22$. At $h\in23\mathbf Z_{23}\setminus\{0\}$
+its valuation is strictly greater than $2v_{23}(h)$. The leading
+term cannot cancel. This proves independence for equal local signs,
+including their common global negative.
+
+\subsubsection{Mixed signs and the two places above 1181}
+
+Up to changing the global sign of $z$, a mixed pattern has one
+negative two-coordinate block. Write $S_j$ for its block sign matrix
+and $u=h/23$. The determinant of the six rows reduces to
+$\det\binom{\bar B}{(\bar B+u\bar C_1)S_j}$. For the three choices
+it is
+\[
+ u(11+20u),\qquad u(21+18u),\qquad u(10+3u)\pmod{23}.
+\]
+The exact constant term vanishes because at $u=0$ the bottom rows
+differ from the top only within one two-dimensional block. Its
+quotient by $u$ is an integral convergent series on $\mathbf Z_{23}$,
+as each integrated coefficient carries $23^{n-1}/n$. Its constant
+is a unit. Thus a dependence with $h\ne0$ requires
+$u\equiv19,18,12$ respectively. In each case the six-row matrix
+has rank five modulo 23, with normalized left null vector
+\[
+ (8,7,8,15,4,1),\quad(12,5,22,10,3,1),\quad(19,1,21,13,8,1)
+\]
+in the order $D_1,D_2,D_3,A_1,A_2,A_3$.
+
+A dependence modulo torsion gives a primitive integer relation, whose
+reduction is a nonzero multiple of one of these vectors. The torsion
+has trivial 23-primary part because at a split place the good
+reduction order is prime to 23 and the formal logarithm is injective.
+The relation must therefore vanish in every reduction quotient of
+order 23. Use the places over 1181 with $\theta=99,198$. A rational
+pole of $c$ is impossible: the three ratios of singleton squares to
+$c$ would split the squarefree residue cubic
+$144X^3-240X^2-80X+240$, which has only one root there. The
+Jacobian reduction orders are $1383036$ and $1338324$, each divisible
+exactly once by 23. Multiplication by the order divided by 23 projects
+to its order-23 subgroup. Relative to the projection of $D_1$, the
+fixed rows have coordinates $(1,11,21)$ and $(1,16,17)$.
+
+At each place enumerate every residue $c$ for which
+$c,(25-4c)/6,(c-\theta)/\delta$ are squares and the singleton
+cubic splits into three squares, with multiplicity allowed. Enumerate
+all ordered signed roots $(a,b,d)$, evaluate the moving divisor
+formula, and allow both signs of $z$ independently at each place.
+The number of distinct residue tuples $(c,a,b,d)$ satisfying each
+possible relation is
+\[
+\begin{array}{c|rrr}
+ &\text{first}&\text{second}&\text{third}\\ \hline
+ \theta=99&8&20&16\\
+ \theta=198&18&16&22\\
+ \text{intersection}&0&0&0
+\end{array}.
+\]
+All the divisors in this finite calculation remain in the nonspecial
+Mumford chart. Since $c,a,b,d$ are rational, their residue tuples
+must agree at both places. No remaining relation is possible. This
+proves that every noncollision beta lift would force six independent
+global Prym classes. All divisor, logarithm, determinant and joint
+reduction data are checked by \cert{check_type13_beta_prym.m}.
+
+\subsubsection{The unconditional upper bound five}
+
+The quartic factor in the Prym quintic defines an absolute field $L$
+with polynomial
+\[
+\begin{split}
+ P(X)={}&X^{12}-4X^{11}-68X^{10}-18698X^9+336998X^8-500324X^7\\
+       &+7039932X^6-194015520X^5+1041300636X^4-3497537936X^3\\
+       &+20028904184X^2-109223576168X+269574001992.
+\end{split}
+\]
+Its signature is $(2,5)$ and its absolute discriminant is
+\[ D_L=172707117717588564754287819295488000000. \]
+The unconditional explicit-formula argument for the class group uses
+the general-signature formula in \cite[Section~4]{miller}, with
+support $X_0=2^{31}$ and
+\[
+ F(x)=\frac{\max(1-|x|/\ell,0)}{\cosh(x/2)},\qquad\ell=\log X_0.
+\]
+If the primes of norm at most $b=48000001$ generated a proper
+subgroup, a prime-order cyclic quotient would give an everywhere
+unramified extension split at all these primes and at the real
+places. Subtracting its zeta explicit formula from that of $L$, and
+dividing by the degree minus one, gives
+\[
+ \log D_L\geq A_{\rm arch}+S.
+\]
+Here each zero contributes nonnegatively throughout the critical
+strip. The triangle has nonnegative Fourier transform, and so does
+$\cosh(ax)/\cosh(x/2)$ for $|a|\leq1/2$, which proves this without
+a hypothesis on zeros. A lower archimedean bound is
+\[
+ A_{\rm arch}\geq12\left(\gamma+\log(4\pi)
+                  -\frac{\pi^2}{4\ell}\right)
+                     +2\left(1-\frac{2\log2}{\ell}\right).
+\]
+A prime-power norm $t=q^m\leq X_0$ has unsigned weight
+$4\log(t)(1-\log(t)/\ell)/(m(t+1))$. Its character multiplier
+is one for $t\leq b$, and at least $-1$ elsewhere. Counting prime
+ideal powers and taking rational interval lower bounds gives
+$S>50.333$ and $A_{\rm arch}+S-\log D_L>0.080$, a contradiction.
+The computation groups norms in 256 subdivisions of each dyadic
+interval. For rational primes above $\sqrt{X_0}$ outside the
+polynomial index, only degree-one primes contribute, and their number
+is the number of simple polynomial roots. All other primes are
+factored in the maximal order.
+
+PARI's exact ideal relation test reduces every prime ideal of norm
+at most $b$ to a factor base with norms at most 1000. Only the
+outer rational-prime loop is divided among parallel workers. This
+proves 1000 as the required generating bound independently of a
+provisional class group. The bound is applied only after identifying
+the absolute field with $L$. Other fields use their Minkowski bound,
+which is 419 for $K$. The ordinary class groups are
+$\operatorname{Cl}(L)=(\mathbf Z/2)^2$ and
+$\operatorname{Cl}(K)=0$. The Prym two-Selmer group has dimension
+six and its rational two-torsion dimension one. Therefore
+$\operatorname{rank}J(K)\leq5$, contradicting the six independent
+classes forced above. This completes Type 13.
+The field and rank checks are \cert{check_type13_beta_prym_rank.m}.
+The explicit-formula and ideal-relation computations are
+\cert{type13_prym_class/prime_counts.cpp},
+\cert{type13_prym_class/check_bound.py} and
+\cert{type13_prym_class/cover.py}.
+
+\subsection{Type 9 and a height comparison within a split fiber}\label{app:type9-details}
+
+The singleton-root cubic in Appendix~\ref{app:type9} has a projective
+linear identification with
+\[
+ E:y^2+y=x^3+x^2+295x+1109.
+\]
+For coordinates $[R:B:W]$ on that cubic and standard projective
+coordinates on $E$, forward and inverse matrices are
+\[
+ L=\begin{pmatrix}-44&-84&347\\-1088&3102&4064\\16&6&-28\end{pmatrix},
+ \qquad J=\begin{pmatrix}2884&7&36757\\-896&112&5152\\1456&28&5908\end{pmatrix}.
+\]
+Their product is a nonzero scalar matrix. The full group is
+$E(\mathbf Q)=\mathbf ZG$ with $G=(31,202)$ and trivial torsion,
+certified with unconditional class-group bounds by
+\cert{check_type9_group.m}.
+
+Three distinct rational roots at fixed finite $b=B/W$ are three
+collinear points of the plane cubic. Their images are collinear on
+the Weierstrass model, so they have indices $n_1+n_2+n_3=0$.
+If $M=\max|n_i|$, one of the other absolute indices is at most
+$M/2$. The point at infinity on $E$ maps to $[7:112:28]$, so the
+fiber containing it is exactly $b=4$. We treat it separately.
+
+Write $b=N/D$ primitively with $D>0$, $H=\max(|N|,D)$, and let
+$H_C$ denote the maximum primitive coordinate of a point on the
+original cubic. Its integral equation for $Dr$ has leading
+coefficient 64, so $64Dr$ is an integer. After scaling by $H$, the
+remaining coefficients are bounded by $1040/64,4396/64,4707/64$.
+The root bound gives $|Dr|<80H$. The coordinates
+$[64Dr:64N:64D]$ and their ratio imply
+\[
+ H\leq H_C\leq5120H.
+\]
+The maximum absolute row sums of $L,J$ are less than 9000 and
+40000. Thus the primitive projective height $H_E$ on $E$ satisfies
+$H_E\leq9000H_C$ and $H_C\leq40000H_E$.
+
+For a finite elliptic point write $x=a/t^2$, $y=c/t^3$ in reduced
+form, $t>0$, and $U=\max(\sqrt{|a|},t)$. The primitive projective
+coordinates are $[at:c:t^3]$. The equation bounds
+$|c|^2\leq |c|U^3+1406U^6$, giving the upper estimate below.
+For the lower estimate, $|x|\leq100$ gives $U^3\leq1000t^3$.
+The range $x<-100$ is impossible because the cubic is less than
+$-1/4$, while $x>100$ implies $|y|>x^{3/2}/2$. Hence
+\[
+ U^3/1000\leq H_E\leq40U^3.
+\]
+Put $h(R)=\log_2\max(|a|,t^2)$. For any two points in one fiber,
+these estimates show that
+\[
+ 2^{3(h(R_i)-h(R_j))/2}
+   \leq1000\cdot40\cdot9000\cdot40000\cdot5120<2^{60}.
+\]
+Their naive heights differ by less than 40, uniformly in $b$.
+
+For the doubled canonical height
+$\lambda(R)=\lim4^{-k}h(2^kR)$, the explicit duplication forms are
+\[
+\begin{aligned}
+ F&=A^4-590A^2B^2-8874AB^3+82588B^4,\\
+ D_2&=4A^3B+4A^2B^2+1180AB^3+4437B^4.
+\end{aligned}
+\]
+There are integral Bézout identities
+$dV^7=S_VF+T_VD_2$ for $V=A,B$, with
+$d=2079016875$ and the sum of absolute coefficients of each pair
+$(S_V,T_V)$ less than $2^{46}$. They imply
+$\gcd(F,D_2)\mid d$ for primitive $A,B$. Taking the larger of
+$|A|,|B|$ bounds the unreduced maximum below by
+$d\max(|A|,|B|)^4/2^{46}$. The coefficient sums of $F,D_2$ are
+less than $2^{17}$. Removing the gcd and telescoping yields
+\[
+ -46/3\leq\lambda(R)-h(R)\leq17/3.
+\]
+The numerator or denominator of $x(32G)$ has bit length 149, so
+$\lambda(G)\geq(148-46/3)/32^2>1/8$.
+By canonical-height quadraticity~\cite[Chapter~VIII, \S9]{Silverman},
+heights of points within the fiber differ by
+less than $40+(17+46)/3=61$. Comparing indices of maximum and
+minimum absolute value gives
+$3M^2\lambda(G)/4<61$. Since $3\cdot26^2/32>61$, all three
+indices are bounded by 25. This is an all-height bound on any
+split fiber.
+
+Exact projection of the 51 multiples from $-25G$ to $25G$ gives
+only two finite parameters occurring more than once,
+\[
+\begin{array}{c|l}
+ b& (n,R/W)\\ \hline
+0&(-2,25/4),(1,9/4)\\
+4&(-3,49/4),(0,1/4),(3,81/4).
+\end{array}
+\]
+At zero the cubic is $(4R-9)^2(4R-25)$, while at four it is
+$(4R-1)(4R-49)(4R-81)$. These are also the only repeated-root
+possibilities. Indeed the remaining factor of the discriminant has
+unit leading coefficient at 7 and nonzero residues
+$2,1,6,1,3,2,6$ on $\mathbf F_7$. A rational root would be
+7-integral and reduce to a root. The only distinct split fiber is
+therefore $b=4$, where the doubleton centered at 2 shares $3/2$
+with the central chain. The Bézout forms, heights, exact multiples
+and discriminant test are \cert{check_type9_exclusion.py}.
+
+The ordered-root curve is the complete intersection in
+$[r:s:B:W]$ defined by $f(r,B,W)=0$ and
+$(f(r,B,W)-f(s,B,W))/(r-s)=0$. It is smooth of genus four.
+At a double root the base derivative of $f$ and the derivative
+$f''/2$ of the divided difference supply independent tangent
+conditions. Above infinity the discriminant is $-675/4$, so there
+are no rational points there. The two finite fibers above give all
+nine rational points, including the three orderings at the repeated
+fiber. This adds a complete rational-point consequence to the
+height argument.
+
+\subsection{Type 3 and a complete rational-image calculation}\label{app:type3-details}
+
+In Appendix~\ref{app:type3}, the last center constraint has
+$S_0=(20b-8c+27)/6$. If $S\ne S_0$, taking the divided residuals,
+their resultant in $S$, and its resultant with the conic in $b$
+leaves the factors
+\[
+\begin{split}
+ &(4c-25)(4c-9)(4c-1)^4(80c^2-280c+281)\\
+ &\hspace{12mm}\cdot(144c^2-616c+3025)(144c^2-328c+4489).
+\end{split}
+\]
+The three quadratics have negative discriminants. The linear cases
+are collisions or the nonsquare values $b=15/32,77/32$. Thus the
+rational parameterization with $S=S_0$ covers every valid input.
+For its parameter $z>0$, use the polynomials $L,A,B,C,V,D$ of
+Appendix~\ref{app:type3}. If $z=N/M$ primitively with $M>0$, the
+squarefree parts $d,k$ of $L(N,M)$ and $NM$ satisfy
+$d\mid690$, $k\mid138$. The complete conditions are that
+\[
+ dL,\ dA,\ dB,\ dC,\ kNM,\ 3kV,\ D
+\]
+are integer squares. The resultant of $L$ and $A$ has prime support
+$\{2,3,5,23\}$, and the outer coefficients of $V$ have support
+$\{2,3,23\}$, which proves those finite squareclass ranges.
+Both projective patches are included in the local test. Modulo
+$2^{13}$ the remaining pairs are
+$(1,6),(3,46),(115,46),(345,6)$. Imposing $3^7$ leaves just
+$(1,6),(115,46)$.
+
+For the first pair $6z$ and $L(z)$ are squares, giving a nonzero
+point on
+$E_6:Y^2=X(X^2-342X+59616)$. Its rank-zero group has only the
+finite point $(0,0)$, contradicting $z>0$.
+For the second pair, put $t=1656/z$. It is a nonzero square, and
+\[
+ 10(t^2-57t+1656)\in\mathbf Q^{\times2},\qquad
+ 15(t^2-131t/8+3381)\in\mathbf Q^{\times2}.
+\]
+On $E_{10}:Y^2=X(X^2-570X+165600)$ there is therefore a point
+with $X=10t$. The rational group has rank one and torsion generated
+by $(0,0)$. The point $(160,4000)$ has two-isogeny class 10,
+independent of the torsion class 46. Thus the abscissa class 10
+forces its difference from this point to be twice a rational point.
+
+Over $K=\mathbf Q(\sqrt{-15})$, put
+$r=(57+15\sqrt{-15})/2$. The abscissa character at $(10r,0)$
+implies $(t-r)/(16-r)\in K^{\times2}$. One can see the character
+homomorphism directly: for three collinear points the product of
+their $X-10r$ factors is the square of the line ordinate at $10r$.
+Let $q(t)=t^2-131t/8+3381$ and $l=64(16-r)3/5$.
+The two square conditions now give a point with $X=l(t-r)$ on
+\[
+ E:Y^2=X\bigl(X^2+lq'(r)X+l^2q(r)\bigr).
+\]
+Writing $s=\sqrt{-15}$, its two coefficients are
+$45300-18900s$ and $488160000s-4186080000$.
+The two-Selmer group has order four and torsion is generated by
+$(0,0)$. The point $P=(X_0,360X_0)$,
+$X_0=7200s-26400$, is non-torsion, so the rank is one.
+
+The subgroup generated by $P$ and torsion has odd index. At the
+good place $(19,s-17)$, both $X(P)$ and $X(P+(0,0))$ reduce to
+nonsquares, so neither translate is a double. Elliptic Chabauty for
+the map $t=r+X/l$ returns three subgroup points with rational
+image, and an index obstruction equal to a power of two (4 in the
+stated run). The obstruction is coprime to the subgroup index, so
+the rational images are exhausted. They are $\infty$ and 16.
+This uses the rational-image index conclusion of elliptic Chabauty,
+so an unproved full Mordell--Weil basis is unnecessary.
+Every rank and class-group computation uses unconditional proof
+bounds. At the only finite image $t=16$, one has
+$z=207/2$ and $(a,b,c)=(81/4,25/4,25/4)$. The singleton at
+$5/2$ meets the center of the tripleton on the other side.
+The elimination and squareclass tables are
+\cert{check_type3_exclusion.py}, and the complete rational-image
+certificate is \cert{check_type3_exclusion.m}.
+
+\subsection{Type 17 and the primitive dyadic direction}\label{app:type17-details}
+
+The product elliptic curve $E_0$ of Appendix~\ref{app:type17} has
+full rational group generated by $G=(11025/16,165375/64)$ and no
+torsion. On odd multiples, the cubic-root abscissa character fixes
+$d=1/16-r$, where
+\[
+ w^3+w^2-240w+1120=0,\qquad
+ r=(2w^2+5w+140)/3675.
+\]
+The associated curve $Y^2=X(X+5d)(X-rd)$ has full two-torsion,
+Selmer order eight and rank one, with non-torsion point
+$P=(d/16,9d^2/16)$. At the two good places above 17 with
+$w=6,11$, none of the four translates of $P$ by two-torsion is a
+double. The generated subgroup consequently has odd index.
+Elliptic Chabauty with index obstruction 16 gives all rational
+images $X/d$, namely $\infty,0,-5,1/16$. Only the last is finite
+and positive, giving $b=16$, a collision. This exhausts the entire
+odd-multiple class.
+
+For the even class, write the product point as $2Q$, put $a=11025$
+and $T=X(Q)$. Retain the cubics and quartics $g,A,B$ of
+Appendix~\ref{app:type17}, so
+\[
+ x=\frac{A(T)}{4ag(T)},\qquad x+5=\frac{B(T)}{4ag(T)}.
+\]
+All three of $g(T),A(T),B(T)$ are nonzero squares. The odd-degree two-cover descents~\cite{BruinStoll} on $y^2=gA$ and $y^2=gB$ have sizes two
+and one respectively, each containing the identity. The nonidentity
+class in the first set projects to a nonsquare in the cubic field
+of $g$. A representative in its cubic-times-quartic étale algebra
+is divided by its total norm before projection. For an actual
+abscissa class that norm is square. Multiplication of the original
+representative by a rational scalar changes the normalized class
+by a sixth power, which is square. Thus the normalization is
+well defined. The two descents share the cubic-root character
+of $T-r$. The second descent makes it trivial, selecting the
+identity in the first as well. This proves that $T-\theta$ is
+square for a root $\theta$ of $A$, and that $Q$ is an even
+multiple of $G$.
+
+On the integral equation of $E_0$, the generator has formal
+parameter $-4/15$. The formal subgroup on $4\mathbf Z_2$ is
+closed under addition and duplication starts with twice the
+parameter. Therefore for $s=-T/Y(Q)$,
+\[
+ k=v_2(s)\geq3,\qquad v_2(T)=-2k.
+\]
+Take $K=\mathbf Q(w)$, $w^4-194w^2-96w+8302=0$, and
+$\theta=3(2w^3+4w^2-240w-532)$. The monic cubic
+$h(U)=A(U)/(U-\theta)$ is integral and irreducible over $K$.
+The two square conditions give a global point $R=(T,Y')$ on
+$E:Y'^2=h(T)$.
+
+Its two-division root field has absolute polynomial
+\[
+ Z^{12}-472Z^{10}+75282Z^8-4450612Z^6+
+                  64570537Z^4-277288596Z^2+234027000.
+\]
+It is totally real, with discriminant
+$58160039859394517078535559761100800000$. The unconditional
+explicit-formula estimate used above, now with support and
+norm bound $2^{20}$, has margin greater than $0.262$.
+Every prime-power term in the support has multiplier one in the
+hypothetical cyclic quotient. PARI's exact ideal relations reduce
+the generating set to norm 1000. After field identification this
+gives class group $\mathbf Z/2$ and
+$\dim_{\mathbf F_2}\operatorname{Sel}_2(E/K)=2$.
+
+There is one dyadic place of $K$, totally ramified of degree four.
+Write $D=K_v$, let $\pi$ be a uniformizer and $\mathfrak p$ its
+maximal ideal. The integral basis is $1,\pi,\pi^2,\pi^3$.
+The cubic $h$ has exactly one root in $D$, so
+$\dim E(D)/2E(D)=5$, four from the local Lie group and one from
+local two-torsion. Put $m=105\cdot2^{12}$ and
+$\Lambda=m\log E(D)$. Five explicit points with independent local
+Kummer images span this quotient. Their scaled logarithms span
+$\Lambda/2\Lambda$, since a torsion point has logarithm zero.
+For each point, the formal parameter of its $m$-multiple has
+$v_\pi\geq44$. On the displayed integral model the differential
+has integral even coefficients, so its logarithm is
+$z+O(z^3)$ with dyadically integral coefficients. Its leading binary
+coordinates may therefore be obtained from the formal parameter.
+The five rows in the basis
+\[
+ (2^{12},2^{11}\pi,2^{11}\pi^2,2^{11}\pi^3)
+\]
+are integral with residue rank four. It follows that
+$\Lambda=2^{11}\mathfrak p$. Expressing the two localized global
+Selmer classes in the five local Kummer generators and then using
+their logarithm residues gives a two-dimensional image in
+$\Lambda/2\Lambda$. Adjoining the rational axis $(1,0,0,0)$
+raises the rank to three. This simultaneously proves injectivity
+of the Selmer-to-logarithm map and exclusion of that primitive
+axis.
+
+The chain equations force exactly the excluded direction. For
+$z=-T/Y'$ the ratio satisfies
+\[
+ (z/s)^2=\frac{g(T)}{h(T)}\in1+2^{2k}\mathcal O_D.
+\]
+Both cubics are monic integral and $v_2(T)=-2k$, which proves this
+congruence by dividing them by $T^3$. Of $z/s-1,z/s+1$, the one
+with smaller valuation has valuation one, using the normalization
+$v_2(2)=1$. Thus for one sign
+\[
+ z=\pm s(1+2^{2k-1}\eta),\qquad\eta\in\mathcal O_D.
+\]
+The same leading congruence holds for $\log_E R$. Consequently
+$2^{-k}m\log_E R$ is primitive in $\Lambda$ and its residue is
+$(1,0,0,0)$.
+
+To apply the global Selmer obstruction, divide $R$ by the largest
+possible global power of two, writing $R=2^jR_0$. The nonzero
+logarithm and finite generation make $j$ finite. A globally
+primitive point has nonzero Kummer class, hence a nonzero residue
+in $\Lambda/2\Lambda$ by injectivity of the map just computed.
+Therefore $m\log_E R_0$ is primitive, forcing $j=k$.
+Its residue would be the excluded axis. This contradiction
+exhausts the even branch and proves Type 17 at all rational
+heights. The two-cover projections, local generator independence,
+logarithm valuations and final three-dimensional rank assertion
+are all checked by \cert{check_type17_even_branch.m}.
+The odd cover is \cert{check_type17_odd_branch.m}, and the
+unconditional relation range is
+\cert{check_type17_factor_base.gp}, together with the
+\texttt{--type17} mode of
+\cert{type13_prym_class/check_bound.py}.

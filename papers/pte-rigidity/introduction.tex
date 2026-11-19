@@ -1,0 +1,23 @@
+\section{Equal moments and three rigidity statements}
+Write \(A=_k B\) when the sums of \(j\)th powers on the two sides agree for \(0\le j\le k\), with multiplicities. A nontrivial pair of size \(n\) with \(A=_{n-1}B\) is called \emph{ideal}. Newton's identities say that the monic root polynomials of an ideal pair differ by a nonzero constant. In particular its two sides are disjoint. We study ideal pairs with distinct entries as well as one question about multisets. Coppersmith, Mossinghoff, Scheinerman and VanderKam describe known integer solutions through size ten and at size twelve, recall the family of symmetric ten-term pairs arising from Letac's construction, and report a search for symmetric size-eleven pairs \cite[\S\S1,4.1]{cmsv}.
+
+\begin{theorem}[A ten-term progression]\label{thm:progression}
+Let \(A=\{a+jd:0\le j<10\}\), where \(a,d\in\Q\) and \(d\ne0\). If a rational multiset \(B\) of cardinality ten satisfies \(A=_9B\), then \(B=A\), including multiplicities.
+\end{theorem}
+The assertion depends on both the ground field and the length. The sets \(\{\pm1,\pm3\}\) and \(\{\pm9/5,\pm13/5\}\) have equal moments through degree three, since \(1+9=(9/5)^2+(13/5)^2\). Over the reals the ten simple roots of \(\prod_{j=0}^9(T-j)\) persist under small changes of its constant term. Theorem~\ref{thm:progression} concerns complete rational splitting in this pencil. Banks and van der Poorten treat a different hypothesis in which the \emph{union} of the two sides is an arithmetic progression \cite[\S3]{banks}. Here only one side is prescribed.
+
+For the second statement, start with disjoint sets \(X,Y\) and a nonzero rational \(h\). Take multiset unions \(X\cup(Y+h)\) and \(Y\cup(X+h)\) and cancel common entries with multiplicity. The binomial theorem raises the degree of moment agreement by one. Wright's example after equation~(11) illustrates how cancellation can preserve ideality \cite{wright}. A shift by \(5\) takes \(\{0,4,5\}=_2\{1,2,6\}\) to \(\{0,4,7,11\}=_3\{1,2,9,10\}\) after cancellation of \(5,6\). Choudhry uses cancellation along arithmetic progressions to construct parametric ideal solutions in degrees four through seven \cite[\S\S2--6]{choudhry}. These constructions supply precedents for the operation and for its interaction with chains. The specific question here asks whether one shift suffices when its precursor is ideal of size ten and its output symmetric of size eleven.
+
+Call an ideal pair \emph{symmetric} if reflection about a rational center exchanges its two sides for odd size, or preserves each side for even size.
+\begin{theorem}[Single-shift obstruction]\label{thm:shift}
+If the reduced output of a single rational shift of disjoint finite rational sets is a symmetric distinct-entry ideal pair of size eleven, the precursor has at least twelve entries per side. In particular no distinct-entry ideal pair of size ten produces such an output.
+\end{theorem}
+The precursor symmetry follows from finite-support inversion. For a size-ten precursor, normalizing the shift to one leaves eighteen partitions of consecutive chains. The progression in Theorem~\ref{thm:progression} accounts for one partition. The other seventeen involve different arithmetic curves.
+
+For integer sets \(A=\{a_1<\cdots<a_n\}\), \(B=\{b_1<\cdots<b_n\}\), let \(L(A,B)=\sum_i|a_i-b_i|\).
+\begin{theorem}[Distance]\label{thm:distance}
+For every distinct-entry ideal integer pair of size \(n\ge2\), \(L(A,B)\ge2(n-1)\), with equality only for a symmetric pair. For size eleven, \(L(A,B)\ge22\) in general and \(L(A,B)\ge24\) in the symmetric case.
+\end{theorem}
+These last inequalities constrain a putative solution irrespective of how it is obtained. The unrestricted size-eleven existence question allows other constructions and both symmetry classes.
+
+Sections~\ref{sec:vertices} and~\ref{sec:marked} prove Theorem~\ref{thm:progression}. Section~\ref{sec:shift} reduces Theorem~\ref{thm:shift} to the cases in the appendices. Section~\ref{sec:distance} proves Theorem~\ref{thm:distance}. The first theorem uses only the marked vertex. The size-eleven distance bounds require only the fifth partition.

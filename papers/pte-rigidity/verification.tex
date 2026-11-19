@@ -1,0 +1,29 @@
+\section{Reproducing the arithmetic}\label{app:verification}
+The linked files are the computational supplement to the proofs. Links resolve to a fixed revision of the \dossier{}. From its repository root, Python files run with Python~3, algebraic identity checkers require SymPy, \texttt{.gp} files run with PARI/GP, and \texttt{.m} files in the supplement are Magma programs. The class-group and descent calculations for the marked vertex use PARI/GP 2.19.1 and Magma V2.30-1. A C++20 compiler linked against PARI is required for the parallel prime counts. All computations refer to exact polynomial or number-field models; local computations are carried out to the precision stated in the corresponding proofs.
+
+\paragraph{Classification.} Run \cert{check_all_shift_chain_types.py} to enumerate the integer partitions in Table~\ref{tab:parts} and check the elimination identities in the normalized models. Its genus computations establish necessary conditions. The certificates for excluding the resulting rational parameters are linked in the individual cases.
+
+\paragraph{Type 18 and the marked vertex.}\label{app:type18}
+For the partition \((5,\varnothing,(1,1,1,1,1))\) the centered side is \(O_{10}\) and the other side consists of five pairs \(\pm v_i\). Doubling the entries gives \(\{\pm1,\pm3,\pm5,\pm7,\pm9\}\) on the centered side. With \(y_i=2v_i\), the four equations \eqref{eq:chains} are exactly \eqref{eq:four-even-moments}. The marked-vertex calculation in Sections~\ref{sec:vertices} and~\ref{sec:marked} therefore forces the two sides to coincide. This proves the Type~18 exclusion for every rational choice of centers.
+
+The five-class calculation, prime-ideal bound, factor-base verification, elliptic descent, pairing and logarithm must be read in that order. From the root of a fresh checkout the following commands reproduce these steps, assuming the indicated programs and development library are available on the usual paths.
+\begin{Verbatim}[fontsize=\footnotesize,breaklines=true]
+mkdir -p build/type18-class
+magma scripts/check_type18_product_classes.m
+c++ -O3 -std=c++20 scripts/type13_prym_class/prime_counts.cpp -lpari -o build/type18-class/prime_counts
+python3 scripts/type13_prym_class/check_bound.py build/type18-class/prime_counts --type18 --jobs 12
+gp -fq scripts/type18_descent/check_factor_base.gp
+magma scripts/type18_descent/rank.m
+magma scripts/type18_descent/pairing.m
+gp -fq scripts/type18_descent/logarithm.gp
+\end{Verbatim}
+The explicit-formula margin exceeds \(0.284\). The proof bound supplied to the elliptic descent is 1000 for the identified degree-twelve field; applying it presupposes both the explicit-formula calculation and the prime-ideal reduction up to \(85{,}000{,}000\). The pair of Selmer representatives in the pairing check is given by fixed quartics. The last command returns the primitive residue \(\bar h^3+\bar h\). Parallel interval verification of the factor base is described in \cert{type18_descent/README.md}.
+
+\paragraph{Type 10.} Appendix~\ref{app:type10} gives, in order, the elliptic quotient, the two height calculations, their local targets, the root counts, and the elliptic-index test. Given those upstream inputs, the final two commands are
+\begin{Verbatim}[fontsize=\footnotesize,breaklines=true]
+python3 scripts/check_sixth_mode_qc_roots13.py
+python3 scripts/check_sixth_mode_candidate_sieve.py
+\end{Verbatim}
+The first isolates roots of the necessary height equations. The second relates each surviving local candidate to a residue of the global elliptic multiplier. Root counting on its own does not certify that every isolated local root is rational.
+
+\paragraph{Other types.} The links beside the equations in Appendices~\ref{app:cases} and~\ref{app:details} identify the local inputs, ranks and global descent calculations. Where a Magma command returns a finite-index subgroup, the proof either verifies the index condition at the relevant primes or uses linear dependence of logarithms over the ground field. A congruence defining a residue disk leaves infinitely many local parameters. The final implications in the proofs use an exact rank-zero computation, a bounded height proved from the equations, a certified rational-image computation, or an obstruction on a whole disk.
