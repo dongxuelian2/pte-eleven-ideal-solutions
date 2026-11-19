@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Certified infinity projection for sixth-mode curves; see INFINITY_PROJECTION.md.
+"""Certified infinity projection for sixth-mode curves; see proofs/infinity-projection.md.
 Requires existing SymPy. No installation or network actions.
 """
 import sympy as s

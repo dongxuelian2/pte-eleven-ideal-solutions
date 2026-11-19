@@ -1,0 +1,23 @@
+\\ Compute 24P and its formal parameter over the exact quartic number field.
+f=y^4-y^3-991*y^2+13345*y-19455;
+K=nfinit(f);
+r=Mod((-y^3-23*y^2+585*y+5002)/73,f);
+H=x^4-165*x^3+8778*x^2-172810*x+1057221;
+q=H\(x-r);
+if(q*(x-r)!=H,error("incorrect root model"));
+k=25-r;
+E=ellinit([0,k*polcoef(q,2),0,k^2*polcoef(q,1),k^3*polcoef(q,0)],K);
+P=[25*k,189*k];
+if(!ellisoncurve(E,P),error("seed is off the curve"));
+dec=idealprimedec(K,2);
+if(#dec!=1 || dec[1].e!=1 || dec[1].f!=4,error("wrong dyadic completion"));
+if(idealval(K,k,dec[1])!=0,error("nonunit scaling"));
+modpr=nfmodprinit(K,dec[1],'t);
+T=ellmul(E,P,24);
+if(#T!=2 || idealval(K,T[1],dec[1])!=-6 || idealval(K,T[2],dec[1])!=-9,error("wrong formal depth"));
+z=-T[1]/T[2];
+direction=nfmodpr(K,z/8,modpr);
+if(direction==0 || direction==1,error("rational tangent direction"));
+hbar=nfmodpr(K,Mod(y,f),modpr);
+if(direction!=hbar^3+hbar,error("wrong residue"));
+print("24P has formal depth three and normalized residue ",direction);

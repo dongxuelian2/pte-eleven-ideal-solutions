@@ -1,0 +1,65 @@
+// Type 13 beta. Certify the reference half used for v_2(v) >= 2.
+SetColumns(0);
+SetSeed(1);
+Q := Rationals();
+R<u> := PolynomialRing(Q);
+search := map<PowerStructure(RngOrd) -> Integers() | O :-> Min(1000, MinkowskiBound(O))>;
+proof := map<PowerStructure(RngOrd) -> Integers() | O :-> MinkowskiBound(O)>;
+SetClassGroupBoundMaps(search, proof);
+
+K<uu> := NumberField(u^3+u^2+315*u+1983);
+O := MaximalOrder(K);
+theta := (uu^2-3*uu+342)/60;
+alpha := K!25/4;
+beta := K!1/4;
+delta := beta-theta;
+d := -6*delta;
+a := -d*(alpha+theta);
+b := d^2*alpha*theta;
+a2 := 60^2*a;
+a4 := 60^4*b;
+E := EllipticCurve([K|0,a2,0,a4,0]);
+assert forall{z : z in aInvariants(E) | z in O};
+places := Decomposition(O,2);
+assert #places eq 1 and places[1][2] eq 3;
+pr := places[1][1];
+pi := (uu+1)^2/2;
+assert Valuation(pi,pr) eq 1;
+assert Valuation(pi^10*a,pr) eq 1 and Valuation(pi^20*b,pr) eq 4;
+
+S, to_S := TwoSelmerGroup(E);
+assert AbelianInvariants(S) eq [2,2,2,2,2];
+A := Domain(to_S);
+tau := A.1;
+pol := Parent(Modulus(A)).1;
+assert Modulus(A) eq pol^3+a2*pol^2+a4*pol;
+loc_map := LocalTwoSelmerMap(A,pr);
+images := [loc_map(g@@to_S) : g in Generators(S)];
+global_image := sub<Codomain(loc_map) | images>;
+assert #global_image eq 8;
+roots := [K!0, 3600*d*alpha, 3600*d*theta];
+for r in roots do
+    derivative := &*[r-q : q in roots | q ne r];
+    idempotent := (&*[tau-q : q in roots | q ne r])/derivative;
+    assert loc_map(r-tau+derivative*idempotent) in global_image;
+end for;
+
+P := E![3600*d*beta, -18*60^3*delta^2, 1];
+T := E![3600*d*alpha, 0, 1];
+D := T-P;
+x := D[1]/D[3];
+y := D[2]/D[3];
+r := 150*delta;
+assert x eq r^2;
+product := -y/r;
+radicand := 2*x+a2+2*product;
+s := 113+126*pi+103*pi^2;
+residual := Valuation(s^2-radicand,pr);
+derivative := Valuation(2*s,pr);
+assert residual gt 2*derivative;
+x_half := x+r*s+product;
+accuracy := residual-derivative+Valuation(r,pr);
+assert accuracy gt Max([Valuation(x_half-q,pr) : q in roots])+6;
+assert loc_map(A!x_half-tau) notin global_image;
+print "PASS: beta reference half outside global 2-Selmer image";
+print "Certified half precision",accuracy;

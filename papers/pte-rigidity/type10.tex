@@ -1,0 +1,751 @@
+\section{The quadratic Chabauty calculation for Type 10}\label{app:type10}
+
+Type 10 has a centered chain of length four on the first side, one
+reflected pair of chains of length two and one reflected pair of
+singletons on that side, and a reflected pair of chains of length three
+and two reflected pairs of singletons on the second side. We prove that
+its simultaneous rational center conditions force a collision. The
+argument uses two genus-three covers, a normalized height at 13 and a
+sieve on their common elliptic quotient. The sieve uses the full group
+of that quotient. A full Mordell--Weil basis of either genus-three
+Jacobian is unnecessary for the final step.
+
+\subsection{Reduction to simultaneous center squares}
+
+Let the positive centers of the first side be $u,w$, and let $v$ be the
+positive center of the length-three chain pair on the second side. Put
+$a=u^2$, $b=v^2$, $c=w^2$. For a chain of length $L$, write
+$O_L=\{j-(L-1)/2:0\leq j<L\}$. The two remaining squared singleton
+centers on the second side have power sums
+\[
+ p_k=\frac12\sum_{d\in O_4}d^{2k}
+       +\sum_{d\in O_2}(u+d)^{2k}+c^k
+       -\sum_{d\in O_3}(v+d)^{2k},\qquad 1\leq k\leq4.
+\]
+With $e_1=p_1$, $e_2=(p_1^2-p_2)/2$, the necessary recurrence relations
+are $F=p_3-e_1p_2+e_2p_1=0$ and
+$G=p_4-e_1p_3+e_2p_2=0$. Define
+\begin{align*}
+ D_0&=8a^2-48ab+4a+48b^2+24b-9,\\
+ N_0&=48a^2b-8a^2-192ab^2-168ab+50a
+                   +160b^3+352b^2+10b-27,\\
+ J_0&=16a^2-32ab-8a+16b^2-8b+1,\\
+ H_0&=24a^2-80ab-100a+80b^2+40b+81.
+\end{align*}
+Direct expansion gives
+\[
+ F=-\frac3{16}(N_0-2D_0c),\qquad
+ \operatorname{Res}_a(N_0,2D_0)
+       =-128(4b-25)(4b-9)^2(4b-1)^3.
+\]
+Thus $D_0=0$ forces $b=1/4,9/4,25/4$, each of which puts a
+second-side chain vertex in the centered first-side chain. For a valid
+configuration $D_0\ne0$ and $c=N_0/(2D_0)$. Substitution gives
+\[
+ G=\frac{(4b-9)(4b-1)J_0H_0}{64D_0}.
+\]
+The first two factors force the same collisions. Moreover
+\[
+ J_0=16\bigl(u^2-(v+1/2)^2\bigr)
+              \bigl(u^2-(v-1/2)^2\bigr),
+\]
+so its vanishing makes chains of different colors intersect. Hence
+$H_0=0$. A parametrization of this conic in $a,b$ is
+\[
+ d=3s^2-10s+10,\quad p=6s^2-5s+5,\quad
+ q=3s^2+26s+10,\quad r=3s^2-10s+100,
+\]
+\[
+ a=\frac{2p}{d},\qquad b=\frac q{4d},\qquad c=\frac r{4d}.
+\]
+The denominator $d$ has no rational zero. The exceptional parameters
+$s=0,4,4/3$ are colliding configurations, as is the parameter at
+infinity. With $z=3s-5$ define
+\begin{equation}\label{eq:t10-q}
+ q_0=z^2+5,\quad q_1=4z^2+30z+80,\quad
+ q_2=z^2+36z+185,\quad q_3=z^2+275.
+\end{equation}
+The three square conditions become $a=q_1/q_0$, $4b=q_2/q_0$,
+$4c=q_3/q_0$. In particular every valid finite configuration makes
+all four $q_i(z)$ have the same nonzero rational squareclass.
+The polynomial identities and all exceptional cases are checked by
+\cert{check_sixth_mode.py} and \cert{check_sixth_center_lift.py}.
+
+Write $z=A/B$ with coprime integers $A,B$, and homogenize $q_i$ to
+$Q_i(A,B)$. All four quadratics are positive over the reals. Their
+common squarefree part is therefore a positive squarefree integer
+$\delta$. A prime dividing $\delta$ divides every $Q_i$, and
+$Q_3-Q_0=270B^2$ implies that it lies in $\{2,3,5\}$. Such a prime
+cannot divide $B$. If $A,B$ are odd, then $Q_0\equiv6\pmod8$ and
+$Q_3\equiv4\pmod8$, so their squareclasses differ. The other
+primitive parity cases give $Q_0\equiv1\pmod4$. This removes
+$\delta=3,15$ and leaves
+\begin{equation}\label{eq:t10-delta}
+ \delta\in\{1,5\},\qquad q_i(z)=\delta c_i^2\quad(0\leq i\leq3).
+\end{equation}
+In fact $A$ is odd and $B$ is even, since the other mixed parity
+would give $Q_3\equiv3$ or $7\pmod8$. This is a squareclass reduction
+for the original center conditions, including $q_2$.
+
+\subsection{The elliptic quotient and its full rational group}
+
+Put $b_0^2=q_0q_3$. The genus-one quartic is birational to
+\begin{equation}\label{eq:t10-E}
+ E:\quad Y^2=X(X^2-560X+72900),\qquad
+ X=2b_0+2z^2+280,\quad Y=2zX.
+\end{equation}
+For $X\ne0$, its inverse is $z=Y/(2X)$ and
+$b_0=(X-2z^2-280)/2$. These maps extend over the smooth projective
+models, so the points where the affine formulas have poles are retained.
+Let $P=(180,900)$ and $T=(0,0)$. We use
+\begin{equation}\label{eq:t10-full-group}
+ E(\Q)=\Z P\oplus\langle T\rangle,\qquad 2T=0.
+\end{equation}
+Here is the arithmetic justification of completeness. The two-isogeny
+descent images on $E$ and its partner
+$Y^2=X(X^2+1120X+22000)$ are
+\[
+ \{1,5\},\qquad \{1,-5,-11,55\}.
+\]
+For each signed squarefree divisor $d$ of the relevant cubic coefficient,
+the primitive covering quartic is tested on the two primitive local
+patches modulo 256 and 3. The surviving classes are all attained by
+explicit rational points. The isogeny index formula gives rank one.
+Good reduction at 7 and 13 bounds the torsion order by four. There is
+one nonzero rational two-torsion point, and a half of $T$ would have
+$X=\pm270$, where the cubic takes a negative value. Thus the torsion
+is precisely $\langle T\rangle$.
+
+To establish that $P$ generates the free quotient, use $x/270=a/b$
+and the duplication map
+\[
+ [a:b]\longmapsto
+ [27(a^2-b^2)^2:4ab(27a^2-56ab+27b^2)].
+\]
+For coprime $a,b$, the coordinate gcd divides $11880$, and the maximum
+of the coordinate absolute values lies between
+$(121/48)\max(|a|,|b|)^4$ and $440\max(|a|,|b|)^4$.
+Telescoping gives, for the doubled canonical height $h_c$ and the
+naive height $h=\log\max(|a|,|b|)$,
+\[
+ h-\tfrac13\log(51840/11)\leq h_c
+               \leq h+\tfrac13\log440.
+\]
+The two-isogeny class of $P$ is 5 and that of $T$ is 1, so the index
+of $P$ in the free quotient is odd. If its absolute value were at
+least three, a generator would have $h<\log24$. Exhaustion of
+$|a|,b\leq24$ gives only the abscissae
+$0,2/3,3/2,15/8,8/15$, corresponding to $T$, $\pm P$,
+$\pm(P+T)$, $\pm2P$, and $\pm(2P+T)$. This contradicts a proper
+odd index. The cutoff is certified by the integer inequality
+$27\cdot440\cdot51840^9<24^{27}\cdot11^9$.
+The rank and saturation arguments are recorded in
+\cert{check_sixth_center_lift.py} and \cert{check_rank_one_generator.py}.
+
+Write every elliptic image as $nP+\epsilon T$ with $\epsilon\in\{0,1\}$.
+The common squareclass in \eqref{eq:t10-delta} is 1 for even $n$ and
+5 for odd $n$. Good reductions at $13,37,59,113$, where the orders of
+$P$ are $6,40,16,120$, respectively, give the necessary restrictions
+\begin{equation}\label{eq:t10-mod240}
+ \begin{array}{c|c}
+ \epsilon& n\pmod{240}\\ \hline
+ 0&0,1,120\\
+ 1&0,120,239
+ \end{array}.
+\end{equation}
+At undefined affine points the local test retains the point. Thus these
+restrictions lose no candidate at infinity or at $X=0$. The remaining
+small indices $0,\pm1$ give precisely the known collision configurations.
+
+\subsection{Genus-three targets and rank hypotheses}
+
+For $\delta=1,5$, let $X_\delta$ be the smooth projective curve
+\[
+ \delta a_0^2=q_1(z),\qquad b_0^2=q_0(z)q_3(z).
+\]
+Every finite simultaneous center lift maps to $X_\delta$. The quotients
+by the independent signs are a conic, the elliptic quartic above and
+\[
+ C_\delta:\quad \delta y^2=q_0q_1q_3,\qquad y=a_0b_0.
+\]
+There are six simple branch points for the degree-four cover of the
+$z$-line, so $X_\delta$ has genus three, and
+$J(X_\delta)\sim_{\Q}E\times J(C_\delta)$.
+The following conic parameters give the even-degree model
+\begin{equation}\label{eq:t10-model}
+ W^2=F_\delta(t)=(N_\delta^2+5D_\delta^2)
+                         (N_\delta^2+275D_\delta^2),\qquad
+ z=N_\delta/D_\delta,\quad a_0=M_\delta/D_\delta,\quad
+ b_0=W/D_\delta^2,
+\end{equation}
+\[
+\begin{array}{c|lll}
+\delta&N_\delta&D_\delta&M_\delta\\ \hline
+1&80-t^2&4t-30&2t^2-30t+160\\
+5&25t^2-120t+80&10t^2-8&-60t^2+100t-48
+\end{array}.
+\]
+They satisfy $\delta M_\delta^2=4N_\delta^2+30N_\delta D_\delta+
+80D_\delta^2$. The degree-eight polynomials are squarefree and have
+good ordinary reduction at 13.
+
+A Richelot isogeny sends $J(C_\delta)$ to the Jacobian of
+\[
+ D_k:\quad v^2=kz(z-1)(z+5)(z^2-68z-275),\qquad k=-15/\delta.
+\]
+On the monic model $y^2=x(x-k)(x+5k)(x^2-68kx-275k^2)$,
+full two-descent has étale algebra
+$\Q^3\times\Q(\sqrt{159})$. The global norm kernel
+unramified outside $\{2,3,5,11,19,53\}$ has dimension 25 over
+$\F_2$. Its dimension after successive local conditions is
+\[
+\begin{array}{c|rrrrrrrr}
+ k&\mathrm{norm}&\R&2&3&5&11&19&53\\ \hline
+ -15&25&23&18&15&11&8&5&5\\
+ -3 &25&23&18&15&11&8&6&5
+\end{array}.
+\]
+The local image dimensions are $2,5,3,4,4,4,3$ at the seven listed
+places. Explicit local divisor classes attain each dimension, so these
+are complete local images. The required squareclass basis in
+$\Q(\sqrt{159})$ follows from Minkowski's bound $<13$ and
+norm relations among the primes over $2,3,5,11$. Its independence is
+checked by local characters. This supplies unconditional Selmer dimension
+five. Three dimensions are rational two-torsion, and the following
+classes $A_k,B_k$ supply the other two dimensions. On the monic model
+use
+\[
+\begin{array}{c|c|ll}
+ k&A_k=[(x,y)-\infty]&u_{B_k}(x)&v_{B_k}(x)\\ \hline
+ -15&(225/4,320625/32)&x^2+1020x+81225&-13590x-1564650\\
+ -3 &(33,10692)&x^2+60x+3249&-1026x-40014
+\end{array}.
+\]
+The divisor convention for $B_k$ is $[\operatorname{div}(u,v)-2\infty]$.
+Exact divisibility $u\mid f_k-v^2$ and the independent Kummer classes
+prove rank two. These calculations implement the full odd-degree descent
+of Schaefer and Poonen--Schaefer~\cite{Schaefer1995,PoonenSchaefer}, and are reproduced by
+\cert{check_richelot_two_selmer.py}. Thus $J(X_\delta)$ has rank three.
+
+At 13, both genus-two reductions have 176 Jacobian points. For
+$\eta=(dx/(2y),x\,dx/(2y))$, the rows of
+$(\log A_k/13,\log B_k/13)$ modulo 13 are
+\[
+ \begin{array}{c|cc|c}
+ k&\log A_k/13&\log B_k/13&\det\\ \hline
+ -15&(3,1)&(1,11)&6\\
+ -3 &(9,1)&(10,9)&6
+ \end{array}.
+\]
+The exact calculation adds 176 times each divisor to an auxiliary
+unramified degree-two divisor, stays in charts with unit leading
+coefficients, and integrates in its two residue disks. The omitted tiny
+integral terms have valuation at least $m-v_{13}(m)\geq2$ for $m\geq2$.
+Since $176$ is prime to 13, the formal logarithm lattice is
+$13\Z_{13}^2$. The determinant proves that the subgroup generated
+by $A_k,B_k$ is 13-saturated. An independent reduction proof uses the
+coefficient rows $(1,10),(0,1)$ for $k=-15$ and $(1,7),(1,3)$ for
+$k=-3$ at 181 and 199. Each pair has nonzero determinant modulo 13.
+The certificates are \cert{check_thirteen_logarithms.py} and
+\cert{check_thirteen_saturation.py}.
+
+For the elliptic generator, exact addition gives
+$\log(P)/13\equiv1\pmod{13}$. The quotient-product and Richelot
+isogenies have two-primary kernels. They therefore preserve logarithm
+rank and saturation at 13. Both $J(X_\delta)(\Q)$ have logarithm
+rank three. Their rational Néron--Severi rank is two. Indeed, the
+Rosati-fixed fields of the genus-two reductions at 17 and 23 are
+$\Q(\sqrt2)$ and $\Q(\sqrt{17})$, forcing the rational
+Rosati-fixed algebra of $J(C_\delta)$ to be $\Q$. The two
+nonisogenous factors of dimensions one and two give the additional
+class. Consequently the quadratic Chabauty inequality is
+$3<3+2-1$. We use the Mordell--Weil restricted height construction of
+\cite{BalakrishnanDogra2018} and
+make no assumption on the finiteness of the 13-primary Tate--Shafarevich
+group.
+
+\subsection{The correspondence and its normalized height}
+
+Let $\iota(t,W)=(t,-W)$ and let the elliptic involution be
+\[
+ \sigma_1(t,W)=\left(\frac{15t-160}{2t-15},
+                         \frac{9025W}{(2t-15)^4}\right),\qquad
+ \sigma_5(t,W)=\left(\frac{24-25t}{25-30t},
+                         \frac{9025W}{(25-30t)^4}\right).
+\]
+It fixes $z,b_0$ and changes the sign of $a_0$. The trace-zero
+self-adjoint endomorphism is $Z=1+3\sigma$, with eigenvalues 4 and
+$-2$ on the elliptic and genus-two factors. Put
+\[
+ B_1=(15/2,9025/16),\qquad B_5=(5/6,9025/144),\qquad
+ H=\infty^++\infty^-.
+\]
+In both cases $\sigma(B_\delta)=\infty^+$. The four-point orbit of
+$B_\delta$ under $\iota,\sigma$ is rational.
+
+Use the proper graph correspondence
+$\Gamma=\Gamma_\iota-3\Gamma_\sigma$. Its fiber degrees are $-2$,
+and its diagonal intersection has degree $8-3\cdot4=-4$, giving
+trace-zero degree after subtracting the two fibers. If $R_\tau$ denotes
+the fixed divisor of an involution, the associated degree-zero divisor is
+\begin{equation}\label{eq:t10-graphdiv}
+ D_\Gamma(B,Q)=R_\iota-3R_\sigma-\iota Q+3\sigma Q
+                                      -\iota B+3\sigma B.
+\end{equation}
+This divisor has class $Z[Q-B]+2Z[B-H/2]$. For
+$j_H(Q)=[Q-H/2]$ and $\mathfrak q(A)=h_X(A,ZA)$, bilinearity gives
+\[
+ h_X([Q-B],D_\Gamma(B,Q))
+      =\mathfrak q(j_H(Q))-\mathfrak q(j_H(B)).
+\]
+This is the centered height identity used below. The correspondence and finite local value theorem of
+Balakrishnan--Dogra~\cite[Definition~6.2 and Theorem~6.3]{BalakrishnanDogra2018}
+apply to this divisor.
+
+Here all heights use $\log_{13}(13)=0$ and a compatible isotropic
+complement to the holomorphic differentials. The elliptic complement is
+the specified algebraic complement spanned by its second-kind quotient
+form. The genus-two complement is transported through the Richelot
+correspondence. Its pullback matrix on second-kind cohomology, in the
+quotient basis, is
+\[
+ \begin{pmatrix}
+ 2&0&0&0\\0&2&0&0\\0&-32/3&-8/15&0\\
+ -2200/9&-2464/9&-1114/45&-16/45
+ \end{pmatrix}.
+\]
+Exact primitives verify the two nonholomorphic rows, and the cup matrices
+satisfy the polarization identity with multiplier two. In particular the
+transport fixes the height splitting, including its sign.
+See \cert{check_richelot_de_rham_transport.py}.
+
+For the two genus-two classes above, the global height matrices and the
+scaled logarithm matrices are, modulo $13^3$ and $13^2$ respectively,
+\[
+\begin{array}{c|c|c}
+ k&\mathcal H_k&L_k\\ \hline
+ -15&\begin{pmatrix}923&1586\\1586&689\end{pmatrix}
+     &\begin{pmatrix}68&92\\105&89\end{pmatrix}\\[3pt]
+ -3&\begin{pmatrix}2093&676\\676&1027\end{pmatrix}
+     &\begin{pmatrix}126&23\\105&22\end{pmatrix}
+\end{array}.
+\]
+Thus $\mathcal A_k=L_k^{-t}(\mathcal H_k/13)L_k^{-1}$ is
+\begin{equation}\label{eq:t10-heightmat}
+ \mathcal A_{-15}=\begin{pmatrix}37&131\\131&135\end{pmatrix},\qquad
+ \mathcal A_{-3}=\begin{pmatrix}90&114\\114&36\end{pmatrix}
+                  \pmod{169}.
+\end{equation}
+The complete finite-prime sums for the three doubled mixed divisors
+$(D_A,D_B)$, $(D_A,D_{A-B})$, $(D_B,D_{A-B})$ are
+\[
+\begin{array}{c|lll}
+-15&-2\log(17)-2\log(593)&-2\log(5)&
+                      2\log(7)+2\log(19)+2\log(313)\\
+-3&-\log(3)&2\log(19)&-2\log(29)-2\log(31)
+\end{array}.
+\]
+The dyadic terms vanish by smooth charts and signed intersection
+cancellation. The finite terms depend on the chosen representatives.
+For the shared-disk pairing on $D_{-3}$ one instead moves to
+$4A-B$, computes its own finite intersections, and uses global
+bilinearity. In that calculation the away sum is
+$\log(3)-2\log(7)-2\log(61)+2\log(569)+2\log(1188727)$.
+The raw Coleman integrals are corrected by their holomorphic de Rham
+projections before adding these finite terms. The certificates
+\cert{check_remaining_qr_heights13.py} and
+\cert{check_complete_height_blocks13.py} reconstruct the displayed
+matrices with explicit guard precision. This also records the factor
+of two between a Jacobian class and its doubled anti-divisor.
+
+In raw quotient logarithms $L=(L_e,L_{w,1},L_{w,2})$, write the
+global quadratic expression as $L^t\mathcal J_kL/13$, with
+\[
+ \mathcal J_k=\operatorname{diag}(144,-\mathcal A_k/2).
+\]
+Adjunction and the Richelot polarization give
+\[
+ h_X(D,ZD)=2h_E(f_*D,f_*D)
+                    -\tfrac12h_{D_k}(\phi g_*D,\phi g_*D).
+\]
+The elliptic coefficient satisfies
+$13h_E(P,P)/\log_E(P)^2\equiv72\pmod{169}$.
+The corresponding differential coordinates are
+\[
+ \frac{dz}{2b_0},\qquad \frac{dz}{ka_0b_0},\qquad
+                              \frac{z\,dz}{a_0b_0}.
+\]
+Their pullback identities determine the normalization uniquely.
+
+\subsection{The exact away-from-13 target sets}
+
+Define the analytic function
+\begin{equation}\label{eq:t10-rho}
+ \rho_B(Q)=h_{13}(Q-B,D_\Gamma(B,Q))
+               -\mathfrak q(j_H(Q))+\mathfrak q(j_H(B)).
+\end{equation}
+For rational $Q$ its value is the negative sum of the away local
+heights. The complete target sets are
+\begin{equation}\label{eq:t10-targets}
+ \Omega_1=\{0,-1/6,-2/3\}\log_{13}(3),\qquad
+ \Omega_5=\{0,1/2,2/3,-4/3\}\log_{13}(3).
+\end{equation}
+We give the local geometry that establishes exhaustiveness.
+
+At every good prime other than 13, the normalized curve-level height
+vanishes. The model discriminants restrict the remaining primes to
+$2,3,5,11,19,53$. At 11 and 53 there is one geometric component with
+ordinary nodes of thickness one. A local section cannot meet a node
+with equation $xy=\ell$ over an unramified extension, since both
+coordinates would have positive integral valuation. Every section
+therefore retracts to the single vertex. At 19 the inner chart
+$t=-2+19u$ for $\delta=1$, or $t=4+19u$ for $\delta=5$, and the
+outer normalization give two elliptic components joined by two
+thickness-one nodes. The involution $\sigma$ exchanges the components.
+It commutes with $Z$, so the graph potential has the same value at
+both vertices, and normalization makes that value zero.
+
+At 5, pass to $\Q_5(\pi)$ with $\pi^2=5$ and set
+$t=\pi u$, $W=25V$ on $X_1$. The reduction has nodes at $u=\pm1$,
+each of thickness two. The main component is fixed and the two
+exceptional components introduced by resolution are exchanged by
+$\sigma$. A $\Q_5$ point of $X_1$ has
+$v_\pi(u)=2v_5(t)-1$, so cannot reduce to either node and meets the
+main component. For $X_5$, the isomorphism $a_1=\pi a_5$ gives
+$u=a_5-2z/\pi$. Its conic equation forces $v_5(z)\geq1$ and
+$a_5^2\equiv1\pmod5$, so all sections meet the two exceptional
+components. Each twist has just one accessible orbit of components,
+and its normalized local height is zero.
+
+At 2, over any finite unramified extension, $t=2u$ on $X_1$ would give
+$F_1(2u)/16\equiv3\pmod4$, which is impossible for a square. Thus
+$s=1/t$ is integral for all local points, including infinity. Put
+\[
+ N_\infty=80s^2-1,\quad D_\infty=4s-30s^2,\quad
+ S_\infty=N_\infty^2+140D_\infty^2,\quad
+ V_\infty=(s^4W+S_\infty)/2.
+\]
+Then
+\[
+ V_\infty^2-S_\infty V_\infty=-18225D_\infty^4/4.
+\]
+Here $S_\infty\equiv1\pmod2$, so this equation splits into two
+analytic disks, exchanged by $\iota$. In a semistable vertex set
+containing their boundary points, further refinements within these
+disks are genus-zero hanging trees. They have neither graph homology
+nor positive-genus component contribution to the correspondence
+measure. The potential is constant on each disk, and $\iota$
+symmetry makes the constants equal. Normalization makes them zero.
+The curve $X_5$ becomes $X_1$ over the unramified extension
+$\Q_2(\sqrt5)$, preserving $\iota,\sigma,Z$. Vanishing thus
+holds for both twists. This argument uses analytic disks and the
+semistable vertex-set refinement theorem, without assuming a computed
+full wild regular model.
+
+At 3, the cluster picture has a four-root cluster near $-1$ of depth
+$1/2$ containing two twins of depth $5/2$, and a four-root cluster near
+4 of depth $3/2$ containing a twin of depth 2. After the quadratic
+ramified base change, the charts reduce to
+$V^2=(u^2-1)^2$ and $V^2=u^2(u^2-1)$. The cluster-to-graph rules give
+two edges $A^+\to A^-$ of length 4, bridges $A^+\to B$ and
+$B\to A^-$ of length 2, and one loop at $B$ of length 1, with lengths
+normalized by $v_3(3)=1$. The involution exchanges the long edges,
+fixes the bridges and reverses the loop. Cycle vectors
+$(1,-1,0,0,0)$, $(1,1,-2,-2,0)$, $(0,0,0,0,1)$ have weighted
+Gram matrix $\operatorname{diag}(8,24,1)$, while $Z$ acts by
+$(-2,4,-2)$. The edge densities of the graph potential are
+$(-1/12,-1/12,2/3,2/3,-2)$.
+
+Normalized at $B_1$, its values along a bridge, a long edge and the
+loop are respectively
+\[
+ -\frac1{12}+\frac s3-\frac{s^2}3,\qquad
+ \frac{x^2}{24}-\frac x6-\frac1{12},\qquad
+ x^2-x-\frac34.
+\]
+Integer valuations leave accessible only $A^\pm$, bridge coordinates
+$1/2,3/2$, and the loop midpoint. The midpoint is absent for $X_1$,
+since $F_1(4+9u)/3^7\equiv2u^2+2u+1\pmod3$ has no residue root
+and has odd valuation. Local witnesses attain the other positions.
+For $X_5$ all four positions occur. After its basepoint normalization,
+the exact potential sets are
+\[
+ \{-1/12,0,-1/3\},\qquad \{1/4,1/3,0,-2/3\}.
+\]
+An intersection calculation calibrates the scalar and sign. At $t=-1$
+on $X_1$, choose $W/3\equiv-1\pmod3$ and take the opposite divisor
+$-D_\Gamma$. Its principal term has valuation 2, its horizontal
+intersection is $3/2$, and its vertical graph correction is $1/3$.
+Its height is $(2-3/2-1/3)\chi_3(3)=-\log_{13}(3)/6$.
+Returning to $D_\Gamma$ gives scalar $-2\log_{13}(3)$ for the
+displayed potential. This gives \eqref{eq:t10-targets} with the
+negative-away convention in \eqref{eq:t10-rho}.
+The graph potential is given by \cite[Theorem~3.2]{BDMTV}. The
+cluster construction uses \cite[Theorems~7.1 and~8.6]{DDMM}, and the
+vertex refinement uses \cite[Proposition~3.13(3)]{BPR}. All polynomial charts, accessibility witnesses, graph
+Laplacians and the scalar calibration are checked by
+\cert{check_qc_normalization_and_local_targets.py} and
+\cert{check_complete_away_targets.py}.
+
+\subsection{Moving normalization and its precision}
+
+Use the monic model $Y^2=f(t)=F_\delta(t)/c^2$, with $c=1,5625$
+for $\delta=1,5$, and put $\omega_j=t^jdt/(2Y)$, $\rho=\omega_3$.
+If $r_j$ is the coefficient of $u^j$ in
+$(u^8f(1/u))^{-1/2}$, a residue-zero basis is
+\[
+ \eta=(\omega_0,\omega_1,\omega_2,
+             \omega_4-r_1\rho,\omega_5-r_2\rho,\omega_6-r_3\rho).
+\]
+The triples $(r_1,r_2,r_3)$ are $(0,-2080,33600)$ and
+$(208/75,6752/1875,-386816/84375)$. The compatible complement is Lagrangian. Its lower-block determinants
+are $3/760$ and $4271484375/9728$. Both are 13-adic units, so holomorphic projection
+loses no precision.
+
+For the Coleman--Gross de Rham projection $\Psi$ and holomorphic
+projection $\lambda$ along this complement, the infinity input is
+\[
+\begin{array}{c|c|c}
+\delta&\Psi\rho\pmod{2197}&\lambda\rho\pmod{2197}\\ \hline
+1&(1433,392,1539,1586,728,1248)&(289,925,590)\\
+5&(1194,1844,368,1690,533,1898)&(427,1168,628)
+\end{array}.
+\]
+To compute it, expand Frobenius with
+$R=f(t^{13})-f(t)^{13}$ as
+\[
+ 13t^{13(i+1)-1}\sum_{n\geq0}\binom{-1/2}{n}
+           R^n\frac{dt}{2Y^{13+26n}}.
+\]
+The retained terms $0\leq n\leq4$ are reduced modulo $13^{25}$ with
+an auxiliary scale $13^8$. At most seven denominator divisions lose
+digits. For the omitted terms, removing finite branch principal parts
+loses at most $\lfloor\log_{13}(11+26n)\rfloor$ digits and horizontal
+reduction loses at most one. The resulting valuation bound
+\[
+ n+1-\lfloor\log_{13}(11+26n)\rfloor-1\geq4\quad(n\geq5)
+\]
+tends to infinity. The omitted infinite tail is therefore
+$O(13^4)$. The residue row of affine Frobenius is
+$(0,0,0,0,0,0,13)$. Its proper block $F_{\rm dR}$ and last column $v$
+satisfy $(F_{\rm dR}-13I)\Psi\rho=v$. The determinant has valuation
+three, but the inverse entries lose at most one digit, so precision
+$13^4$ gives $\Psi\rho$ modulo $13^3$. This is the even-degree
+Frobenius projection formula of \cite[Proposition~5.3]{GajovicMuller}. The complete exact implementation is
+\cert{check_infinity_projection.py}.
+
+For a finite source $Q=(a,y_a)$ use the third-kind kernel
+\[
+ \nu_Q=\frac12\left(1+\frac{y_a}{Y}\right)\frac{dt}{t-a},
+\]
+whose residue divisor is $Q-H/2$. At a source tending to infinity set
+$h=1/a$, $v=h^4y_a$ and use instead
+\[
+ \nu_\infty(h,v)=-\frac{h\,dt}{2(1-ht)}
+                       -\frac{v t^3dt}{2Y(1-ht)}.
+\]
+It differs from the finite kernel by a holomorphic differential and
+has the same normalized third-kind form. It specializes to
+$-\rho$ at $\infty^+$.
+For a moving finite source, differentiation modulo an exact form gives
+\[
+ \partial_a\nu_Q\equiv
+ \frac{(f'(a)+f'(t))(t-a)-2(f(t)-f(a))}{(t-a)^2}
+                       \frac{dt}{4y_aY}.
+\]
+Its numerator quotient is polynomial of degree at most six. The
+analogous expression in the infinity chart is also polynomial and
+residue zero. The projection commutes with this differentiation by
+its global-symbol characterization: differentiate the analytic
+Coleman primitives against fixed second-kind test forms and take
+residues coefficientwise. Nondegeneracy of the cup product then
+identifies the derivative of the projection.
+
+A residue-correct differential for \eqref{eq:t10-graphdiv} is
+\[
+ d\log(W/M^3)+3\nu_{\sigma B}-\nu_{\iota B}
+                         +3\nu_{\sigma Q}-\nu_{\iota Q}.
+\]
+Subtracting its holomorphic projection defines the local height.
+For $q=t(Q)-t(B)$, integration on the basepoint disks yields
+\[
+ h_{13,1}=991q+2083q^2,\qquad
+ h_{13,5}=1627q+81q^2\pmod{2197}.
+\]
+For the opposite-sheet kernel one uses its nonsingular expression
+\[
+ \nu_{\iota Q}=
+ \frac{f(t)-f(t(Q))}{t-t(Q)}
+              \frac{dt}{2Y(t)(Y(t)+Y(Q))}.
+\]
+All denominators are units on the relevant bidisk. The integral of a
+term of total order $n\geq3$ has valuation at least
+$n-v_{13}(n)\geq3$. For the twice-integrated moving normalizer the
+bound is $n-v_{13}(j)-v_{13}(i+1)\geq3$, where $n=i+j+1$.
+These estimates tend to infinity and control analytic tails.
+
+The centered basepoint logarithms in the three quotient coordinates
+are $(0,1313,832)$ for $\delta=1$ and $(1339,1339,1079)$ for
+$\delta=5$, modulo 2197. They are determined from the signed cup
+matrix and $\Psi\nu_B$, with
+$\langle\Psi(\partial_a\nu_Q),\omega_j\rangle=-a^j/(2y_a)$.
+If the raw logarithm increment is $d_1q+d_2q^2+\cdots$, the global
+change through precision $13^3$ is
+\[
+ \frac{2L_B^t\mathcal J_kd_1q+
+ (d_1^t\mathcal J_kd_1+2L_B^t\mathcal J_kd_2)q^2+
+ 2d_1^t\mathcal J_kd_2q^3}{13}.
+\]
+The cubic cross term is retained. Every omitted product of increment
+degrees $a,b$ with $a+b\geq4$ has valuation at least
+$a+b-v_{13}(a)-v_{13}(b)-1\geq3$.
+Putting $q=13u$ now gives
+\begin{align}\label{eq:t10-rhoseries}
+ \rho_{B_1}/13&=149u+136u^2\pmod{169},\\
+ \rho_{B_5}/13&=129u+110u^2+117u^3\pmod{169}.\nonumber
+\end{align}
+The entire analytic functions have integral coefficients on
+$\Z_{13}$. All terms of degree at least three vanish modulo
+13. Thus their simple residue roots exhaust the exact analytic roots,
+by Hensel's lemma. The coefficients and both tail estimates are part
+of the proof, while \cert{check_sixth_mode_qc_roots13.py} checks the
+finite algebra and the congruences.
+
+\subsection{The 48 local roots and the final elliptic sieve}
+
+The mod-240 condition and squareclass parity retain four of the twelve
+residue disks on each curve. On $X_1$ their reductions are
+$(1,\pm1)$ and the two infinity branches with $W/t^4=\pm1$.
+On $X_5$ they are $(3,\pm3)$ and the infinity branches with
+$W/t^4=\pm9$. Each set is the free orbit of its basepoint disk under
+$\{1,\iota,\sigma,\iota\sigma\}$.
+Since $\log_{13}(3)/13\equiv5\pmod{13}$, reducing the exact target
+equations from \eqref{eq:t10-targets} gives
+\[
+\begin{array}{c|c|c|c}
+\delta&\text{target}/\log_{13}(3)&u\pmod{13}&
+        \text{derivatives modulo }13\\ \hline
+1&0&0,12&6,7\\
+1&-1/6&2,10&4,9\\
+1&-2/3&\varnothing&\\ \hline
+5&0&0,11&12,1\\
+5&1/2&2,9&10,3\\
+5&2/3&3,8&9,4\\
+5&-4/3&5,6&7,6
+\end{array}.
+\]
+Every displayed residue gives exactly one exact local root. Thus there
+are four roots on the $B_1$ disk and eight on the $B_5$ disk.
+
+For completeness of transport, put
+$Z_{\rm act}=-\iota_*+3\sigma_*$. Direct subtraction of correspondence
+divisors gives
+\[
+ D_\Gamma(A,Q)-D_\Gamma(B,Q)=Z_{\rm act}(A-B),\qquad
+ D_\Gamma(B,Q)-D_\Gamma(B,A)=Z_{\rm act}(Q-A).
+\]
+Local-height symmetry and self-adjointness cancel the cross terms,
+so $h_A(Q)=h_B(Q)-h_B(A)$. Equivariance under $\iota,\sigma$
+then shows that $h_B(\tau Q)-h_B(Q)$ is constant. Applying
+$\tau$ twice makes it zero. The argument is first made with all
+supports disjoint and extends by the normalized analytic kernel.
+The centered global term has the same invariance. Transporting the
+base-disk equations therefore gives exactly $16+32=48$ local roots
+on the eight retained disks. Eight are the known basepoint-orbit
+roots. The other forty are local roots to be tested, without an
+assertion that they are rational points.
+
+At each of the good primes $61,101,107$, enumerate the complete cycle
+of $P$ and its translate by $T$. Their orders are $26,13,104$.
+At a finite point with $X\ne0$, form $z=Y/(2X)$ and require the four
+$q_i(z)$ in \eqref{eq:t10-q} to have the same nonzero quadratic
+character. A zero value, the point at infinity, and $X=0$ are retained
+conservatively. Projecting each permitted set to the gcd of the point
+order with 3120 and combining with \eqref{eq:t10-mod240} leaves
+\[
+\begin{array}{c|c}
+\epsilon&n\pmod{3120}\\ \hline
+0&0,1,1560\\
+1&0,1560,3119
+\end{array}.
+\]
+This finite group calculation is used on the isolated height roots.
+On the $B_1$ disk the elliptic reduction is the identity, the torsion
+index is $\epsilon=0$, and $n$ is even. Hence the sieve forces
+$n\equiv0\pmod{13}$. On the $B_5$ disk the reduction is $-P+T$,
+$\epsilon=1$ and $n$ is odd, giving $n\equiv12\pmod{13}$.
+
+The elliptic quotient differential is $dz/(2b_0)$ and its
+$t$-derivative at both basepoints is 11 modulo 13. With
+$\log(P)/13\equiv1\pmod{13}$, this gives
+\[
+ n\equiv11u\pmod{13}\quad(B_1),\qquad
+ n\equiv12+11u\pmod{13}\quad(B_5).
+\]
+The logarithm calibration is independently checked by exact rational
+addition: the formal parameter of $6P$ is $78\pmod{169}$, and its
+formal logarithm is the same modulo 169. Only $u=0$ survives on
+either basepoint disk. The exact zero-target equation has the root
+$B_\delta$ there, and simple-root uniqueness excludes a second root
+in that subdisk. The original center-square conditions are invariant
+under both involutions, so the same conclusion holds on every
+retained disk. All simultaneous center-lift candidates are among the
+eight rational orbit points. Their elliptic indices are $0,\pm1$,
+and the exact collision tests exclude them. This proves the Type 10
+exclusion at every rational height.
+
+\subsection{Arithmetic dependencies and reproducibility}
+
+The numerical inputs in this appendix are obtained from different
+certificates. Their roles are summarized here to make the proof
+reproducible from the stated models.
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.23\textwidth}>{\raggedright\arraybackslash}p{.70\textwidth}@{}}
+\toprule
+Input & Certificate and mathematical role\\ \midrule
+Center reduction & \cert{check_sixth_mode.py},
+\cert{check_sixth_center_lift.py},
+\cert{check_sixth_genus_two_covers.py}. Moment elimination,
+exceptional collision parameters and coverage by $\delta=1,5$.\\
+Elliptic group & \cert{check_rank_one_generator.py},
+\cert{check_lift_congruences.py}. The height cutoff proves full
+generation, and finite reductions give the mod-240 conditions.\\
+Genus-two ranks & \cert{check_richelot_two_selmer.py}. Full local
+images and an explicit global squareclass basis prove rank two
+unconditionally.\\
+Logarithms and index & \cert{check_thirteen_logarithms.py},
+\cert{check_thirteen_saturation.py}. Unit normalized determinant and
+independent finite-field tests prove full logarithm rank and
+13-saturation.\\
+Compatible splitting & \cert{check_genus_three_qc_de_rham.py},
+\cert{check_richelot_de_rham_transport.py}. Exact cup products,
+correspondence action and full second-kind pullbacks fix conventions.\\
+Global heights & \cert{check_elliptic_height13.py},
+\cert{check_complete_height_blocks13.py},
+\cert{check_remaining_qr_heights13.py}. Normalized Coleman integrals
+plus the complete representative-specific finite terms give
+\eqref{eq:t10-heightmat}.\\
+Curve-level local values & \cert{check_qc_normalization_and_local_targets.py},
+\cert{check_complete_away_targets.py}. Regular charts, metric graph
+and intersection calibration give exactly \eqref{eq:t10-targets}.\\
+Infinity projection & \cert{check_infinity_projection.py}. Affine
+Frobenius and the proved tail bound give $\Psi\rho$ and $\lambda\rho$.\\
+Moving roots & \cert{check_sixth_mode_qc_roots13.py}. It recomputes
+the derivative reductions, normalized local heights and centered
+quadratic term, and checks simple-root residue lists.\\
+Final candidate sieve & \cert{check_sixth_mode_candidate_sieve.py}.
+Complete elliptic cycles at three primes and independent logarithm
+calibration remove every non-basepoint local height root.\\ \bottomrule
+\end{longtable}
+
+The root certificate uses the global height matrices, the infinity
+projection and the rank statements as inputs established by the earlier
+certificates. It verifies the root series using the coefficients it
+actually computes. Its Hensel refinements modulo 169 are reproducibility
+outputs. The infinite-tail bounds, metric-graph interpretation and
+height-cocycle argument are mathematical parts of the proof.
+The final sieve requires no saturation at untested odd primes of the
+genus-three Jacobians because it uses \eqref{eq:t10-full-group}.
+The conclusion classifies the simultaneous-center-lift candidates
+needed by Type 10. The full rational-point sets $X_1(\Q)$ and
+$X_5(\Q)$ can contain points failing the remaining center-square
+conditions and are outside this assertion.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Sixth-mode QC root certificate; see SIXTH_MODE_QC_EXCLUSION.md.
+"""Sixth-mode QC root certificate; see proofs/type-10-quadratic-chabauty.md.
 Uses the explicitly listed previously certified PR inputs. Existing SymPy only.
 Does not classify all rational curve points or solve general size-eleven PTE.
 """
@@ -159,7 +159,7 @@ print('Negative-sheet coefficients are the negatives of the displayed vectors.')
 print('For source parameter u in 13 Z_13, omitted integrated powers are O(13^3).')
 
 # Exhaustive residue-root certificate for the EXACT analytic QC functions.
-# See SIXTH_MODE_QC_EXCLUSION.md for the integral analytic-tail/Hensel proof.
+# See proofs/type-10-quadratic-chabauty.md for the integral analytic-tail/Hensel proof.
 root_rows=[]
 for delta,coeffs,targets,wanted,base_n in [
  (1,[149,136,0],[Q(0),-Q(1,6),-Q(2,3)],[[0,12],[2,10],[]],0),

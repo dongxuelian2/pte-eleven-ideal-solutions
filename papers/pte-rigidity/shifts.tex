@@ -1,0 +1,71 @@
+\section{Inverting a shift and classifying its chains}\label{sec:shift}
+For a finitely supported function on \(\Q\), write \(T_hu(x)=u(x-h)\) and \(R_cu(x)=u(2c-x)\). A reduced shift of the signed indicator \(u=\mathbf1_X-\mathbf1_Y\) has signed indicator \(\nu=(1-T_h)u\). Reduction keeps the signed multiplicity at every point. The classical generating-polynomial formulation records vanishing moments as divisibility by a power of \(z-1\) \cite[Lemma~1]{blp}. Inverting the shift also recovers multiplicities and support.
+
+\begin{proposition}\label{prop:inverse}
+For \(h\ne0\), a finite-support inverse exists precisely when each coset of \(h\Z\) has signed sum zero. It is unique. On the coset of \(r\) it takes the values
+\[
+u(r+jh)=\sum_{i\le j}\nu(r+ih).
+\]
+It represents two disjoint sets if and only if all these sums belong to \(\{-1,0,1\}\). If \(\nu\) has zero moments through degree \(k\ge1\), its inverse has zero moments through degree \(k-1\). If \(R_c\nu=\epsilon\nu\) for \(\epsilon=\pm1\), then \(R_{c-h/2}u=-\epsilon u\).
+\end{proposition}
+\begin{proof}
+The cumulative formula solves the first-difference recurrence with initial value zero and has finite support exactly under the coset condition. Writing \(M_i=\sum_x x^iu(x)\), the \(j\)th moment of \(\nu\) is
+\[
+-\sum_{i=0}^{j-1}\binom ji h^{j-i}M_i .
+\]
+The successive coefficients \(-jh\) give the moment assertion by induction. Finally \(R_cT_h=T_{-h}R_c\) and \(1-T_{-h}=-T_{-h}(1-T_h)\). Thus \((1-T_h)(R_{c-h/2}u+\epsilon u)=0\), and uniqueness proves the reflection formula.
+\end{proof}
+
+\begin{corollary}
+For an integer distinct-entry ideal target of size \(n+1\), a single shift of disjoint rational sets of size \(n\) has integer step and integer precursor entries.
+\end{corollary}
+\begin{proof}
+Take \(h=p/q>0\) in lowest terms, reversing orientation if necessary. Only cosets meeting the target contribute, so the precursor lies on \(q^{-1}\Z\). Write \(P(z)=\sum_x\nu(x)z^x\). In scaled coordinates its inverse is the Laurent polynomial \(U(z)=P(z^q)/(1-z^p)\). Taking \(q\)th powers permutes the \(p\)th roots of unity. Hence \(V(z)=P(z)/(1-z^p)\) is also a Laurent polynomial and
+\[
+ U(z)=(1+z^p+\cdots+z^{(q-1)p})V(z^q).
+\]
+The summands have disjoint supports modulo \(q\). The coefficients of \(V\) lie in \(\{-1,0,1\}\), and each of its two signs occurs \(n/q\) times. As the inverse for the integer step \(p\), its two supports agree through degree \(n-1\). They are distinct, so Newton's identities give \(n/q\ge n\), proving \(q=1\). For fixed target a positive integer step divides a nonzero cross difference by the coset condition. Thus the target diameter is also a finite bound on the steps to test.
+\end{proof}
+
+\subsection{The graph of a minimal precursor}
+For a symmetric target of size eleven the reflection sign is \(-1\). Proposition~\ref{prop:inverse} makes each precursor side invariant under reflection about \(c-h/2\). Both sides have the same size since \(M_0=0\). This size is even since two odd invariant sets would both contain the fixed point. Their moments through degree nine agree, so Newton's identities give size at least ten. It remains to rule out size ten. Translate the precursor center to zero and scale to \(h=1\).
+
+Let \(P,Q\) be the two monic degree-ten root polynomials, and put \(P-Q=C\ne0\). Before cancellation the polynomials are \(F=P(x)Q(x-1)\) and \(G=Q(x)P(x-1)\). Their difference equals \(C(Q(x-1)-Q(x))\) of degree nine. Since the original colors are disjoint, their common roots are precisely the monochromatic unit edges, recorded by the larger endpoint. Every such root has multiplicity one in both products. Within one product, a double root would come from a cross-color unit edge and could never cancel. Thus a successful lift has exactly nine monochromatic edges, no cross-color edge and twenty distinct vertices. Conversely these conditions leave eleven simple roots on each side and a nonzero constant difference after cancellation.
+
+The graph is a disjoint union of eleven paths, with consecutive vertices one unit apart. Reflection permutes the paths. A fixed path is centered at zero and has even length, because neither input contains zero. Two such paths would share \(\pm1/2\). The odd path count forces exactly one fixed path. Exchange colors to put this path, of length \(2m\), on side \(X\). Denote the multisets of lengths of the remaining reflected pairs by \(\lambda,\mu\), grouped by color. They satisfy
+\begin{equation}\label{eq:parts}
+ |\lambda|+|\mu|=5,\qquad \sum\lambda=5-m,\qquad \sum\mu=5,\quad 1\le m\le5 .
+\end{equation}
+Ordering each list gives precisely the eighteen rows in Table~\ref{tab:parts}. This enumeration runs over integer partitions only, leaving all centers rational and unrestricted.
+
+\begin{table}[htbp]\centering\small
+\caption{All solutions of \eqref{eq:parts}. A string such as \(112\) lists three path lengths \(1,1,2\). The dash denotes an empty list.}\label{tab:parts}
+\begin{tabular}{rrrr@{\hspace{3em}}rrrr}
+\toprule Type&\(m\)&\(\lambda\)&\(\mu\)&Type&\(m\)&\(\lambda\)&\(\mu\)\\\midrule
+\hyperref[app:type1]{1}&1&4&1112&\hyperref[app:type10]{10}&2&12&113\\
+\hyperref[app:type2]{2}&1&13&113&\hyperref[app:type11]{11}&2&12&122\\
+\hyperref[app:type3]{3}&1&13&122&\hyperref[app:type12]{12}&2&111&14\\
+\hyperref[app:type4]{4}&1&22&113&\hyperref[app:type13]{13}&2&111&23\\
+\hyperref[app:type5]{5}&1&22&122&\hyperref[app:type14]{14}&3&2&1112\\
+\hyperref[app:type6]{6}&1&112&14&\hyperref[app:type15]{15}&3&11&113\\
+\hyperref[app:type7]{7}&1&112&23&\hyperref[app:type16]{16}&3&11&122\\
+\hyperref[app:type8]{8}&1&1111&5&\hyperref[app:type17]{17}&4&1&1112\\
+\hyperref[app:type9]{9}&2&3&1112&\hyperref[sec:marked]{18}&5&--&11111\\\bottomrule
+\end{tabular}
+\end{table}
+
+To recover the equations for a row let \(O_\ell=\{j-(\ell-1)/2:0\le j<\ell\}\) and put
+\[
+ M_\ell(k,w)=\sum_{i=0}^k\binom{2k}{2i}w^{k-i}\sum_{s\in O_\ell}s^{2i},
+ \qquad C_m(k)=\tfrac12\sum_{s\in O_{2m}}s^{2k}.
+\]
+Half the \(2k\)th moment of the two paths centered at \(\pm z\) is \(M_\ell(k,z^2)\). With centers \(u_i,v_j\) on the two sides the system becomes
+\begin{equation}\label{eq:chains}
+ C_m(k)+\sum_i M_{\lambda_i}(k,u_i^2)=
+ \sum_j M_{\mu_j}(k,v_j^2),\qquad 1\le k\le4 .
+\end{equation}
+Odd moments vanish identically. In solving \eqref{eq:chains} one must test that its centers give disjoint paths, distinct entries and no cross-color unit edge. A rational solution of an auxiliary curve can fail each of these tests.
+
+\begin{proof}[Proof of Theorem~\ref{thm:shift}]
+The preceding argument exhausts the possible size-ten precursors. The individual exclusions for Types 1--9 and 11--17 are in Appendix~\ref{app:cases}, with arithmetic derivations in Appendix~\ref{app:details}. Type~10 is treated in Appendix~\ref{app:type10}. For Type~18, \(X=O_{10}\), so Theorem~\ref{thm:progression} gives \(Y=X\), contrary to disjointness. Since every such precursor has even size, at least twelve entries per side are necessary.
+\end{proof}

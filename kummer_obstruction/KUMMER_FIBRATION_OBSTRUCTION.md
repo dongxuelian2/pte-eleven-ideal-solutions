@@ -4,9 +4,11 @@
 
 Let J be the genus-two Jacobian in the certified PTE pencil computation. For each of its seven nonzero rational 2-Selmer classes ε, let Xε be the minimal resolution of the associated twisted Kummer quartic (the precise twist, not an arbitrarily chosen geometrically isomorphic quartic).
 
-**Theorem.** Xε admits no genus-one fibration defined over Q. More strongly, no such fibration exists after any finite odd-degree extension of Q, or after any quadratic extension of Q. A section is not assumed in this statement.
+**Theorem.** Xε admits no genus-one fibration defined over Q. More strongly, no such fibration exists after any finite odd-degree extension of Q, or after any extension of degree less than ten. A section is not assumed in this statement.
 
-This is an unconditional structural obstruction, not a bounded point search. It does not exclude rational points on Xε, does not compute a Cassels–Tate pairing, does not determine the Jacobian rank, and does not solve the original size-eleven PTE problem. It rules out a specific proposed way of replacing the current Kummer-point problem by a rational elliptic fibration. No claim is made for other even-degree extensions.
+The degree bound is sharp: for each ε there is an extension L/Q of degree exactly ten over which Xε admits a genus-one fibration over P¹_L. Thus ten is the minimum degree even when a split base is required. A section is not asserted.
+
+This is an unconditional structural obstruction, not a bounded point search. It does not exclude rational points on Xε, does not compute a Cassels–Tate pairing, does not determine the Jacobian rank, and does not solve the original size-eleven PTE problem. It rules out a specific proposed way of replacing the current Kummer-point problem by a rational elliptic fibration. The degree-ten construction is an existence proof from a divisor class, not an explicit equation or an effective point-recovery algorithm.
 
 ## 1. The curve's geometric endomorphism ring
 
@@ -32,7 +34,7 @@ The rational Weierstrass point identifies J[2] with
 
 V={ (v1,...,v5) in F2^5 : v1+...+v5=0 },
 
-with S5 acting by coordinate permutations. V is irreducible: a nonzero vector has weight two or four; its S5 orbit spans V in either case.
+with S5 acting by coordinate permutations. V is irreducible under both S5 and A5: a nonzero vector has weight two or four, and A5 is transitive on each of these two weight sets. Weight-two vectors span V, while sums of pairs of distinct weight-four vectors give weight-two vectors.
 
 Moreover H¹(S5,V)=0. Indeed F2^5=F2·(1,1,1,1,1) ⊕ V, since five is odd. Shapiro identifies H¹(S5,F2^5) with H¹(S4,F2), which is one-dimensional. Under this identification the inclusion of the constant module induces restriction H¹(S5,F2)→H¹(S4,F2). The sign homomorphism restricts nontrivially, so this map is an isomorphism. The direct-summand cohomology then forces H¹(S5,V)=0. No semisimplicity assertion in characteristic two is being used.
 
@@ -58,7 +60,7 @@ and its intersection matrix is diag(4,−32). We deliberately use Galois invaria
 
 If aH+bE has square zero, then a²=8b². For rational a,b this forces a=b=0. A genus-one fibration defined over Q would supply a nonzero Galois-invariant geometric fiber class with square zero, a contradiction. This excludes genus-one fibrations even without a rational section or with a nonsplit genus-zero base.
 
-## 4. Odd-degree and quadratic extensions
+## 4. Odd-degree extensions and extensions of degree less than ten
 
 Let G=V⋊S5 be the image on the nodes, and let L/Q be finite. Its restricted image H_L⊂G has index dividing [L:Q].
 
@@ -68,10 +70,48 @@ If [L:Q] is odd, normality of V gives
 
 which is both a power of two and a divisor of the odd number [G:H_L]. Hence V⊂H_L.
 
-If [L:Q]=2, the image has index one or two. Since the S5-module V is nontrivial and irreducible, [S5,V]=V. Thus G_ab=S5_ab=C2, and every index-two subgroup contains V. Again V⊂H_L.
+More generally, suppose [G:H_L]<10. Put U=H_L∩V and let P be the image of H_L in S5. Then
+
+    [G:H_L]=[S5:P] [V:U].
+
+If U were proper, [V:U]≥2, so [S5:P]<5. The only possibilities are P=S5 and P=A5. Indeed an index-three or index-four subgroup would give a transitive homomorphism S5→S3 or S5→S4. Simplicity of A5 and 60>|S4| force A5 into its kernel. The image then has order at most two, which cannot be transitive on three or four letters; the unique index-two subgroup is A5.
+
+The subspace U is P-stable. Irreducibility under S5 and A5 forces U=0, giving [V:U]=16, a contradiction. Thus V⊂H_L. In particular this holds whenever [L:Q]<10, because the restricted-image index divides the extension degree. This adds degrees four, six and eight to the previous quadratic case.
 
 In both cases the nodes remain transitive, so the invariant intersection form remains diag(4,−32). The same isotropic-class argument rules out a genus-one fibration over L.
 
+The argument uses only a rational Weierstrass point, quintic Galois group S5, geometric Picard rank seventeen, and a nonzero true translation-twist class. It therefore applies more generally to such genus-two Jacobians. The Galois-module and Picard-space framework is standard; see Skorobogatov–Zarhin, [Kummer varieties and their Brauer groups](https://arxiv.org/abs/1612.05993), Sections 2 and 4. The low-degree conclusion is an elementary subgroup-index refinement of that framework. It uses invariance of the geometric hyperplane class, not descent of every invariant class to a line bundle, so no Brauer splitting assumption is inserted. A nonzero Mordell–Weil class modulo two is included: its underlying Jacobian torsor may be trivial, but its node J[2]-torsor is nontrivial.
+
+## 5. A degree-ten extension attains the bound
+
+Write the affine node group as G=V⋊S5 as above. Choose the fifth coordinate and put
+
+    U={v∈V : v5=0},    P=Stab_S5(5)≅S4,    B=U⋊P.
+
+The subspace U has dimension three, so |B|=8·24=192 and [G:B]=1920/192=10. Let M/Q be the finite Galois extension cut out by the node action and put L=M^B. Thus [L:Q]=10. On the sixteen nodes B has exactly two orbits
+
+    O0={v∈V : v5=0},    O1={v∈V : v5=1},
+
+each of size eight: translations by U are already transitive on either set. Consequently the exceptional divisor Z=Σ_(v∈O0) E_v is defined over L. Since the given quartic is defined over Q, its hyperplane pullback H is an actual divisor class over Q. The divisor class
+
+    D=2H−Z ∈ Pic(Xε,L)
+
+satisfies
+
+    D²=4H²+Z²=16−16=0,    D·H=8.
+
+It is therefore nonzero and isotropic. No assertion that H−Z/2 is integral is needed.
+
+We now use [Hassett–Tschinkel, *Rational points on K3 surfaces and derived equivalence*, Lemma 15, Section 2.1](https://www.math.brown.edu/bhassett/papers/derivedsurvey/DerivedSurvey17.pdf). Over a characteristic-zero field, a K3 surface with a nonzero square-zero divisor admits a genus-one fibration, allowing a nonsplit conic as base. The proof moves the divisor to the nef cone by Picard–Lefschetz reflections; the unique nef representative is Galois invariant, and a multiple descends and induces the fibration. Thus an isotropic vector alone is not being silently identified with an already nef fiber. Applying this result to D proves existence over L. Together with Section 4, it proves that the minimum possible extension degree is exactly ten.
+
+This argument is not restricted to the seven computed classes. Let C/Q have a rational Weierstrass point and a separable quintic model with Galois group S5. For every nonzero true class ε∈H¹(Q,Jac(C)[2]), the standard translation-twisted Kummer has the same minimum degree ten. Zarhin's theorem supplies Picard rank seventeen, and Section 2 supplies the full affine node group. No Selmer local-solubility condition is required. If only the geometric hyperplane class is specified, rather than a Q-defined quartic model, choose a positive integer n for which nH is defined over Q: take the norm of a line bundle representing H from a finite Galois field of definition, using invariance of H and Pic⁰=0. Then replace D by 2nH−nZ; its square remains zero and its intersection with H is 8n. Thus no Brauer splitting assumption is required in this general form either.
+
+For an arbitrary nonzero H¹ class, this establishes the exact minimum degree with a genus-zero base allowed. For a true **2-Selmer class**, including each of the seven classes here, its degree-ten base is in fact split. Let Yε be the associated 2-covering of J. At every place v of Q, the Selmer condition gives Yε(Q_v)≠∅. The covering is smooth of dimension two, so a local point has a positive-dimensional real or p-adic analytic neighborhood. One can therefore choose a point outside the finite fixed locus of its involution. Its image in the smooth part of the quotient gives a point of Xε(Q_v).
+
+For every place w of L above v, base change along Q_v⊂L_w then gives Xε(L_w)≠∅. If Xε,L→B is the genus-one fibration just constructed, these points give B(L_w)≠∅ at every finite and infinite place w. The smooth projective genus-zero curve B is a conic over the number field L. By the Hasse–Minkowski theorem it has an L-point and hence B≅P¹_L; see the [number-field conic local-global principle](https://magma.maths.usyd.edu.au/magma/handbook/text/1537). All completions, including real places, have been included; no stronger hypothesis on L is needed. This proves the split-base assertion for the seven Selmer classes. More generally the same argument applies whenever the covering is everywhere locally soluble.
+
+Neither the local points nor the splitting of the base give a section of the fibration, an L-point of Xε, or a point on its generic fiber. For arbitrary H¹ classes without local solubility, no split-base assertion is made. The ingredients are standard Kummer geometry, the cited K3 divisor criterion and the conic Hasse principle; the contribution here is their sharp subgroup-and-divisor consequence, not a new general fibration criterion.
+
 ## Reproducibility and review
 
-`check_fibration_obstruction.py` verifies the exact polynomial identities, squarefree Frobenius factorizations, the identification F(θ)=0, and the elementary module/intersection calculations. The cohomological and geometric steps above use the stated standard theorems and are mathematical arguments, not proof-assistant formalizations. The main theorem and extension argument were independently reviewed. The previously certified model labels ensure these statements apply to the actual seven computed quartics.
+`check_fibration_obstruction.py` verifies the exact polynomial identities, squarefree Frobenius factorizations, the identification F(θ)=0, the elementary module calculations, and the degree-ten subgroup, orbit and divisor-intersection calculations. The cohomological and geometric steps above use the stated standard theorems and are mathematical arguments, not proof-assistant formalizations. The previously certified model labels ensure these statements apply to the actual seven computed quartics.

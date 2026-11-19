@@ -1,0 +1,33 @@
+// Elliptic Chabauty in the b=1 residue class of Proposition 35.
+SetColumns(0);
+Q:=Rationals();
+A<T>:=PolynomialRing(Q);
+K<w>:=NumberField(T^3-T^2-330*T-149578);
+r:=(-w^2+20*w-5426)/7168;
+d:=5*(1-r);
+E:=EllipticCurve([K|0,d*(4/5-r),0,-4*d^2*r/5,0]);
+P:=E![d,3*d^2/5,1];
+assert Order(P) eq 0;
+p:=73;
+D:=pAdicField(p,40);
+R<t>:=PolynomialRing(D);
+F:=GF(p);
+logs:=[]; slopes:=[];
+for pair in Roots(t^3-t^2-330*t-149578) do
+    ev:=func<z|Evaluate(Polynomial(Q,Eltseq(K!z)),pair[1])>;
+    a:=ev(aInvariants(E)[2]); b:=ev(aInvariants(E)[4]);
+    EL:=EllipticCurve([D|0,a,0,b,0]);
+    PL:=EL![ev(P[1]),ev(P[2]),1];
+    assert Valuation(Discriminant(EL)) eq 0 and Valuation(PL[2]) eq 0;
+    EF:=EllipticCurve([F|0,Integers()!a,0,Integers()!b,0]);
+    n:=#EF; U:=n*PL;
+    assert U ne EL!0;
+    z:=-U[1]/U[2];
+    assert Valuation(z) ge 1 and AbsolutePrecision(z) ge 2;
+    Append(~logs,F!(Integers()!(z/p)));
+    Append(~slopes,F!(Integers()!(n*ev(d)/(2*PL[2]))));
+end for;
+assert #logs eq 3;
+minors:=[logs[i]*slopes[j]-logs[j]*slopes[i]:i,j in [1..3]|i lt j];
+assert 0 notin minors;
+print logs,slopes,minors;

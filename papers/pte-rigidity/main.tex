@@ -1,0 +1,60 @@
+% Compile from this directory with latexmk -lualatex main.tex
+\documentclass[11pt,oneside]{article}
+\usepackage[hmargin=0.98in,vmargin=1.05in,a4paper]{geometry}
+\usepackage{fontspec}
+\usepackage{amsmath,amsthm,mathtools}
+\usepackage{unicode-math}
+\setmainfont{Latin Modern Roman}
+\setmathfont{Latin Modern Math}
+\usepackage{microtype,booktabs,longtable,array,calc,enumitem,graphicx,fvextra}
+\usepackage[svgnames]{xcolor}
+\usepackage[colorlinks=true,linkcolor=MidnightBlue,citecolor=MidnightBlue,urlcolor=MidnightBlue,bookmarksnumbered=true]{hyperref}
+\usepackage{bookmark}
+\hypersetup{pdftitle={Ten-term arithmetic progressions and single shifts in the ideal Prouhet--Tarry--Escott problem},pdfauthor={Daoyu Dong and Qichao Wang}}
+\newcommand{\R}{\mathbb R} \newcommand{\Q}{\mathbb Q} \newcommand{\Z}{\mathbb Z} \newcommand{\F}{\mathbb F}
+\DeclareMathOperator{\Cl}{Cl} \DeclareMathOperator{\Sel}{Sel} \DeclareMathOperator{\ord}{ord}
+\newfontfamily\cyrfont{DejaVu Serif}
+\providecommand{\Sha}{\mathop{\text{\cyrfont Ш}}\nolimits}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\certbase}{https://github.com/dongxuelian2/pte-eleven-ideal-solutions/blob/c9a3792a044c259249debc1d4b889e5634b3cfa8/scripts/}
+\newcommand{\cert}[1]{\leavevmode\hfil\penalty100\hfilneg\href{\certbase#1}{\mbox{\small\ttfamily\detokenize{#1}}}}
+\newcommand{\dossier}{\href{https://github.com/dongxuelian2/pte-eleven-ideal-solutions/blob/c9a3792a044c259249debc1d4b889e5634b3cfa8/PROOF.md}{arithmetic dossier}}
+\setcounter{tocdepth}{1}
+\setlist{nosep}
+\setlength{\emergencystretch}{2em}
+\allowdisplaybreaks
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\urlstyle{same}
+\begin{document}
+\begin{center}
+{\LARGE\bfseries Ten-term arithmetic progressions and single shifts\\[3pt] in the ideal Prouhet--Tarry--Escott problem\par}
+\medskip
+\begin{minipage}[t]{.53\linewidth}\centering
+Daoyu Dong\\[2pt]{\small University of Electronic Science and Technology of China\\Chengdu, China}
+\end{minipage}\hfill
+\begin{minipage}[t]{.44\linewidth}\centering
+Qichao Wang\\[2pt]{\small Hebei University of Technology\\Tianjin, China}
+\end{minipage}
+\end{center}
+\begin{abstract}
+We prove that a ten-term rational arithmetic progression is determined, among rational multisets of size ten, by its first nine power sums. Equivalently, the polynomial \(\prod_{j=0}^{9}(T-j)-c\) splits over \(\Q\) only for \(c=0\). The proof singles out one squared root by descent and forces its value on a rank-one elliptic curve over a quartic field. We also classify the eighteen possible arrangements of consecutive chains in a single-shift construction from ten distinct entries per side and exclude each arrangement for a symmetric ideal target of size eleven. Finally, for any two disjoint integer sets of size \(n\) with equal power sums through degree \(n-1\), we show that equality in the ordered distance bound \(2(n-1)\) forces reflection symmetry. At size eleven the distance is at least \(22\), increasing to \(24\) for symmetric pairs. The unrestricted size-eleven existence question remains open.
+\par\smallskip\noindent\textit{Keywords.} Equal sums of like powers, rational splitting, elliptic Chabauty, descent, ordered distance.
+\end{abstract}
+\tableofcontents
+\input{introduction}
+\input{progression}
+\input{shifts}
+\input{distance}
+\appendix
+\input{cases}
+\input{type10}
+\input{arithmetic-details}
+\input{verification}
+\input{bibliography}
+\end{document}
