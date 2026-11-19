@@ -6,6 +6,8 @@ For a symmetric ideal size-eleven target, every distinct-entry precursor under a
 
 ## Read the paper
 
+[Complete PDF manuscript](papers/pte-rigidity/pte-rigidity.pdf) (73 pages, A4).
+
 Start with the [main theorems](papers/pte-rigidity/introduction.tex). The [marked-vertex proof](papers/pte-rigidity/progression.tex) establishes progression rigidity. For the shift obstruction, the [partition table](papers/pte-rigidity/shifts.tex) leads to the [individual models](papers/pte-rigidity/cases.tex) and the [Type 10 quadratic Chabauty calculation](papers/pte-rigidity/type10.tex). The [distance proof](papers/pte-rigidity/distance.tex) applies to ideal integer pairs of any size.
 
 Build the [complete manuscript](papers/pte-rigidity/main.tex) with LuaLaTeX, Latin Modern and DejaVu Serif. From the repository root:
