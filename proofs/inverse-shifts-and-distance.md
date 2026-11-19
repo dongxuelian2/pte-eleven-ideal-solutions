@@ -6,7 +6,7 @@ can produce a symmetric ideal size-eleven pair by one rational shift. Also,
 a rational arithmetic progression of length ten is determined among rational
 multisets of that size by its first nine moments. The second theorem has no
 lift or symmetry hypothesis on the competing multiset.
-[Proofs of Theorem 49 and Corollaries 50–51](PROOF.md#576-complete-exclusion-of-type-18-and-rigidity-of-a-ten-term-progression)
+[Proofs of Theorem 49 and Corollaries 50–51](../PROOF.md#576-complete-exclusion-of-type-18-and-rigidity-of-a-ten-term-progression)
 
 ## Why try this construction?
 
@@ -309,15 +309,4 @@ side consists of four doubletons and the two end singletons. This is
 exactly Type 5, with \((m,aa,bb)=(1,(2,2),(1,2,2))\). The ordered
 distance sum is even, and for symmetric targets its half is even by
 backward symmetry. Translation and division by \(d\) prove the lattice
-version. ∎ [Complete exclusion of Type 5, §5.42](PROOF.md#542-complete-exclusion-of-type-5-by-normalized-two-cover-descent)
-
-A focused paper could lead with the ten-term progression theorem. Its
-statement only involves power sums or the completely split fibers of
-an explicit polynomial. The proof uses the single vertex descent and
-rank-one calculation and is independent of the other seventeen exclusions.
-Theorem 52 gives a separate general mechanism, and Corollary 53 needs only the Type 5 exclusion in addition. A paper on the full single-shift obstruction would also need the other
-seventeen proofs and their arithmetic certificates. The unrestricted
-size-eleven existence question still allows other constructions and
-nonsymmetric targets. Priority for the progression theorem and the inverse
-statements, and independent review of the arithmetic certificates, remain
-open.
+version. ∎ [Complete exclusion of Type 5, §5.42](../PROOF.md#542-complete-exclusion-of-type-5-by-normalized-two-cover-descent)

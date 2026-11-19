@@ -3182,8 +3182,8 @@ claim to determine the entire geometric component group at every prime.
 ##
 ### 5.30. Complete away-prime targets and certified infinity projection
 
-The follow-up proofs [COMPLETE_AWAY_TARGETS.md](COMPLETE_AWAY_TARGETS.md) and
-[INFINITY_PROJECTION.md](INFINITY_PROJECTION.md) close the two local gaps at 2 and 3
+The follow-up proofs [proofs/local-height-targets.md](proofs/local-height-targets.md) and
+[proofs/infinity-projection.md](proofs/infinity-projection.md) close the two local gaps at 2 and 3
 and compute the infinity de Rham projection modulo 13³. Both received independent
 mathematical and computational review.
 
@@ -5117,11 +5117,11 @@ remains unresolved.
 
 ### 5.30 Complete away targets and infinity projection
 
-[COMPLETE_AWAY_TARGETS.md](COMPLETE_AWAY_TARGETS.md) completes the local sets
+[proofs/local-height-targets.md](proofs/local-height-targets.md) completes the local sets
 left open in5.29. The exact QC targets are
 Omega1={0,-1/6,-2/3}log13(3) and
 Omega5={0,1/2,2/3,-4/3}log13(3).
-[INFINITY_PROJECTION.md](INFINITY_PROJECTION.md) computes the de Rham
+[proofs/infinity-projection.md](proofs/infinity-projection.md) computes the de Rham
 projection at infinity and its compatible holomorphic normalization modulo13^3.
 Both have independently reviewed proofs and executable certificates.
 
@@ -5133,7 +5133,7 @@ size-eleven PTE lift.
 
 **Proof.** The complete proof, analytic estimates, dependency ledger and
 independently reviewed exact calculations are in
-[SIXTH_MODE_QC_EXCLUSION.md](SIXTH_MODE_QC_EXCLUSION.md).
+[proofs/type-10-quadratic-chabauty.md](proofs/type-10-quadratic-chabauty.md).
 Here is the finite conclusion and its scope.
 
 The mod240 elliptic restriction and squareclass parity retain four residue
@@ -5708,7 +5708,7 @@ squares. The lifted centers are distinct up to sign, and their
 negative valuations prevent collisions with the A centers. This
 classifies the positive local denominator valuations. Theorem 49 in §5.76 rules out a noncolliding rational tuple globally.
 
-**Certified lower bound.** In the [rigid-prime proof](TYPE18_RIGID_PRIMES.md),
+**Certified lower bound.** In the [rigid-prime proof](proofs/type-18-rigid-primes.md),
 521 finite-field obstructions give the uniform lower bound
 `D > 2.07 × 10^153` for any noncolliding tuple. The signed monodromy
 group of `P(Y²)−c` and Hasse–Weil give an absolute cutoff for the
@@ -10355,7 +10355,7 @@ Two disjoint sets separately symmetric about one center cannot both
 have odd cardinality. At cardinality ten, translation and scaling
 give exactly the eighteen types of §5.1. The earlier exclusions and
 Theorem 49 rule them all out. The next even cardinality is twelve. ∎
-[Inverse shifts, general integer targets and historical examples](SHIFT_LIFT_SCOPE.md)
+[Inverse shifts, general integer targets and historical examples](proofs/inverse-shifts-and-distance.md)
 
 
 ## 6. Open boundary
@@ -10367,7 +10367,7 @@ normalized finiteness for all eighteen chain types (Theorem 14), and
 Sections 5.31, 5.40, 5.42–5.46, 5.49, 5.55, 5.56, 5.58, 5.60, 5.62, 5.65, 5.68, 5.71, 5.74 and 5.76 exclude valid
 distinct-entry lifts in types 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 (the older sixth mode),
 11, 12, 13, 14, 15, 16, 17 and 18. Corollary 51 extends the single-shift exclusion to arbitrary distinct ten-element predecessors of symmetric targets.
-For arbitrary distinct integer size-eleven targets, [Theorem 52 and Corollary 53](SHIFT_LIFT_SCOPE.md#minimum-ordered-distance-forces-symmetry)
+For arbitrary distinct integer size-eleven targets, [Theorem 52 and Corollary 53](proofs/inverse-shifts-and-distance.md#minimum-ordered-distance-forces-symmetry)
 give an ordered distance sum of at least 22, and at least 24 under symmetry.
 Section 3 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,
@@ -10380,7 +10380,7 @@ result increases the support bound or establishes existence.
 
 ## Appendix: a splitting pencil and its 2-Selmer group
 
-[PENCIL_SELMER.md](PENCIL_SELMER.md) studies the distinct-entry construction
+[proofs/splitting-pencil.md](proofs/splitting-pencil.md) studies the distinct-entry construction
 P(x)(Q(x)+t), with P=x⁵−110x³+2629x−2520 and
 Q=x⁶−110x⁴+2629x²+2520x. Its sextic discriminant is 64f(t),
 giving a genus-two necessary rational-point condition. A complete staged

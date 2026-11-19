@@ -369,7 +369,7 @@ f=s.prod(X-(2*j-1)**2 for j in range(1,6));q=s.expand(f-f.subs(X,0)-Z*Z)
 P18=s.discriminant(q,X)
 assert s.degree(P18,Z)==8 and s.degree(s.gcd(P18,s.diff(P18,Z)),Z)==0
 assert s.expand(q-(X**5-165*X**4+8778*X**3-172810*X**2+1057221*X-Z*Z))==0
-# Absolute prime cutoff in TYPE18_RIGID_PRIMES.md.
+# Absolute prime cutoff in proofs/type-18-rigid-primes.md.
 seed_derivative = s.diff(f, X)
 critical_resultant = s.resultant(f - Z, seed_derivative, X)
 assert s.degree(critical_resultant, Z) == 4

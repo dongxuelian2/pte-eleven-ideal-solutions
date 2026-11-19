@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Algebraic certificate; COMPLETE_AWAY_TARGETS.md supplies geometric inputs."""
+"""Algebraic certificate; proofs/local-height-targets.md supplies geometric inputs."""
 import sympy as s
 from fractions import Fraction
 t,u,y=s.symbols('t u y')

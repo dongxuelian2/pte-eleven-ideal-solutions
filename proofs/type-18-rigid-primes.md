@@ -8,7 +8,7 @@ where D is the common reduced denominator of the five doubled B centers.
 
 ## From rigid primes to a lower bound
 
-By [the individual-square argument](PROOF.md), all five doubled B centers of any rational tuple have a common reduced denominator D, and every prime dividing D is `1 mod 10`. Write the centers as `n_i/D` and `N=∏n_i`. Newton's identities give
+By [the individual-square argument](../PROOF.md), all five doubled B centers of any rational tuple have a common reduced denominator D, and every prime dividing D is `1 mod 10`. Write the centers as `n_i/D` and `N=∏n_i`. Newton's identities give
 
     ∏(X−n_i²) = D^10 P(X/D²) − Δ,
     Δ = N² − 945² D^10.
@@ -56,4 +56,4 @@ The exact coefficient and branch checks are part of `scripts/check_all_shift_cha
     cmp build/type18_rigid_primes.csv scripts/type18_rigid_primes.csv
     python3 scripts/verify_type18_rigid_primes.py scripts/type18_rigid_primes.csv --denominator-bound "$(python3 -c 'print(207 * 10**151)')"
 
-The Python verifier uses derivatives to recompute the multiplicity of every square residue root for every retained prime. It proves the denominator bound from any verified subset of rigid primes. Exhaustiveness of the 521-prime list additionally uses the C++ classification of all 1,797,076 primes from 7 through the cutoff and the global cutoff proof above. The full scan took about 81 seconds using eight threads on an i7-14650HX. The prime calculation gives the lower bound on D. The later [rank-one exclusion in Theorem 49](PROOF.md#576-complete-exclusion-of-type-18-and-rigidity-of-a-ten-term-progression) rules out a noncolliding rational tuple for every D.
+The Python verifier uses derivatives to recompute the multiplicity of every square residue root for every retained prime. It proves the denominator bound from any verified subset of rigid primes. Exhaustiveness of the 521-prime list additionally uses the C++ classification of all 1,797,076 primes from 7 through the cutoff and the global cutoff proof above. The full scan took about 81 seconds using eight threads on an i7-14650HX. The prime calculation gives the lower bound on D. The later [rank-one exclusion in Theorem 49](../PROOF.md#576-complete-exclusion-of-type-18-and-rigidity-of-a-ten-term-progression) rules out a noncolliding rational tuple for every D.
