@@ -1,11 +1,12 @@
 # Ideal Prouhet–Tarry–Escott Solutions of Size 11
 
-Sixteen of the eighteen normalized types in the symmetric shift construction
-are excluded at every rational height. In type 17, elliptic Chabauty excludes
+Seventeen of the eighteen normalized types in the symmetric shift construction
+are excluded at every rational height. Type 18 remains open.
+
+In type 17, elliptic Chabauty excludes
 the odd multiples. On the even branch, two descents put every candidate on
 an elliptic curve over a quartic field. At its unique dyadic place the
 direction required by the chain lies outside the global 2-Selmer image.
-Types 8 and 18 remain open.
 [Theorem 32, §5.60](PROOF.md#560-complete-exclusion-of-type-17-by-a-dyadic-selmer-obstruction)
 
 In type 12, both parity classes lead to rank-one elliptic curves over a
@@ -30,10 +31,15 @@ classes to elliptic covers. A second descent over a sextic field and
 two dyadic division tests exhaust the last class at every rational height.
 [Theorem 43, §5.71](PROOF.md#571-complete-exclusion-of-type-7)
 
-In type 8 the product of the singleton squares yields a genus-two curve whose
-Jacobian has rank four. Three two-cover classes survive the full splitting
-condition. Each gives an elliptic cover over a quartic field.
-[Proposition 44, §5.72](PROOF.md#572-the-product-covers-and-three-two-cover-classes-of-type-8)
+For type 8, a singular fiber at 23 excludes one of three global classes.
+The other two give rank-three elliptic curves over a quartic field.
+The logarithms at 2 and 131 isolate the collision parameter in each class.
+[Theorem 46, §5.74](PROOF.md#574-complete-exclusion-of-type-8)
+
+For type 18, two-cover descent fixes the discriminant class and assigns
+the five vertex squares to five distinct classes, each required exactly once.
+A single vertex equal to its seed value forces a collision of both sets.
+[Proposition 47, §5.75](PROOF.md#575-prescribed-two-cover-classes-of-type-18)
 
 In type 3, two squareclass pairs survive local tests. A rank-zero elliptic
 curve eliminates one. For the other, elliptic Chabauty over the field of

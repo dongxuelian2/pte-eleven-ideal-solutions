@@ -9918,8 +9918,260 @@ zero is \(b\); since both \(b\) and \(b_0\) are nonzero squares, the
 common rational scalar is square. Hence \((b-\rho)/(b_0-\rho)\)
 is square over \(K\). As \(G(b)\) and \(G(b_0)\) are also squares,
 the corresponding elliptic equation is \(W^2=q(b_0)q(b)\).
-Determining the other rational parameters in these three classes
-remains open.
+Section 5.73 analyzes these classes using the full singleton polynomial
+and a second elliptic cover.
+
+
+### 5.73 A singular fiber and reciprocal elliptic covers of type 8
+
+**Proposition 45.** The class represented by \(b_0=1/4\) contains no
+valid chain at any rational height. For the three classes of Proposition 44,
+in the order \(b_0=1/4,9/4,25/4\), the quartic-field elliptic curves
+there have 2-Selmer dimensions \(5,4,5\). Each class also gives an
+elliptic curve with 2-Selmer dimension three. These computations are
+unconditional.
+
+**Proof.** Scale the center and singleton squares by four. Write
+\(B=4b\), \(B_0=4b_0\) and
+\[
+ P_B(X)=(X-B)((X-B-4)^2-16B)((X-B-16)^2-64B),\qquad
+ F(B,X)=\frac{P_B(X)-P_B(1)}{X-1}.
+\]
+All four roots of this monic quartic must be rational squares. Its
+constant term is \(5f(B)\), where
+\(f(T)=T^4-18T^3+114T^2-97T+405\). For a root \(r\) of \(f\),
+Proposition 44 gives \((B-r)/(B_0-r)\in K^{\times2}\) in
+\(K=\mathbf Q(r)\).
+
+**The singular fiber.** Proposition 44 gives \(B\in\mathbf Z_{23}\),
+so all four roots are integral there. Enumerating the twelve square
+residues modulo 23, including zero, gives precisely \(B=1,2,9\)
+for which all four roots are squares, counted with multiplicity.
+Since \(-4\) is a simple root of \(f\bmod23\), the degree-one
+completion there tests the squareclass by \((B+4)(B_0+4)\).
+For \(B_0=1\) only \(B\equiv1\) survives. The special fiber factors as
+\[
+ F(1,X)=(X-1)(X-9)^2(X-25).
+\]
+In particular some root satisfies \(X\equiv9\pmod{23}\).
+Put \(U=B-1, V=X-9\). The terms of degree at most two of
+\(F(1+U,9+V)\) are \(-64(2V^2-15U^2)\).
+Since 30 is nonsquare modulo 23, this quadratic form has no
+nontrivial zero over the residue field. If \((U,V)\ne(0,0)\),
+put \(m=\min(v_{23}(U),v_{23}(V))\ge1\). Its quadratic term has
+valuation exactly \(2m\), whereas all higher terms have valuation
+at least \(3m\). Thus \(B=1\) and \(X=9\), and the repeated
+singleton violates distinctness.
+[Singular-fiber check](scripts/type8_descent/node.m)
+
+**Two elliptic curves per class.** Write \(q(T)=f(T)/(T-r)\) and
+\[
+ g(T)=T^3q(1/T)/q(0).
+\]
+Both cubics are monic and irreducible over \(K\). The direct
+cover has equation \(W^2=q(B_0)q(B)\). Since \(B\) and \(B_0\)
+are nonzero squares, the factor \((B B_0)^{-3}/q(0)^2\) is a
+square as well. Thus the reciprocal cover is
+\(W^2=g(1/B_0)g(1/B)\). For either monic cubic
+\(h(T)=T^3+c_2T^2+c_1T+c_0\), writing \(k=h(t_0)\) gives
+the Weierstrass model \(y^2=x^3+kc_2x^2+k^2c_1x+k^3c_0\),
+with \(x=kt\). Irreducibility gives trivial rational two-torsion.
+
+The cubic root field over \(K\) is the same for all six curves:
+scaling a root by \(k\) or taking its reciprocal preserves the
+field. It is the degree-twelve field \(M=\mathbf Q(r,r')\)
+of two distinct ordered roots of \(f\). The certificate verifies
+an absolute model, signature \((0,6)\), and discriminant
+\(5528109^5\). Apply the explicit formula of §5.55 with support
+\(2^{22}\), generating bound \(2^{17}\) and no real places.
+The rational interval bound gives
+\(A_{\rm arch}+S-\log|D_M|>862/1000\).
+Consequently the primes of norm at most \(2^{17}\) generate the
+class group. PARI verifies their reduction to a factor base of
+norms at most 1000. With this certified bound for \(M\) and the
+Minkowski bound for other fields, the class group is cyclic of
+order three and two-descent gives the dimensions asserted above.
+∎
+[Prime counts](scripts/type13_prym_class/prime_counts.cpp) ·
+[Explicit formula, option `--type8`](scripts/type13_prym_class/check_bound.py) ·
+[Factor-base verification](scripts/type8_descent/factor_base.gp) ·
+[Elliptic descents](scripts/type8_descent/covers.m)
+
+
+### 5.74 Complete exclusion of type 8
+
+**Theorem 46.** No valid distinct-entry type-8 chain exists at any
+rational height. In the classes represented by \(b_0=9/4,25/4\), the
+reciprocal elliptic curves of Proposition 45 both have rank three.
+
+**Proof.** Continue with \(B=4b\), \(t=1/B\), \(t_0=1/B_0\),
+\(k=g(t_0)\) and the monic reciprocal cubic \(g\) of §5.73.
+Write \(E\) for the model with abscissa \(x=kt\), and put
+\(P_0=(kt_0,k^2)\). Use
+\[
+ K=\mathbf Q(h),\quad h^4-h^3+28h^2-54h+231=0,
+ \qquad r=(-2h^3+h^2-33h+129)/15 .
+\]
+For each branch the certificate supplies three points \(P_i\) of
+\(E(K)\) by giving their parameters \(t_i\) and extracting a square
+root of \(k^3g(t_i)\) in \(K\). One is \(P_0\); for \(B_0=9\) another
+has rational parameter \(-59/64\). The logarithm calculation below
+proves independence, so the upper bound three is attained in both cases.
+[Exact point parameters and logarithms](scripts/type8_descent/logarithms.m)
+
+**Signs for \(B_0=9\).** At each of \(p=17,131,197,269\), enumerate
+square residues \(B\) for which \(F(B,X)\) splits into four squares.
+For every monic irreducible factor \(d\) of \(f\bmod p\), require
+\(d(B)d(9)\) to be square, allowing zero. This follows by taking
+the residue-field norm of \((B-r)/(9-r)\) at the corresponding
+unramified place when both entries are units. Proposition 44 excludes
+poles at these primes. The sole surviving residue is \(B=9\) in each
+case. All four primes give good reduction of \(E\). At each place
+above them a putative global point therefore reduces to \(P_0\) or
+\(-P_0\).
+
+At 131 the residue degrees are \(1,1,2\). To determine the relative
+signs, take the subgroup generated by the three independent points.
+For \(\ell=2,3\) separately the certificate saturates this subgroup at
+\(\ell\): for each line of coefficient vectors modulo \(\ell\), it
+tests exact division of the indicated sum in \(E(K)\). When divisible,
+replace the generator whose coefficient is one by the divided point
+and repeat. This enlarges the subgroup by index \(\ell\). The final
+tests have no further division and \(E(K)[\ell]=0\). Since the rank
+is three, the resulting points represent all global points modulo
+\(mE(K)\), with \(m=16\) or \(9\), respectively.
+
+At each finite place with residue group of order \(N\), multiply by
+\(N/\gcd(N,m)\) to annihilate \(m\) times the residue group. Enumerate
+coefficient triples modulo \(m\) and require agreement with a signed
+reduction of \(P_0\) at every place. For \(m=16\), the primes
+\(17,197,131\) leave four triples, and the signs at the two linear
+factors of 131 agree. For \(m=9\), the primes \(269,131\) leave
+36 triples and tie the quadratic factor to one linear factor.
+The only simultaneous patterns are \((+,+,+)\) and \((-,-,-)\).
+Negating the global point if necessary makes all signs positive.
+[Residues, saturation and sign enumeration](scripts/type8_descent/signs.m)
+
+**Transversality.** Use \(p=131\) for \(B_0=9\) and \(p=2\) for
+\(B_0=25\). In the second case there is just one place. Proposition 44
+makes \(B\) integral at 2. An even \(B\) would give
+\(F(B,X)\equiv X^4+X^3+X^2+X+1\pmod2\), which has no root.
+Thus \(B\) is an odd square and \(t\equiv t_0\pmod8\).
+
+Let \(V=\prod_{v\mid p}K_v\), of dimension four over \(\mathbf Q_p\),
+and take local elliptic logarithms for \(dx/(2y)\). The certificate
+expresses these in integral power bases of the unramified completions.
+For each \(P_i\) it takes a common integer multiple across the places,
+computes the formal parameter \(z=-x/y\), and divides the concatenated
+row by the same power of \(p\) at all places to make it primitive.
+Every formal parameter used has valuation at least eight. For the
+integral Weierstrass model the coefficient of \(z^j\) in the formal
+logarithm lies in \(j^{-1}\mathcal O_{K_v}\), by integration of the
+invariant differential. Hence replacing the logarithm by
+\(z\) preserves each normalized coordinate modulo \(p^5\).
+
+Let \(D\) be the resulting three-row matrix of true normalized logarithms
+and let \(a\) be the coordinate vector of \(1/k\) in \(V\). For 131 the
+minimum valuation of its maximal minors is zero, and for 2 it is one.
+Adjoining \(a\) gives a determinant of exactly the same valuation in
+both cases. These statements are determined by the calculation modulo
+\(p^5\). In particular the rows are independent. Their signed maximal
+minors, divided by the common power of \(p\), define an integral linear
+functional \(\lambda\) annihilating all three rows, with
+\(\lambda(1/k)\) a unit. As the three points span \(E(K)\otimes\mathbf Q\),
+the functional kills the logarithm of every global point.
+
+**The full parameter disks.** Write \(t=t_0+d\xi\), with
+\(d=131\) or \(8\) and \(\xi\in\mathbf Z_p\). At 131 the sign result
+puts the lift on the branch through \(P_0\) at every place. At 2 choose
+the sign giving \(y/k^2\in1+4\mathcal O_{K_v}\).
+On these branches \(g(t_0+d\xi)/k\) has constant term one and its
+square root takes value one at zero. For \(t\ne t_0\) the chord used
+in subtracting \(P_0\) has slope \((y+k^2)/(k(t-t_0))\). Its valuation
+is \(-v_p(t-t_0)\) at 131 and \(1-v_2(t-t_0)\) at two. The difference
+therefore belongs to the formal group throughout the disk. Pulling
+back the differential, and dividing out the scalar \(d/2\), its
+logarithm has the same zeros under \(\lambda\) as
+\[
+ \lambda\!\left(\frac1k\int_0^\xi
+     \left(\frac{g(t_0+dX)}{k}\right)^{-1/2}dX\right).
+\]
+The linear coefficient is a unit. At 131 the coefficient of \(X^i\)
+in the integrand has valuation at least \(i\), since the binomial
+coefficients of exponent \(-1/2\) are 131-integral. At two, for
+\(i\ge1\), the valuation is at least \(i+1\): a term with \(j\)
+nonconstant factors gains \(3i\) from \(d^i\), and
+\(v_2\binom{-1/2}{j}=s_2(j)-2j\ge1-2i\), where \(s_2\) counts
+binary ones. After division by \(i+1\) the bounds are still positive
+and tend to infinity. Thus every nonlinear coefficient belongs to
+\(p\mathbf Z_p\); for \(\xi\ne0\) the linear term has strictly smallest
+valuation. Global points require \(\xi=0\).
+
+The only parameters compatible with valid splitting in the two classes
+are therefore \(B=9\) and \(25\), respectively. At both values
+\(P_B(1)=0\), so the A and B vertex squares coincide. The class
+\(B_0=1\) was excluded in Proposition 45. ∎
+
+
+### 5.75 Prescribed two-cover classes of type 18
+
+**Proposition 47.** Let \(S_1,\ldots,S_5\) be the squares of the doubled
+B centers of a valid type-18 chain. Put \(z=\prod_i y_i\), where
+\(S_i=y_i^2\), and write \(U=z^2\), \(U_0=945^2\). Define
+\[
+ H(X)=X^4-165X^3+8778X^2-172810X+1057221,\qquad
+ d(U)=\operatorname{disc}_X(XH(X)-U).
+\]
+On \(Y^2=U d(U)\) the parameter \(U\) has the two-cover class of
+\(U_0\). On \(Y^2=S H(S)\) the five parameters \(S_i\) have the five
+different classes represented by \(1,9,25,49,81\), each exactly once.
+In particular, for a root \(r\) of \(H\), the vertices can be labeled
+by \(a\in\{1,9,25,49,81\}\) so that
+\((S_a-r)/(a-r)\) is square in \(\mathbf Q(r)\).
+
+**Proof.** Section 5.32 gives \(S_i H(S_i)=U\). All the \(S_i\) are
+nonzero squares and the discriminant of the split quintic is the square
+of its Vandermonde product. Thus both genus-two conditions hold. The
+constant-shift identity is
+\[
+ XH(X)-U_0=(X-1)(X-9)(X-25)(X-49)(X-81).
+\]
+Use the primes \(13,17,19,29,37,73,89,139,193\), none of which
+divides an admissible denominator. At each prime enumerate the square
+residues \(u\) for which \(XH(X)-u\) splits into five square residues
+with multiplicity. Only \(U_0\bmod p\) occurs, and the five roots are
+distinct.
+
+For either quartic \(h=d,H\) use the two-cover map on
+\(Y^2=Xh(X)\). Its étale algebra has a rational component at zero.
+For a representative \(w\), divide by \(w(0)\) to remove the common
+scalar, and compare with \((a-X)/a\) at a possible residue \(a\).
+At each unit component the norm of their product must be square.
+The certificate uses resultants with the monic irreducible factors of
+\(h\bmod p\), skipping representatives with poles or vanishing
+components at the test prime. All class-group proof bounds in these
+two genus-two descents are Minkowski bounds.
+
+For \(h=d\), descent gives five classes. The comparison with \(a=U_0\)
+at 13 and 19 leaves two and then one, represented by \(U_0-X\).
+For \(h=H\), descent gives 38. Allowing any of the five vertex
+residues at \(13,17,29,37,73,89,139,193\) leaves respectively
+\(30,22,14,13,10,8,6,5\). These are exactly the classes of \(a-X\)
+for the five seed vertices. At 89 each residue is compatible with
+only its own class. Since all five residues occur once in the split
+quintic, the global classes also occur once each. Finally the
+rational components \(S_a\) and \(a\) are both squares, so the
+common scalar in their class comparison is square. This gives the
+stated squareclass in the quartic field. ∎
+[Genus-two descents and the five assignments](scripts/check_type18_product_classes.m)
+
+This produces five necessary elliptic constraints with specified labels.
+Put \(q(T)=H(T)/(T-r)\). From \(H(S_a)=U/S_a\) and \(H(a)=U_0/a\),
+both squares, one obtains \(W_a^2=q(a)q(S_a)\), and inversion gives
+the reciprocal curve as in §5.73. Isolating the seed vertex on any
+one of the five required classes would force \(U=U_0\), hence all
+five vertices to coincide with the seed configuration. Exhaustion of
+such a class remains open.
 
 
 ## 6. Open boundary
@@ -9928,9 +10180,9 @@ The original distinct-entry size-11 problem remains unsolved here: no pair
 of disjoint eleven-element integer sets and no general impossibility proof
 has been established. Section 5 gives a distinct-entry shift-lift reduction and
 normalized finiteness for all eighteen chain types (Theorem 14), and
-Sections 5.31, 5.40, 5.42–5.46, 5.49, 5.55, 5.56, 5.58, 5.60, 5.62, 5.65, 5.68 and 5.71 exclude valid
-distinct-entry lifts in types 1, 2, 3, 4, 5, 6, 7, 9, 10 (the older sixth mode),
-11, 12, 13, 14, 15, 16 and 17. The remaining types are 8 and 18.
+Sections 5.31, 5.40, 5.42–5.46, 5.49, 5.55, 5.56, 5.58, 5.60, 5.62, 5.65, 5.68, 5.71 and 5.74 exclude valid
+distinct-entry lifts in types 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 (the older sixth mode),
+11, 12, 13, 14, 15, 16 and 17. The remaining type is 18.
 Section 3
 restricts symmetric distinct-entry constructions. Section 4 applies to
 the unrestricted multiset formulation, and proves at least fourteen distinct values across both supports,

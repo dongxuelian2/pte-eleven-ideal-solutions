@@ -1,5 +1,5 @@
-// Count prime-ideal powers in rational bins for sections 5.55 and 5.60.
-// Usage: prime_counts FIRST LAST [type17]. The interval is in rational primes.
+// Count prime-ideal powers in rational bins for the three class-group certificates.
+// Usage: prime_counts FIRST LAST [type17|type8]. The interval is in rational primes.
 #include <pari/pari.h>
 
 #include <bit>
@@ -29,13 +29,19 @@ void record_powers(Histogram& counts, std::uint64_t norm, unsigned multiplicity,
 }
 
 int main(int argc, char** argv) {
-    if (argc != 3 && (argc != 4 || std::string(argv[3]) != "type17")) return 2;
-    const bool type17 = argc == 4;
-    const unsigned long limit = type17 ? 1UL << 20 : cutoff;
+    if (argc < 3 || argc > 4) return 2;
+    const std::string mode = argc == 4 ? argv[3] : "type13";
+    if (mode != "type8" && mode != "type13" && mode != "type17") return 2;
+    const unsigned long limit = mode == "type8" ? 1UL << 22 :
+                                mode == "type17" ? 1UL << 20 : cutoff;
     unsigned long lo = std::stoul(argv[1]), hi = std::stoul(argv[2]);
     if (lo < 2 || lo > hi || hi > limit) return 2;
     pari_init(160000000, 1000000);
-    GEN poly = gp_read_str(type17
+    GEN poly = gp_read_str(mode == "type8"
+        ? "x^12-6*x^11-66*x^10-1415*x^9-3987*x^8+128772*x^7+1543187*x^6"
+          "-30854580*x^5+671675061*x^4-3249300991*x^3+46170279879*x^2"
+          "-461672478855*x+1325918174175"
+        : mode == "type17"
         ? "x^12-472*x^10+75282*x^8-4450612*x^6+64570537*x^4-277288596*x^2+234027000"
         : field);
     GEN nf = nfinit(poly, DEFAULTPREC);

@@ -1,4 +1,4 @@
-"""Prove the norm bounds in §§5.55 and 5.60 by prime counts and rational intervals."""
+"""Prove the norm bounds for the Type 8, 13 and 17 fields by prime counts and rational intervals."""
 from argparse import ArgumentParser
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
@@ -79,16 +79,18 @@ def main():
     parser = ArgumentParser(description=__doc__)
     parser.add_argument('counter', type=Path, help='compiled prime_counts executable')
     parser.add_argument('--jobs', type=int, default=1)
-    parser.add_argument('--type17', action='store_true', help='verify the totally real Type 17 field')
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument('--type8', action='store_true', help='verify the Type 8 ordered-pair field')
+    group.add_argument('--type17', action='store_true', help='verify the totally real Type 17 field')
     args = parser.parse_args()
-    support = 2**20 if args.type17 else SUPPORT
+    support = 2**22 if args.type8 else (2**20 if args.type17 else SUPPORT)
     block = 10_000_000
 
     def subtotal(lo):
         hi = min(support, lo+block-1)
         command = [args.counter.resolve(), str(lo), str(hi)]
-        if args.type17:
-            command.append('type17')
+        if args.type8 or args.type17:
+            command.append('type8' if args.type8 else 'type17')
         result = subprocess.run(command,
                                 check=True, capture_output=True, text=True)
         return read_histogram(result.stdout.splitlines())
@@ -97,7 +99,9 @@ def main():
     with ThreadPoolExecutor(max_workers=args.jobs) as pool:
         for result in pool.map(subtotal, range(2, support+1, block)):
             hist.update(result)
-    if args.type17:
+    if args.type8:
+        prove(hist, support, 2**17, 5528109**5, 0)
+    elif args.type17:
         prove(hist, support, support, 58160039859394517078535559761100800000, 12)
     else:
         prove(hist)
