@@ -99,7 +99,7 @@ $b_0=(X-2z^2-280)/2$. These maps extend over the smooth projective
 models, so the points where the affine formulas have poles are retained.
 Let $P=(180,900)$ and $T=(0,0)$. We use
 \begin{equation}\label{eq:t10-full-group}
- E(\mathbf Q)=\mathbf Z P\oplus\langle T\rangle,\qquad 2T=0.
+ E(\Q)=\Z P\oplus\langle T\rangle,\qquad 2T=0.
 \end{equation}
 Here is the arithmetic justification of completeness. The two-isogeny
 descent images on $E$ and its partner
@@ -170,7 +170,7 @@ by the independent signs are a conic, the elliptic quartic above and
 \]
 There are six simple branch points for the degree-four cover of the
 $z$-line, so $X_\delta$ has genus three, and
-$J(X_\delta)\sim_{\mathbf Q}E\times J(C_\delta)$.
+$J(X_\delta)\sim_{\Q}E\times J(C_\delta)$.
 The following conic parameters give the even-degree model
 \begin{equation}\label{eq:t10-model}
  W^2=F_\delta(t)=(N_\delta^2+5D_\delta^2)
@@ -195,12 +195,12 @@ A Richelot isogeny sends $J(C_\delta)$ to the Jacobian of
 \]
 On the monic model $y^2=x(x-k)(x+5k)(x^2-68kx-275k^2)$,
 full two-descent has étale algebra
-$\mathbf Q^3\times\mathbf Q(\sqrt{159})$. The global norm kernel
+$\Q^3\times\Q(\sqrt{159})$. The global norm kernel
 unramified outside $\{2,3,5,11,19,53\}$ has dimension 25 over
-$\mathbf F_2$. Its dimension after successive local conditions is
+$\F_2$. Its dimension after successive local conditions is
 \[
 \begin{array}{c|rrrrrrrr}
- k&\mathrm{norm}&\mathbf R&2&3&5&11&19&53\\ \hline
+ k&\mathrm{norm}&\R&2&3&5&11&19&53\\ \hline
  -15&25&23&18&15&11&8&5&5\\
  -3 &25&23&18&15&11&8&6&5
 \end{array}.
@@ -208,7 +208,7 @@ $\mathbf F_2$. Its dimension after successive local conditions is
 The local image dimensions are $2,5,3,4,4,4,3$ at the seven listed
 places. Explicit local divisor classes attain each dimension, so these
 are complete local images. The required squareclass basis in
-$\mathbf Q(\sqrt{159})$ follows from Minkowski's bound $<13$ and
+$\Q(\sqrt{159})$ follows from Minkowski's bound $<13$ and
 norm relations among the primes over $2,3,5,11$. Its independence is
 checked by local characters. This supplies unconditional Selmer dimension
 five. Three dimensions are rational two-torsion, and the following
@@ -242,7 +242,7 @@ unramified degree-two divisor, stays in charts with unit leading
 coefficients, and integrates in its two residue disks. The omitted tiny
 integral terms have valuation at least $m-v_{13}(m)\geq2$ for $m\geq2$.
 Since $176$ is prime to 13, the formal logarithm lattice is
-$13\mathbf Z_{13}^2$. The determinant proves that the subgroup generated
+$13\Z_{13}^2$. The determinant proves that the subgroup generated
 by $A_k,B_k$ is 13-saturated. An independent reduction proof uses the
 coefficient rows $(1,10),(0,1)$ for $k=-15$ and $(1,7),(1,3)$ for
 $k=-3$ at 181 and 199. Each pair has nonzero determinant modulo 13.
@@ -252,11 +252,11 @@ The certificates are \cert{check_thirteen_logarithms.py} and
 For the elliptic generator, exact addition gives
 $\log(P)/13\equiv1\pmod{13}$. The quotient-product and Richelot
 isogenies have two-primary kernels. They therefore preserve logarithm
-rank and saturation at 13. Both $J(X_\delta)(\mathbf Q)$ have logarithm
+rank and saturation at 13. Both $J(X_\delta)(\Q)$ have logarithm
 rank three. Their rational Néron--Severi rank is two. Indeed, the
 Rosati-fixed fields of the genus-two reductions at 17 and 23 are
-$\mathbf Q(\sqrt2)$ and $\mathbf Q(\sqrt{17})$, forcing the rational
-Rosati-fixed algebra of $J(C_\delta)$ to be $\mathbf Q$. The two
+$\Q(\sqrt2)$ and $\Q(\sqrt{17})$, forcing the rational
+Rosati-fixed algebra of $J(C_\delta)$ to be $\Q$. The two
 nonisogenous factors of dimensions one and two give the additional
 class. Consequently the quadratic Chabauty inequality is
 $3<3+2-1$. We use the Mordell--Weil restricted height construction of
@@ -405,11 +405,11 @@ thickness-one nodes. The involution $\sigma$ exchanges the components.
 It commutes with $Z$, so the graph potential has the same value at
 both vertices, and normalization makes that value zero.
 
-At 5, pass to $\mathbf Q_5(\pi)$ with $\pi^2=5$ and set
+At 5, pass to $\Q_5(\pi)$ with $\pi^2=5$ and set
 $t=\pi u$, $W=25V$ on $X_1$. The reduction has nodes at $u=\pm1$,
 each of thickness two. The main component is fixed and the two
 exceptional components introduced by resolution are exchanged by
-$\sigma$. A $\mathbf Q_5$ point of $X_1$ has
+$\sigma$. A $\Q_5$ point of $X_1$ has
 $v_\pi(u)=2v_5(t)-1$, so cannot reduce to either node and meets the
 main component. For $X_5$, the isomorphism $a_1=\pi a_5$ gives
 $u=a_5-2z/\pi$. Its conic equation forces $v_5(z)\geq1$ and
@@ -437,7 +437,7 @@ nor positive-genus component contribution to the correspondence
 measure. The potential is constant on each disk, and $\iota$
 symmetry makes the constants equal. Normalization makes them zero.
 The curve $X_5$ becomes $X_1$ over the unramified extension
-$\mathbf Q_2(\sqrt5)$, preserving $\iota,\sigma,Z$. Vanishing thus
+$\Q_2(\sqrt5)$, preserving $\iota,\sigma,Z$. Vanishing thus
 holds for both twists. This argument uses analytic disks and the
 semistable vertex-set refinement theorem, without assuming a computed
 full wild regular model.
@@ -605,7 +605,7 @@ Putting $q=13u$ now gives
  \rho_{B_5}/13&=129u+110u^2+117u^3\pmod{169}.\nonumber
 \end{align}
 The entire analytic functions have integral coefficients on
-$\mathbf Z_{13}$. All terms of degree at least three vanish modulo
+$\Z_{13}$. All terms of degree at least three vanish modulo
 13. Thus their simple residue roots exhaust the exact analytic roots,
 by Hensel's lemma. The coefficients and both tail estimates are part
 of the proof, while \cert{check_sixth_mode_qc_roots13.py} checks the
@@ -699,7 +699,7 @@ exclusion at every rational height.
 The numerical inputs in this appendix are obtained from different
 certificates. Their roles are summarized here to make the proof
 reproducible from the stated models.
-\begin{longtable}{@{}p{.23\textwidth}p{.70\textwidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.23\textwidth}>{\raggedright\arraybackslash}p{.70\textwidth}@{}}
 \toprule
 Input & Certificate and mathematical role\\ \midrule
 Center reduction & \cert{check_sixth_mode.py},
@@ -746,6 +746,6 @@ height-cocycle argument are mathematical parts of the proof.
 The final sieve requires no saturation at untested odd primes of the
 genus-three Jacobians because it uses \eqref{eq:t10-full-group}.
 The conclusion classifies the simultaneous-center-lift candidates
-needed by Type 10. The full rational-point sets $X_1(\mathbf Q)$ and
-$X_5(\mathbf Q)$ can contain points failing the remaining center-square
+needed by Type 10. The full rational-point sets $X_1(\Q)$ and
+$X_5(\Q)$ can contain points failing the remaining center-square
 conditions and are outside this assertion.

@@ -69,7 +69,7 @@ are eligible, containing $(0,0),(8,1500),(8,-1500)$.
 A full two-Selmer computation with Minkowski proof bounds gives
 dimension five. The four irreducible factors of degrees $1,2,2,2$
 contribute three independent rational two-torsion classes. Thus
-$\operatorname{rank}J(C)(\mathbf Q)\leq2$.
+$\operatorname{rank}J(C)(\Q)\leq2$.
 Define
 \[
  P=[(8,1500)-\infty],\qquad
@@ -115,7 +115,7 @@ $12+21\cdot8=32\pmod{37}$, a unit. On the Weierstrass disk use $Y$
 as parameter, so $dr/(2Y)=dY/f'(r)$ and the constant is
 $12/f'(0)=12/31\pmod{37}$, also a unit. Each primitive is injective
 on its whole disk. Indeed a nonlinear term of degree $k\geq2$
-in the difference at parameters $t_1,t_2\in37\mathbf Z_{37}$ has
+in the difference at parameters $t_1,t_2\in37\Z_{37}$ has
 valuation at least
 \[
  v_{37}(t_1-t_2)+k-1-v_{37}(k)>v_{37}(t_1-t_2).
@@ -136,7 +136,7 @@ Appendix~\ref{app:type13}. Put
  N(c)=-240c^3+1600c^2-260c+475,\quad
  \alpha=25/4,\quad\beta=1/4,
 \]
-and let $K=\mathbf Q(\theta)$ with $N(\theta)=0$. The product of
+and let $K=\Q(\theta)$ with $N(\theta)=0$. The product of
 the three first-side singleton squares is $N(c)/144$. The two other
 center squares satisfy $b=(25-4c)/6$, $c=w^2$, so every input gives
 a point on the genus-two curve
@@ -189,7 +189,7 @@ with rational center map
  \qquad \delta t=\pm\frac{v}{4w}.
 \]
 A valid lift makes $XY(X-e)\ne0$.
-Use $K=\mathbf Q(u)$ with $u^3+u^2+315u+1983=0$ and
+Use $K=\Q(u)$ with $u^3+u^2+315u+1983=0$ and
 $\theta=(u^2-3u+342)/60$. Its unique dyadic place has uniformizer
 $\pi=(u+1)^2/2$ satisfying
 $\pi^3+314\pi^2+26632\pi-347778=0$. Normalize $v_\pi(2)=3$.
@@ -206,7 +206,7 @@ formal, with
 \[
  t'=-x'/y'=\kappa2^{m-1}h,\qquad
  \kappa=(\delta\pi^5)^{-1},\quad v_\pi(\kappa)=1,
- \quad h\in\mathbf Z_2^\times.
+ \quad h\in\Z_2^\times.
 \]
 The formal logarithm identifies this formal group $G$ with
 $\pi\mathcal O$, and $\log(t')\equiv t'\pmod{4t'\mathcal O}$.
@@ -285,7 +285,7 @@ The twist and smoothness are checked in
 \cert{check_type13_product_covers.py}.
 
 Write $H(c,t)=q_2(c,t,1)^2-4tN(c)/9$ and $h=c-\beta$.
-The necessary local reduction at 23 forces $h\in23\mathbf Z_{23}$.
+The necessary local reduction at 23 forces $h\in23\Z_{23}$.
 For $h=0$ the input collides. The three distinct nonzero singleton
 squares at that point allow their rational roots to be labeled and
 signed so that $(a,b,d)\equiv(1/2,3/2,5/2)\pmod{23}$.
@@ -389,7 +389,7 @@ It controls the full punctured disk. A coefficient of degree $k\geq3$
 in this determinant has denominator valuation at most
 $\lfloor k/22\rfloor$, since it is built from three integration
 indices satisfying $\sum(n_i-1)=k$ and
-$v_{23}(n_i)\leq(n_i-1)/22$. At $h\in23\mathbf Z_{23}\setminus\{0\}$
+$v_{23}(n_i)\leq(n_i-1)/22$. At $h\in23\Z_{23}\setminus\{0\}$
 its valuation is strictly greater than $2v_{23}(h)$. The leading
 term cannot cancel. This proves independence for equal local signs,
 including their common global negative.
@@ -406,7 +406,7 @@ it is
 \]
 The exact constant term vanishes because at $u=0$ the bottom rows
 differ from the top only within one two-dimensional block. Its
-quotient by $u$ is an integral convergent series on $\mathbf Z_{23}$,
+quotient by $u$ is an integral convergent series on $\Z_{23}$,
 as each integrated coefficient carries $23^{n-1}/n$. Its constant
 is a unit. Thus a dependence with $h\ne0$ requires
 $u\equiv19,18,12$ respectively. In each case the six-row matrix
@@ -506,7 +506,7 @@ proves 1000 as the required generating bound independently of a
 provisional class group. The bound is applied only after identifying
 the absolute field with $L$. Other fields use their Minkowski bound,
 which is 419 for $K$. The ordinary class groups are
-$\operatorname{Cl}(L)=(\mathbf Z/2)^2$ and
+$\operatorname{Cl}(L)=(\Z/2)^2$ and
 $\operatorname{Cl}(K)=0$. The Prym two-Selmer group has dimension
 six and its rational two-torsion dimension one. Therefore
 $\operatorname{rank}J(K)\leq5$, contradicting the six independent
@@ -531,7 +531,7 @@ coordinates on $E$, forward and inverse matrices are
  \qquad J=\begin{pmatrix}2884&7&36757\\-896&112&5152\\1456&28&5908\end{pmatrix}.
 \]
 Their product is a nonzero scalar matrix. The full group is
-$E(\mathbf Q)=\mathbf ZG$ with $G=(31,202)$ and trivial torsion,
+$E(\Q)=\Z G$ with $G=(31,202)$ and trivial torsion,
 certified with unconditional class-group bounds by
 \cert{check_type9_group.m}.
 
@@ -616,7 +616,7 @@ At zero the cubic is $(4R-9)^2(4R-25)$, while at four it is
 $(4R-1)(4R-49)(4R-81)$. These are also the only repeated-root
 possibilities. Indeed the remaining factor of the discriminant has
 unit leading coefficient at 7 and nonzero residues
-$2,1,6,1,3,2,6$ on $\mathbf F_7$. A rational root would be
+$2,1,6,1,3,2,6$ on $\F_7$. A rational root would be
 7-integral and reduce to a root. The only distinct split fiber is
 therefore $b=4$, where the doubleton centered at 2 shares $3/2$
 with the central chain. The Bézout forms, heights, exact multiples
@@ -669,8 +669,8 @@ $E_6:Y^2=X(X^2-342X+59616)$. Its rank-zero group has only the
 finite point $(0,0)$, contradicting $z>0$.
 For the second pair, put $t=1656/z$. It is a nonzero square, and
 \[
- 10(t^2-57t+1656)\in\mathbf Q^{\times2},\qquad
- 15(t^2-131t/8+3381)\in\mathbf Q^{\times2}.
+ 10(t^2-57t+1656)\in\Q^{\times2},\qquad
+ 15(t^2-131t/8+3381)\in\Q^{\times2}.
 \]
 On $E_{10}:Y^2=X(X^2-570X+165600)$ there is therefore a point
 with $X=10t$. The rational group has rank one and torsion generated
@@ -678,7 +678,7 @@ by $(0,0)$. The point $(160,4000)$ has two-isogeny class 10,
 independent of the torsion class 46. Thus the abscissa class 10
 forces its difference from this point to be twice a rational point.
 
-Over $K=\mathbf Q(\sqrt{-15})$, put
+Over $K=\Q(\sqrt{-15})$, put
 $r=(57+15\sqrt{-15})/2$. The abscissa character at $(10r,0)$
 implies $(t-r)/(16-r)\in K^{\times2}$. One can see the character
 homomorphism directly: for three collinear points the product of
@@ -752,13 +752,13 @@ square for a root $\theta$ of $A$, and that $Q$ is an even
 multiple of $G$.
 
 On the integral equation of $E_0$, the generator has formal
-parameter $-4/15$. The formal subgroup on $4\mathbf Z_2$ is
+parameter $-4/15$. The formal subgroup on $4\Z_2$ is
 closed under addition and duplication starts with twice the
 parameter. Therefore for $s=-T/Y(Q)$,
 \[
  k=v_2(s)\geq3,\qquad v_2(T)=-2k.
 \]
-Take $K=\mathbf Q(w)$, $w^4-194w^2-96w+8302=0$, and
+Take $K=\Q(w)$, $w^4-194w^2-96w+8302=0$, and
 $\theta=3(2w^3+4w^2-240w-532)$. The monic cubic
 $h(U)=A(U)/(U-\theta)$ is integral and irreducible over $K$.
 The two square conditions give a global point $R=(T,Y')$ on
@@ -776,8 +776,8 @@ norm bound $2^{20}$, has margin greater than $0.262$.
 Every prime-power term in the support has multiplier one in the
 hypothetical cyclic quotient. PARI's exact ideal relations reduce
 the generating set to norm 1000. After field identification this
-gives class group $\mathbf Z/2$ and
-$\dim_{\mathbf F_2}\operatorname{Sel}_2(E/K)=2$.
+gives class group $\Z/2$ and
+$\dim_{\F_2}\operatorname{Sel}_2(E/K)=2$.
 
 There is one dyadic place of $K$, totally ramified of degree four.
 Write $D=K_v$, let $\pi$ be a uniformizer and $\mathfrak p$ its
